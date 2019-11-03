@@ -1,0 +1,73 @@
+/*   Global   */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/*   Barra de navegación   */
+
+.navbar {
+    background-color: #886DE9;
+}
+
+.navbar img {
+    width: 2rem;
+    min-width: 32px;
+    min-height: 32px;
+}
+
+.nav-link, .barrasecundaria {
+    font-family: 'Nunito', sans-serif;
+}
+
+.logo {
+    font-family: 'Open Sans', sans-serif;
+    padding: 0.1rem 0.1rem 0.05rem;
+    letter-spacing: -1px;
+}
+
+.btn-outline-success {
+    /*   Color de la hamburguesa   */
+    color: #fff;
+    border-color: #516173;
+    background-color: #516173;
+}
+
+button:focus {
+    /*   Borrando el borde horrible cuando se selecciona la hamburguesa   */
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.navbar-toggler span {
+    /*   Color de la hamburguesa   */
+    color: #fff;
+}
+
+.navbar-toggler {
+    /*   Color del botón de la hamburguesa   */
+    background-color: #516173;
+}
+
+.searchp {
+    /*   Arreglando los bordes redondeados para que peguen con la lupa   */
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: auto;
+}
+
+.searchb {
+    /*   Lo mismo que lo anterior   */
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.link {
+    text-decoration: none !important;
+    color: #fff !important;
+    font-size: 0.7rem;
+    margin: 0 0.5rem;
+}
+
+/*   Fin de barra de navegación   */
