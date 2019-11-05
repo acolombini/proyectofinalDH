@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="estilo-anibal.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -102,6 +102,13 @@
                       <h4>$24.99</h4>
                       
                       <div class="list-group d-flex flex-sm-column flex-md-row">
+                            <li class="list-group-item list-group-item-action text-center">
+                                <div class="number-input">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                                    <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                </div>
+                            </li>
                             <a href="#" class="list-group-item list-group-item-action text-center"><i class="fa fa-cart-plus mr-1" aria-hidden="true"></i>Añadir al carrito</a>
                             <a href="#" class="list-group-item list-group-item-action text-center"><i class="fa fa-heart-o mr-1" aria-hidden="true"></i>Añadir a Favoritos</a>
                             <a href="#" class="list-group-item list-group-item-action text-center"><i class="fa fa-shopping-cart mr-1" aria-hidden="true"></i>Comprar Ahora</a>
