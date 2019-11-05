@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-
-
 /* estilos home */
 
 .dropdown-submenu {
@@ -142,30 +139,7 @@
         font-weight: bold;
         text-align: center;
       }
-=======
+
 * {
     box-sizing: border-box;
 }
-body {
-
-}
-header nav a {
-    text-decoration: none;
-    color: white;
-}
-
-header nav span {
-    color: white;
-}
-
-header nav div ul li a{
-    color: white;
-}
-header>nav {
-    display: flex;
-}
-#buscar {
-    justify-content: flex-end;
-    display: none;
-}
->>>>>>> Stashed changes
