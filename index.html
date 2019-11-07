@@ -18,111 +18,295 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Local css -->
-    <link rel="stylesheet" href="css/estilo-joa.css">
-    <link rel="stylesheet" href="estilo-anibal.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- Main div-->
-    <div class="maindiv"></div>
+    <div class="container">
         <header>
-            <!-- Barra de navegación
-                Nota: ¿esto iría fuera del maindiv?-->
-            <nav class="navbar navbar-expand-lg">
-                <!--Logo-->
-                <div class="logo d-flex align-items-end pb-2 mr-3">
-                    <a href="index.html"><img src="img/logo.png" alt="logo"></a>
-                    <a class="navbar-brand text-white p-0 pl-1" href="index.html">eCommerce</a>
-                </div>
+            <nav class="d-flex flex-column flex-lg-row justify-content-around align-items-center navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+                    <!-- logo -->
+                        <div class="row my-2">
+                            <a href="home.html" class="navbar-brand"><img class="img-fluid" src="img/logo_alt.png" alt="4 osos"></a>
+                        </div>
+                    <!-- fin logo -->
+                    
+                    <!-- menu -->
+                    <div class="row my-2 d-flex flex-lg-column">
+                        
+                        <div class="row">
 
-                <!--Hamburguesa-->
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="fas fa-bars"></span>
-                </button>
+                        <!-- boton hamburguesa -->
+                        <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler boton-hamburguesa order-1 order-md-1">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <!-- fin boton hamburguesa -->
 
-                <!--Navegación principal-->
-                <div class="collapse navbar-collapse p-0 mt-3" id="navbarSupportedContent">
-                    <div class="mx-auto">
-                        <ul class="navbar-nav mt-3 mx-auto flex-row justify-content-center">
-                            <li class="nav-item active">
-                                <a class="nav-link text-white p-0 mr-4" href="#">Inicio <span
-                                        class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white p-0 mr-4" href="#">FAQ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white p-0 mr-1" href="#">Contacto</a>
-                            </li>
-                        </ul>
+                        <!-- menu links -->
+                        <div id="navbarContent" class="collapse navbar-collapse menu-links order-4 order-md-2">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                                <!-- primer nivel -->
+                                <li class="nav-item dropdown">
+                                    <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" class="nav-link dropdown-toggle">Categoria</a>
+                                    <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
+                                        <li><a href="#" class="dropdown-item">Categoria#1</a></li>
+                                        <li><a href="#" class="dropdown-item">Categoria#2</a></li>
+                                        <li class="dropdown-divider"></li>
+                                        <!-- segundo Nivel -->
+                                        <li class="dropdown-submenu">
+                                            <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false"
+                                                class="dropdown-item dropdown-toggle">Categoria#3</a>
+                                            <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                                                <li>
+                                                    <a tabindex="-1" href="#" class="dropdown-item">SubCategoria#1</a>
+                                                </li>
+                                                <!-- tercer nivel-->
+                                                <li class="dropdown-submenu">
+                                                    <a id="dropdownMenu3" href="#" role="button" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"
+                                                        class="dropdown-item dropdown-toggle">SubCategoria#2</a>
+                                                    <ul aria-labelledby="dropdownMenu3"
+                                                        class="dropdown-menu border-0 shadow">
+                                                        <li><a href="#" class="dropdown-item">SubSubCategoria#1</a></li>
+                                                        <li><a href="#" class="dropdown-item">SubSubCategoria#1</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- fin tercer nivel -->
+
+                                                <li><a href="#" class="dropdown-item">SubCategoria#3</a></li>
+                                                <li><a href="#" class="dropdown-item">SubCategoria#4</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- fin segundo nivel -->
+                                    </ul>
+                                </li>
+                                <!-- fin primer nivel -->
+                                <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                                <li class="nav-item"><a href="registro-form.html" class="nav-link">Registro</a></li>
+                                <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+                                <li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
+                            </ul>
+                            
+                        </div><!--./menu-links -->
+                        </div> <!--./row -->
+
+                        <div class="row">
+
+                            <!-- busqueda -->
+                            <div class="searchbar order-2 order-md-3">
+                                <input class="search_input" type="text" name="" placeholder="Buscar...">
+                                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                            </div>
+                            <!-- iconos -->
+                            <div class="botones-navbar d-flex justify-content-center align-items-center order-3 order-md-4">
+                                <a href="login.html"><i class="fas fa-user mx-2"></i></a>
+                                <a href="#"><i class="fas fa-shopping-cart mx-2"></i></a>
+                            </div>
+                        </div> <!--./row -->
+                            
                     </div>
-
-                    <!--Búsqueda-->
-                    <div>
-                        <form class="form-inline my-2 my-lg-0 flex-nowrap justify-content-center mt-3">
-                            <input class="form-control searchp" type="search" placeholder="Buscar..."
-                                aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0 searchb" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-
-                    <!--Barra secundaria-->
-                    <div class="barrasecundaria d-flex mx-auto">
-                        <ul class="list-unstyled p-0 d-flex m-0 mt-3 mx-auto">
-                            <li>
-                                <a href="" class="link text-nowrap">Iniciar sesión</a>
-                            </li>
-                            <li>
-                                <a href="" class="link">Registro</a>
-                            </li>
-                            <li>
-                                <a href="" class="link">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <!-- fin menu -->
             </nav>
         </header>
-        <footer class="d-flex justify-content-around p-0 mt-1 bg-dark" style="color: white;">
-                <div style="width: 70vw;" class="pb-1">
-                    <ul class="d-flex justify-content-around p-0 mb-3" type="none" style="border-bottom: 3px white solid;font-size: 3rem;">
-                        <li><i class="fab fa-twitter"></i></li>
-                        <li><i class="fab fa-instagram"></i></li>
-                        <li><i class="fab fa-facebook-f"></i></li>
-                    </ul>
-                    <ul class="d-flex justify-content-around p-0 mb-3" type="none" style="border-bottom: 3px white solid;">
-                        <li> <i class="fas fa-at"></i><span>  info@mail.com</span> </li>
-                        <li> <i class="fas fa-phone-alt"></i><span>  0310 4112233 </span> </li>
-                    </ul>
-                    <div class="btn-group d-flex justify-content-around mb-3" role="group">
-                        <button type="button" class="btn btn-secondary">Home</button>
-                        <button type="button" class="btn btn-secondary">About</button>
-                        <button type="button" class="btn btn-secondary">Services</button>
-                        <button type="button" class="btn btn-secondary">Gallery</button>
-                    </div> <br>
-                    <p class="mb-3 text-center text-white">Copyright &copy; Your Website 2019</p>
-                </div>
-            </footer>
-    </div>
-    <!--fin del main div-->
 
+        <main>            
+            <div id="carouselExampleCaptions" class="carousel slide my-4" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="detalle-producto.html" target="_self">
+                            <img src="https://via.placeholder.com/900x350?text=destacado 1" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Nombre Producto</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="detalle-producto.html" target="_self">
+                            <img src="https://via.placeholder.com/900x350?text=destacado 2" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Nombre Producto</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="detalle-producto.html" target="_self">
+                            <img src="https://via.placeholder.com/900x350?text=destacado 3" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Nombre Producto</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            
+            <h2 class="text-center font-weight-bold">Destacados</h2>
+        </div>
+            <!-- fin slider -->
+            <hr width="75%">
+            <!-- INICIO CATEGORIAS -->
+            <section>
+                    <h2 class="font-weight-bold text-center"> Categorías </h2>
+                <div class="row">
+                    <div class="card col-6 col-lg-4" style="width: 18rem;">
+                     <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"> </a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 1</h3> </a>
+                    </div>
+                    </div>
+
+                    <div class="card col-6 col-lg-4" style="width: 18rem;">
+                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 2</h3></a>
+                    </div>
+                    </div>
+
+                    <div class="card col-6 col-lg-4" style="width: 18rem;">
+                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 3</h3></a>
+                    </div>
+                    </div>
+
+                    <div class="card col-6 col-lg-4" style="width: 18rem;">
+                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 4</h3></a>
+                    </div>
+                    </div>
+
+                    <div class="card col-6 col-lg-4 d-none d-lg-block" style="width: 18rem;">
+                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 5</h3></a>
+                    </div>
+                    </div>
+
+                    <div class="card col-6 col-lg-4 d-none d-lg-block" style="width: 18rem;">
+                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 6</h3></a>
+                    </div>
+                    </div>  
+                </div>
+            </section>
+            <!-- FIN CATEGORIAS -->
+            <hr width="75%">
+            <!-- INICIO NOSOTROS -->
+            <section>
+                <div class="mb-5">
+                <h2 class="font-weight-bold text-center"> Nosotros </h2>
+                <div class="row">
+                    <p class="col-12"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis facilis aperiam vel dolorum dignissimos commodi ut cupiditate, aspernatur totam enim cum ipsam distinctio sunt perferendis optio voluptatum hic! Reiciendis necessitatibus cupiditate quia corrupti similique? Magni iusto totam tempora eos iste.</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                <a href=""><button type="button" class="btn btn-outline-primary">Ver Más</button></a>
+                </div>
+            </div>
+            </section>
+            <!-- FIN NOSOTROS -->
+        </main>
+
+
+
+        <footer>
+            <div class="container bg-dark">
+
+            
+            <div class="row d-flex flex-column">
+
+                <div class="row d-flex justify-content-around">
+                    
+                    <div>
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    
+                </div>
+                    
+                <div class="row">
+                        
+                        <ul>
+                            <li> <i class="fas fa-at"></i><span> info@mail.com</span> </li>
+                            <li> <i class="fas fa-phone-alt"></i><span> 0310 4112233 </span> </li>
+                        </ul>
+                        
+                    </div>
+                
+                    <div class="row">
+                       
+                        <div>
+                            <button type="button" class="btn btn-secondary">Home</button>
+                            <button type="button" class="btn btn-secondary">About</button>
+                            <button type="button" class="btn btn-secondary">Services</button>
+                            <button type="button" class="btn btn-secondary">Gallery</button>
+                        </div>
+                    </div>
+                </div>               
+                    <div class="row">
+                        <p class="mb-3 text-center text-white">Copyright &copy; Your Website 2019</p>
+                    </div>
+                </div>
+        </footer>
+
+
+
+    </div>
+    <!--fin container principal-->
     <script src="https://kit.fontawesome.com/56fc440a67.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script>
+
+        $(function () {
+            // ------------------------------------------------------- //
+            // funcion para que anden los dropdown del menu
+            // ------------------------------------------------------ //
+            $("ul.dropdown-menu [data-toggle='dropdown']").on("click", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                $(this).siblings().toggleClass("show");
+
+
+                if (!$(this).next().hasClass('show')) {
+                    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+                }
+                $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+                    $('.dropdown-submenu .show').removeClass("show");
+                });
+
+            });
+        });
+    </script>
+
 </body>
 
 </html>
