@@ -27,7 +27,7 @@
             <nav class="d-flex flex-column flex-lg-row justify-content-around align-items-center navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
                     <!-- logo -->
                         <div class="row my-2">
-                            <a href="#" class="navbar-brand"><img class="img-fluid" src="img/logo_alt.png" alt="4 osos"></a>
+                            <a href="home.html" class="navbar-brand"><img class="img-fluid" src="img/logo_alt.png" alt="4 osos"></a>
                         </div>
                     <!-- fin logo -->
                     
@@ -84,10 +84,10 @@
                                     </ul>
                                 </li>
                                 <!-- fin primer nivel -->
-                                <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Registro</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
-                                <li class="nav-item"><a href="#" class="nav-link">Contacto</a></li>
+                                <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                                <li class="nav-item"><a href="registro-form.html" class="nav-link">Registro</a></li>
+                                <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+                                <li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
                             </ul>
                             
                         </div><!--./menu-links -->
@@ -102,7 +102,7 @@
                             </div>
                             <!-- iconos -->
                             <div class="botones-navbar d-flex justify-content-center align-items-center order-3 order-md-4">
-                                <a href="#"><i class="fas fa-user mx-2"></i></a>
+                                <a href="login.html"><i class="fas fa-user mx-2"></i></a>
                                 <a href="#"><i class="fas fa-shopping-cart mx-2"></i></a>
                             </div>
                         </div> <!--./row -->
@@ -112,8 +112,117 @@
             </nav>
         </header>
 
-        <main>
+        <main>            
+            <div id="carouselExampleCaptions" class="carousel slide my-4" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="detalle-producto.html" target="_self">
+                            <img src="https://via.placeholder.com/900x350?text=destacado 1" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Nombre Producto</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="detalle-producto.html" target="_self">
+                            <img src="https://via.placeholder.com/900x350?text=destacado 2" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Nombre Producto</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="detalle-producto.html" target="_self">
+                            <img src="https://via.placeholder.com/900x350?text=destacado 3" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Nombre Producto</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            
+            <h2 class="text-center font-weight-bold">Destacados</h2>
+        </div>
+            <!-- fin slider -->
+            <hr width="75%">
+            <!-- INICIO CATEGORIAS -->
+            <section>
+                    <h2 class="font-weight-bold text-center"> Categorías </h2>
+                <div class="row">
+                    <div class="card col-6 col-lg-4" style="width: 18rem;">
+                     <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"> </a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 1</h3> </a>
+                    </div>
+                    </div>
 
+                    <div class="card col-6 col-lg-4" style="width: 18rem;">
+                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 2</h3></a>
+                    </div>
+                    </div>
+
+                    <div class="card col-6 col-lg-4" style="width: 18rem;">
+                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 3</h3></a>
+                    </div>
+                    </div>
+
+                    <div class="card col-6 col-lg-4" style="width: 18rem;">
+                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 4</h3></a>
+                    </div>
+                    </div>
+
+                    <div class="card col-6 col-lg-4 d-none d-lg-block" style="width: 18rem;">
+                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 5</h3></a>
+                    </div>
+                    </div>
+
+                    <div class="card col-6 col-lg-4 d-none d-lg-block" style="width: 18rem;">
+                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card-body">
+                        <a href=""> <h3 class="card-text text-center">Categoria 6</h3></a>
+                    </div>
+                    </div>  
+                </div>
+            </section>
+            <!-- FIN CATEGORIAS -->
+            <hr width="75%">
+            <!-- INICIO NOSOTROS -->
+            <section>
+                <div class="mb-5">
+                <h2 class="font-weight-bold text-center"> Nosotros </h2>
+                <div class="row">
+                    <p class="col-12"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis facilis aperiam vel dolorum dignissimos commodi ut cupiditate, aspernatur totam enim cum ipsam distinctio sunt perferendis optio voluptatum hic! Reiciendis necessitatibus cupiditate quia corrupti similique? Magni iusto totam tempora eos iste.</p>
+                </div>
+                <div class="d-flex justify-content-end">
+                <a href=""><button type="button" class="btn btn-outline-primary">Ver Más</button></a>
+                </div>
+            </div>
+            </section>
+            <!-- FIN NOSOTROS -->
         </main>
 
 
@@ -122,14 +231,14 @@
             <div class="container bg-dark">
 
             
-            <div class="row d-flex flex-colunm">
+            <div class="row d-flex flex-column">
 
-                <div class="row">
+                <div class="row d-flex justify-content-around">
                     
                     <div>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-facebook-f"></i>
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
                     </div>
                     
                 </div>
