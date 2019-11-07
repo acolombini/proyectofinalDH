@@ -1,73 +1,82 @@
-/*   Global   */
+/*########################################## PERFIL MOBILE #######################################*/
 
-* {
-    box-sizing: border-box;
+/* Color de avatar */
+
+#avatarprofile {
+    height: 40vh;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
 }
 
+/* Nombre y apellido */
 
-/*   Barra de navegación   */
-
-.navbar {
-    background-color: #886DE9;
+.nya {
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1.3rem;
 }
 
-.navbar img {
-    width: 2rem;
-    min-width: 32px;
-    min-height: 32px;
-}
-
-.nav-link, .barrasecundaria {
+.nuni {
     font-family: 'Nunito', sans-serif;
 }
 
-.logo {
-    font-family: 'Open Sans', sans-serif;
-    padding: 0.1rem 0.1rem 0.05rem;
-    letter-spacing: -1px;
+/********************************************* BOTONES ACORDIÓN ********************************************/
+
+/* Chau bordes redondeados */
+
+#accordion .card, #accordion .card-header, #accordion .card-header button {
+    border-radius: 0 !important;
 }
 
-.btn-outline-success {
-    /*   Color de la hamburguesa   */
-    color: #fff;
-    border-color: #516173;
-    background-color: #516173;
+/* Ancho del contenido*/
+
+#accordion .card-header button {
+    padding: .75rem 1.25rem !important;
 }
 
-button:focus {
-    /*   Borrando el borde horrible cuando se selecciona la hamburguesa   */
-    box-shadow: none !important;
-    outline: none !important;
+/* Rotación de la flecha al cliquear*/
+
+a:not(.collapsed) .fa-angle-right {
+    transform: rotate(90deg);
 }
 
-.navbar-toggler span {
-    /*   Color de la hamburguesa   */
-    color: #fff;
-}
+/* Decorando links*/
 
-.navbar-toggler {
-    /*   Color del botón de la hamburguesa   */
-    background-color: #516173;
-}
-
-.searchp {
-    /*   Arreglando los bordes redondeados para que peguen con la lupa   */
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    width: auto;
-}
-
-.searchb {
-    /*   Lo mismo que lo anterior   */
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.link {
+#accordion .card a {
     text-decoration: none !important;
-    color: #fff !important;
-    font-size: 0.7rem;
-    margin: 0 0.5rem;
+    color: rgb(71, 71, 71) !important;
+    font-size: 1.2rem;
 }
 
-/*   Fin de barra de navegación   */
+/*########################################### PERFIL DESKTOP #######################################*/
+
+#avatarprofile, #profilelp, #profilebp {
+    background: rgb(196, 196, 196);
+    background: linear-gradient(180deg, rgba(196, 196, 196, 1) 0%, rgba(171, 171, 171, 1) 100%);
+}
+
+#profilelp {
+    height: 41.5rem;
+    border-right: white 1.5rem solid;
+}
+
+#profilebp {
+    height: 25rem;
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+@media (min-width: 992px) {
+    #avatarprofile {
+        height: 15rem;
+    }
+    .nya {
+        font-size: 1.8rem;
+    }
+    #avatarprofile, #profilebp {
+        border-top-right-radius: 1rem;
+        border-top-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
+}

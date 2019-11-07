@@ -2,16 +2,558 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil</title>
+    <!-- Icono de la pestaña del sitio -->
+    <link rel="icon" href="img/logo_alt.png" />
+
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:700|Open+Sans&display=swap" rel="stylesheet" />
+
+    <!-- Css de bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <!-- Local css -->
+    <link rel="stylesheet" href="css/estilo-joa.css" />
+    <link rel="stylesheet" href="estilo-anibal.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+    <div class="container">
+        <header>
+            <nav
+                class="d-flex flex-column flex-lg-row justify-content-around align-items-center navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+                <!-- logo -->
+                <div class="row my-2">
+                    <a href="home.html" class="navbar-brand"><img class="img-fluid" src="img/logo_alt.png"
+                            alt="4 osos"></a>
+                </div>
+                <!-- fin logo -->
 
+                <!-- menu -->
+                <div class="row my-2 d-flex flex-lg-column">
+
+                    <div class="row">
+
+                        <!-- boton hamburguesa -->
+                        <button type="button" data-toggle="collapse" data-target="#navbarContent"
+                            aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation"
+                            class="navbar-toggler boton-hamburguesa order-1 order-md-1">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <!-- fin boton hamburguesa -->
+
+                        <!-- menu links -->
+                        <div id="navbarContent" class="collapse navbar-collapse menu-links order-4 order-md-2">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                                <!-- primer nivel -->
+                                <li class="nav-item dropdown">
+                                    <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" class="nav-link dropdown-toggle">Categoria</a>
+                                    <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
+                                        <li><a href="#" class="dropdown-item">Categoria#1</a></li>
+                                        <li><a href="#" class="dropdown-item">Categoria#2</a></li>
+                                        <li class="dropdown-divider"></li>
+                                        <!-- segundo Nivel -->
+                                        <li class="dropdown-submenu">
+                                            <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false"
+                                                class="dropdown-item dropdown-toggle">Categoria#3</a>
+                                            <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                                                <li>
+                                                    <a tabindex="-1" href="#" class="dropdown-item">SubCategoria#1</a>
+                                                </li>
+                                                <!-- tercer nivel-->
+                                                <li class="dropdown-submenu">
+                                                    <a id="dropdownMenu3" href="#" role="button" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"
+                                                        class="dropdown-item dropdown-toggle">SubCategoria#2</a>
+                                                    <ul aria-labelledby="dropdownMenu3"
+                                                        class="dropdown-menu border-0 shadow">
+                                                        <li><a href="#" class="dropdown-item">SubSubCategoria#1</a></li>
+                                                        <li><a href="#" class="dropdown-item">SubSubCategoria#1</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- fin tercer nivel -->
+
+                                                <li><a href="#" class="dropdown-item">SubCategoria#3</a></li>
+                                                <li><a href="#" class="dropdown-item">SubCategoria#4</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- fin segundo nivel -->
+                                    </ul>
+                                </li>
+                                <!-- fin primer nivel -->
+                                <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                                <li class="nav-item"><a href="registro-form.html" class="nav-link">Registro</a></li>
+                                <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+                                <li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
+                            </ul>
+
+                        </div>
+                        <!--./menu-links -->
+                    </div>
+                    <!--./row -->
+
+                    <div class="row">
+
+                        <!-- busqueda -->
+                        <div class="searchbar order-2 order-md-3">
+                            <input class="search_input" type="text" name="" placeholder="Buscar...">
+                            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                        </div>
+                        <!-- iconos -->
+                        <div class="botones-navbar d-flex justify-content-center align-items-center order-3 order-md-4">
+                            <a href="login.html"><i class="fas fa-user mx-2"></i></a>
+                            <a href="#"><i class="fas fa-shopping-cart mx-2"></i></a>
+                        </div>
+                    </div>
+                    <!--./row -->
+
+                </div>
+                <!-- fin menu -->
+            </nav>
+        </header>
+
+
+
+        <div class="row no-gutters">
+
+            <!-- Left panel desktop -->
+            <div class="d-none d-lg-flex col-3" id="profilelp">
+                <div class="list-group list-group-flush w-100">
+                    <button type="button"
+                        class="list-group-item list-group-item-dark list-group-item-action text-center font-weight-bold">
+                        Mi cuenta
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
+                        Hola
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
+                        Qué
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
+                        Tal
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
+                        ?
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
+                        ?
+                    </button>
+                </div>
+            </div>
+            <!-- Fin Left panel desktop -->
+
+
+            <!-- Avatar header y bottom panel -->
+            <div class="col-12 col-lg-9">
+                <div class="row no-gutters">
+
+                    <!-- Avatar header -->
+                    <div class="col-lg-12">
+                        <div class="no-gutters d-flex flex-column align-items-center justify-content-center flex-lg-row justify-content-lg-end flex-nowrap align-lg-baseline"
+                            id="avatarprofile">
+                            <span class="fa-stack fa-5x order-lg-3 mb-2 mr-lg-3 mb-lg-0 align-self-lg-center">
+                                <i class="fa fas fa-circle fa-stack-2x text-secondary"></i>
+                                <i class="fas fa-user fa-stack-1x text-white"></i>
+                            </span>
+                            <span class="nya nuni mr-lg-2">Nombre</span>
+                            <span class="nya nuni">Apellido</span>
+                        </div>
+                    </div>
+                    <!-- Fin Avatar header -->
+
+                    <!-- Bottom panel -->
+                    <div class="col-lg-12 flex-nowrap mt-lg-4" id="profilebp">
+
+                        <!-- Tabs Bottom panel desktop -->
+                        <ul class="nav d-none d-lg-flex nav-tabs">
+                            <li class="nav-item w-25 text-center">
+                                <a href="" data-target="#comprastab" data-toggle="tab"
+                                    class="nav-link small text-uppercase active">Mis compras</a>
+                            </li>
+                            <li class="nav-item w-25 text-center">
+                                <a href="" data-target="#ventastab" data-toggle="tab"
+                                    class="nav-link small text-uppercase">Mis ventas</a>
+                            </li>
+                            <li class="nav-item w-25 text-center">
+                                <a href="" data-target="#favtab" data-toggle="tab"
+                                    class="nav-link small text-uppercase">Favoritos</a>
+                            </li>
+                            <li class="nav-item w-25 text-center">
+                                <a href="" data-target="#historytab" data-toggle="tab"
+                                    class="nav-link small text-uppercase">Historial</a>
+                            </li>
+                        </ul>
+
+                        <!-- Contenido tabs desktop -->
+                        <div class="tab-content d-none d-lg-block">
+                            <!-- Mis compras tab -->
+                            <div id="comprastab" class="tab-pane fade active show">
+                                <div class="list-group list-group-flush">
+                                    <button type="button"
+                                        class="list-group-item list-group-item-info list-group-item-action">
+                                        Producto en camino <br />
+                                        (acá se puede poner imágenes de los productos junto con el
+                                        precio, estado del envío, etc)
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-danger list-group-item-action">
+                                        Compra cancelada
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-success list-group-item-action">
+                                        Compra exitosa
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-success list-group-item-action">
+                                        Compra exitosa
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-success list-group-item-action">
+                                        Compra exitosa
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Mis ventas tab -->
+                            <div id="ventastab" class="tab-pane fade">
+                                <div class="list-group list-group-flush">
+                                    <button type="button"
+                                        class="list-group-item list-group-item-info list-group-item-action">
+                                        Producto en camino <br />
+                                        (acá se puede poner imágenes de los productos junto con el
+                                        precio, estado del envío, etc)
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-danger list-group-item-action">
+                                        Venta cancelada
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-success list-group-item-action">
+                                        Venta exitosa
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-success list-group-item-action">
+                                        Venta exitosa
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-success list-group-item-action">
+                                        Venta exitosa
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Favoritos tab -->
+                            <div id="favtab" class="tab-pane fade">
+                                <div class="list-group list-group-flush">
+                                    <button type="button"
+                                        class="list-group-item list-group-item-warning list-group-item-action">
+                                        1
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-warning list-group-item-action">
+                                        2
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-warning list-group-item-action">
+                                        3
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-warning list-group-item-action">
+                                        4
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-warning list-group-item-action">
+                                        5
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Historial tab -->
+                            <div id="historytab" class="tab-pane fade">
+                                <div class="list-group list-group-flush">
+                                    <button type="button"
+                                        class="list-group-item list-group-item-primary list-group-item-action">
+                                        1
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-primary list-group-item-action">
+                                        2
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-primary list-group-item-action">
+                                        3
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-primary list-group-item-action">
+                                        4
+                                    </button>
+                                    <button type="button"
+                                        class="list-group-item list-group-item-primary list-group-item-action">
+                                        5
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Contenido tabs desktop -->
+
+                        <!-- Botones acordión bottom panel mobile -->
+                        <div id="accordion" class="d-lg-none">
+
+                            <!-- Compras card -->
+                            <div class="card">
+                                <div class="card-header p-0" id="headingOne">
+                                    <a class="d-flex py-3 pl-3 nuni collapsed" href="#collapseOne"
+                                        data-toggle="collapse" aria-expanded="false" aria-controls="collapseOne">
+                                        Compras
+                                        <span class="flecha ml-auto mr-4 text-secondary">
+                                            <span class="fas fa-angle-right align-middle"></span>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                    data-parent="#accordion">
+                                    <div class="list-group list-group-flush">
+                                        <button type="button"
+                                            class="list-group-item list-group-item-info list-group-item-action">
+                                            Producto en camino <br />
+                                            (acá se puede poner imágenes de los productos junto con el
+                                            precio, estado del envío, etc)
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-danger list-group-item-action">
+                                            Compra cancelada
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-success list-group-item-action">
+                                            Compra exitosa
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-success list-group-item-action">
+                                            Compra exitosa
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-success list-group-item-action">
+                                            Compra exitosa
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ventas -->
+                            <div class="card">
+                                <div class="card-header p-0" id="headingTwo">
+                                    <a class="d-flex py-3 pl-3 nuni collapsed" href="#collapseTwo"
+                                        data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
+                                        Ventas
+                                        <span class="flecha ml-auto mr-4 text-secondary">
+                                            <span class="fas fa-angle-right align-middle"></span>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordion">
+                                    <div class="list-group list-group-flush">
+                                        <button type="button"
+                                            class="list-group-item list-group-item-info list-group-item-action">
+                                            Producto en camino <br />
+                                            (acá se puede poner imágenes de los productos junto con el
+                                            precio, estado del envío, etc)
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-danger list-group-item-action">
+                                            Venta cancelada
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-success list-group-item-action">
+                                            Venta exitosa
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-success list-group-item-action">
+                                            Venta exitosa
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-success list-group-item-action">
+                                            Venta exitosa
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Favoritos -->
+                            <div class="card">
+                                <div class="card-header p-0" id="headingThree">
+                                    <a class="d-flex py-3 pl-3 nuni collapsed" href="#collapseThree"
+                                        data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
+                                        Favoritos
+                                        <span class="flecha ml-auto mr-4 text-secondary">
+                                            <span class="fas fa-angle-right align-middle"></span>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                    data-parent="#accordion">
+                                    <div class="list-group list-group-flush">
+                                        <button type="button"
+                                            class="list-group-item list-group-item-warning list-group-item-action">
+                                            1
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-warning list-group-item-action">
+                                            2
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-warning list-group-item-action">
+                                            3
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-warning list-group-item-action">
+                                            4
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-warning list-group-item-action">
+                                            5
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Historial -->
+                            <div class="card">
+                                <div class="card-header p-0" id="headingFour">
+                                    <a class="d-flex py-3 pl-3 nuni collapsed" href="#collapseFour"
+                                        data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
+                                        Historial
+                                        <span class="flecha ml-auto mr-4 text-secondary">
+                                            <span class="fas fa-angle-right align-middle"></span>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                    data-parent="#accordion">
+                                    <div class="list-group list-group-flush">
+                                        <button type="button"
+                                            class="list-group-item list-group-item-primary list-group-item-action">
+                                            1
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-primary list-group-item-action">
+                                            2
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-primary list-group-item-action">
+                                            3
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-primary list-group-item-action">
+                                            4
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-primary list-group-item-action">
+                                            5
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mi cuenta -->
+                            <div class="card">
+                                <div class="card-header p-0" id="headingFive">
+                                    <a class="d-flex py-3 pl-3 nuni collapsed" href="#collapseFive"
+                                        data-toggle="collapse" aria-expanded="false" aria-controls="collapseFive">
+                                        Mi Cuenta
+                                        <span class="flecha ml-auto mr-4 text-secondary">
+                                            <span class="fas fa-angle-right align-middle"></span>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                                    data-parent="#accordion">
+                                    <div class="list-group list-group-flush">
+                                        <button type="button"
+                                            class="list-group-item list-group-item-success list-group-item-action">
+                                            Datos personales
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-success list-group-item-action">
+                                            Facturación
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-success list-group-item-action">
+                                            Direcciones
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-success list-group-item-action">
+                                            Cambiar contraseña
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Más -->
+                            <div class="card">
+                                <div class="card-header p-0" id="headingSix">
+                                    <a class="d-flex py-3 pl-3 nuni collapsed" href="#collapseSix"
+                                        data-toggle="collapse" aria-expanded="false" aria-controls="collapseSix">
+                                        Más
+                                        <span class="flecha ml-auto mr-4 text-secondary">
+                                            <span class="fas fa-angle-right align-middle"></span>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                                    data-parent="#accordion">
+                                    <div class="list-group list-group-flush">
+                                        <button type="button"
+                                            class="list-group-item list-group-item-info list-group-item-action">
+                                            Reputación
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-info list-group-item-action">
+                                            Estadísticas
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-info list-group-item-action">
+                                            Reviews
+                                        </button>
+                                        <button type="button"
+                                            class="list-group-item list-group-item-danger list-group-item-action">
+                                            Reportar un problema
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Salir -->
+                            <div class="card">
+                                <div class="card-header p-0" id="headingSeven">
+                                    <a class="d-flex py-3 pl-3 nuni" href="#salir">
+                                        Salir
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Botones acordión bottom panel mobile -->
+
+
+                    </div>
+                    <!-- Fin Bottom panel -->
+
+                </div>
+
+                <!-- Fin Avatar header y bottom panel -->
+            </div>
+        </div>
+
+
+    </div>
+    <!-- Fin container -->
+
+    <script src="https://kit.fontawesome.com/56fc440a67.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -21,6 +563,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <script>
+        $(function () {
+            // ------------------------------------------------------- //
+            // funcion para que anden los dropdown del menu
+            // ------------------------------------------------------ //
+            $("ul.dropdown-menu [data-toggle='dropdown']").on("click", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                $(this).siblings().toggleClass("show");
+                if (!$(this).next().hasClass('show')) {
+                    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+                }
+                $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
+                    $('.dropdown-submenu .show').removeClass("show");
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
