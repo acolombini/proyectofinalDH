@@ -1,7 +1,6 @@
-/*########################################## PERFIL MOBILE #######################################*/
+/*################# Perfil.html sm #################*/
 
 /* Color de avatar */
-
 #avatarprofile {
     height: 40vh;
     border-top-right-radius: 0 !important;
@@ -9,7 +8,6 @@
 }
 
 /* Nombre y apellido */
-
 .nya {
     font-size: 1.3rem;
     font-weight: bold;
@@ -20,35 +18,31 @@
     font-family: 'Nunito', sans-serif;
 }
 
-/********************************************* BOTONES ACORDIÓN ********************************************/
+/***************** BOTONES ACORDIÓN *****************/
 
 /* Chau bordes redondeados */
-
 #accordion .card, #accordion .card-header, #accordion .card-header button {
     border-radius: 0 !important;
 }
 
 /* Ancho del contenido*/
-
 #accordion .card-header button {
     padding: .75rem 1.25rem !important;
 }
 
 /* Rotación de la flecha al cliquear*/
-
 a:not(.collapsed) .fa-angle-right {
     transform: rotate(90deg);
 }
 
 /* Decorando links*/
-
 #accordion .card a {
     text-decoration: none !important;
     color: rgb(71, 71, 71) !important;
     font-size: 1.2rem;
 }
 
-/*########################################### PERFIL DESKTOP #######################################*/
+/*########################################### Profile.html desktop #######################################*/
 
 #avatarprofile, #profilelp, #profilebp {
     background: rgb(196, 196, 196);
@@ -78,5 +72,35 @@ a:not(.collapsed) .fa-angle-right {
         border-top-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
         border-bottom-left-radius: 1rem;
+    }
+}
+
+/*########################################## Login.html #######################################*/
+
+#bodylogin {
+    background-image: url("../img/pattern.png");
+    background-size: contain;
+}
+
+.login {
+    min-height: 100vh;
+}
+
+/* Opacity en sm */
+.opacitylogin {
+    background-color: rgba(255, 255, 255, 80%);
+}
+
+/* Opacity md+ */
+@media (min-width: 768px) {
+    .opacitylogin {
+        background-color: rgba(255, 255, 255, 90%);
+    }
+}
+
+/* Container sin márgenes para sm y md */
+@media (max-width: 992px) {
+    #bodylogin .container {
+        max-width: 100%;
     }
 }
