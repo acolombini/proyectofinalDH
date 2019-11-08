@@ -16,12 +16,10 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 
     <!-- Local css -->
-    <link rel="stylesheet" href="css/estilo-joa.css" />
-    <link rel="stylesheet" href="estilo-anibal.css" />
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body>
+<body id="bodyprofile">
     <div class="container">
         <header>
             <nav
@@ -124,27 +122,29 @@
         <div class="row no-gutters">
 
             <!-- Left panel desktop -->
-            <div class="d-none d-lg-flex col-3" id="profilelp">
-                <div class="list-group list-group-flush w-100">
-                    <button type="button"
-                        class="list-group-item list-group-item-dark list-group-item-action text-center font-weight-bold">
-                        Mi cuenta
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
-                        Hola
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
-                        Qué
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
-                        Tal
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
-                        ?
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
-                        ?
-                    </button>
+            <div class="d-none d-lg-flex col-3">
+                <div id="profilelp" class="mr-4 w-100">
+                    <div class="list-group list-group-flush">
+                        <button type="button"
+                            class="list-group-item list-group-item-dark list-group-item-action text-center font-weight-bold">
+                            Mi cuenta
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
+                            Hola
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
+                            Qué
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
+                            Tal
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
+                            ?
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-warning list-group-item-action">
+                            ?
+                        </button>
+                    </div>
                 </div>
             </div>
             <!-- Fin Left panel desktop -->
@@ -173,7 +173,7 @@
 
                         <!-- Tabs Bottom panel desktop -->
                         <ul class="nav d-none d-lg-flex nav-tabs">
-                            <li class="nav-item w-25 text-center">
+                            <li class="nav-item w-25 text-center roundedleft">
                                 <a href="" data-target="#comprastab" data-toggle="tab"
                                     class="nav-link small text-uppercase active">Mis compras</a>
                             </li>
@@ -185,7 +185,7 @@
                                 <a href="" data-target="#favtab" data-toggle="tab"
                                     class="nav-link small text-uppercase">Favoritos</a>
                             </li>
-                            <li class="nav-item w-25 text-center">
+                            <li class="nav-item w-25 text-center roundedright">
                                 <a href="" data-target="#historytab" data-toggle="tab"
                                     class="nav-link small text-uppercase">Historial</a>
                             </li>

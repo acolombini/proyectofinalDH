@@ -208,20 +208,29 @@ a:not(.collapsed) .fa-angle-right {
 
 /*########################################### Profile.html desktop #######################################*/
 
+#bodyprofile {
+    background-image: url("../img/pattern.png");
+    background-size: contain;
+}
+
 #avatarprofile, #profilelp, #profilebp {
     background: rgb(196, 196, 196);
     background: linear-gradient(180deg, rgba(196, 196, 196, 1) 0%, rgba(171, 171, 171, 1) 100%);
 }
 
 #profilelp {
-    height: 41.5rem;
-    border-right: white 1.5rem solid;
+    min-width: 0 !important;
+    width: 100%;
 }
 
 #profilebp {
-    height: 25rem;
     border-bottom-right-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
+}
+
+#profilebp ul li a {
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
 }
 
 @media (min-width: 992px) {
