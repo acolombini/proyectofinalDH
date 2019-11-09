@@ -3,137 +3,135 @@
 <html lang="es">
 
 <head>
-    <title>Registro</title>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style-Luca.css">
+   <title>Registro</title>
+   
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   
+   
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div style="background-color: #886DE9;" class="p-0">
-        
-        <header class="mb-4 p-2" >
-            <div class="container p-0">
-                
-                <div class="text-center mb-4">
-                    <a href=""><img class="p-2 col-6 col-md-5 col-lg-4 col-xl-3 " src="img/logo.png" alt="Demo Logo"></a>
-                </div>
-                <div class="row p-0 mb-4">
-                    
-                    
-                    <div class="col-12">
-                        <div class="text-center bg-white col-12 rounded-pill border-dark"> 
-                            <form action="registro-form.html" method="POST"><button type="submit" id="search" style="background-color: transparent; border: 0;"><i class="fa fa-search" ></i></button> <input class="col-10" type="text" style="border: 0;"></form> 
-                        </div>
-                    </div>
-                </div>
-            </div>
+   <div class="p-1 registro container">
+      
+      <header class="mb-4 p-0" >
+         <div class="p-0">
             
-            <div class="d-flex justify-content-around align-items-baseline">
-                <nav style="border-radius: 13px; " class="bg-dark col-3 text-center">
-                    <button class="navbar-toggler col-12"><i class="fa fa-shopping-cart text-white" style="font-size: 3rem;"></i></button>
-                </nav>
-                
-                <nav style="border-radius: 13px; " class="bg-dark col-3  text-center">
-                    <button class="navbar-toggler col-12"><i class="fa fa-user text-white" style="font-size: 3rem;"></i></button>
-                </nav>
-                <!--Collapse Bar-->
-                <nav class="text-center d-flex justify-content-center navbar navbar-dark bg-dark p-0 col-3"  style="border-radius: 13px;">
-                    <button class="navbar-toggler col-12" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="font-size: 3rem;">
-                        <span class="fa fa-bars text-white" ></span>
-                    </button>
-                    
-                    <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="p-2" type="none" style="font-size: 1.6rem;">
-                            <li>
-                                <a class="nav-link p-0 text-light" href="#">Home
-                                    <span class="sr-only">(current)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="nav-link p-0 text-light" href="#">About</a>
-                            </li>
-                            <li>
-                                <a class="nav-link p-0 text-light" href="#">Services</a>
-                            </li>
-                            <li>
-                                <a class="nav-link p-0 text-light" href="#">Gallery</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+            <div class="text-center mb-5">
+               <a href=""><img class="p-2 col-6 col-md-5 col-lg-4 col-xl-3 " src="img/logo_alt.png" alt="Demo Logo"></a>
             </div>
-        </header>
-        
-        <div class="text-left m-5 pl-5">
-            <a href="#"><i style="font-size: 2rem;" class="fa fa-bell bg-dark rounded-circle text-light p-2"></i> </a><span><b>Activar Notificaciones</b></span>
-        </div>
-        
-        <section class="ml-5 mr-5 text-light ">
-            <div class="container">
-                <div class="border border-dark m-3 p-5 bg-dark" style="border-radius: 13px;">
-                    <h2 class="text-center mb-5">Obligatorio</h2>
-                    <form style="font-size: 1.1rem;" action="login.html" method="POST">
-                        <label class="mb-5" for="email">E-mail</label> 
-                        <input type="email" name="email" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
-                        <label for="clave" class="mb-5">Clave</label>
-                        <input type="password" name="clave" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
-                        <label for="nombre" class="mb-5">Nombre</label>
-                        <input type="text" name="nombre" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2"> 
-                        <label for="apellido" class="mb-5">Apellido</label>
-                        <input type="text" name="apellido" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
-                        <button class="btn-primary p-3 rounded-pill border-0 mt-3">Registrarse</button>
-
-                    </form>
-                </div>
-
-                <div class="border border-dark m-3 p-5 bg-dark" style="border-radius: 13px;">
-                        <h2 class="text-center mb-5">Opcional</h2>
-                        <form style="font-size: 1.1rem;" action="login.html" method="POST">
-                            <label class="mb-5" for="tel">Teléfono</label> 
-                            <input type="numbers" name="tel" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
-                            <label for="documento" class="mb-5">Documento</label>
-                            <input type="numbers" name="documento" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
-                            <label for="direccion" class="mb-5">Dirección</label>
-                            <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2"> 
-                            <label for="apellido" class="mb-5">Apellido</label>
-                            <input type="text" name="apellido" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
-                            <button class="btn-primary p-3 rounded-pill border-0 mt-3">Registrarse</button>
-    
-                        </form>
-                    </div>
+            <div class="m-4 p-1">
+               
+                  <div class="p-1 text-center bg-white rounded-pill border-dark"> 
+                     <form action="registro-form.html" method="POST"><button type="submit" id="search" class="bg-transparent border-0 col-1 p-0"><i class="fa fa-search" ></i></button> <input class="col-10 border-0 p-0" type="text"></form> 
+                  </div>
+               
             </div>
-        </section>
-        
-        <footer class="d-flex justify-content-around p-0 mt-1 bg-dark" style="color: white;">
-            <div style="width: 70vw;" class="pb-1">
-                <ul class="d-flex justify-content-around p-0 mb-3" type="none" style="border-bottom: 3px white solid;font-size: 3rem;">
-                    <li><i class="fa fa-twitter"></i></li>
-                    <li><i class="fa fa-instagram"></i></li>
-                    <li><i class="fa fa-facebook"></i></li>
-                </ul>
-                <ul class="d-flex justify-content-around p-0 mb-3" type="none" style="border-bottom: 3px white solid;">
-                    <li> <i class="fa fa-at"></i><span>  info@mail.com</span> </li>
-                    <li> <i class="fa fa-phone"></i><span>  0310 4112233 </span> </li>
-                </ul>
-                <div class="btn-group d-flex justify-content-around mb-3" role="group">
-                    <button type="button" class="btn btn-secondary">Home</button>
-                    <button type="button" class="btn btn-secondary">About</button>
-                    <button type="button" class="btn btn-secondary">Services</button>
-                    <button type="button" class="btn btn-secondary">Gallery</button>
-                </div> <br>
-                <p class="mb-3 text-center text-white">Copyright &copy; Your Website 2019</p>
-            </div>
-        </footer>
-        
-    </div>
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+         </div>
+         
+         <div class="d-flex justify-content-around align-items-baseline">
+            <nav    class="bg-dark col-3 text-center">
+               <button class="navbar-toggler col-12"><i class="fa fa-shopping-cart text-white" ></i></button>
+            </nav>
+            
+            <nav    class="bg-dark col-3  text-center">
+               <button class="navbar-toggler col-12"><i class="fa fa-user text-white" ></i></button>
+            </nav>
+            <!--Collapse Bar-->
+            <nav class="text-center d-flex justify-content-center navbar navbar-dark bg-dark p-0 col-3"  >
+               <button class="navbar-toggler col-12" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" >
+                  <span class="fa fa-bars text-white" ></span>
+               </button>
+               
+               <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="p-2" type="none" style="font-size: 1.6rem;">
+                     <li>
+                        <a class="nav-link p-0 text-light" href="#">Home
+                           <span class="sr-only">(current)</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a class="nav-link p-0 text-light" href="#">About</a>
+                     </li>
+                     <li>
+                        <a class="nav-link p-0 text-light" href="#">Services</a>
+                     </li>
+                     <li>
+                        <a class="nav-link p-0 text-light" href="#">Gallery</a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+      </header>
+      
+      <div class="text-left mb-3 pl-4">
+         <a href="#"><i  class="fa fa-bell bg-dark rounded-circle text-light p-2"></i> </a><span><b>Activar Notificaciones</b></span>
+      </div>
+      
+      <section class="ml-3 mr-3 text-light ">
+         <div class="container">
+            <form action="login.html" method="POST">
+               <div class="border border-dark m-1 mb-3 p-4 bg-dark" >
+                  <h2 class="text-center mb-5">Obligatorio</h2>
+                  <label class="mb-4" for="email">E-mail</label> 
+                  <input type="email" name="email" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
+                  <label for="clave" class="mb-4">Clave</label>
+                  <input type="password" name="clave" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
+                  <label for="nombre" class="mb-4">Nombre</label>
+                  <input type="text" name="nombre" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2"> 
+                  <label for="apellido" class="mb-4">Apellido</label>
+                  <input type="text" name="apellido" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
+                  <!--<button class="btn-primary p-3 rounded-pill border-0 mt-3">Registrarse</button>-->
+                  
+               </div>
+               
+               <div class="border border-dark m-1 mb-3 p-4 bg-dark">
+                  <h2 class="text-center mb-5">Opcional</h2>
+                  
+                  <label class="mb-4" for="tel">Teléfono</label> 
+                  <input type="numbers" name="tel" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
+                  <label for="documento" class="mb-4">Documento</label>
+                  <input type="numbers" name="documento" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
+                  <label for="direccion" class="mb-4">Dirección</label>
+                  <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2"> 
+                  <label for="apellido" class="mb-4">Apellido</label>
+                  <input type="text" name="apellido" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
+                  <button class="btn-primary p-3 rounded-pill border-0 mt-3">Registrarse</button>
+                  
+                  
+               </div>
+            </form>
+         </div>
+      </section>
+      
+      <footer class="d-flex justify-content-around p-0 mt-1 bg-dark text-white">
+         <div  class="pb-1">
+            <ul class="d-flex justify-content-around p-0 mb-3" type="none">
+               <li><i class="fa fa-twitter"></i></li>
+               <li><i class="fa fa-instagram"></i></li>
+               <li><i class="fa fa-facebook"></i></li>
+            </ul>
+            <ul class="d-flex justify-content-around p-0 mb-3" type="none">
+               <li> <i class="fa fa-at"></i><span>  info@mail.com</span> </li>
+               <li> <i class="fa fa-phone"></i><span>  0310 4112233 </span> </li>
+            </ul>
+            <div class="btn-group d-flex justify-content-around mb-3" role="group">
+               <button type="button" class="btn btn-secondary">Home</button>
+               <button type="button" class="btn btn-secondary">About</button>
+               <button type="button" class="btn btn-secondary">Services</button>
+               <button type="button" class="btn btn-secondary">Gallery</button>
+            </div> <br>
+            <p class="mb-3 text-center text-white">Copyright &copy; Your Website 2019</p>
+         </div>
+      </footer>
+      
+   </div>
+   
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

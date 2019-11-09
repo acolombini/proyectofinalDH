@@ -277,3 +277,34 @@ a:not(.collapsed) .fa-angle-right {
         max-width: 100%;
     }
 }
+/*#############################---------REGISTRO---------##############################*/
+body div.registro{
+    background-color: #886DE9;
+}
+.registro header div nav.col-3{
+    border-radius: 13px;
+}
+.registro header div nav button.navbar-toggler{
+    font-size: 3rem;
+}
+.registro div a.fa-bell {
+    font-size: 2rem;
+}
+.registro section div form{
+    font-size: 1.1rem;
+}
+.registro section div form div{
+    border-radius: 13px;
+}
+/*---FOOTER*/
+footer div{
+    width: 70vw;
+}
+footer div ul{
+    border-bottom: 3px white solid;
+}
+footer div ul:nth-child(1){
+    font-size: 3rem;
+}
+/*---FIN FOOTER*/
+/*-----------final REGISTRO-----------*/
