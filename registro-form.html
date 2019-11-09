@@ -93,14 +93,35 @@
                   <h2 class="text-center mb-5">Opcional</h2>
                   
                   <label class="mb-4" for="tel">Teléfono</label> 
-                  <input type="numbers" name="tel" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
+                  <input type="numbers" name="tel" class="text-light bg-dark border-white rounded-pill p-2 col-12 mb-2">
+                  <label class="ml-2" for="tipo-tel"> Celular </label>
+                  <input type="radio" name="tipo-tel">
+                  <label class="ml-2" for="tipo-tel"> Fijo </label>
+                  <input type="radio" name="tipo-tel">
+                  <br>
                   <label for="documento" class="mb-4">Documento</label>
-                  <input type="numbers" name="documento" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
-                  <label for="direccion" class="mb-4">Dirección</label>
-                  <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2"> 
-                  <label for="apellido" class="mb-4">Apellido</label>
-                  <input type="text" name="apellido" class="text-light bg-dark border-white rounded-pill p-3 col-12 mb-2">
-                  <button class="btn-primary p-3 rounded-pill border-0 mt-3">Registrarse</button>
+                  <input type="numbers" name="documento" class="text-light bg-dark border-white rounded-pill p-2 col-12 mb-2">
+                  <label class="mb-4" for="tipo-documento">Tipo</label>
+                  <select class="text-light bg-dark border-white rounded-pill p-2 col-12 mb-2" name="tipo-documento" id="tipo">
+                     <option value="DNI">DNI</option>
+                  </select>
+                  <label for="direccion" class="mb-4">Dirección</label> <br>
+                  <label for="">Calle</label>  <label for="">Numero</label>
+                  <div class="container">
+                     <div class="row">
+                        <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-5 m-2">
+                     <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-5 m-2"> 
+                     </div>
+                     <label for="">Piso</label>  <label  for="">Departamento</label>
+                     <div class="row">
+                        <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-5 m-2">
+                     <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-5 m-2">
+                     </div>
+                     
+                     
+                  
+                  </div>
+                  <button class="btn-primary p-2 rounded-pill border-0 mt-3">Registrarse</button>
                   
                   
                </div>
