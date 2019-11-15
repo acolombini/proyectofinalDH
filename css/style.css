@@ -1,5 +1,7 @@
 /* estilos home */
-
+* {
+    box-sizing: border-box;
+}
 .dropdown-submenu {
     position: relative;
 }

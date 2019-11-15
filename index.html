@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Inicio</title>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/20ee0b6ed7.js" crossorigin="anonymous"></script>
 
     <!-- Icono de la pestaña del sitio -->
     <link rel="icon" href="img/logo.png">
@@ -27,7 +29,7 @@
             <nav class="d-flex flex-column flex-lg-row justify-content-around align-items-center navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
                     <!-- logo -->
                         <div class="row my-2">
-                            <a href="home.html" class="navbar-brand"><img class="img-fluid" src="img/logo_alt.png" alt="4 osos"></a>
+                            <a href="index.html" class="navbar-brand"><img class="img-fluid" src="img/logo_alt.png" alt="4 osos"></a>
                         </div>
                     <!-- fin logo -->
                     
@@ -112,99 +114,134 @@
             </nav>
         </header>
 
-        <main>            
-            <div id="carouselExampleCaptions" class="carousel slide my-4" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <a href="detalle-producto.html" target="_self">
-                            <img src="https://via.placeholder.com/900x350?text=destacado 1" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Nombre Producto</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
-                            </div>
-                        </a>
+        <main>  
+            <!-- EMPIEZA SLIDER -->          
+            <div class="bd-example mt-5">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                      </ol>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="https://via.placeholder.com/900x350?text=destacado 1" class="d-block w-100" alt="...">
+                          <div class="carousel-caption d-none d-lg-block">
+                            <h5>First slide label</h5>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <img src="https://via.placeholder.com/900x350?text=destacado 2" class="d-block w-100" alt="...">
+                          <div class="carousel-caption d-none d-lg-block">
+                            <h5>Second slide label</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                          </div>
+                        </div>
+                        <div class="carousel-item">
+                          <img src="https://via.placeholder.com/900x350?text=destacado 3" class="d-block w-100" alt="...">
+                          <div class="carousel-caption d-none d-lg-block">
+                            <h5>Third slide label</h5>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
                     </div>
-                    <div class="carousel-item">
-                        <a href="detalle-producto.html" target="_self">
-                            <img src="https://via.placeholder.com/900x350?text=destacado 2" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Nombre Producto</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="detalle-producto.html" target="_self">
-                            <img src="https://via.placeholder.com/900x350?text=destacado 3" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Nombre Producto</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                  </div>
             
-            <h2 class="text-center font-weight-bold">Destacados</h2>
-        </div>
             <!-- fin slider -->
+           
+            <!--INICIO DESTACADOS-->
+            <section>
+            <h2 class="text-center font-weight-bold my-4">Destacados</h2>
+            <div id="carouselExampleIndicators" class="carousel" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="https://via.placeholder.com/900x350?text=destacado 1" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://via.placeholder.com/900x350?text=destacado 2" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="https://via.placeholder.com/900x350?text=destacado 3" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+            </section>
+
+            <!--FIN DESTACADOS-->
             <hr width="75%">
             <!-- INICIO CATEGORIAS -->
             <section>
-                    <h2 class="font-weight-bold text-center"> Categorías </h2>
-                <div class="row">
-                    <div class="card col-6 col-lg-4" style="width: 18rem;">
-                     <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"> </a>
+                    <h2 class="font-weight-bold text-center my-4"> Categorías </h2>
+                <div class="row d-flex justify-content-around mx-2">
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="">
+                     <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
-                        <a href=""> <h3 class="card-text text-center">Categoria 1</h3> </a>
+                        <h5 class="card-text text-center">Autos</h5>
                     </div>
+                    </a>
                     </div>
 
-                    <div class="card col-6 col-lg-4" style="width: 18rem;">
-                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="">
+                    <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
-                        <a href=""> <h3 class="card-text text-center">Categoria 2</h3></a>
+                        <h5 class="card-text text-center">Casas</h5>
                     </div>
+                    </a>
                     </div>
 
-                    <div class="card col-6 col-lg-4" style="width: 18rem;">
-                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="">
+                    <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
-                        <a href=""> <h3 class="card-text text-center">Categoria 3</h3></a>
+                        <h5 class="card-text text-center">Ropa</h5>
                     </div>
+                    </a>
                     </div>
 
-                    <div class="card col-6 col-lg-4" style="width: 18rem;">
-                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="">
+                    <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
-                        <a href=""> <h3 class="card-text text-center">Categoria 4</h3></a>
+                        <h5 class="card-text text-center">Electronica</h5>
                     </div>
+                    </a>
                     </div>
 
-                    <div class="card col-6 col-lg-4 d-none d-lg-block" style="width: 18rem;">
-                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 d-none d-lg-block"> <a href="">
+                    <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
-                        <a href=""> <h3 class="card-text text-center">Categoria 5</h3></a>
+                        <h5 class="card-text text-center">Audio y Sonido</h5>
                     </div>
+                    </a>
                     </div>
 
-                    <div class="card col-6 col-lg-4 d-none d-lg-block" style="width: 18rem;">
-                    <a href=""> <img src="img/zapatilla.jpg" class="card-img-top" alt="foto de la categoria"></a>
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 d-none d-lg-block p-0"> <a href="">
+                    <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
-                        <a href=""> <h3 class="card-text text-center">Categoria 6</h3></a>
+                        <h5 class="card-text text-center">Otros</h5>
                     </div>
+                    </a>
                     </div>  
                 </div>
             </section>
@@ -230,9 +267,9 @@
         <footer class="d-flex justify-content-around p-0 mt-1 border text-white bg-transblack">
                 <div  class="pb-1 container">
                    <ul class="d-flex justify-content-around p-0 mb-3" type="none">
-                      <li><i class="fa fa-twitter"></i></li>
-                      <li><i class="fa fa-instagram"></i></li>
-                      <li><i class="fa fa-facebook"></i></li>
+                      <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                      <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                      <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
                    </ul>
                    <ul class="d-flex justify-content-around p-0 mb-3" type="none">
                       <li> <i class="fa fa-at"></i><span>  info@mail.com</span> </li>
