@@ -1,7 +1,103 @@
-/* estilos home */
+*{
+    font-family: 'Nunito', sans-serif;
+}
 
+body{
+    background: url("../img/pattern.png") fixed repeat;
+}
+
+a, a:hover, a:visited{
+    text-decoration: none;
+}
+
+
+/* Estilos Home */
+
+/* Estilos navbar */
+.navbar{
+    background-color: rgba(255, 255, 255, 0.863);
+    border: solid 1px blue;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+/* -- boton Hamburguesa -- */
+
+.nav-collapse {
+    position: relative;
+    cursor: pointer;
+    z-index: 99999;
+    padding: 1rem;
+}
+
+.nav-collapse span {
+    display: block;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+}
+
+.nav-collapse span:before, .nav-collapse span:after {
+    content: "";
+    display: block;
+}
+
+.nav-collapse span, .nav-collapse span:before, .nav-collapse span:after {
+    height: 4px;
+    background: black;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+    -moz-transition: 0.2s all;
+    -ms-transition: 0.2s all;
+    -o-transition: 0.2s all;
+}
+
+.nav-collapse span:before {
+    -webkit-transform: translate(0%, 10px);
+    -ms-transform: translate(0%, 10px);
+    transform: translate(0%, 10px);
+}
+
+.nav-collapse span:after {
+    -webkit-transform: translate(0%, -14px);
+    -ms-transform: translate(0%, -14px);
+    transform: translate(0%, -14px);
+}
+
+#nav.open .nav-collapse span {
+    background: transparent;
+}
+
+#nav.open .nav-collapse span:before {
+    -webkit-transform: translateY(0px) rotate(-135deg);
+    -ms-transform: translateY(0px) rotate(-135deg);
+    transform: translateY(0px) rotate(-135deg);
+}
+
+#nav.open .nav-collapse span:after {
+    -webkit-transform: translateY(-4px) rotate(135deg);
+    -ms-transform: translateY(-4px) rotate(135deg);
+    transform: translateY(-4px) rotate(135deg);
+}
+/* -- fin boton Hamburguesa -- */
+
+/* Etilos Links */
+
+
+
+/* Etilos del dropdown */
+.dropdown-menu{
+ width: 100%;
+}
 .dropdown-submenu {
     position: relative;
+    width: 100%;
 }
 
 .dropdown-submenu>a:after {
@@ -19,45 +115,6 @@
 }
 
 
-.searchbar{
-    background-color: #353b48;
-    border-radius: 30px;
-}
-
-.search_input{
-    color: white;
-    border: 0;
-    background: none;
-    line-height: 40px;
-    padding: 0 10px;
-    caret-color: white;
-    
-}
-
-.search_icon {
-    height: 40px;
-    width: 40px;
-    float: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: white;
-    color: black;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    
-}
-
-
-
-.botones-navbar i{
-    
-    color: black;
-    
-}
 
 /* estilos lista-producto */
 .box{
@@ -156,6 +213,10 @@ input[type=number]::-webkit-outer-spin-button {
     font-size:30px;
     box-shadow: 2px 2px 3px #999;
     z-index:100;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    -ms-border-radius:50px;
+    -o-border-radius:50px;
 }
 
 .my-float{
