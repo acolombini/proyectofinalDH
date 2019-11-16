@@ -1,209 +1,232 @@
-<!doctype html>
-
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-   <title>Registro</title>
-   
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   
-   
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Osos Store</title>
+    <!-- Icono de la pestaña del sitio -->
+    <link rel="icon" href="img/logo.png">
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:700|Open+Sans&display=swap" rel="stylesheet">
+    <!-- Css de bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Local css -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body id="registro" class="d-lg-flex">
-   <div class="d-none d-lg-block col-lg-4 col-xl-3">
-      <div class="position-fixed container col-3 col-xl-2 t-3 l-3 bg-transblack text-light">
-         <div class="row">
-            <div class="col-12">
-               <div class="nav flex-column nav-pills text-center font-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                  <a class="nav-link m-2 mt-5 rounded-pill border border-primary" href="index.html"><i class="fa fa-home"></i></a>
-                  <a class="nav-link m-2 rounded-pill border border-primary" href="registro-form.html"><i class="fa fa-user"></i></a>
-                  <a class="nav-link m-2 rounded-pill border border-primary" href="shop-cart.html" ><i class="fa fa-shopping-cart"></i></a>
-                  <a class="nav-link m-2 rounded-pill border border-primary" href="login.html">Login</a>
-                  <a class="nav-link m-2 mb-5 rounded-pill border border-primary" href="contact.html">Contacto</a>
-               </div>
-            </div>
-            
-         </div>
-         
-      </div>
-   </div>
-   <div class="p-0 registro container col-lg-8 col-xl-9">
-      
-      <header class="mb-4 p-0" >
-         <div class="p-0">
-            
-            <div class="text-center mb-5">
-               <a href=""><img class="img-fluid p-2 col-6 col-md-5 col-lg-3 col-xl-2 " src="img/logo_alt.png" alt="Demo Logo"></a>
-            </div>
-         </div>
-         <div class="container">
+<body>
+    <div class="container-fluid m-0 p-0">
+        <header>
+            <!-- contenedor del header -->
+            <div class="container-fluid m-0 p-0"><!-- contenedor navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-around">
+                    <div class="container">
+                        <!-- ecabezado de la navbar incluye logo o slogan y boton hamburguesa -->
+                        
+                            <!-- logo o slogan -->
+                            <a class="navbar-brand text-center" href="#"><img src="http://placehold.it/100x50?text=Logo" alt="" class="img-responsive"></a>  		
+                            
+                            <!-- boton hamburguesa -->
+                            <button id="nav" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto" aria-expanded="false" aria-label="Toggle navigation">
+                                <div class="nav-collapse">
+                                    <span></span>
+                                </div>
+                            </button>
+                        
+                        
+                        <!-- aca va todo lo que se quiera inlcuir en la barra de menu -->
+                        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-end">
+                            <ul class="navbar-cuerpo nav navbar-nav text-center">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="faq.html" class="nav-link">FAQ</a>
+                                </li>
+                                
+                                
+                                <li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
+                                <li class="nav-item dropdown">
+                                    <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Categoria</a>
+                                    <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
+                                        <li><a href="#" class="dropdown-item">Categoria#1</a></li>
+                                        <li><a href="#" class="dropdown-item">Categoria#2</a></li>
+                                        <li class="dropdown-divider"></li>
+                                        <!-- segundo nivel del menu-->
+                                        <li class="dropdown-submenu">
+                                            <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Categoria#3</a>
+                                            <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                                                <li>
+                                                    <a tabindex="-1" href="#" class="dropdown-item">SubCategoria#1</a>
+                                                </li>
+                                                <!-- tercer nivel del menu-->
+                                                <li class="dropdown-submenu">
+                                                    <a id="dropdownMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">SubCategoria#2</a>
+                                                    <ul aria-labelledby="dropdownMenu3" class="dropdown-menu border-0 shadow">
+                                                        <li><a href="#" class="dropdown-item">SubSubCategoria#1</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- fin tercer nivel -->
+                                                <li><a href="#" class="dropdown-item">SubCategoria#3</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- fin segundo nivel -->
+                                    </ul>
+                                </li><!-- fin primer nivel -->                
+                                
+                                <!-- form busqueda -->
+                                <li class="nav-item">
+                                    <form class="navbar-form form-inline">
+                                        <div class="input-group search-box searchbar">
+                                            <input class="form-control py-2 border-right-0 border" type="search" value="Buscar Productos" id="example-search-input">
+                                            <span class="input-group-append">
+                                                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form> 
+                                </li>
+                                
+                                <!-- botones de carrito y login -->
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"><i class="fas fa-user mx-1"></i>Mi Cuenta</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"><i class="fas fa-shopping-cart mx-1"></i></a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div><!-- contenedor navbar -->
+        </header>
 
-            <div class="row m-4">
-               
-               <div class="m-0 p-1 col-md-6 col-lg-12">
-                  
-                  <div class="p-1 text-center bg-white rounded-pill border-dark"> 
-                     <form action="registro-form.html" method="POST"><button type="submit" id="search" class="bg-transparent border-0 col-1 p-0"><i class="fa fa-search" ></i></button> <input class="col-10 border-0 p-0" type="text"></form> 
-                  </div>
-                  
-               </div>
-               
-               <div class="d-flex d-md-inline-flex justify-content-around align-items-baseline col-md-5  d-lg-none">
-                  <nav    class="bg-dark col-3  text-center p-0 m-1">
-                     <button class="navbar-toggler col-12 border-0 p-1" type="button" ><i class="fa fa-shopping-cart text-white" ></i></button>
-                  </nav>
-                  
-                  <nav    class="bg-dark col-3 text-center p-0 m-1">
-                     <button class="navbar-toggler col-12 border-0 p-1" ><i class="fa fa-user text-white" ></i></button>
-                  </nav>
-                  <!--Collapse Bar-->
-                  <nav class="text-center d-flex justify-content-center navbar navbar-dark bg-dark p-0 col-3 col-md-6 m-1 "  >
-                     <button class="navbar-toggler col-12 border-0" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" >
-                        <span class="fa fa-bars text-white" ></span>
-                     </button>
-                     
-                     <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="p-2" type="none" style="font-size: 1.6rem;">
-                           <li>
-                              <a class="nav-link p-0 text-light" href="#">Home
-                                 <span class="sr-only">(current)</span>
-                              </a>
-                           </li>
-                           <li>
-                              <a class="nav-link p-0 text-light" href="#">FAQ</a>
-                           </li>
-                           <li>
-                              <a class="nav-link p-0 text-light" href="#">Contacto</a>
-                           </li>
-                           <li>
-                              <a class="nav-link p-0 text-light" href="#">Login</a>
-                           </li>
-                        </ul>
-                     </div>
-                  </nav>
-               </div>
+        <main>
+            <div class="container my-2 mx-auto py-2">
+            <!-- a partir de aca va el contenido de la pagina -->          
+            
+            <div class="text-left mb-3 pl-4">
+                    <a href="#"><i  class="fa fa-bell bg-dark rounded-circle text-light p-2"></i> </a><span><b>Activar Notificaciones</b></span>
+                 </div>
+                 
+                 <section class="ml-3 mr-3 text-light ">
+                    <div class="container">
+                       <form action="login.html" method="POST">
+                          <div class="border border-dark m-1 mb-3 p-4 bg-transblack" >
+                             <h2 class="text-center mb-5">Obligatorio</h2>
+                             <div class="bg-transparent container">
+                                <div class="bg-transparent row">
+                                   <div class="bg-transparent col-12 col-xl-6">
+                                      <label class="mb-4" for="email">E-mail</label> 
+                                      <input type="email" name="email" class="text-light bg-dark border-white rounded-pill p-3 p-md-2 col-12 mb-2">
+                                      <label for="clave" class="mb-4">Clave</label>
+                                      <input type="password" name="clave" class="text-light bg-dark border-white rounded-pill p-3 p-md-2 col-12 mb-2">
+                                   </div>
+                                   <div class="bg-transparent col-12 col-xl-6">
+                                      <label for="nombre" class="mb-4">Nombre</label>
+                                      <input type="text" name="nombre" class="text-light bg-dark border-white rounded-pill p-3 p-md-2 col-12 mb-2"> 
+                                      <label for="apellido" class="mb-4">Apellido</label>
+                                      <input type="text" name="apellido" class="text-light bg-dark border-white rounded-pill p-3 p-md-2 col-12 mb-2">
+                                   </div>
+                                </div>
+                                
+                             </div>
+                             
+                             
+                             
+                             
+                          </div>
+                          
+                          <div class="border border-dark m-1 mb-3 p-4 bg-transblack ">
+                             <h2 class="text-center mb-5">Opcional</h2>
+                             
+                             <label class="mb-4" for="tel">Teléfono</label> 
+                             <input type="numbers" name="tel" class="text-light bg-dark border-white rounded-pill p-2 col-12 mb-2">
+                             <label class="ml-2" for="tipo-tel"> Celular </label>
+                             <input type="radio" name="tipo-tel">
+                             <label class="ml-2" for="tipo-tel"> Fijo </label>
+                             <input type="radio" name="tipo-tel">
+                             <br>
+                             <div class="container bg-transparent">
+                                <div class="row bg-transparent ">
+                                   <div class="col-12 col-xl-6 bg-transparent">
+                                      <label for="documento" class="mb-4">Documento</label>
+                                      <input type="numbers" name="documento" class="text-light bg-dark border-white rounded-pill p-2 col-12 mb-2">
+                                   </div>
+                                   <div class="col-12 col-xl-6 bg-transparent">
+                                      <label class="mb-4" for="tipo-documento">Tipo</label>
+                                      <select class="text-light bg-dark border-white rounded-pill p-2 col-12 mb-2" name="tipo-documento" id="tipo">
+                                         <option value="DNI">DNI</option>
+                                         <option value="DNI">DNI</option>
+                                         <option value="DNI">DNI</option>
+                                         <option value="DNI">DNI</option>
+                                      </select>
+                                   </div>
+                                </div>
+                             </div>
+                             
+                             
+                             <label for="direccion" class="mb-4">Dirección</label> <br>
+                             <div class="container bg-transparent">
+                                
+                                <div class="row bg-transparent">
+                                   <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-6 mb-2" placeholder="Calle">
+                                   <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-6 mb-2 " placeholder="Numero">  
+                                </div>
+                                
+                                <div class="row bg-transparent">
+                                   <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-6 mb-2 " placeholder="Piso">
+                                   <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-6 mb-2" placeholder="Departamento">
+                                </div>
+                                
+                                
+                                
+                             </div>
+                             <button class="btn-primary p-2 rounded-pill border-0 mt-3">Registrarse</button>
+                             
+                             
+                          </div>
+                       </form>
+                    </div>
+
+
+            <!-- hasta aca va el contenido de la pagina -->
             </div>
-         </div>
-      </header>
-      
-      <div class="text-left mb-3 pl-4">
-         <a href="#"><i  class="fa fa-bell bg-dark rounded-circle text-light p-2"></i> </a><span><b>Activar Notificaciones</b></span>
-      </div>
-      
-      <section class="ml-3 mr-3 text-light ">
-         <div class="container">
-            <form action="login.html" method="POST">
-               <div class="border border-dark m-1 mb-3 p-4 bg-transblack" >
-                  <h2 class="text-center mb-5">Obligatorio</h2>
-                  <div class="bg-transparent container">
-                     <div class="bg-transparent row">
-                        <div class="bg-transparent col-12 col-xl-6">
-                           <label class="mb-4" for="email">E-mail</label> 
-                           <input type="email" name="email" class="text-light bg-dark border-white rounded-pill p-3 p-md-2 col-12 mb-2">
-                           <label for="clave" class="mb-4">Clave</label>
-                           <input type="password" name="clave" class="text-light bg-dark border-white rounded-pill p-3 p-md-2 col-12 mb-2">
-                        </div>
-                        <div class="bg-transparent col-12 col-xl-6">
-                           <label for="nombre" class="mb-4">Nombre</label>
-                           <input type="text" name="nombre" class="text-light bg-dark border-white rounded-pill p-3 p-md-2 col-12 mb-2"> 
-                           <label for="apellido" class="mb-4">Apellido</label>
-                           <input type="text" name="apellido" class="text-light bg-dark border-white rounded-pill p-3 p-md-2 col-12 mb-2">
-                        </div>
-                     </div>
-                     
-                  </div>
-                  
-                  
-                  
-                  
-               </div>
+        </main>
+
+
+        <footer class="d-flex justify-content-around p-0 mt-1">
+            <div  class="pb-1 container">
+                <ul class="d-flex justify-content-around p-0 mb-3" type="none">
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                </ul>
+                <ul class="d-flex justify-content-around p-0 mb-3" type="none">
+                    <li> <a href="mailto:info@mail.com"><i class="fa fa-at mr-1"></i><span>info@mail.com</span></a></li>
+                    <li> <a href="tel:3414112233"><i class="fa fa-at mr-1"></i><span>0341 - 4112233</span></a></li>
+                    
+                </ul>
                
-               <div class="border border-dark m-1 mb-3 p-4 bg-transblack ">
-                  <h2 class="text-center mb-5">Opcional</h2>
-                  
-                  <label class="mb-4" for="tel">Teléfono</label> 
-                  <input type="numbers" name="tel" class="text-light bg-dark border-white rounded-pill p-2 col-12 mb-2">
-                  <label class="ml-2" for="tipo-tel"> Celular </label>
-                  <input type="radio" name="tipo-tel">
-                  <label class="ml-2" for="tipo-tel"> Fijo </label>
-                  <input type="radio" name="tipo-tel">
-                  <br>
-                  <div class="container bg-transparent">
-                     <div class="row bg-transparent ">
-                        <div class="col-12 col-xl-6 bg-transparent">
-                           <label for="documento" class="mb-4">Documento</label>
-                           <input type="numbers" name="documento" class="text-light bg-dark border-white rounded-pill p-2 col-12 mb-2">
-                        </div>
-                        <div class="col-12 col-xl-6 bg-transparent">
-                           <label class="mb-4" for="tipo-documento">Tipo</label>
-                           <select class="text-light bg-dark border-white rounded-pill p-2 col-12 mb-2" name="tipo-documento" id="tipo">
-                              <option value="DNI">DNI</option>
-                              <option value="DNI">DNI</option>
-                              <option value="DNI">DNI</option>
-                              <option value="DNI">DNI</option>
-                           </select>
-                        </div>
-                     </div>
-                  </div>
-                  
-                  
-                  <label for="direccion" class="mb-4">Dirección</label> <br>
-                  <div class="container bg-transparent">
-                     
-                     <div class="row bg-transparent">
-                        <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-6 mb-2" placeholder="Calle">
-                        <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-6 mb-2 " placeholder="Numero">  
-                     </div>
-                     
-                     <div class="row bg-transparent">
-                        <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-6 mb-2 " placeholder="Piso">
-                        <input type="text" name="direccion" class="text-light bg-dark border-white rounded-pill p-2 col-6 mb-2" placeholder="Departamento">
-                     </div>
-                     
-                     
-                     
-                  </div>
-                  <button class="btn-primary p-2 rounded-pill border-0 mt-3">Registrarse</button>
-                  
-                  
-               </div>
-            </form>
-         </div>
-      </section>
-      
-      
-      <footer class="d-flex justify-content-around p-0 mt-1 border text-white bg-transblack">
-         <div  class="pb-1 container">
-            <ul class="d-flex justify-content-around p-0 mb-3" type="none">
-               <li><i class="fa fa-twitter"></i></li>
-               <li><i class="fa fa-instagram"></i></li>
-               <li><i class="fa fa-facebook"></i></li>
-            </ul>
-            <ul class="d-flex justify-content-around p-0 mb-3" type="none">
-               <li> <i class="fa fa-at"></i><span>  info@mail.com</span> </li>
-               <li> <i class="fa fa-phone"></i><span>  0310 4112233 </span> </li>
-            </ul>
-            <div class="btn-group container mb-3" role="group">
-               <button type="button" class="btn btn-secondary p-0 border-0" onclick="href=index.html"> <a class="link-footer" href="index.html">Home</a> </button>
-               <button type="button" class="btn btn-secondary p-0 border-0"><a class="link-footer" href="faq.html">FAQ</a></button>
-               <button type="button" class="btn btn-secondary p-0 border-0"><a class="link-footer" href="contact.html" >Contacto</a></button>
-               <button type="button" class="btn btn-secondary p-0 border-0"><a class="link-footer" href="login.html">Login</a></button>
-            </div> <br>
-            <p class="mb-3 text-center text-white">Copyright &copy; Your Website 2019</p>
-         </div>
-      </footer>
-   </div>
-   
-   
-   
-   
-   
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                <p class="mb-3 text-center">Copyright &copy; Your Website 2019</p>
+            </div>
+        </footer>
+
+
+    
+    </div><!--fin container principal-->
+
+    <script src="https://kit.fontawesome.com/56fc440a67.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     
+     <!-- local js -->
+     <script src="js/local.js"></script>
+    
 </body>
+
+</html>

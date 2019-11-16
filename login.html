@@ -2,197 +2,195 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Osos Store</title>
     <!-- Icono de la pestaña del sitio -->
-    <link rel="icon" href="img/logo_alt.png" />
-
+    <link rel="icon" href="img/logo.png">
     <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:700|Open+Sans&display=swap" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:700|Open+Sans&display=swap" rel="stylesheet">
     <!-- Css de bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Local css -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body id="bodylogin">
-    <div class="container">
-        <!-- Header principal -->
-        <header class="row">
-            <nav class="col-12 d-flex flex-column flex-lg-row justify-content-around align-items-center navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
-                <!-- logo -->
-                <div class="row my-2">
-                    <a href="home.html" class="navbar-brand"><img class="img-fluid" src="img/logo_alt.png"
-                            alt="4 osos"></a>
-                </div>
-                <!-- fin logo -->
-
-                <!-- menu -->
-                <div class="row my-2 d-flex flex-lg-column">
-
-                    <div class="row">
-
-                        <!-- boton hamburguesa -->
-                        <button type="button" data-toggle="collapse" data-target="#navbarContent"
-                            aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation"
-                            class="navbar-toggler boton-hamburguesa order-1 order-md-1">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <!-- fin boton hamburguesa -->
-
-                        <!-- menu links -->
-                        <div id="navbarContent" class="collapse navbar-collapse menu-links order-4 order-md-2">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-                                <!-- primer nivel -->
+<body>
+    <div class="container-fluid m-0 p-0">
+        <header>
+            <!-- contenedor del header -->
+            <div class="container-fluid m-0 p-0"><!-- contenedor navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-around">
+                    <div class="container">
+                        <!-- ecabezado de la navbar incluye logo o slogan y boton hamburguesa -->
+                        
+                            <!-- logo o slogan -->
+                            <a class="navbar-brand text-center" href="#"><img src="http://placehold.it/100x50?text=Logo" alt="" class="img-responsive"></a>  		
+                            
+                            <!-- boton hamburguesa -->
+                            <button id="nav" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto" aria-expanded="false" aria-label="Toggle navigation">
+                                <div class="nav-collapse">
+                                    <span></span>
+                                </div>
+                            </button>
+                        
+                        
+                        <!-- aca va todo lo que se quiera inlcuir en la barra de menu -->
+                        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-end">
+                            <ul class="navbar-cuerpo nav navbar-nav text-center">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="faq.html" class="nav-link">FAQ</a>
+                                </li>
+                                
+                                
+                                <li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
                                 <li class="nav-item dropdown">
-                                    <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" class="nav-link dropdown-toggle">Categoria</a>
+                                    <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Categoria</a>
                                     <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
                                         <li><a href="#" class="dropdown-item">Categoria#1</a></li>
                                         <li><a href="#" class="dropdown-item">Categoria#2</a></li>
                                         <li class="dropdown-divider"></li>
-                                        <!-- segundo Nivel -->
+                                        <!-- segundo nivel del menu-->
                                         <li class="dropdown-submenu">
-                                            <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false"
-                                                class="dropdown-item dropdown-toggle">Categoria#3</a>
+                                            <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Categoria#3</a>
                                             <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
                                                 <li>
                                                     <a tabindex="-1" href="#" class="dropdown-item">SubCategoria#1</a>
                                                 </li>
-                                                <!-- tercer nivel-->
+                                                <!-- tercer nivel del menu-->
                                                 <li class="dropdown-submenu">
-                                                    <a id="dropdownMenu3" href="#" role="button" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false"
-                                                        class="dropdown-item dropdown-toggle">SubCategoria#2</a>
-                                                    <ul aria-labelledby="dropdownMenu3"
-                                                        class="dropdown-menu border-0 shadow">
-                                                        <li><a href="#" class="dropdown-item">SubSubCategoria#1</a></li>
+                                                    <a id="dropdownMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">SubCategoria#2</a>
+                                                    <ul aria-labelledby="dropdownMenu3" class="dropdown-menu border-0 shadow">
                                                         <li><a href="#" class="dropdown-item">SubSubCategoria#1</a></li>
                                                     </ul>
                                                 </li>
                                                 <!-- fin tercer nivel -->
-
                                                 <li><a href="#" class="dropdown-item">SubCategoria#3</a></li>
-                                                <li><a href="#" class="dropdown-item">SubCategoria#4</a></li>
                                             </ul>
                                         </li>
                                         <!-- fin segundo nivel -->
                                     </ul>
+                                </li><!-- fin primer nivel -->                
+                                
+                                <!-- form busqueda -->
+                                <li class="nav-item">
+                                    <form class="navbar-form form-inline">
+                                        <div class="input-group search-box searchbar">
+                                            <input class="form-control py-2 border-right-0 border" type="search" value="Buscar Productos" id="example-search-input">
+                                            <span class="input-group-append">
+                                                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form> 
                                 </li>
-                                <!-- fin primer nivel -->
-                                <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
-                                <li class="nav-item"><a href="registro-form.html" class="nav-link">Registro</a></li>
-                                <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
-                                <li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
+                                
+                                <!-- botones de carrito y login -->
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"><i class="fas fa-user mx-1"></i>Mi Cuenta</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"><i class="fas fa-shopping-cart mx-1"></i></a>
+                                </li>
+                                
                             </ul>
-
-                        </div>
-                        <!--./menu-links -->
-                    </div>
-                    <!--./row -->
-
-                    <div class="row">
-
-                        <!-- busqueda -->
-                        <div class="searchbar order-2 order-md-3">
-                            <input class="search_input" type="text" name="" placeholder="Buscar...">
-                            <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-                        </div>
-                        <!-- iconos -->
-                        <div class="botones-navbar d-flex justify-content-center align-items-center order-3 order-md-4">
-                            <a href="login.html"><i class="fas fa-user mx-2"></i></a>
-                            <a href="#"><i class="fas fa-shopping-cart mx-2"></i></a>
                         </div>
                     </div>
-                    <!--./row -->
-
-                </div>
-                <!-- fin menu -->
-            </nav>
+                </nav>
+            </div><!-- contenedor navbar -->
         </header>
 
-        <!-- Row de login-->
-        <div class="row no-gutter">
+        <main>
+            <div class="container my-2 mx-auto py-2">
+            <!-- a partir de aca va el contenido de la pagina -->          
+            
+            
+ <!-- Row de login-->
+ <div class="row no-gutter">
 
-            <!-- Panel de login -->
-            <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-6 opacitylogin">
+        <!-- Panel de login -->
+        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-6 opacitylogin">
 
-                <!-- Contenido de login-->
-                <div class="row login align-items-center justify-content-center">
+            <!-- Contenido de login-->
+            <div class="row login align-items-center justify-content-center">
 
 
-                    <div class="px-4 px-md-0">
-                        <h3 class="display-4 text-center text-md-left">Hola de nuevo!</h3>
-                        <p class="text-muted mb-4 text-center text-md-left pl-md-1">Inicia sesión para no perderte nada.
-                        </p>
+                <div class="px-4 px-md-0">
+                    <h3 class="display-4 text-center text-md-left">Hola de nuevo!</h3>
+                    <p class="text-muted mb-4 text-center text-md-left pl-md-1">Inicia sesión para no perderte nada.
+                    </p>
 
-                        <!-- Formulario de login-->
-                        <form>
-                            <div class="form-group mb-3">
-                                <input id="inputEmail" type="email" placeholder="Dirección de correo" required=""
-                                    autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
-                            </div>
-                            <div class="form-group mb-3">
-                                <input id="inputPassword" type="password" placeholder="Contraseña" required=""
-                                    class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
-                            </div>
-                            <div class="custom-control custom-checkbox mb-3">
-                                <input id="customCheck1" type="checkbox" checked class="custom-control-input">
-                                <label for="customCheck1" class="custom-control-label">Recordar contraseña</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block mb-2 rounded-pill shadow-sm">Iniciar
-                                sesión</button>
-                        </form>
-                        <!-- Fin Formulario de login-->
+                    <!-- Formulario de login-->
+                    <form>
+                        <div class="form-group mb-3">
+                            <input id="inputEmail" type="email" placeholder="Dirección de correo" required=""
+                                autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input id="inputPassword" type="password" placeholder="Contraseña" required=""
+                                class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                        </div>
+                        <div class="custom-control custom-checkbox mb-3">
+                            <input id="customCheck1" type="checkbox" checked class="custom-control-input">
+                            <label for="customCheck1" class="custom-control-label">Recordar contraseña</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mb-2 rounded-pill shadow-sm">Iniciar
+                            sesión</button>
+                    </form>
+                    <!-- Fin Formulario de login-->
 
-                        <a href="registro-form.html"
-                            class="btn btn-info btn-block mb-2 rounded-pill shadow-sm text-white">Registrarse</a>
-                    </div>
+                    <a href="registro-form.html"
+                        class="btn btn-info btn-block mb-2 rounded-pill shadow-sm text-white">Registrarse</a>
                 </div>
-                <!-- Fin Contenido de login-->
-
             </div>
-            <!-- Fin Panel de ogin -->
+            <!-- Fin Contenido de login-->
 
         </div>
-        <!-- Fin Row de login-->
+        <!-- Fin Panel de ogin -->
 
     </div>
+    <!-- Fin Row de login-->
+
+</div>
+
+            <!-- hasta aca va el contenido de la pagina -->
+            </div>
+        </main>
+
+
+        <footer class="d-flex justify-content-around p-0 mt-1">
+            <div  class="pb-1 container">
+                <ul class="d-flex justify-content-around p-0 mb-3" type="none">
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                </ul>
+                <ul class="d-flex justify-content-around p-0 mb-3" type="none">
+                    <li> <a href="mailto:info@mail.com"><i class="fa fa-at mr-1"></i><span>info@mail.com</span></a></li>
+                    <li> <a href="tel:3414112233"><i class="fa fa-at mr-1"></i><span>0341 - 4112233</span></a></li>
+                    
+                </ul>
+               
+                <p class="mb-3 text-center">Copyright &copy; Your Website 2019</p>
+            </div>
+        </footer>
+
+
+    
+    </div><!--fin container principal-->
 
     <script src="https://kit.fontawesome.com/56fc440a67.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script>
-        $(function () {
-            // ------------------------------------------------------- //
-            // funcion para que anden los dropdown del menu
-            // ------------------------------------------------------ //
-            $("ul.dropdown-menu [data-toggle='dropdown']").on("click", function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-                $(this).siblings().toggleClass("show");
-                if (!$(this).next().hasClass('show')) {
-                    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-                }
-                $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
-                    $('.dropdown-submenu .show').removeClass("show");
-                });
-            });
-        });
-    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     
+     <!-- local js -->
+     <script src="js/local.js"></script>
+    
 </body>
 
 </html>
