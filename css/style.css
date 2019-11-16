@@ -362,20 +362,8 @@ a:not(.collapsed) .fa-angle-right {
     }
 }
 /*#############################---------REGISTRO---------##############################*/
-#registro{
-    background-image: url("../img/pattern.png");
-}
-body div.registro{
-    background-color: rgba(255, 255, 255, 80%);
-}
-.registro header div nav.col-3{
+.registro section div{
     border-radius: 13px;
-}
-.registro header div nav button.navbar-toggler{
-    font-size: 3rem;
-}
-.registro div a.fa-bell {
-    font-size: 2rem;
 }
 .registro section div form{
     font-size: 1.1rem;
