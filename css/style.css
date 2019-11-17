@@ -362,14 +362,8 @@ a:not(.collapsed) .fa-angle-right {
     }
 }
 /*#############################---------REGISTRO---------##############################*/
-.registro section div{
-    border-radius: 13px;
-}
 .registro section div form{
     font-size: 1.1rem;
-}
-.registro section div form div{
-    border-radius: 13px;
 }
 .bg-transblack{
     background-color: rgba(0, 0, 0, 50%);
@@ -388,7 +382,5 @@ a:not(.collapsed) .fa-angle-right {
 .font-3{
     font-size: 2rem;
 }
-.big-radio{
-    
-}
+
 /*-----------final REGISTRO-----------*/
