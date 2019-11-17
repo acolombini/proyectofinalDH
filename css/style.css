@@ -374,6 +374,9 @@ a:not(.collapsed) .fa-angle-right {
 .bg-transblack{
     background-color: rgba(0, 0, 0, 50%);
 }
+.bg-translight{
+    background-color: rgba(255, 255, 255, 90%);
+}
 .preset-a{
     color: inherit;
     text-decoration: none;
@@ -384,6 +387,10 @@ a:not(.collapsed) .fa-angle-right {
 }
 .font-3{
     font-size: 2rem;
+}
+#cart{
+    font-family: unset;
+    font-family: sans-serif;
 }
 
 /*-----------final REGISTRO-----------*/
