@@ -12,6 +12,23 @@ a, a:hover, a:visited{
 
 
 /* Estilos Home */
+#primerDestacado {
+position: relative;
+right: -20px;
+}
+
+#segundoDestacado {
+z-index: 5;
+}
+
+#tercerDestacado {
+position: relative;
+left: -20px;
+}
+#destacados div ul li {
+    text-decoration: none;
+    color: black
+}
 
 /* Estilos navbar */
 .navbar{
