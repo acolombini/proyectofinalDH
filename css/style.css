@@ -246,13 +246,11 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top:16px;
 }
 
-/*################# Perfil.html sm #################*/
+/*################# Profile.html sm #################*/
 
-/* Color de avatar */
+/* Avatar */
 #avatarprofile {
     height: 40vh;
-    border-top-right-radius: 0 !important;
-    border-top-left-radius: 0 !important;
 }
 
 /* Nombre y apellido */
@@ -260,10 +258,6 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1.3rem;
     font-weight: bold;
     line-height: 1.3rem;
-}
-
-.nuni {
-    font-family: 'Nunito', sans-serif;
 }
 
 /***************** BOTONES ACORDIÓN *****************/
@@ -292,31 +286,66 @@ a:not(.collapsed) .fa-angle-right {
 
 /*########################################### Profile.html desktop #######################################*/
 
-#bodyprofile {
-    background-image: url("../img/pattern.png");
-    background-size: contain;
+/*  Fuente monserrat  */
+#profilelp button {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
 }
 
-#avatarprofile, #profilelp, #profilebp {
-    background: rgb(196, 196, 196);
-    background: linear-gradient(180deg, rgba(196, 196, 196, 1) 0%, rgba(171, 171, 171, 1) 100%);
+/*  Left-panel   */
+#profilelp > div:first-child {
+    height: 15rem;
 }
 
-#profilelp {
-    min-width: 0 !important;
-    width: 100%;
+#profilelp a,
+#profilelp button,
+#tabsbp ul {
+    border: 0 !important;
 }
 
-#profilebp {
+#profilelp a {
+    padding: 0.25rem 1rem !important;
+}
+
+#profilelp a:hover, #tabsbp .nav-link.active {
+    color: black;
+}
+
+#profilelp button span {
+    border-bottom: #c7c7c7 1px solid;
+}
+
+/*  Tabs   */
+#tabsbp a, #profilelp a {
+    color: #495057;
+}
+
+#tabsbp {
     border-bottom-right-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
+    background-color: #e4e4e4;
 }
 
-#profilebp ul li a {
-    border-top-left-radius: 1rem !important;
-    border-top-right-radius: 1rem !important;
+/*  Bottom-panel   */
+#profilebp {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
 
+
+
+/*  Bottom Panel Scrollbar   */
+.scrollbar1::-webkit-scrollbar, .scrollbar1::-webkit-scrollbar-track {
+	width: 0.3rem;
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.scrollbar1::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background-color: rgba(73, 80, 87, 0.7);
+}
+
+/*  Desktop media queries  */
 @media (min-width: 992px) {
     #avatarprofile {
         height: 15rem;
@@ -324,20 +353,20 @@ a:not(.collapsed) .fa-angle-right {
     .nya {
         font-size: 1.8rem;
     }
-    #avatarprofile, #profilebp {
-        border-top-right-radius: 1rem;
-        border-top-left-radius: 1rem;
-        border-bottom-right-radius: 1rem;
-        border-bottom-left-radius: 1rem;
+    #avatarprofile, #tabsbp, #profilebp, #profilelp div, #profilelp button {
+        border-top-right-radius: 0.3rem;
+        border-top-left-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+        border-bottom-left-radius: 0.3rem;
     }
+    #profilebp {
+        max-height: 20rem;
+        overflow-y: auto;
+    }
+
 }
 
 /*########################################## Login.html #######################################*/
-
-#bodylogin {
-    background-image: url("../img/pattern.png");
-    background-size: contain;
-}
 
 .login {
     min-height: 100vh;
@@ -352,13 +381,6 @@ a:not(.collapsed) .fa-angle-right {
 @media (min-width: 768px) {
     .opacitylogin {
         background-color: rgba(255, 255, 255, 90%);
-    }
-}
-
-/* Container sin márgenes para sm y md */
-@media (max-width: 992px) {
-    #bodylogin .container {
-        max-width: 100%;
     }
 }
 /*#############################---------REGISTRO---------##############################*/
