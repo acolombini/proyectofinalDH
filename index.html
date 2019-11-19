@@ -16,94 +16,98 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid m-0 p-0">
         <header>
             <!-- contenedor del header -->
-                
-                <nav class="navbar navbar-expand-lg navbar-light">
-
-                    <!-- ecabezado de la navbar incluye logo o slogan y boton hamburguesa -->
-                    <div class="navbar-header d-flex col p-2">
-                        <!-- logo o slogan -->
-                        <a class="navbar-brand text-center" href="#">4 Osos <br> Origami Store</a>  		
-                        <!-- boton hamburguesa -->
-                        <button id="nav" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="container-fluid m-0 p-0"><!-- contenedor navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-around">
+                    <div class="container">
+                        <!-- ecabezado de la navbar incluye logo o slogan y boton hamburguesa -->
+                        
+                            <!-- logo o slogan -->
+                            <a class="navbar-brand text-center" href="index.html"><img src="http://placehold.it/100x50?text=Logo" alt="" class="img-responsive"></a>  		
+                            
+                            <!-- boton hamburguesa -->
+                            <button id="nav" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto" aria-expanded="false" aria-label="Toggle navigation">
                                 <div class="nav-collapse">
                                     <span></span>
                                 </div>
-                        </button>
-                    </div>
-                    
-                    <!-- aca va todo lo que se quiera inlcuir en la barra de menu -->
-                    <div id="navbarCollapse" class="collapse navbar-collapse">
-                        <ul class="navbar-cuerpo nav navbar-nav text-center align-items-center p-2">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="faq.html" class="nav-link">FAQ</a>
-                            </li>
-
-                            
-                            <li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
-                            <li class="nav-item dropdown">
-                                <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Categoria</a>
-                                <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
-                                    <li><a href="#" class="dropdown-item">Categoria#1</a></li>
-                                    <li><a href="#" class="dropdown-item">Categoria#2</a></li>
-                                    <li class="dropdown-divider"></li>
-                                    <!-- segundo nivel del menu-->
-                                    <li class="dropdown-submenu">
-                                        <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Categoria#3</a>
-                                        <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
-                                            <li>
-                                                <a tabindex="-1" href="#" class="dropdown-item">SubCategoria#1</a>
-                                            </li>
-                                            <!-- tercer nivel del menu-->
-                                            <li class="dropdown-submenu">
-                                                <a id="dropdownMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">SubCategoria#2</a>
-                                                <ul aria-labelledby="dropdownMenu3" class="dropdown-menu border-0 shadow">
-                                                    <li><a href="#" class="dropdown-item">SubSubCategoria#1</a></li>
-                                                </ul>
-                                            </li>
-                                            <!-- fin tercer nivel -->
-                                            <li><a href="#" class="dropdown-item">SubCategoria#3</a></li>
-                                        </ul>
-                                    </li>
-                                    <!-- fin segundo nivel -->
-                                </ul>
-                            </li><!-- fin primer nivel -->                
-                            
-                            <!-- form busqueda -->
-                            <li class="nav-item">
-                                <form class="navbar-form form-inline">
-                                    <div class="input-group search-box searchbar">
-                                        <input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input">
-                                        <span class="input-group-append">
-                                            <button class="btn btn-outline-secondary border-left-0 border" type="button">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form> 
-                            </li>
+                            </button>
                         
-                            <!-- botones de carrito y login -->
-                            <li class="nav-item">
-                                <a href="#" class="nav-link"><i class="fas fa-user mx-1"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link"><i class="fas fa-shopping-cart mx-1"></i></a>
-                            </li>
-                            
-                        </ul>
+                        
+                        <!-- aca va todo lo que se quiera inlcuir en la barra de menu -->
+                        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-end">
+                            <ul class="navbar-cuerpo nav navbar-nav text-center">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="faq.html" class="nav-link">FAQ</a>
+                                </li>
+                                
+                                
+                                <li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
+                                <li class="nav-item dropdown">
+                                    <a id="dropdownMenu1" href="lista-productos.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Categoria</a>
+                                    <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
+                                        <li><a href="lista-productos.html" class="dropdown-item">Categoria#1</a></li>
+                                        <li><a href="lista-productos.html" class="dropdown-item">Categoria#2</a></li>
+                                        <li class="dropdown-divider"></li>
+                                        <!-- segundo nivel del menu-->
+                                        <li class="dropdown-submenu">
+                                            <a id="dropdownMenu2" href="lista-productos.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Categoria#3</a>
+                                            <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                                                <li>
+                                                    <a tabindex="-1" href="lista-productos.html" class="dropdown-item">SubCategoria#1</a>
+                                                </li>
+                                                <!-- tercer nivel del menu-->
+                                                <li class="dropdown-submenu">
+                                                    <a id="dropdownMenu3" href="lista-productos.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">SubCategoria#2</a>
+                                                    <ul aria-labelledby="dropdownMenu3" class="dropdown-menu border-0 shadow">
+                                                        <li><a href="lista-productos.html" class="dropdown-item">SubSubCategoria#1</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- fin tercer nivel -->
+                                                <li><a href="lista-productos.html" class="dropdown-item">SubCategoria#3</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- fin segundo nivel -->
+                                    </ul>
+                                </li><!-- fin primer nivel -->                
+                                
+                                <!-- form busqueda -->
+                                <li class="nav-item">
+                                    <form class="navbar-form form-inline">
+                                        <div class="input-group search-box searchbar">
+                                            <input class="form-control py-2 border-right-0 border" type="search" value="Buscar Productos" id="example-search-input">
+                                            <span class="input-group-append">
+                                                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form> 
+                                </li>
+                                
+                                <!-- botones de carrito y login -->
+                                <li class="nav-item">
+                                    <a href="login.html" class="nav-link"><i class="fas fa-user mx-1"></i>Mi Cuenta</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart mx-1"></i></a>
+                                </li>
+                                
+                            </ul>
+                        </div>
                     </div>
                 </nav>
-            
+            </div><!-- contenedor navbar -->
         </header>
 
-        <main>  
-            <!-- EMPIEZA SLIDER -->          
+        <main>
+            <div class="container my-2 mx-auto py-2">
+            <!-- a partir de aca va el contenido de la pagina -->          
+                            <!-- EMPIEZA SLIDER -->          
             <div class="bd-example mt-5">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                       <ol class="carousel-indicators">
@@ -178,7 +182,7 @@
             <section>
                     <h2 class="font-weight-bold text-center my-4"> Categorías </h2>
                 <div class="row d-flex justify-content-around mx-2">
-                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="">
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="lista-productos.html">
                      <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
                         <h5 class="card-text text-center">Autos</h5>
@@ -186,7 +190,7 @@
                     </a>
                     </div>
 
-                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="">
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="lista-productos.html">
                     <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
                         <h5 class="card-text text-center">Casas</h5>
@@ -194,7 +198,7 @@
                     </a>
                     </div>
 
-                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="">
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="lista-productos.html">
                     <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
                         <h5 class="card-text text-center">Ropa</h5>
@@ -202,7 +206,7 @@
                     </a>
                     </div>
 
-                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="">
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 p-0"> <a href="lista-productos.html">
                     <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
                         <h5 class="card-text text-center">Electronica</h5>
@@ -218,7 +222,7 @@
                     </a>
                     </div>
 
-                    <div class="card col-5 col-lg-3 mr-1 mb-3 d-none d-lg-block p-0"> <a href="">
+                    <div class="card col-5 col-lg-3 mr-1 mb-3 d-none d-lg-block p-0"> <a href="lista-productos.html">
                     <img src="https://images.adsttc.com/media/images/5d1c/eb8e/284d/d16c/4100/0031/newsletter/_FJR5838.jpg?1562176282" class="card-img-top w-100" alt="foto de la categoria">
                     <div class="card-body">
                         <h5 class="card-text text-center">Otros</h5>
@@ -241,33 +245,32 @@
                 </div>
                 </section>
                 <!-- FIN NOSOTROS -->
-            </main>
-    
-    
-    
-       
 
-        <footer class="d-flex justify-content-around p-0 mt-1 border text-white bg-transblack">
-                <div  class="pb-1 container">
-                   <ul class="d-flex justify-content-around p-0 mb-3" type="none">
-                      <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                      <li><a href=""><i class="fab fa-instagram"></i></a></li>
-                      <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                   </ul>
-                   <ul class="d-flex justify-content-around p-0 mb-3" type="none">
-                      <li> <i class="fa fa-at"></i><span>  info@mail.com</span> </li>
-                      <li> <i class="fa fa-phone"></i><span>  0310 4112233 </span> </li>
-                   </ul>
-                   <div class="btn-group container mb-3" role="group">
-                      <button type="button" class="btn btn-secondary p-0 border-0" onclick="href=index.html"> <a class="link-footer" href="index.html">Home</a> </button>
-                      <button type="button" class="btn btn-secondary p-0 border-0"><a class="link-footer" href="faq.html">FAQ</a></button>
-                      <button type="button" class="btn btn-secondary p-0 border-0"><a class="link-footer" href="contact.html" >Contacto</a></button>
-                      <button type="button" class="btn btn-secondary p-0 border-0"><a class="link-footer" href="login.html">Login</a></button>
-                   </div> <br>
-                   <p class="mb-3 text-center text-white">Copyright &copy; Your Website 2019</p>
-                </div>
-             </footer>
 
+                <!-- hasta aca va el contenido de la pagina -->
+            </div>
+        </main>
+
+
+        <footer class="d-flex justify-content-around p-0 mt-1">
+            <div  class="pb-1 container">
+                <ul class="d-flex justify-content-around p-0 mb-3" type="none">
+                    <li><a href="www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                </ul>
+                <ul class="d-flex justify-content-around p-0 mb-3" type="none">
+                    <li> <a href="mailto:info@mail.com"><i class="fa fa-at mr-1"></i><span>info@mail.com</span></a></li>
+                    <li> <a href="tel:3414112233"><i class="fa fa-at mr-1"></i><span>0341 - 4112233</span></a></li>
+                    
+                </ul>
+               
+                <p class="mb-3 text-center">Copyright &copy; Your Website 2019</p>
+            </div>
+        </footer>
+
+
+    
     </div><!--fin container principal-->
 
     <script src="https://kit.fontawesome.com/56fc440a67.js" crossorigin="anonymous"></script>

@@ -1,228 +1,297 @@
-<!doctype html>
-
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Osos Store</title>
+    <!-- Icono de la pestaña del sitio -->
+    <link rel="icon" href="img/logo.png">
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:700|Open+Sans&display=swap" rel="stylesheet">
+    <!-- Css de bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Local css -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  
-    <header>
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    <!-- fin Navigation -->
-    
-    </header>
-    <!-- fin header -->
-    
-    <!-- contenido principal -->
-    <main>
-        <div class="container my-4">
+    <div class="container-fluid m-0 p-0">
+        <header>
+            <!-- contenedor del header -->
+            <div class="container-fluid m-0 p-0"><!-- contenedor navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-around">
+                    <div class="container">
+                        <!-- ecabezado de la navbar incluye logo o slogan y boton hamburguesa -->
+                        
+                            <!-- logo o slogan -->
+                            <a class="navbar-brand text-center" href="#"><img src="http://placehold.it/100x50?text=Logo" alt="" class="img-responsive"></a>  		
+                            
+                            <!-- boton hamburguesa -->
+                            <button id="nav" type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto" aria-expanded="false" aria-label="Toggle navigation">
+                                <div class="nav-collapse">
+                                    <span></span>
+                                </div>
+                            </button>
+                        
+                        
+                        <!-- aca va todo lo que se quiera inlcuir en la barra de menu -->
+                        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-end">
+                            <ul class="navbar-cuerpo nav navbar-nav text-center">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="faq.html" class="nav-link">FAQ</a>
+                                </li>
+                                
+                                
+                                <li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
+                                <li class="nav-item dropdown">
+                                    <a id="dropdownMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Categoria</a>
+                                    <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
+                                        <li><a href="#" class="dropdown-item">Categoria#1</a></li>
+                                        <li><a href="#" class="dropdown-item">Categoria#2</a></li>
+                                        <li class="dropdown-divider"></li>
+                                        <!-- segundo nivel del menu-->
+                                        <li class="dropdown-submenu">
+                                            <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Categoria#3</a>
+                                            <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow">
+                                                <li>
+                                                    <a tabindex="-1" href="#" class="dropdown-item">SubCategoria#1</a>
+                                                </li>
+                                                <!-- tercer nivel del menu-->
+                                                <li class="dropdown-submenu">
+                                                    <a id="dropdownMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">SubCategoria#2</a>
+                                                    <ul aria-labelledby="dropdownMenu3" class="dropdown-menu border-0 shadow">
+                                                        <li><a href="#" class="dropdown-item">SubSubCategoria#1</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- fin tercer nivel -->
+                                                <li><a href="#" class="dropdown-item">SubCategoria#3</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- fin segundo nivel -->
+                                    </ul>
+                                </li><!-- fin primer nivel -->                
+                                
+                                <!-- form busqueda -->
+                                <li class="nav-item">
+                                    <form class="navbar-form form-inline">
+                                        <div class="input-group search-box searchbar">
+                                            <input class="form-control py-2 border-right-0 border" type="search" value="Buscar Productos" id="example-search-input">
+                                            <span class="input-group-append">
+                                                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form> 
+                                </li>
+                                
+                                <!-- botones de carrito y login -->
+                                <li class="nav-item">
+                                    <a href="login.html" class="nav-link"><i class="fas fa-user mx-1"></i>Mi Cuenta</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart mx-1"></i></a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div><!-- contenedor navbar -->
+        </header>
 
-            <!-- breadcrumbs -->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Nombre Categoria</li>
-                </ol>
-            </nav>
-
-            <!-- fin breadcrumbs -->
-
-            <!-- slider -->
-            <h2 class="text-center font-weight-bold">Destacados</h2>
+        <main>
+            <div class="container my-2 mx-auto py-2">
+            <!-- a partir de aca va el contenido de la pagina -->          
             
-            <div id="carouselExampleCaptions" class="carousel slide my-4" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <a href="detalle-producto.html" target="_self">
-                            <img src="https://via.placeholder.com/900x350?text=destacado 1" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Nombre Producto</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
-                            </div>
-                        </a>
+            
+  <!-- breadcrumbs -->
+  <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Nombre Categoria</li>
+        </ol>
+    </nav>
+
+    <!-- fin breadcrumbs -->
+
+    <!-- slider -->
+    <h2 class="text-center font-weight-bold">Destacados</h2>
+    
+    <div id="carouselExampleCaptions" class="carousel slide my-4" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="detalle-producto.html" target="_self">
+                    <img src="https://via.placeholder.com/900x350?text=destacado 1" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Nombre Producto</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
                     </div>
-                    <div class="carousel-item">
-                        <a href="detalle-producto.html" target="_self">
-                            <img src="https://via.placeholder.com/900x350?text=destacado 2" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Nombre Producto</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="detalle-producto.html" target="_self">
-                            <img src="https://via.placeholder.com/900x350?text=destacado 3" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Nombre Producto</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
                 </a>
             </div>
-            <!-- fin slider -->
+            <div class="carousel-item">
+                <a href="detalle-producto.html" target="_self">
+                    <img src="https://via.placeholder.com/900x350?text=destacado 2" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Nombre Producto</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="detalle-producto.html" target="_self">
+                    <img src="https://via.placeholder.com/900x350?text=destacado 3" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Nombre Producto</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, ab!.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- fin slider -->
 
-            <!-- tabla productos -->
-            <h2 class="text-center font-weight-bold m-4">Nuestros Productos</h2>
-            <div class="row">
-                <!-- articulo -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="box">
-                            <div class="card h-100">
-                                <img class="d-block w-100" src="https://via.placeholder.com/700x400?text=foto producto">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                <a href="#">Nombre Producto</a>
-                                </h4>
-                                <h5>$99.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="detalle-producto.html" target="_self"><button class="btn btn-primary" type="submit"> ver mas</button></a>
-                            </div>
-                        </div>
+    <!-- tabla productos -->
+    <h2 class="text-center font-weight-bold m-4">Nuestros Productos</h2>
+    <div class="row">
+        <!-- articulo -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="box">
+                    <div class="card h-100">
+                        <img class="d-block w-100" src="https://via.placeholder.com/700x400?text=foto producto">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                        <a href="#">Nombre Producto</a>
+                        </h4>
+                        <h5>$99.99</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="detalle-producto.html" target="_self"><button class="btn btn-primary" type="submit"> ver mas</button></a>
                     </div>
                 </div>
-                <!-- fin articulo -->
-                <!-- articulo -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="box">
-                            <div class="card h-100">
-                                <img class="d-block w-100" src="https://via.placeholder.com/700x400?text=foto producto">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                <a href="#">Nombre Producto</a>
-                                </h4>
-                                <h5>$99.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="detalle-producto.html" target="_self"><button class="btn btn-primary" type="submit"> ver mas</button></a>
-                            </div>
-                        </div>
+            </div>
+        </div>
+        <!-- fin articulo -->
+        <!-- articulo -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="box">
+                    <div class="card h-100">
+                        <img class="d-block w-100" src="https://via.placeholder.com/700x400?text=foto producto">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                        <a href="#">Nombre Producto</a>
+                        </h4>
+                        <h5>$99.99</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="detalle-producto.html" target="_self"><button class="btn btn-primary" type="submit"> ver mas</button></a>
                     </div>
                 </div>
-                <!-- fin articulo -->
-                <!-- articulo -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="box">
-                            <div class="card h-100">
-                                <img class="d-block w-100" src="https://via.placeholder.com/700x400?text=foto producto">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                <a href="#">Nombre Producto</a>
-                                </h4>
-                                <h5>$99.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="detalle-producto.html" target="_self"><button class="btn btn-primary" type="submit"> ver mas</button></a>
-                            </div>
-                        </div>
+            </div>
+        </div>
+        <!-- fin articulo -->
+        <!-- articulo -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="box">
+                    <div class="card h-100">
+                        <img class="d-block w-100" src="https://via.placeholder.com/700x400?text=foto producto">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                        <a href="#">Nombre Producto</a>
+                        </h4>
+                        <h5>$99.99</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="detalle-producto.html" target="_self"><button class="btn btn-primary" type="submit"> ver mas</button></a>
                     </div>
                 </div>
-                <!-- fin articulo -->
-                <!-- articulo -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="box">
-                            <div class="card h-100">
-                                <img class="d-block w-100" src="https://via.placeholder.com/700x400?text=foto producto">
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                <a href="#">Nombre Producto</a>
-                                </h4>
-                                <h5>$99.99</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="detalle-producto.html" target="_self"><button class="btn btn-primary" type="submit"> ver mas</button></a>
-                            </div>
-                        </div>
+            </div>
+        </div>
+        <!-- fin articulo -->
+        <!-- articulo -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="box">
+                    <div class="card h-100">
+                        <img class="d-block w-100" src="https://via.placeholder.com/700x400?text=foto producto">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                        <a href="#">Nombre Producto</a>
+                        </h4>
+                        <h5>$99.99</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="detalle-producto.html" target="_self"><button class="btn btn-primary" type="submit"> ver mas</button></a>
                     </div>
                 </div>
-                <!-- fin articulo -->
+            </div>
+        </div>
+        <!-- fin articulo -->
+       
+
+      
+
+        
+                            
+                            
+
+    </div>
+    <!-- tabla productos -->
+
+            <!-- hasta aca va el contenido de la pagina -->
+            </div>
+        </main>
+
+
+        <footer class="d-flex justify-content-around p-0 mt-1">
+            <div  class="pb-1 container">
+                <ul class="d-flex justify-content-around p-0 mb-3" type="none">
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                </ul>
+                <ul class="d-flex justify-content-around p-0 mb-3" type="none">
+                    <li> <a href="mailto:info@mail.com"><i class="fa fa-at mr-1"></i><span>info@mail.com</span></a></li>
+                    <li> <a href="tel:3414112233"><i class="fa fa-at mr-1"></i><span>0341 - 4112233</span></a></li>
+                    
+                </ul>
                
-
-              
-
-                
-                                    
-                                    
-    
+                <p class="mb-3 text-center">Copyright &copy; Your Website 2019</p>
             </div>
-            <!-- tabla productos -->
-    
-        
-        
-        </div>
-    </main>
-    <!-- fin contenido principal -->
-    
-    
-    <!-- Footer -->
-      <footer class="py-5 bg-dark">
-        <div class="container">
-          <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-        </div>
-        <!-- /.container -->
-      </footer>
+        </footer>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    </div><!--fin container principal-->
+
+    <script src="https://kit.fontawesome.com/56fc440a67.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     
+     <!-- local js -->
+     <script src="js/local.js"></script>
+    
+</body>
+
 </html>
