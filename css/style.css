@@ -383,6 +383,13 @@ a:not(.collapsed) .fa-angle-right {
         background-color: rgba(255, 255, 255, 90%);
     }
 }
+
+/* Quitando el container transparente desde xs a md */
+/* CUANDO UNIFIQUEMOS LOS BREAKPOINTS HAY QUE HACERLO AL REVÉS (MOBILE FIRST) */
+@media (max-width: 991.98px) {
+    main .container{
+        background-color: rgba(255, 255, 255, 0);
+}
 /*#############################---------REGISTRO---------##############################*/
 .registro section div form{
     font-size: 1.1rem;
