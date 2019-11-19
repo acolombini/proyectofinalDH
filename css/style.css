@@ -266,11 +266,13 @@ input[type=number]::-webkit-outer-spin-button {
 /*################# Profile.html sm #################*/
 
 /* Avatar */
+
 #avatarprofile {
     height: 40vh;
 }
 
 /* Nombre y apellido */
+
 .nya {
     font-size: 1.3rem;
     font-weight: bold;
@@ -280,43 +282,84 @@ input[type=number]::-webkit-outer-spin-button {
 /***************** BOTONES ACORDIÓN *****************/
 
 /* Chau bordes redondeados */
+
 #accordion .card, #accordion .card-header, #accordion .card-header button {
     border-radius: 0 !important;
 }
 
 /* Ancho del contenido*/
+
 #accordion .card-header button {
     padding: .75rem 1.25rem !important;
 }
 
 /* Rotación de la flecha al cliquear*/
-a:not(.collapsed) .fa-angle-right {
+
+#accordion a:not(.collapsed) .fa-angle-right {
     transform: rotate(90deg);
+    color: black;
+}
+
+/* Colorear icon al abrir acordión*/
+
+#accordion a:not(.collapsed) i, #accordion .card-header a:not(.collapsed) {
+    color: black !important;
 }
 
 /* Decorando links*/
+
 #accordion .card a {
     text-decoration: none !important;
-    color: rgb(71, 71, 71) !important;
+    color: rgb(71, 71, 71);
     font-size: 1.2rem;
+}
+
+/* Bottom panel */
+
+#accordion .productodiv {
+    width: 100%;
+    height: 14rem;
+}
+
+#accordion .productodiv img {
+    border-radius: 2px;
+    width: auto;
+    max-height: 10rem;
+    max-width: 10rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#accordion .nombreproducto {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+}
+
+#accordion .precioycantidad {
+    font-size: 0.8rem;
+}
+
+#accordion div.productodiv:not(:last-of-type) {
+    border-bottom: #c7c7c7 2px solid;
+    border-right: #c7c7c7 2px solid;
+    border-left: #c7c7c7 2px solid;
 }
 
 /*########################################### Profile.html desktop #######################################*/
 
 /*  Fuente monserrat  */
-#profilelp button {
+
+#profilelp button, .productodiv .botones {
     font-family: 'Montserrat', sans-serif;
     color: black;
 }
 
 /*  Left-panel   */
-#profilelp > div:first-child {
+
+#profilelp>div:first-child {
     height: 15rem;
 }
 
-#profilelp a,
-#profilelp button,
-#tabsbp ul {
+#profilelp a, #profilelp button, #tabsbp ul {
     border: 0 !important;
 }
 
@@ -324,7 +367,7 @@ a:not(.collapsed) .fa-angle-right {
     padding: 0.25rem 1rem !important;
 }
 
-#profilelp a:hover, #tabsbp .nav-link.active {
+#profilelp a:hover, #profilelp a:focus {
     color: black;
 }
 
@@ -333,8 +376,13 @@ a:not(.collapsed) .fa-angle-right {
 }
 
 /*  Tabs   */
-#tabsbp a, #profilelp a {
+
+#tabsbp a, #tabsbp i, #profilelp a {
     color: #495057;
+}
+
+#tabsbp a:hover, #tabsbp a:hover i, #tabsbp a.active, #tabsbp a.active i {
+    color: black;
 }
 
 #tabsbp {
@@ -344,25 +392,26 @@ a:not(.collapsed) .fa-angle-right {
 }
 
 /*  Bottom-panel   */
+
 #profilebp {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
 }
 
-
-
 /*  Bottom Panel Scrollbar   */
+
 .scrollbar1::-webkit-scrollbar, .scrollbar1::-webkit-scrollbar-track {
-	width: 0.3rem;
-	background-color: rgba(255, 255, 255, 0.1);
+    width: 0.3rem;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .scrollbar1::-webkit-scrollbar-thumb {
-	border-radius: 5px;
-	background-color: rgba(73, 80, 87, 0.7);
+    border-radius: 5px;
+    background-color: rgba(73, 80, 87, 0.7);
 }
 
 /*  Desktop media queries  */
+
 @media (min-width: 992px) {
     #avatarprofile {
         height: 15rem;
@@ -380,7 +429,6 @@ a:not(.collapsed) .fa-angle-right {
         max-height: 20rem;
         overflow-y: auto;
     }
-
 }
 
 /*########################################## Login.html #######################################*/
@@ -390,22 +438,33 @@ a:not(.collapsed) .fa-angle-right {
 }
 
 /* Opacity en sm */
+
 .opacitylogin {
     background-color: rgba(255, 255, 255, 80%);
 }
 
 /* Opacity md+ */
+
 @media (min-width: 768px) {
     .opacitylogin {
         background-color: rgba(255, 255, 255, 90%);
     }
 }
 
-/* Quitando el container transparente desde xs a md */
+/* 
+-Quitando el container en sm e inferior
+-Quitando márgenes en sm e inferior
+*/
+
 /* CUANDO UNIFIQUEMOS LOS BREAKPOINTS HAY QUE HACERLO AL REVÉS (MOBILE FIRST) */
-@media (max-width: 991.98px) {
-    main .container{
+
+@media (max-width: 767.98px) {
+    main .container {
         background-color: rgba(255, 255, 255, 0);
+        max-width: 100%;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
 }
 /*#############################---------REGISTRO---------##############################*/
 .registro section div form{
