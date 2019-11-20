@@ -241,124 +241,320 @@
 
                             <!-- Bottom panel -->
                             <div class="col-lg-12 flex-nowrap scrollbar1 overflow-lg-auto" id="profilebp">
+
                                 <!-- Contenido tabs desktop -->
                                 <div class="tab-content d-none d-lg-block">
+
                                     <!-- Mis compras tab -->
                                     <div id="comprastab" class="tab-pane fade active show">
-                                        <div class="list-group list-group-flush">
-                                            <button type="button"
-                                                class="list-group-item list-group-item-info list-group-item-action">
-                                                Producto en camino <br />
-                                                (acá se puede poner imágenes de los productos junto con el
-                                                precio, estado del envío, etc)
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-danger list-group-item-action">
-                                                Compra cancelada
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-success list-group-item-action">
-                                                Compra exitosa
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-success list-group-item-action">
-                                                Compra exitosa
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-success list-group-item-action">
-                                                Compra exitosa
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-success list-group-item-action">
-                                                Compra exitosa
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-success list-group-item-action">
-                                                Compra exitosa
-                                            </button> <button type="button"
-                                                class="list-group-item list-group-item-success list-group-item-action">
-                                                Compra exitosa
-                                            </button> <button type="button"
-                                                class="list-group-item list-group-item-success list-group-item-action">
-                                                Compra exitosa
-                                            </button>
+
+                                        <div class="productodiv d-flex align-items-center bg-white">
+                                            <div
+                                                class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
+                                                <a href="detalle-producto.html"><a href="detalle-producto.html"><img
+                                                            src="img/producto1.jpg" alt="producto"></a></a>
+                                                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
+                                                    <span class="nombreproducto mt-auto">Nombre del producto</span>
+                                                    <span class="precioycantidad">Precio x Cantidad</span>
+                                                    <span class="estadoenvio mt-auto">Estado del envío</span>
+                                                </div>
+                                            </div>
+                                            <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
+                                                <a href="#detalles" class="detallesproducto">
+                                                    Ver detalles
+                                                    <i class="fas fa-info-circle text-info"></i>
+                                                </a>
+                                                <a href="#reportarproblema" class="reportarprob mt-auto">
+                                                    Reportar un problema
+                                                    <i class="fas fa-exclamation-triangle text-danger"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="productodiv d-flex align-items-center bg-success">
+                                            <div
+                                                class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
+                                                <a href="detalle-producto.html"><a href="detalle-producto.html"><img
+                                                            src="img/producto1.jpg" alt="producto"></a></a>
+                                                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
+                                                    <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
+                                                        consectetur adipisicing elit. Inventore, ad?</span>
+                                                    <span class="precioycantidad">$25.000 x 1 unidad</span>
+                                                    <span class="estadoenvio mt-auto">Recibido</span>
+                                                </div>
+                                            </div>
+                                            <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
+                                                <a href="#detalles" class="detallesproducto">
+                                                    Ver detalles
+                                                    <i class="fas fa-info-circle text-info"></i>
+                                                </a>
+                                                <a href="#reportarproblema" class="reportarprob mt-auto">
+                                                    Reportar un problema
+                                                    <i class="fas fa-exclamation-triangle text-danger"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="productodiv d-flex align-items-center bg-warning">
+                                            <div
+                                                class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
+                                                <a href="detalle-producto.html"><a href="detalle-producto.html"><img
+                                                            src="img/producto1.jpg" alt="producto"></a></a>
+                                                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
+                                                    <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
+                                                        consectetur adipisicing elit. In maiores assumenda veniam!
+                                                        Neque, minima veniam.</span>
+                                                    <span class="precioycantidad">$25.000 x 1 unidad</span>
+                                                    <span class="estadoenvio mt-auto">Demorado</span>
+                                                </div>
+                                            </div>
+                                            <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
+                                                <a href="#detalles" class="detallesproducto">
+                                                    Ver detalles
+                                                    <i class="fas fa-info-circle text-info"></i>
+                                                </a>
+                                                <a href="#reportarproblema" class="reportarprob mt-auto">
+                                                    Reportar un problema
+                                                    <i class="fas fa-exclamation-triangle text-danger"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="productodiv d-flex align-items-center bg-danger">
+                                            <div
+                                                class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
+                                                <a href="detalle-producto.html"><a href="detalle-producto.html"><img
+                                                            src="img/producto1.jpg" alt="producto"></a></a>
+                                                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
+                                                    <span class="nombreproducto mt-auto">Cámara digital 48mp</span>
+                                                    <span class="precioycantidad">$25.000 x 1 unidad</span>
+                                                    <span class="estadoenvio mt-auto">Cancelado</span>
+                                                </div>
+                                            </div>
+                                            <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
+                                                <a href="#detalles" class="detallesproducto">
+                                                    Ver detalles
+                                                    <i class="fas fa-info-circle text-info"></i>
+                                                </a>
+                                                <a href="#reportarproblema" class="reportarprob mt-auto">
+                                                    Reportar un problema
+                                                    <i class="fas fa-exclamation-triangle text-danger"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Mis ventas tab -->
                                     <div id="ventastab" class="tab-pane fade">
-                                        <div class="list-group list-group-flush">
-                                            <button type="button"
-                                                class="list-group-item list-group-item-info list-group-item-action">
-                                                Producto en camino <br />
-                                                (acá se puede poner imágenes de los productos junto con el
-                                                precio, estado del envío, etc)
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-danger list-group-item-action">
-                                                Venta cancelada
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-success list-group-item-action">
-                                                Venta exitosa
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-success list-group-item-action">
-                                                Venta exitosa
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-success list-group-item-action">
-                                                Venta exitosa
-                                            </button>
+                                        <div class="productodiv d-flex align-items-center bg-white">
+                                            <div
+                                                class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
+                                                <a href="detalle-producto.html"><a href="detalle-producto.html"><img
+                                                            src="img/producto1.jpg" alt="producto"></a></a>
+                                                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
+                                                    <span class="nombreproducto mt-auto">Nombre del producto</span>
+                                                    <span class="precioycantidad">Precio x Cantidad</span>
+                                                    <span class="estadoenvio mt-auto">Estado del envío</span>
+                                                </div>
+                                            </div>
+                                            <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
+                                                <a href="#detalles" class="detallesproducto mb-auto">
+                                                    Ver detalles
+                                                    <i class="fas fa-info-circle text-info"></i>
+                                                </a>
+                                                <a href="#detalles" class="detallescomp my-auto">
+                                                    Detalles del comprador
+                                                    <i class="fas fa-user-alt"></i>
+                                                </a>
+                                                <a href="#reportarproblema" class="reportarprob mt-auto">
+                                                    Reportar un problema
+                                                    <i class="fas fa-exclamation-triangle text-danger"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="productodiv d-flex align-items-center bg-success">
+                                            <div
+                                                class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
+                                                <a href="detalle-producto.html"><a href="detalle-producto.html"><img
+                                                            src="img/producto1.jpg" alt="producto"></a></a>
+                                                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
+                                                    <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
+                                                        consectetur adipisicing elit. Inventore, ad?</span>
+                                                    <span class="precioycantidad">$25.000 x 1 unidad</span>
+                                                    <span class="estadoenvio mt-auto">Recibido</span>
+                                                </div>
+                                            </div>
+                                            <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
+                                                <a href="#detalles" class="detallesproducto mb-auto">
+                                                    Ver detalles
+                                                    <i class="fas fa-info-circle text-info"></i>
+                                                </a>
+                                                <a href="#detalles" class="detallescomp my-auto">
+                                                    Detalles del comprador
+                                                    <i class="fas fa-user-alt"></i>
+                                                </a>
+                                                <a href="#reportarproblema" class="reportarprob mt-auto">
+                                                    Reportar un problema
+                                                    <i class="fas fa-exclamation-triangle text-danger"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="productodiv d-flex align-items-center bg-warning">
+                                            <div
+                                                class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
+                                                <a href="detalle-producto.html"><a href="detalle-producto.html"><img
+                                                            src="img/producto1.jpg" alt="producto"></a></a>
+                                                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
+                                                    <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
+                                                        consectetur adipisicing elit. In maiores assumenda veniam!
+                                                        Neque, minima veniam.</span>
+                                                    <span class="precioycantidad">$25.000 x 1 unidad</span>
+                                                    <span class="estadoenvio mt-auto">Demorado</span>
+                                                </div>
+                                            </div>
+                                            <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
+                                                <a href="#detalles" class="detallesproducto mb-auto">
+                                                    Ver detalles
+                                                    <i class="fas fa-info-circle text-info"></i>
+                                                </a>
+                                                <a href="#detalles" class="detallescomp my-auto">
+                                                    Detalles del comprador
+                                                    <i class="fas fa-user-alt"></i>
+                                                </a>
+                                                <a href="#reportarproblema" class="reportarprob mt-auto">
+                                                    Reportar un problema
+                                                    <i class="fas fa-exclamation-triangle text-danger"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="productodiv d-flex align-items-center bg-danger">
+                                            <div
+                                                class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
+                                                <a href="detalle-producto.html"><a href="detalle-producto.html"><img
+                                                            src="img/producto1.jpg" alt="producto"></a></a>
+                                                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
+                                                    <span class="nombreproducto mt-auto">Cámara digital 48mp</span>
+                                                    <span class="precioycantidad">$25.000 x 1 unidad</span>
+                                                    <span class="estadoenvio mt-auto">Cancelado</span>
+                                                </div>
+                                            </div>
+                                            <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
+                                                <a href="#detalles" class="detallesproducto mb-auto">
+                                                    Ver detalles
+                                                    <i class="fas fa-info-circle text-info"></i>
+                                                </a>
+                                                <a href="#detalles" class="detallescomp my-auto">
+                                                    Detalles del comprador
+                                                    <i class="fas fa-user-alt"></i>
+                                                </a>
+                                                <a href="#reportarproblema" class="reportarprob mt-auto">
+                                                    Reportar un problema
+                                                    <i class="fas fa-exclamation-triangle text-danger"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Favoritos tab -->
                                     <div id="favtab" class="tab-pane fade">
-                                        <div class="list-group list-group-flush">
-                                            <button type="button"
-                                                class="list-group-item list-group-item-warning list-group-item-action">
-                                                1
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-warning list-group-item-action">
-                                                2
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-warning list-group-item-action">
-                                                3
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-warning list-group-item-action">
-                                                4
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-warning list-group-item-action">
-                                                5
-                                            </button>
+                                        <div class="favoritodiv d-flex align-items-center bg-white">
+                                            <div
+                                                class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
+                                                <a href="detalle-producto.html"><a href="detalle-producto.html"><img
+                                                            src="img/producto1.jpg" alt="producto"></a></a>
+                                                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
+                                                    <span class="nombreproducto mt-auto">Nombre del producto</span>
+                                                    <span class="precioycantidad">Precio x Cantidad</span>
+                                                </div>
+                                            </div>
+                                            <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
+                                                <a href="#eliminarfavorito" class="mb-auto ml-auto">
+                                                    <i class="fas fa-heart-broken fa-3x text-danger"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Historial tab -->
                                     <div id="historytab" class="tab-pane fade">
-                                        <div class="list-group list-group-flush">
-                                            <button type="button"
-                                                class="list-group-item list-group-item-primary list-group-item-action">
-                                                1
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-primary list-group-item-action">
-                                                2
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-primary list-group-item-action">
-                                                3
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-primary list-group-item-action">
-                                                4
-                                            </button>
-                                            <button type="button"
-                                                class="list-group-item list-group-item-primary list-group-item-action">
-                                                5
-                                            </button>
+                                        <h3 class="text-white mx-auto pb-0 pt-2 w-100 text-center">Últimos 20 productos buscados... </h3>
+                                        <div class="historialdiv d-flex flex-column scrollbar1 my-2">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex pr-3 pl-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                                <div class="d-flex flex-column pr-3">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -384,7 +580,8 @@
                                             data-parent="#accordion">
                                             <div class="productodiv d-flex flex-column">
                                                 <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                                                    <img src="img/producto1.jpg" alt="producto">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
                                                     <div class="datosproducto d-flex flex-column w-100 h-100 ml-3">
                                                         <span class="nombreproducto mt-auto">Nombre del producto</span>
                                                         <span class="precioycantidad">Precio x Cantidad</span>
@@ -402,10 +599,12 @@
                                             </div>
                                             <div class="productodiv d-flex flex-column bg-success">
                                                 <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                                                    <img src="img/producto1.jpg" alt="producto">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
                                                     <div
                                                         class="datosproducto d-flex flex-column w-100 h-100 ml-3 text-white">
-                                                        <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, ad?</span>
+                                                        <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
+                                                            consectetur adipisicing elit. Inventore, ad?</span>
                                                         <span class="precioycantidad">$25.000 x 1 unidad</span>
                                                         <span class="estadoenvio mt-auto">Recibido</span>
                                                     </div>
@@ -421,10 +620,13 @@
                                             </div>
                                             <div class="productodiv d-flex flex-column bg-warning">
                                                 <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                                                    <img src="img/producto1.jpg" alt="producto">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
                                                     <div
                                                         class="datosproducto d-flex flex-column w-100 h-100 ml-3 text-white">
-                                                        <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. In maiores assumenda veniam! Neque, minima veniam.</span>
+                                                        <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
+                                                            consectetur adipisicing elit. In maiores assumenda veniam!
+                                                            Neque, minima veniam.</span>
                                                         <span class="precioycantidad">$25.000 x 1 unidad</span>
                                                         <span class="estadoenvio mt-auto">Demorado</span>
                                                     </div>
@@ -440,7 +642,8 @@
                                             </div>
                                             <div class="productodiv d-flex flex-column bg-danger">
                                                 <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                                                    <img src="img/producto1.jpg" alt="producto">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
                                                     <div
                                                         class="datosproducto d-flex flex-column w-100 h-100 ml-3 text-white">
                                                         <span class="nombreproducto mt-auto">Cámara digital 48mp</span>
@@ -477,7 +680,8 @@
                                             data-parent="#accordion">
                                             <div class="productodiv d-flex flex-column">
                                                 <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                                                    <img src="img/producto1.jpg" alt="producto">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
                                                     <div class="datosproducto d-flex flex-column w-100 h-100 ml-3">
                                                         <span class="nombreproducto mt-auto">Nombre del producto</span>
                                                         <span class="precioycantidad">Precio x Cantidad</span>
@@ -495,7 +699,8 @@
                                             </div>
                                             <div class="productodiv d-flex flex-column bg-success">
                                                 <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                                                    <img src="img/producto1.jpg" alt="producto">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
                                                     <div
                                                         class="datosproducto d-flex flex-column w-100 h-100 ml-3 text-white">
                                                         <span class="nombreproducto mt-auto">Cámara digital 48mp</span>
@@ -514,7 +719,8 @@
                                             </div>
                                             <div class="productodiv d-flex flex-column bg-warning">
                                                 <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                                                    <img src="img/producto1.jpg" alt="producto">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
                                                     <div
                                                         class="datosproducto d-flex flex-column w-100 h-100 ml-3 text-white">
                                                         <span class="nombreproducto mt-auto">Cámara digital 48mp</span>
@@ -533,7 +739,8 @@
                                             </div>
                                             <div class="productodiv d-flex flex-column bg-danger">
                                                 <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                                                    <img src="img/producto1.jpg" alt="producto">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
                                                     <div
                                                         class="datosproducto d-flex flex-column w-100 h-100 ml-3 text-white">
                                                         <span class="nombreproducto mt-auto">Cámara digital 48mp</span>
@@ -568,169 +775,171 @@
                                         </div>
                                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                             data-parent="#accordion">
-                                            <div class="list-group list-group-flush">
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-warning list-group-item-action">
-                                                    1
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-warning list-group-item-action">
-                                                    2
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-warning list-group-item-action">
-                                                    3
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-warning list-group-item-action">
-                                                    4
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-warning list-group-item-action">
-                                                    5
-                                                </button>
+                                            <div class="favoritodiv d-flex flex-column">
+                                                <div class="d-flex justify-content-start mt-2 ml-2">
+                                                    <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                            alt="producto"></a>
+                                                    <span class="nombreproducto my-auto ml-2">Cámara digital 48mp</span>
+                                                    <div
+                                                        class="d-flex flex-column justify-content-end ml-auto mb-2 mr-2">
+                                                        <a href="" class="mb-auto ml-auto"><i
+                                                                class="fas fa-heart-broken fa-2x text-danger"></i>
+                                                        </a>
+                                                        <a href="#verproducto" class="btn btn-primary text-white">
+                                                            Ver producto
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <!-- Historial -->
-                                    <div class="card">
-                                        <div class="card-header p-0" id="headingFour">
-                                            <a class="d-flex py-3 pl-3 collapsed" href="#collapseFour"
-                                                data-toggle="collapse" aria-expanded="false"
-                                                aria-controls="collapseFour">
-                                                Historial
-                                                <span class="flecha ml-auto mr-4 text-secondary">
-                                                    <i class="fas fa-history mr-1 align-middle"></i>
-                                                    <span class="fas fa-angle-right align-middle"></span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                                            data-parent="#accordion">
-                                            <div class="list-group list-group-flush">
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-primary list-group-item-action">
-                                                    1
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-primary list-group-item-action">
-                                                    2
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-primary list-group-item-action">
-                                                    3
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-primary list-group-item-action">
-                                                    4
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-primary list-group-item-action">
-                                                    5
-                                                </button>
+                                        <!-- Historial -->
+                                        <div class="card">
+                                            <div class="card-header p-0" id="headingFour">
+                                                <a class="d-flex py-3 pl-3 collapsed" href="#collapseFour"
+                                                    data-toggle="collapse" aria-expanded="false"
+                                                    aria-controls="collapseFour">
+                                                    Historial
+                                                    <span class="flecha ml-auto mr-4 text-secondary">
+                                                        <i class="fas fa-history mr-1 align-middle"></i>
+                                                        <span class="fas fa-angle-right align-middle"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                                data-parent="#accordion">
+                                                <div class="historialdiv d-flex scrollbar1 align-items-center py-3">
+                                                    <div class="d-flex flex-column pr-3 pl-3">
+                                                        <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                                alt="producto"></a>
+                                                    </div>
+                                                    <div class="d-flex flex-column pr-3">
+                                                        <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                                alt="producto"></a>
+                                                    </div>
+                                                    <div class="d-flex flex-column pr-3">
+                                                        <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                                alt="producto"></a>
+                                                    </div>
+                                                    <div class="d-flex flex-column pr-3">
+                                                        <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                                alt="producto"></a>
+                                                    </div>
+                                                    <div class="d-flex flex-column pr-3">
+                                                        <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                                alt="producto"></a>
+                                                    </div>
+                                                    <div class="d-flex flex-column pr-3">
+                                                        <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                                alt="producto"></a>
+                                                    </div>
+                                                    <div class="d-flex flex-column pr-3">
+                                                        <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                                                                alt="producto"></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <!-- Mi cuenta -->
-                                    <div class="card">
-                                        <div class="card-header p-0" id="headingFive">
-                                            <a class="d-flex py-3 pl-3 collapsed" href="#collapseFive"
-                                                data-toggle="collapse" aria-expanded="false"
-                                                aria-controls="collapseFive">
-                                                Mi cuenta
-                                                <span class="flecha ml-auto mr-4 text-secondary">
-                                                    <i class="fas fa-user-circle mr-1 align-middle"></i>
-                                                    <span class="fas fa-angle-right align-middle"></span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
-                                            data-parent="#accordion">
-                                            <div class="list-group list-group-flush">
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-success list-group-item-action">
-                                                    Mi perfil
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-success list-group-item-action">
-                                                    Mis datos
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-success list-group-item-action">
-                                                    Facturación
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-success list-group-item-action">
-                                                    Direcciones
-                                                </button>
+                                        <!-- Mi cuenta -->
+                                        <div class="card">
+                                            <div class="card-header p-0" id="headingFive">
+                                                <a class="d-flex py-3 pl-3 collapsed" href="#collapseFive"
+                                                    data-toggle="collapse" aria-expanded="false"
+                                                    aria-controls="collapseFive">
+                                                    Mi cuenta
+                                                    <span class="flecha ml-auto mr-4 text-secondary">
+                                                        <i class="fas fa-user-circle mr-1 align-middle"></i>
+                                                        <span class="fas fa-angle-right align-middle"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                                                data-parent="#accordion">
+                                                <div class="list-group list-group-flush">
+                                                    <button type="button"
+                                                        class="list-group-item list-group-item-success list-group-item-action">
+                                                        Mi perfil
+                                                    </button>
+                                                    <button type="button"
+                                                        class="list-group-item list-group-item-success list-group-item-action">
+                                                        Mis datos
+                                                    </button>
+                                                    <button type="button"
+                                                        class="list-group-item list-group-item-success list-group-item-action">
+                                                        Facturación
+                                                    </button>
+                                                    <button type="button"
+                                                        class="list-group-item list-group-item-success list-group-item-action">
+                                                        Direcciones
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <!-- Más -->
-                                    <div class="card">
-                                        <div class="card-header p-0" id="headingSix">
-                                            <a class="d-flex py-3 pl-3 collapsed" href="#collapseSix"
-                                                data-toggle="collapse" aria-expanded="false"
-                                                aria-controls="collapseSix">
-                                                Más
-                                                <span class="flecha ml-auto mr-4 text-secondary">
-                                                    <span class="fas fa-angle-right align-middle"></span>
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
-                                            data-parent="#accordion">
-                                            <div class="list-group list-group-flush">
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-info list-group-item-action">
-                                                    Reputación
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-info list-group-item-action">
-                                                    Estadísticas
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-info list-group-item-action">
-                                                    Reviews
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-info list-group-item-action">
-                                                    Seguridad
-                                                </button>
-                                                <button type="button"
-                                                    class="list-group-item list-group-item-danger list-group-item-action">
-                                                    Reportar un problema
-                                                </button>
+                                        <!-- Más -->
+                                        <div class="card">
+                                            <div class="card-header p-0" id="headingSix">
+                                                <a class="d-flex py-3 pl-3 collapsed" href="#collapseSix"
+                                                    data-toggle="collapse" aria-expanded="false"
+                                                    aria-controls="collapseSix">
+                                                    Más
+                                                    <span class="flecha ml-auto mr-4 text-secondary">
+                                                        <span class="fas fa-angle-right align-middle"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                                                data-parent="#accordion">
+                                                <div class="list-group list-group-flush">
+                                                    <button type="button"
+                                                        class="list-group-item list-group-item-info list-group-item-action">
+                                                        Reputación
+                                                    </button>
+                                                    <button type="button"
+                                                        class="list-group-item list-group-item-info list-group-item-action">
+                                                        Estadísticas
+                                                    </button>
+                                                    <button type="button"
+                                                        class="list-group-item list-group-item-info list-group-item-action">
+                                                        Reviews
+                                                    </button>
+                                                    <button type="button"
+                                                        class="list-group-item list-group-item-info list-group-item-action">
+                                                        Seguridad
+                                                    </button>
+                                                    <button type="button"
+                                                        class="list-group-item list-group-item-danger list-group-item-action">
+                                                        Reportar un problema
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <!-- Salir -->
-                                    <div class="card">
-                                        <div class="card-header p-0" id="headingSeven">
-                                            <a class="d-flex py-3 pl-3" href="#salir">
-                                                Salir
-                                            </a>
+                                        <!-- Salir -->
+                                        <div class="card">
+                                            <div class="card-header p-0" id="headingSeven">
+                                                <a class="d-flex py-3 pl-3" href="index.html">
+                                                    Salir
+                                                </a>
+                                            </div>
                                         </div>
+
                                     </div>
+                                    <!-- Fin Botones acordión de bottom panel mobile -->
 
                                 </div>
-                                <!-- Fin Botones acordión de bottom panel mobile -->
+                                <!-- Fin Bottom panel -->
 
                             </div>
-                            <!-- Fin Bottom panel -->
-
                         </div>
+                        <!-- Fin Avatar header y bottom panel -->
+
                     </div>
-                    <!-- Fin Avatar header y bottom panel -->
 
+
+                    <!-- hasta aca va el contenido de la pagina -->
                 </div>
-
-
-                <!-- hasta aca va el contenido de la pagina -->
             </div>
         </main>
 
