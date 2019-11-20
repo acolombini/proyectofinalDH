@@ -11,23 +11,6 @@ a, a:hover, a:visited{
 }
 
 /* Estilos Home */
-#primerDestacado {
-position: relative;
-right: -20px;
-}
-
-#segundoDestacado {
-z-index: 5;
-}
-
-#tercerDestacado {
-position: relative;
-left: -20px;
-}
-#destacados div ul li {
-    text-decoration: none;
-    color: black
-}
 
 
 /* Estilos navbar */
@@ -487,5 +470,5 @@ input[type=number]::-webkit-outer-spin-button {
 .font-3{
     font-size: 2rem;
 }
-}
+
 /*-----------final REGISTRO-----------*/
