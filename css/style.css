@@ -254,6 +254,11 @@ input[type=number]::-webkit-outer-spin-button {
     height: 40vh;
 }
 
+#avatarprofile span img {
+    width: 10rem;
+}
+
+
 /* Nombre y apellido */
 
 .nya {
@@ -373,7 +378,7 @@ input[type=number]::-webkit-outer-spin-button {
 /*  Left-panel   */
 
 #profilelp>div:first-child {
-    height: 15rem;
+    height: 12rem;
 }
 
 #profilelp a, #profilelp button, #tabsbp ul {
@@ -490,7 +495,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media (min-width: 992px) {
     #avatarprofile {
-        height: 15rem;
+        height: 12rem;
+    }
+    #avatarprofile span img {
+        width: 6rem;
     }
     .nya {
         font-size: 1.8rem;
