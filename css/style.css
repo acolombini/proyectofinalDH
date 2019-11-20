@@ -285,7 +285,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Colorear icon al abrir acordión*/
 
-#accordion a:not(.collapsed) i, #accordion .card-header a:not(.collapsed) {
+#accordion .card-header a:not(.collapsed) i, #accordion .card-header a:not(.collapsed) {
     color: black !important;
 }
 
@@ -297,19 +297,35 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1.2rem;
 }
 
-/* Bottom panel */
+/* Bottom panel sm y md */
 
 #accordion .productodiv {
     width: 100%;
     height: 14rem;
 }
 
-#accordion .productodiv img {
+#accordion .favoritodiv {
+    height: 9rem;
+}
+
+#accordion .favoritodiv, .historialdiv {
+    height: 12rem;
+}
+
+#accordion .favoritodiv a i {
+    color: red !important;
+}
+
+#accordion .productodiv img, .favoritodiv img, .historialdiv img {
     border-radius: 2px;
     width: auto;
     max-height: 10rem;
     max-width: 10rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#accordion .historialdiv img {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 #accordion .nombreproducto {
@@ -321,17 +337,35 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 0.8rem;
 }
 
-#accordion div.productodiv:not(:last-of-type) {
-    border-bottom: #c7c7c7 2px solid;
-    border-right: #c7c7c7 2px solid;
-    border-left: #c7c7c7 2px solid;
+/* Esto es totalmente innecesario, lo hice para jugar con css */
+
+#accordion div.productodiv:not(:last-of-type), #accordion div.favoritodiv:not(:last-of-type), .tab-content div.productodiv:not(:last-of-type), .tab-content div.favoritodiv:not(:last-of-type) {
+    border-bottom: #e4e4e4 2px solid;
+    border-right: #e4e4e4 2px solid;
+    border-left: #e4e4e4 2px solid;
+}
+
+#accordion div.productodiv:last-of-type, #accordion div.favoritodiv:last-of-type, .tab-content .productodiv img:hover, .tab-content .favoritodiv img:hover, .tab-content .historialdiv img:hover {
+    border-right: #e4e4e4 2px solid;
+    border-left: #e4e4e4 2px solid;
+}
+
+#accordion div.productodiv:only-child, #accordion div.favoritodiv:only-child, .tab-content div.productodiv:only-child, .tab-content div.favoritodiv:only-child {
+    border-right: #e4e4e4 2px solid;
+    border-left: #e4e4e4 2px solid;
+    border-bottom: 0;
+}
+
+#accordion .historialdiv {
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 /*########################################### Profile.html desktop #######################################*/
 
 /*  Fuente monserrat  */
 
-#profilelp button, .productodiv .botones {
+#profilelp button, #accordion .productodiv .botones {
     font-family: 'Montserrat', sans-serif;
     color: black;
 }
@@ -355,16 +389,16 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #profilelp button span {
-    border-bottom: #c7c7c7 1px solid;
+    border-bottom: #e4e4e4 1px solid;
 }
 
 /*  Tabs   */
 
-#tabsbp a, #tabsbp i, #profilelp a {
+#tabsbp a, #tabsbp i, #profilelp a, .tab-content .botones a {
     color: #495057;
 }
 
-#tabsbp a:hover, #tabsbp a:hover i, #tabsbp a.active, #tabsbp a.active i {
+#tabsbp a:hover, #tabsbp a:hover i, #tabsbp a.active, #tabsbp a.active i, .tab-content .botones a:hover {
     color: black;
 }
 
@@ -374,11 +408,70 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #e4e4e4;
 }
 
-/*  Bottom-panel   */
+/*  Contenido de los tabs */
 
 #profilebp {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
+}
+
+/* Color y hover para los divs con fondo de color*/
+
+.tab-content .productodiv:not(.bg-white) a, .tab-content .productodiv:not(.bg-white) span {
+    color: white !important;
+}
+
+.tab-content .productodiv:not(.bg-white) a:hover {
+    color: rgb(219, 219, 219) !important;
+}
+
+/* Tamaño de los contenedores y propiedades de su contenido*/
+
+.tab-content .productodiv {
+    width: 100%;
+    height: 9rem;
+}
+
+.tab-content .botones {
+    width: 40%;
+}
+
+.tab-content .favoritodiv {
+    height: 8rem;
+}
+
+.tab-content .favoritodiv, .historialdiv {
+    height: 12rem;
+}
+
+.tab-content .favoritodiv a i {
+    color: red !important;
+}
+
+.tab-content .historialdiv {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Tamaño de las imagenes, borde y sombreado*/
+
+.tab-content .productodiv img, .tab-content .favoritodiv img, .tab-content .historialdiv img {
+    border-radius: 2px;
+    width: auto;
+    max-height: 10rem;
+    max-width: 10rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Propiedades de letras */
+
+.tab-content .nombreproducto {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+}
+
+.tab-content .precioycantidad {
+    font-size: 0.8rem;
 }
 
 /*  Bottom Panel Scrollbar   */
@@ -411,6 +504,7 @@ input[type=number]::-webkit-outer-spin-button {
     #profilebp {
         max-height: 20rem;
         overflow-y: auto;
+        overflow-x: hidden;
     }
 }
 
