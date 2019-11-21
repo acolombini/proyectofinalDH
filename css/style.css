@@ -2,9 +2,11 @@
     font-family: 'Nunito', sans-serif;
 }
 body{
-    background: url("../img/pattern.png") fixed repeat;
+    background: url("../img/bg.jpg") fixed repeat;
 }
-
+.container-fluid{
+    background-color: rgba(0, 0, 0, 13%);
+}
 a, a:hover, a:visited{
     text-decoration: none;
     color:black;
@@ -15,8 +17,15 @@ a, a:hover, a:visited{
 
 /* Estilos navbar */
 .navbar{
-    background-color: rgba(255, 255, 255, 0.5);
-    
+   /* background-color: rgba(255, 255, 255, 0.5);
+    */
+    background-color: rgba(210, 210, 210, 90%);
+}
+.navbar-brand{
+    width: min-content;
+}
+.navbar-brand img{
+    width: 21%;
 }
 /* -- boton Hamburguesa -- */
 
@@ -107,15 +116,14 @@ a, a:hover, a:visited{
 
 
 /* Estilos main section */
-main .container{
-    background-color: rgba(255, 255, 255, 0.5);
-  
-}
+
 
 /* Estilos footer */
 
 footer{
-    background-color: rgba(255, 255, 255, 0.5);
+   /* background-color: rgba(255, 255, 255, 0.5);
+    */
+    background-color: rgba(210, 210, 210, 90%);
 }
 
 
@@ -530,11 +538,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Opacity md+ */
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
     .opacitylogin {
         background-color: rgba(255, 255, 255, 90%);
     }
-}
+}*/
 
 /* 
 -Quitando el container en sm e inferior
@@ -545,18 +553,19 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media (max-width: 767.98px) {
     main .container {
-        background-color: rgba(255, 255, 255, 0);
+        /*background-color: rgba(255, 255, 255, 0);*/
         max-width: 100%;
         padding-right: 0 !important;
         padding-left: 0 !important;
     }
 }
+
 /*#############################---------REGISTRO---------##############################*/
 .registro section div form{
     font-size: 1.1rem;
 }
 .bg-transblack{
-    background-color: rgba(0, 0, 0, 50%);
+    background-color: rgba(10, 10, 10, 50%);
 }
 .bg-translight{
     background-color: rgba(255, 255, 255, 90%)!important;
