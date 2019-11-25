@@ -1,0 +1,585 @@
+*{
+    font-family: 'Nunito', sans-serif;
+}
+body{
+    background: url("../img/bg.jpg") fixed repeat;
+}
+.container-fluid{
+    background-color: rgba(0, 0, 0, 13%);
+}
+a, a:hover, a:visited{
+    text-decoration: none;
+    color:black;
+}
+
+/* Estilos Home */
+
+
+/* Estilos navbar */
+.navbar{
+   /* background-color: rgba(255, 255, 255, 0.5);
+    */
+    background-color: rgba(210, 210, 210, 90%);
+}
+.navbar-brand{
+    width: min-content;
+}
+.navbar-brand img{
+    width: 21%;
+}
+/* -- boton Hamburguesa -- */
+
+.nav-collapse {
+    position: relative;
+    cursor: pointer;
+    z-index: 99999;
+    padding: 1rem;
+}
+
+.nav-collapse span {
+    display: block;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+}
+
+.nav-collapse span:before, .nav-collapse span:after {
+    content: "";
+    display: block;
+}
+
+.nav-collapse span, .nav-collapse span:before, .nav-collapse span:after {
+    height: 4px;
+    background: black;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+    -moz-transition: 0.2s all;
+    -ms-transition: 0.2s all;
+    -o-transition: 0.2s all;
+}
+
+.nav-collapse span:before {
+    -webkit-transform: translate(0%, 10px);
+    -ms-transform: translate(0%, 10px);
+    transform: translate(0%, 10px);
+}
+
+.nav-collapse span:after {
+    -webkit-transform: translate(0%, -14px);
+    -ms-transform: translate(0%, -14px);
+    transform: translate(0%, -14px);
+}
+
+#nav.open .nav-collapse span {
+    background: transparent;
+}
+
+#nav.open .nav-collapse span:before {
+    -webkit-transform: translateY(0px) rotate(-135deg);
+    -ms-transform: translateY(0px) rotate(-135deg);
+    transform: translateY(0px) rotate(-135deg);
+}
+
+#nav.open .nav-collapse span:after {
+    -webkit-transform: translateY(-4px) rotate(135deg);
+    -ms-transform: translateY(-4px) rotate(135deg);
+    transform: translateY(-4px) rotate(135deg);
+}
+/* -- fin boton Hamburguesa -- */
+
+
+/* Etilos del dropdown */
+.dropdown-menu{
+ background-color: rgba(255, 255, 255, 0.5);
+ }
+.dropdown-submenu {
+    position: relative;    
+}
+
+.dropdown-submenu>a:after {
+    content: "\f0da";
+    float: right;
+    border: none;
+    font-family: 'FontAwesome';
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+
+/* Estilos main section */
+
+
+/* Estilos footer */
+
+footer{
+   /* background-color: rgba(255, 255, 255, 0.5);
+    */
+    background-color: rgba(210, 210, 210, 90%);
+}
+
+
+footer div ul:nth-child(1){
+    font-size: 3rem;
+}
+.link-footer{
+    display: flex;
+    width: 100%;
+    height: 3em;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+}
+.link-footer:hover{
+    text-decoration: none;
+    color: white;
+}
+/*---FIN FOOTER*/
+
+
+
+/* estilos lista-producto */
+.box{
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    
+}
+.box:hover{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+
+
+/* estilos detalle-producto */
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.number-input {
+    border: 2px solid #ddd;
+    display: inline-flex;
+}
+
+.number-input,
+.number-input * {
+    box-sizing: border-box;
+}
+
+.number-input button {
+    outline:none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+}
+
+.number-input button:before,
+.number-input button:after {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    width: 1rem;
+    height: 2px;
+    background-color: #212121;
+    transform: translate(-50%, -50%);
+}
+.number-input button.plus:after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type=number] {
+    font-family: sans-serif;
+    max-width: 5rem;
+    padding: .5rem;
+    border: solid #ddd;
+    border-width: 0 2px;
+    font-size: 1rem;
+    height: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+.float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:#25d366;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    font-size:30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index:100;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    -ms-border-radius:50px;
+    -o-border-radius:50px;
+}
+
+.my-float{
+    margin-top:16px;
+}
+
+/*################# Profile.html sm #################*/
+
+/* Avatar */
+
+#avatarprofile {
+    height: 40vh;
+}
+
+#avatarprofile span img {
+    width: 10rem;
+}
+
+
+/* Nombre y apellido */
+
+.nya {
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1.3rem;
+}
+
+/***************** BOTONES ACORDIÓN *****************/
+
+/* Chau bordes redondeados */
+
+#accordion .card, #accordion .card-header, #accordion .card-header button {
+    border-radius: 0 !important;
+}
+
+/* Ancho del contenido*/
+
+#accordion .card-header button {
+    padding: .75rem 1.25rem !important;
+}
+
+/* Rotación de la flecha al cliquear*/
+
+#accordion a:not(.collapsed) .fa-angle-right {
+    transform: rotate(90deg);
+    color: black;
+}
+
+/* Colorear icon al abrir acordión*/
+
+#accordion .card-header a:not(.collapsed) i, #accordion .card-header a:not(.collapsed) {
+    color: black !important;
+}
+
+/* Decorando links*/
+
+#accordion .card a {
+    text-decoration: none !important;
+    color: rgb(71, 71, 71);
+    font-size: 1.2rem;
+}
+
+/* Bottom panel sm y md */
+
+#accordion .productodiv {
+    width: 100%;
+    height: 14rem;
+}
+
+#accordion .favoritodiv {
+    height: 9rem;
+}
+
+#accordion .favoritodiv, .historialdiv {
+    height: 12rem;
+}
+
+#accordion .favoritodiv a i {
+    color: red !important;
+}
+
+#accordion .productodiv img, .favoritodiv img, .historialdiv img {
+    border-radius: 2px;
+    width: auto;
+    max-height: 10rem;
+    max-width: 10rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#accordion .historialdiv img {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+#accordion .nombreproducto {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+}
+
+#accordion .precioycantidad {
+    font-size: 0.8rem;
+}
+
+/* Esto es totalmente innecesario, lo hice para jugar con css */
+
+#accordion div.productodiv:not(:last-of-type), #accordion div.favoritodiv:not(:last-of-type), .tab-content div.productodiv:not(:last-of-type), .tab-content div.favoritodiv:not(:last-of-type) {
+    border-bottom: #e4e4e4 2px solid;
+    border-right: #e4e4e4 2px solid;
+    border-left: #e4e4e4 2px solid;
+}
+
+#accordion div.productodiv:last-of-type, #accordion div.favoritodiv:last-of-type, .tab-content .productodiv img:hover, .tab-content .favoritodiv img:hover, .tab-content .historialdiv img:hover {
+    border-right: #e4e4e4 2px solid;
+    border-left: #e4e4e4 2px solid;
+}
+
+#accordion div.productodiv:only-child, #accordion div.favoritodiv:only-child, .tab-content div.productodiv:only-child, .tab-content div.favoritodiv:only-child {
+    border-right: #e4e4e4 2px solid;
+    border-left: #e4e4e4 2px solid;
+    border-bottom: 0;
+}
+
+#accordion .historialdiv {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/*########################################### Profile.html desktop #######################################*/
+
+/*  Fuente monserrat  */
+
+#profilelp button, #accordion .productodiv .botones {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+}
+
+/*  Left-panel   */
+
+#profilelp>div:first-child {
+    height: 12rem;
+}
+
+#profilelp a, #profilelp button, #tabsbp ul {
+    border: 0 !important;
+}
+
+#profilelp a {
+    padding: 0.25rem 1rem !important;
+}
+
+#profilelp a:hover, #profilelp a:focus {
+    color: black;
+}
+
+#profilelp button span {
+    border-bottom: #e4e4e4 1px solid;
+}
+
+/*  Tabs   */
+
+#tabsbp a, #tabsbp i, #profilelp a, .tab-content .botones a {
+    color: #495057;
+}
+
+#tabsbp a:hover, #tabsbp a:hover i, #tabsbp a.active, #tabsbp a.active i, .tab-content .botones a:hover {
+    color: black;
+}
+
+#tabsbp {
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    background-color: #e4e4e4;
+}
+
+/*  Contenido de los tabs */
+
+#profilebp {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+/* Color y hover para los divs con fondo de color*/
+
+.tab-content .productodiv:not(.bg-white) a, .tab-content .productodiv:not(.bg-white) span {
+    color: white !important;
+}
+
+.tab-content .productodiv:not(.bg-white) a:hover {
+    color: rgb(219, 219, 219) !important;
+}
+
+/* Tamaño de los contenedores y propiedades de su contenido*/
+
+.tab-content .productodiv {
+    width: 100%;
+    height: 9rem;
+}
+
+.tab-content .botones {
+    width: 40%;
+}
+
+.tab-content .favoritodiv {
+    height: 8rem;
+}
+
+.tab-content .favoritodiv, .historialdiv {
+    height: 12rem;
+}
+
+.tab-content .favoritodiv a i {
+    color: red !important;
+}
+
+.tab-content .historialdiv {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Tamaño de las imagenes, borde y sombreado*/
+
+.tab-content .productodiv img, .tab-content .favoritodiv img, .tab-content .historialdiv img {
+    border-radius: 2px;
+    width: auto;
+    max-height: 10rem;
+    max-width: 10rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Propiedades de letras */
+
+.tab-content .nombreproducto {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+}
+
+.tab-content .precioycantidad {
+    font-size: 0.8rem;
+}
+
+/*  Bottom Panel Scrollbar   */
+
+.scrollbar1::-webkit-scrollbar, .scrollbar1::-webkit-scrollbar-track {
+    width: 0.3rem;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.scrollbar1::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(73, 80, 87, 0.7);
+}
+
+/*  Desktop media queries  */
+
+@media (min-width: 992px) {
+    #avatarprofile {
+        height: 12rem;
+    }
+    #avatarprofile span img {
+        width: 6rem;
+    }
+    .nya {
+        font-size: 1.8rem;
+    }
+    #avatarprofile, #tabsbp, #profilebp, #profilelp div, #profilelp button {
+        border-top-right-radius: 0.3rem;
+        border-top-left-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+        border-bottom-left-radius: 0.3rem;
+    }
+    #profilebp {
+        max-height: 20rem;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+/*########################################## Login.html #######################################*/
+
+.login {
+    min-height: 100vh;
+}
+
+/* Opacity en sm */
+
+.opacitylogin {
+    background-color: rgba(255, 255, 255, 80%);
+}
+
+/* Opacity md+ */
+
+/*@media (min-width: 768px) {
+    .opacitylogin {
+        background-color: rgba(255, 255, 255, 90%);
+    }
+}*/
+
+/* 
+-Quitando el container en sm e inferior
+-Quitando márgenes en sm e inferior
+*/
+
+/* CUANDO UNIFIQUEMOS LOS BREAKPOINTS HAY QUE HACERLO AL REVÉS (MOBILE FIRST) */
+
+@media (max-width: 767.98px) {
+    main .container {
+        /*background-color: rgba(255, 255, 255, 0);*/
+        max-width: 100%;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+}
+
+/*#############################---------REGISTRO---------##############################*/
+.registro section div form{
+    font-size: 1.1rem;
+}
+.bg-transblack{
+    background-color: rgba(10, 10, 10, 50%);
+}
+.bg-translight{
+    background-color: rgba(255, 255, 255, 90%)!important;
+}
+.preset-a{
+    color: inherit;
+    text-decoration: none;
+}
+.preset-a:hover{
+    color: inherit;
+    text-decoration: none;
+}
+.font-3{
+    font-size: 2rem;
+}
+
+/*-----------final REGISTRO-----------*/
