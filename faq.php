@@ -73,7 +73,7 @@
                         <div class="card-footer text-muted">
                            ¿Pudiste responder tu duda?
                            <br>
-                           <a href="contact.html">¡Contactanos!</a>
+                           <a href="contact.php">¡Contactanos!</a>
                         </div>
                      </div>
                   </div> <!-- FIN PRIMER COLAPSABLE LOGIN-->
@@ -102,7 +102,7 @@
                         <div class="card-footer text-muted">
                            ¿Pudiste responder tu duda?
                            <br>
-                           <a href="contact.html">¡Contactanos!</a>
+                           <a href="contact.php">¡Contactanos!</a>
                         </div>
                      </div>
                   </div> <!-- FIN SEGUNDO COLAPSABLE LOGIN-->
@@ -131,7 +131,7 @@
                         <div class="card-footer text-muted">
                            ¿Pudiste responder tu duda?
                            <br>
-                           <a href="contact.html">¡Contactanos!</a>
+                           <a href="contact.php">¡Contactanos!</a>
                         </div>
                      </div>
                   </div> <!-- FIN TERCER COLAPSABLE LOGIN-->
@@ -162,7 +162,7 @@
                         <div class="card-footer text-muted">
                            ¿Pudiste responder tu duda?
                            <br>
-                           <a href="contact.html">¡Contactanos!</a>
+                           <a href="contact.php">¡Contactanos!</a>
                         </div>
                      </div>
                   </div> <!-- FIN CUARTO COLAPSABLE-->
@@ -189,7 +189,7 @@
                            <div class="card-footer text-muted">
                               ¿Pudiste responder tu duda?
                               <br>
-                              <a href="contact.html">¡Contactanos!</a>
+                              <a href="contact.php">¡Contactanos!</a>
                            </div>
                         </div>
                      </div> <!-- FIN QUINTO COLAPSABLE-->
@@ -215,7 +215,7 @@
                               <div class="card-footer text-muted">
                                  ¿Pudiste responder tu duda?
                                  <br>
-                                 <a href="contact.html">¡Contactanos!</a>
+                                 <a href="contact.php">¡Contactanos!</a>
                               </div>
                            </div>
                         </div> <!-- FIN QUINTO COLAPSABLE-->
