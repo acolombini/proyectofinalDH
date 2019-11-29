@@ -1,36 +1,79 @@
 <?php
+session_start();
 
-/* Persistencia */
-$usuario = [
-    "cuenta" => [
-        "nombre" => empty($_POST["nombre"]) ? "" : $_POST["nombre"],
-        "apellido" => empty($_POST["apellido"]) ? "" : $_POST["apellido"],
-        "email" => empty($_POST["email"]) ? "" : $_POST["email"],
-        "password" => ""
+# Dropdowns
+$dropdowns = [
+    "provincias" => [
+        "PBA" => "Buenos Aires",
+        "CA" => "Catamarca",
+        "CH" => "Chaco",
+        "CT" => "Chubut",
+        "CB" => "Córdoba",
+        "CR" => "Corrientes",
+        "ER" => "Entre Ríos",
+        "FO" => "Formosa",
+        "JY" => "Jujuy",
+        "LP" => "La Pampa",
+        "LR" => "La Rioja",
+        "MZ" => "Mendoza",
+        "MI" => "Misiones",
+        "NQ" => "Neuquén",
+        "RN" => "Río Negro",
+        "SA" => "Salta",
+        "SJ" => "San Juan",
+        "SL" => "San Luis",
+        "SC" => "Santa Cruz",
+        "SF" => "Santa Fe",
+        "SE" => "Santiago del Estero",
+        "TF" => "Tierra del Fuego",
+        "TU" => "Tucumán"
     ],
-    "datos" => [
-        "tel" => [
-            "nro-tel" => empty($_POST["nro-tel"]) ? "" : $_POST["nro-tel"],
-            "tipo-tel" => empty($_POST["tipo-tel"]) ? "" : $_POST["tipo-tel"]
-        ],
-        "doc" => [
-            "nro-doc" => empty($_POST["nro-doc"]) ? "" : $_POST["nro-doc"],
-            "tipo-doc" => empty($_POST["tipo-doc"]) ? "" : $_POST["tipo-doc"]
-        ]
-    ],
-    "dires" => [
-        0 => [
-            "ciudad" => empty($_POST["ciudad"]) ? "" : $_POST["ciudad"],
-            "cpostal" => empty($_POST["cpostal"]) ? "" : $_POST["ciudad"],
-            "calle" => empty($_POST["calle"]) ? "" : $_POST["calle"],
-            "nro-calle" => empty($_POST["nro-calle"]) ? "" : $_POST["nro-calle"],
-            "piso" => empty($_POST["piso"]) ? "" : $_POST["piso"],
-            "depto" => empty($_POST["depto"]) ? "" : $_POST["depto"]
-        ]
+    "documentos" => [
+        "DNI" => "Documento Nacional de Identidad",
+        "CI" => "Cédula de Identidad",
+        "LC" => "Libreta Cívica",
+        "LE" => "Libreta de Enrolamiento",
+        "OTRO" => "Otro..."
     ]
 ];
 
+# Validación
 if ($_POST) {
+
+    /* Estructura del array de usuario
+    $usuario = [
+        "id" => "",
+        "cuenta" => [
+            "nombre" => "", REQUERIDO
+            "apellido" => "", REQUERIDO
+            "email" => "", REQUERIDO
+            "password" => "" REQUERIDO
+        ],
+        "datos" => [ SE GENERA SI RELLENAN DATOS EN LA SECCIÓN OPCIONAL
+            "tel" => [
+                "nro-tel" => "", OPCIONAL
+                "tipo-tel" => "" REQUERIDO si se rellena "nro-tel"
+            ],
+            "doc" => [
+                "nro-doc" => "", OPCIONAL
+                "tipo-doc" => "" REQUERIDO si se rellena "nro-doc" (EL VALOR POR DEFECTO SIEMPRE SERÁ "DNI" CUANDO SE RELLENA "nro-doc")
+            ]
+        ],
+        "direcciones" => [ SE GENERA SI RELLENAN DATOS EN LA SECCIÓN DE DIRECCIONES
+            0 => [
+                "provincia" => "", OPCIONAL - REQUERIDO si se rellenan "ciudad", "cpostal", "calle", "nro-calle", "nro-piso" y "depto"
+                "ciudad" => "", OPCIONAL - REQUERIDO si se rellenan "cpostal", "calle", "nro-calle", "nro-piso" y "depto"
+                "cpostal" => "", OPCIONAL - REQUERIDO si se rellena "calle", "cpostal", "nro-calle", "nro-piso" y "depto"
+                "calle" => "", OPCIONAL - REQUERIDO si se rellenan "nro-calle", "nro-piso" y "depto"
+                "nro-calle" => "", OPCIONAL - REQUERIDO si se rellena "calle", "nro-piso" y "depto"
+                "nro-piso" => "", OPCIONAL - REQUERIDO si se rellena "depto"
+                "depto" => "" OPCIONAL - REQUERIDO si se rellena "nro-piso"
+            ]
+        ]
+    ];
+    */
+
+    # Iniciando array de errores
     $errores = [];
 
     /*chequeando el campo de nombre*/
@@ -123,7 +166,7 @@ if ($_POST) {
                 <!--formulario OBLIGATORIO -->
                 <section class="ml-3 mr-3  ">
                     <div class="container bg-transparent">
-                        <form action="registro.php" method="POST">
+                        <form action="register.php" method="POST">
                             <div class=" shadow m-1 mb-3 p-4 bg-transblack">
 
                                 <!-- Errores php -->
@@ -143,26 +186,26 @@ if ($_POST) {
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap">
                                             <div class="w-100 mr-md-3">
                                                 <label for="nombre" class="mb-2">Nombre</label>
-                                                <input type="text" name="nombre" id="nombre" value="<?= $usuario["cuenta"]["nombre"] ?>" class="bg-light border-white p-1 px-4 mb-2 form-control shadow" autofocus required>
+                                                <input type="text" name="nombre" id="nombre" value="<?= empty($_POST["nombre"]) ? "" : $_POST["nombre"] ?>" class="bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Nombre..." autofocus required>
                                             </div>
                                             <div class="w-100 ml-md-3">
                                                 <label for="apellido" class="mb-2">Apellido</label>
-                                                <input type="text" name="apellido" id="apellido" value="<?= $usuario["cuenta"]["apellido"] ?>" class=" bg-light border-white p-1 px-4 mb-2 form-control shadow" required>
+                                                <input type="text" name="apellido" id="apellido" value="<?= empty($_POST["apellido"]) ? "" : $_POST["apellido"] ?>" class=" bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Apellido.." required>
                                             </div>
                                         </div>
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap">
                                             <div class="w-100 mr-md-3">
                                                 <label for="email" class="mb-2">E-mail</label>
-                                                <input type="email" name="email" id="email" value="<?= $usuario["cuenta"]["email"] ?>" class=" bg-light border-white p-1 px-4 mb-2 form-control shadow" required>
+                                                <input type="email" name="email" id="email" value="<?= empty($_POST["email"]) ? "" : $_POST["email"] ?>" class=" bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="email@example.com" required>
                                             </div>
                                             <div class="w-100 ml-md-3 d-md-flex">
-                                                <div class="mr-md-3">
+                                                <div class="mr-md-2 w-100">
                                                     <label for="password" class="mb-2">Contraseña</label>
-                                                    <input type="password" name="password" id="password" class="bg-light border-white p-1 px-4 mb-2 form-control shadow" required>
+                                                    <input type="password" name="password" id="password" class="w-100 bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Contraseña..." required>
                                                 </div>
-                                                <div class="ml-md-3">
+                                                <div class="ml-md-2 w-100">
                                                     <label for="cpassword" class="mb-2 d-flex flex-nowrap">Confirmar</label>
-                                                    <input type="password" name="cpassword" id="cpassword" class="bg-light border-white p-1 px-4 mb-2 form-control shadow" required>
+                                                    <input type="password" name="cpassword" id="cpassword" class="w-100 bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Confirmar..." required>
                                                 </div>
                                             </div>
                                         </div>
@@ -183,15 +226,15 @@ if ($_POST) {
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap">
                                             <div class="w-100 mr-md-3">
                                                 <label class="mb-2 mr-md-3" for="nro-tel">Teléfono</label>
-                                                <input type="number" name="nro-tel" id="nro-tel" value="<?= $usuario["datos"]["tel"]["nro-tel"] ?>" class="bg-light border-white p-1 px-4 mb-2 form-control shadow" placeholder="Número de teléfono">
+                                                <input type="text" name="nro-tel" id="nro-tel" value="<?= empty($_POST["nro-tel"]) ? "" : $_POST["nro-tel"] ?>" class="bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Número...">
                                             </div>
                                             <div class="d-flex flex-wrap justify-content-around d-md-block text-md-left ml-md-3 w-100 align-self-end">
                                                 <div class="custom-control custom-radio mb-md-1">
-                                                    <input type="radio" id="tipo-celular" name="tipo-tel" value="cel" class="custom-control-input" checked>
+                                                    <input type="radio" id="tipo-celular" name="tipo-tel" value="cel" class="custom-control-input" <?php if (isset($_POST['tipo-tel']) && $_POST['tipo-tel'] == "cel") echo "checked"; ?>>
                                                     <label class="custom-control-label" for="tipo-celular">Celular</label>
                                                 </div>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" id="tipo-fijo" name="tipo-tel" value="fijo" class="custom-control-input">
+                                                    <input type="radio" id="tipo-fijo" name="tipo-tel" value="fijo" class="custom-control-input" <?php if (isset($_POST['tipo-tel']) && $_POST['tipo-tel'] == "fijo") echo "checked"; ?>>
                                                     <label class="custom-control-label" for="tipo-fijo">Fijo</label>
                                                 </div>
                                             </div>
@@ -203,17 +246,24 @@ if ($_POST) {
                                     <div class="bg-transparent d-flex flex-column">
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap">
                                             <div class="w-100 mr-md-3">
-                                                <label class="mb-2" for="tipo-doc">Tipo</label>
-                                                <select name="tipo-doc" id="tipo-doc" class="bg-light border-white p-1 px-4 mb-2 form-control shadow">
-                                                    <option value="DNI">DNI</option>
-                                                    <option value="DNI">DNI</option>
-                                                    <option value="DNI">DNI</option>
-                                                    <option value="DNI">DNI</option>
+                                                <label class="mb-2" for="tipo-doc">Tipo de documento</label>
+                                                <select name="tipo-doc" id="tipo-doc" class="bg-light border-white py-1 px-3 mb-2 form-control shadow">
+                                                    <?php foreach ($dropdowns["documentos"] as $codigo => $documento) :
+                                                        if (isset($_POST["tipo-doc"]) && $_POST["tipo-doc"] == $codigo) : ?>
+                                                            <option value="<?= $codigo ?>" selected>
+                                                                <?= $documento ?>
+                                                            </option>
+                                                        <?php else : ?>
+                                                            <option value="<?= $codigo ?>">
+                                                                <?= $documento ?>
+                                                            </option>
+                                                    <?php endif;
+                                                    endforeach; ?>
                                                 </select>
                                             </div>
                                             <div class="w-100 ml-md-3">
                                                 <label for="nro-doc" class="mb-2">Documento</label>
-                                                <input type="number" name="nro-doc" id="nro-doc" value="<?= $usuario["datos"]["doc"]["nro-doc"] ?>" class="bg-light border-white p-1 px-4 mb-2 form-control shadow" placeholder="Número">
+                                                <input type="text" name="nro-doc" id="nro-doc" value="<?= empty($_POST["nro-doc"]) ? "" : $_POST["nro-doc"] ?>" class="bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Número...">
                                             </div>
                                         </div>
                                     </div>
@@ -223,27 +273,52 @@ if ($_POST) {
                                     <div class="bg-transparent d-flex flex-column">
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap">
                                             <div class="w-100 mr-md-3">
-                                                <label class="mb-2">Dirección</label>
-                                                <input type="text" name="ciudad" value="<?= $usuario["dires"]["0"]["ciudad"] ?>" class="bg-light border-white p-1 px-4 mb-2 form-control shadow" placeholder="Ciudad">
+                                                <label class="mb-2">Ciudad</label>
+                                                <input type="text" name="ciudad" value="<?= empty($_POST["ciudad"]) ? "" : $_POST["ciudad"] ?>" class="bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Ciudad...">
                                             </div>
-                                            <div class="w-100 ml-md-3 align-self-md-end">
-                                                <input type="number" name="cpostal" value="<?= $usuario["dires"]["0"]["cpostal"] ?>" class="bg-light border-white p-1 px-4 mb-2 form-control shadow" placeholder="Código postal">
+                                            <div class="w-100 ml-md-3 d-md-flex">
+                                                <div class="w-100 mr-md-2">
+                                                    <label class="mb-2" id="provincia" for="tipo-doc">Provincia</label>
+                                                    <select name="provincia" id="provincia" class="w-100 bg-light border-white py-1 px-3 mb-2 form-control shadow">
+                                                        <?php foreach ($dropdowns["provincias"] as $codigo => $provincia) :
+                                                            if (isset($_POST["provincia"]) && $_POST["provincia"] == $codigo) : ?>
+                                                                <option value="<?= $codigo ?>" selected>
+                                                                    <?= $provincia ?>
+                                                                </option>
+                                                            <?php else : ?>
+                                                                <option value="<?= $codigo ?>">
+                                                                    <?= $provincia ?>
+                                                                </option>
+                                                        <?php endif;
+                                                        endforeach; ?>
+                                                    </select>
+                                                </div>
+                                                <div class="w-100 ml-md-2">
+                                                    <label class="mb-2" id="Código postal" for="cpostal">Código postal</label>
+                                                    <input type="text" name="cpostal" id="cpostal" value="<?= empty($_POST["cpostal"]) ? "" : $_POST["cpostal"] ?>" class="w-100 bg-light border-white py-1 pl-4 pr-1 mb-2 form-control shadow" placeholder="Código...">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap">
-                                            <div class="w-100 mr-md-3">
-                                                <input type="text" name="calle" value="<?= $usuario["dires"]["0"]["calle"] ?>" class=" bg-light border-white p-1 px-4 mb-2 form-control shadow" placeholder="Calle">
+                                            <div class="w-100 mr-md-3 d-md-flex">
+                                                <div class="w-100 mr-md-2">
+                                                    <label class="mb-2" id="calle" for="calle">Calle</label>
+                                                    <input type="text" name="calle" id="calle" value="<?= empty($_POST["calle"]) ? "" : $_POST["calle"] ?>" class="w-100 bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Calle...">
+                                                </div>
+                                                <div class="w-100 ml-md-2">
+                                                    <label class="mb-2" for="nro-calle">Número de calle</label>
+                                                    <input type="text" name="nro-calle" id="nro-calle" value="<?= empty($_POST["nro-calle"]) ? "" : $_POST["nro-calle"] ?>" class="w-100 bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Número..">
+                                                </div>
                                             </div>
-                                            <div class="w-100 ml-md-3 align-self-md-end">
-                                                <input type="number" name="nro-calle" value="<?= $usuario["dires"]["0"]["nro-calle"] ?>" class="bg-light border-white p-1 px-4 mb-2 form-control shadow" placeholder="Número de calle">
-                                            </div>
-                                        </div>
-                                        <div class="w-100 d-flex flex-wrap flex-md-nowrap">
-                                            <div class="w-100 mr-md-3">
-                                                <input type="number" name="piso" value="<?= $usuario["dires"]["0"]["piso"] ?>" class="bg-light border-white p-1 px-4 mb-2 form-control shadow" placeholder="Piso">
-                                            </div>
-                                            <div class="w-100 ml-md-3">
-                                                <input type="text" name="depto" value="<?= $usuario["dires"]["0"]["depto"] ?>" class="bg-light border-white p-1 px-4 mb-2 form-control shadow" placeholder="Departamento">
+                                            <div class="w-100 ml-md-3 d-md-flex">
+                                                <div class="w-100 mr-md-2">
+                                                    <label class="mb-2" for="nro-piso">Piso</label>
+                                                    <input type="text" name="nro-piso" id="nro-piso" value="<?= empty($_POST["nro-piso"]) ? "" : $_POST["nro-piso"] ?>" class="bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Número...">
+                                                </div>
+                                                <div class="w-100 ml-md-2">
+                                                    <label class="mb-2" for="depto">Departamento</label>
+                                                    <input type="text" name="depto" id="depto" value="<?= empty($_POST["depto"]) ? "" : $_POST["depto"] ?>" class="w-100 bg-light border-white py-1 px-3 mb-2 form-control shadow" placeholder="Depto...">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
