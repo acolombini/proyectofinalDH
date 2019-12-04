@@ -42,6 +42,15 @@ $dropdowns = [
     ]
 ];
 
+############################## Funciones ##############################
+#Calcular edad
+function edad($dia, $mes, $anio)
+{
+    $nac = new DateTime($dia . $mes . $anio);
+    $hoy = new DateTime('00:00:00');
+    $dif = date_diff($nac, $hoy);
+    return $dif->format('%r%y');
+};
 ############################## VALIDACIÓN ##############################
 
 if ($_POST) {
@@ -124,32 +133,23 @@ if ($_POST) {
         }
     }
 
-    # Checkeando el campo de fecha de nacimiento
-    if (empty($_POST["nac_d"]) || empty($_POST["nac_m"]) || empty($_POST["nac_a"])) { # Error de fecha incompleta
+    # Checkeando el campo de fecha de nacimiento + calculando edad
+    if (empty($_POST["nac_d"]) || empty($_POST["nac_m"]) || empty($_POST["nac_a"])) { # Error si no se rellenan los campos
         $errores[] = "Por favor ingresa tu fecha de nacimiento!";
     } elseif (!(empty($_POST["nac_d"]) && empty($_POST["nac_d"]) && empty($_POST["nac_d"]))) {
-
-        function age($dia, $mes, $anio)
-        {
-            $nac = new DateTime($dia . $mes . $anio);
-            $hoy = new DateTime('00:00:00');
-            $dif = date_diff($nac, $hoy);
-            return $dif->format('%r%y');
-        };
-
-        if (!preg_match("/^0[1-9]|[1-2][0-9]|3[0-1]$/", $_POST["nac_d"])) { # Error de caracteres mínimos
+        if (!preg_match("/^0[1-9]|[1-2][0-9]|3[0-1]$/", $_POST["nac_d"])) { # Error de formato incorrecto = días 
             $errores[] = "El día de la fecha de nacimiento es incorrecto!";
-        } elseif (!preg_match("/^0[1-9]|1[1-2]$/", $_POST["nac_m"])) { # Error de caracteres mínimos
+        } elseif (!preg_match("/^0[1-9]|1[1-2]$/", $_POST["nac_m"])) { # Error de formato incorrecto = meses
             $errores[] = "El mes de la fecha de nacimiento es incorrecto!";
-        } elseif (!preg_match("/^(19|20)\d{2}$/", $_POST["nac_a"])) { # Error de caracteres mínimos
+        } elseif (!preg_match("/^(19|20)\d{2}$/", $_POST["nac_a"])) { # Error de formato incorrecto = años
             $errores[] = "El año de la fecha de nacimiento es incorrecto!";
-        } elseif (!checkdate($_POST["nac_m"], $_POST["nac_d"], $_POST["nac_a"])) {
+        } elseif (!checkdate($_POST["nac_m"], $_POST["nac_d"], $_POST["nac_a"])) { # Error si la fecha existe en el calendario
             $errores[] = "La fecha de nacimiento no existe!";
-        } elseif (intval(age($_POST["nac_a"], $_POST["nac_m"], $_POST["nac_d"])) < 0) {
+        } elseif (intval(edad($_POST["nac_a"], $_POST["nac_m"], $_POST["nac_d"])) < 0) { # Error si el usuario viene del futuro
             $errores[] = "Todavía no naciste!";
-        } elseif (intval(age($_POST["nac_a"], $_POST["nac_m"], $_POST["nac_d"])) < 18) {
+        } elseif (intval(edad($_POST["nac_a"], $_POST["nac_m"], $_POST["nac_d"])) < 18) { # Error si el usuario no es mayor de edad
             $errores[] = "No sos mayor de edad!";
-        } else {
+        } else { # Success!
             $usuario["cuenta"]["nac"] = $_POST["nac_d"] . "-" . $_POST["nac_m"] . "-" . $_POST["nac_a"];
         }
     }
