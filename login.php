@@ -3,6 +3,7 @@ session_start();
 
 if (isset($_SESSION["usuario"])) { # Redirección de usuario logueado
     header('Location: index.php');
+    exit();
 }
 
 # Persistencia
@@ -76,6 +77,7 @@ if ($_POST) {
 
         $_SESSION["usuario"] = $usuario; # Escribiendo la sesión
         header('Location: index.php'); # Redirección a index.php
+        exit();
     }
     #////////////// Fin de COMPROBACIÓN DE LOGIN //////////////
 
@@ -83,15 +85,19 @@ if ($_POST) {
 } else {
     if (isset($_COOKIE["usuario"])) {
         $cookiedata = json_decode($_COOKIE["usuario"], true); # Obteniendo array de cookie
-        $cookieemail = $cookiedata["email"]; # Email en cookie
-        $cookiepass = $cookiedata["password"]; # Contraseña en cookie
-        $db = usuariosdb(); # Obteniendo array de la base de datos de usuarios
-        $usuario = $db[array_search($cookieemail, emailsRegistrados($db))]; # Obteniendo array de usuario
-
-        if (password_verify($cookiepass, $usuario["cuenta"]["password"])) {
-            setcookie("usuario", json_encode($cookiedata), time() + 604800); # Renovando cookie por 1 semana más
-            $_SESSION["usuario"] = $usuario; # Escribiendo la sesión
-            header('Location: index.php'); # Redirección a index.php
+        if (!empty($cookiedata["email"]) && !empty($cookiedata["password"])) { # Comprobando que la cookie tenga datos
+            $cookieemail = $cookiedata["email"]; # Email en cookie
+            $cookiepass = $cookiedata["password"]; # Contraseña en cookie
+            $db = usuariosdb(); # Obteniendo array de la base de datos de usuarios
+            if (in_array($cookieemail, emailsRegistrados($db))) {
+                $usuario = $db[array_search($cookieemail, emailsRegistrados($db))]; # Obteniendo array de usuario
+                if (password_verify($cookiepass, $usuario["cuenta"]["password"])) {
+                    setcookie("usuario", json_encode($cookiedata), time() + 604800); # Renovando cookie por 1 semana más
+                    $_SESSION["usuario"] = $usuario; # Escribiendo la sesión
+                    header('Location: index.php'); # Redirección a index.php
+                    exit();
+                }
+            }
         }
     }
 }
