@@ -69,7 +69,6 @@
                                     <li>
                                        <a href="lista.php" class="dropdown-item">
                                           SubSubCategoria#1
-                                          
                                        </a>
                                     </li>
                                  </ul>

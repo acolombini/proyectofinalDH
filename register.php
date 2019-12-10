@@ -449,13 +449,16 @@ if ($_POST) {
 <html lang="en">
 
 <head>
-    <?php include 'head.php'; ?>
+    <?php
+    $title = 'Registro';
+    include 'php/head.php';
+    ?>
 </head>
 
 <body>
     <div class="container-fluid m-0 p-0 bg-sky">
         <header>
-            <?php include 'header.php'; ?>
+            <?php require 'php/header.php'; ?>
         </header>
 
         <!-- a partir de aca va el contenido de la pagina -->
@@ -799,14 +802,14 @@ if ($_POST) {
         </main>
         <!-- hasta aca va el contenido de la pagina -->
 
-        <?php include 'footer.php'; ?>
+        <?php include 'php/footer.php'; ?>
 
     </div>
     <!--fin container principal-->
 
     <!-- Script de validación por js de bootstrap -->
 
-    <?php include 'script.php'; ?>
+    <?php require 'php/scripts.php'; ?>
 </body>
 
 </html>

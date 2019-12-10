@@ -2,17 +2,16 @@
 <html lang="en">
 
 <head>
-   <?php
-   include 'head.php';
-   ?>
+    <?php
+    $title = 'FAQ';
+    include 'php/head.php';
+    ?>
 </head>
 
 <body>
    <div class="container-fluid m-0 p-0 bg-sky">
       <header>
-         <?php
-         include 'header.php';
-         ?>
+      <?php require 'php/header.php'; ?>
       </header>
       
       <main>
@@ -228,17 +227,13 @@
                </main>
                
                
-               <?php
-               include 'footer.php';
-               ?>
+               <?php include 'php/footer.php'; ?>
                
                
                
             </div><!--fin container principal-->
             
-            <?php
-            include 'script.php';
-            ?>
+            <?php require 'php/scripts.php'; ?>
             
             
          </body>

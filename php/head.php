@@ -1,7 +1,7 @@
 <!--<head>-->
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>4 Osos Store</title>
+   <title><?= empty($title) ? "4 Osos Store" : $title?></title>
    <!-- Icono de la pestaña del sitio -->
    <link rel="icon" href="img/logo.png">
    <!-- Fuentes -->
