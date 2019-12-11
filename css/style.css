@@ -7,6 +7,15 @@
 .bg-sky {
     background: url(../img/bg.jpg);
 }
+.text-blue{
+	color:blue;
+}
+.text-pinky{
+	color:pink;
+}
+.text.warning{
+	color: pink;
+}
 .fsize-1{
     font-size: 1rem;
 }
@@ -42,4 +51,16 @@
 
 .my-float{
 	margin-top:16px;
+}
+.bg-lightblue{
+	background-color: lightblue;
+}
+.bg-pinky{
+	background-color: pink;
+}
+.bg-transparent-light{
+	background-color: rgba(255,255,255,20%);
+}
+.border-pink{
+	border: pink, 2px, solid;
 }

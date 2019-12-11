@@ -28,7 +28,7 @@ include 'php/checkCookies.php';
                <!-- Left panel desktop -->
                <div class="d-none d-lg-flex col-3">
                   <div id="profilelp" class="mr-4 w-100 d-flex flex-column">
-                     <div class="list-group list-group-flush mb-4 bg-light">
+                     <div class="list-group list-group-flush mb-4 bg-light shadow-lg">
                         <button type="button"
                         class="list-group-item list-group-item-dark text-center font-weight-bold disabled bg-light">
                         Mi cuenta
@@ -47,7 +47,7 @@ include 'php/checkCookies.php';
                         Direcciones
                      </a>
                   </div>
-                  <div class="list-group list-group-flush bg-light flex-grow-1">
+                  <div class="list-group list-group-flush bg-light flex-grow-1 shadow-lg">
                      <button type="button"
                      class="list-group-item list-group-item-dark text-center font-weight-bold disabled bg-light">
                      Más
@@ -79,11 +79,11 @@ include 'php/checkCookies.php';
             <div class="row no-gutters">
                
                <!-- Avatar header -->
-               <div class="col-lg-12 mb-lg-4">
+               <div class="col-lg-12 mb-lg-4 shadow-lg">
                   <div class="d-flex flex-column align-items-center justify-content-center flex-lg-row flex-nowrap bg-light"
                   id="avatarprofile">
                   <span class="order-lg-3 mb-2 mr-lg-5 mb-lg-0 align-self-lg-center">
-                     <img src="img/user.png" alt="avatar">
+                     <img src="img/user.png" alt="avatar" class="col-12"> 
                   </span>
                   
                   <!-- Filler para centrar nombre en desktop usando flexbox -->
@@ -106,28 +106,28 @@ include 'php/checkCookies.php';
             <ul class="nav nav-tabs w-100">
                <li class="nav-item w-25 text-center">
                   <a href="" data-target="#comprastab" data-toggle="tab"
-                  class="nav-link small text-uppercase active">
+                  class="nav-link small text-uppercase active pb-3">
                   <i class="fas fa-shopping-bag"></i>
                   Mis compras
                </a>
             </li>
             <li class="nav-item w-25 text-center">
                <a href="" data-target="#ventastab" data-toggle="tab"
-               class="nav-link small text-uppercase">
+               class="nav-link small text-uppercase pb-3">
                <i class="fas fa-money-bill-wave"></i>
                Mis ventas
             </a>
          </li>
          <li class="nav-item w-25 text-center">
             <a href="" data-target="#favtab" data-toggle="tab"
-            class="nav-link small text-uppercase">
+            class="nav-link small text-uppercase pb-3">
             <i class="fas fa-heart"></i>
             Favoritos
          </a>
       </li>
       <li class="nav-item w-25 text-center">
          <a href="" data-target="#historytab" data-toggle="tab"
-         class="nav-link small text-uppercase">
+         class="nav-link small text-uppercase pb-3">
          <i class="fas fa-history"></i>
          Historial
       </a>
@@ -142,16 +142,17 @@ include 'php/checkCookies.php';
    <div class="tab-content d-none d-lg-block">
       
       <!-- Mis compras tab -->
-      <div id="comprastab" class="tab-pane fade active show">
+      <div id="comprastab" class="tab-pane fade active show shadow-lg">
          
          <div class="productodiv d-flex align-items-center bg-white">
             <div
             class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
             <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-               src="img/producto1.jpg" alt="producto"></a></a>
+               src="https://steamcdn-a.akamaihd.net/steam/apps/1069710/capsule_184x69.jpg?t=1573863702" alt="producto"></a></a>
                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
-                  <span class="nombreproducto mt-auto">Nombre del producto</span>
-                  <span class="precioycantidad">Precio x Cantidad</span>
+                  <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
+                     consectetur adipisicing elit. Inventore, ad?</span>
+                  <span class="precioycantidad">$25.000 x 1 unidad</span>
                   <span class="estadoenvio mt-auto">Estado del envío</span>
                </div>
             </div>
@@ -166,11 +167,11 @@ include 'php/checkCookies.php';
                </a>
             </div>
          </div>
-         <div class="productodiv d-flex align-items-center bg-success">
+         <div class="productodiv d-flex align-items-center bg-lightblue">
             <div
             class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
             <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-               src="img/producto1.jpg" alt="producto"></a></a>
+               src="https://steamcdn-a.akamaihd.net/steam/apps/1191580/capsule_184x69.jpg?t=1575020834" alt="producto"></a></a>
                <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
                   <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
                      consectetur adipisicing elit. Inventore, ad?</span>
@@ -189,11 +190,11 @@ include 'php/checkCookies.php';
                   </a>
                </div>
             </div>
-            <div class="productodiv d-flex align-items-center bg-warning">
+            <div class="productodiv d-flex align-items-center bg-white">
                <div
                class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
                <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-                  src="img/producto1.jpg" alt="producto"></a></a>
+                  src="https://steamcdn-a.akamaihd.net/steam/apps/1072710/capsule_184x69.jpg?t=1575496629" alt="producto"></a></a>
                   <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
                      <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
                         consectetur adipisicing elit. In maiores assumenda veniam!
@@ -213,13 +214,13 @@ include 'php/checkCookies.php';
                      </a>
                   </div>
                </div>
-               <div class="productodiv d-flex align-items-center bg-danger">
+               <div class="productodiv d-flex align-items-center bg-lightblue ">
                   <div
                   class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
                   <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-                     src="img/producto1.jpg" alt="producto"></a></a>
+                     src="https://steamcdn-a.akamaihd.net/steam/apps/493520/capsule_184x69.jpg?t=1575933005" alt="producto"></a></a>
                      <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
-                        <span class="nombreproducto mt-auto">Cámara digital 48mp</span>
+                        <span class="nombreproducto mt-auto">GTFO is a hardcore 4 player cooperative first-person shooter, with a focus on team play and atmosphere. </span>
                         <span class="precioycantidad">$25.000 x 1 unidad</span>
                         <span class="estadoenvio mt-auto">Cancelado</span>
                      </div>
@@ -238,11 +239,11 @@ include 'php/checkCookies.php';
             </div>
             <!-- Mis ventas tab -->
             <div id="ventastab" class="tab-pane fade">
-               <div class="productodiv d-flex align-items-center bg-white">
+               <div class="productodiv d-flex align-items-center bg-white shadow-lg">
                   <div
                   class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
                   <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-                     src="img/producto1.jpg" alt="producto"></a></a>
+                     src="https://steamcdn-a.akamaihd.net/steam/apps/1085660/capsule_184x69.jpg?t=1575996168" alt="producto"></a></a>
                      <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
                         <span class="nombreproducto mt-auto">Nombre del producto</span>
                         <span class="precioycantidad">Precio x Cantidad</span>
@@ -264,11 +265,11 @@ include 'php/checkCookies.php';
                      </a>
                   </div>
                </div>
-               <div class="productodiv d-flex align-items-center bg-success">
+               <div class="productodiv d-flex align-items-center bg-lightblue">
                   <div
                   class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
                   <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-                     src="img/producto1.jpg" alt="producto"></a></a>
+                     src="https://steamcdn-a.akamaihd.net/steam/apps/1085660/capsule_184x69.jpg?t=1575996168" alt="producto"></a></a>
                      <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
                         <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
                            consectetur adipisicing elit. Inventore, ad?</span>
@@ -291,11 +292,11 @@ include 'php/checkCookies.php';
                         </a>
                      </div>
                   </div>
-                  <div class="productodiv d-flex align-items-center bg-warning">
+                  <div class="productodiv d-flex align-items-center bg-white">
                      <div
                      class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
                      <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-                        src="img/producto1.jpg" alt="producto"></a></a>
+                        src="https://steamcdn-a.akamaihd.net/steam/apps/1085660/capsule_184x69.jpg?t=1575996168" alt="producto"></a></a>
                         <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
                            <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
                               consectetur adipisicing elit. In maiores assumenda veniam!
@@ -319,11 +320,11 @@ include 'php/checkCookies.php';
                            </a>
                         </div>
                      </div>
-                     <div class="productodiv d-flex align-items-center bg-danger">
+                     <div class="productodiv d-flex align-items-center bg-lightblue">
                         <div
                         class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
                         <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-                           src="img/producto1.jpg" alt="producto"></a></a>
+                           src="https://steamcdn-a.akamaihd.net/steam/apps/1085660/capsule_184x69.jpg?t=1575996168" alt="producto"></a></a>
                            <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
                               <span class="nombreproducto mt-auto">Cámara digital 48mp</span>
                               <span class="precioycantidad">$25.000 x 1 unidad</span>
@@ -348,11 +349,11 @@ include 'php/checkCookies.php';
                   </div>
                   <!-- Favoritos tab -->
                   <div id="favtab" class="tab-pane fade">
-                     <div class="favoritodiv d-flex align-items-center bg-white">
+                     <div class="favoritodiv d-flex align-items-center bg-white shadow-lg">
                         <div
-                        class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
+                        class="d-flex justify-content-start align-items-center h-100 w-100 p-3">
                         <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-                           src="img/producto1.jpg" alt="producto"></a></a>
+                           src="https://steamcdn-a.akamaihd.net/steam/apps/1085660/capsule_184x69.jpg?t=1575996168" alt="producto"></a></a>
                            <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
                               <span class="nombreproducto mt-auto">Nombre del producto</span>
                               <span class="precioycantidad">Precio x Cantidad</span>
@@ -366,13 +367,55 @@ include 'php/checkCookies.php';
                      </div>
                   </div>
                   <!-- Historial tab -->
-                  <div id="historytab" class="tab-pane fade">
-                     <h3 class="text-white mx-auto pb-0 pt-2 w-100 text-center">Últimos 20 productos buscados... </h3>
+                  <div id="historytab" class="tab-pane fade shadow-lg pb-3 bg-pinky">
+                     <h3 class="text-pinky text-white mx-auto pb-0 pt-2 w-100 text-center">Últimos 20 productos buscados... </h3>
                      <div class="historialdiv d-flex flex-column scrollbar1 my-2">
                         <div class="d-flex align-items-center">
                            <div class="d-flex pr-3 pl-3">
                               <a href="detalle-producto.html">
-                                 <img src="img/producto1.jpg"
+                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/1144110/capsule_184x69.jpg?t=1575677298"
+                                 alt="producto">
+                              </a>
+                           </div>
+                           <div class="d-flex flex-column pr-3">
+                              <a href="detalle-producto.html">
+                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/298610/capsule_184x69.jpg?t=1575565573"
+                                 alt="producto">
+                              </a>
+                           </div>
+                           <div class="d-flex flex-column pr-3">
+                              <a href="detalle-producto.html">
+                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/1180380/capsule_184x69.jpg?t=1575018122"
+                                 alt="producto">
+                              </a>
+                           </div>
+                           <div class="d-flex flex-column pr-3">
+                              <a href="detalle-producto.html">
+                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/1193900/capsule_184x69.jpg?t=1575059363"
+                                 alt="producto">
+                              </a>
+                           </div>
+                           <!-- <div class="d-flex flex-column pr-3">
+                              <a href="detalle-producto.html">
+                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/1193900/capsule_184x69.jpg?t=1575059363"
+                                 alt="producto">
+                              </a>
+                           </div>
+                           <div class="d-flex flex-column pr-3">
+                              <a href="detalle-producto.html">
+                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/1193900/capsule_184x69.jpg?t=1575059363"
+                                 alt="producto">
+                              </a>
+                           </div>
+                           <div class="d-flex flex-column pr-3">
+                              <a href="detalle-producto.html">
+                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/1180380/capsule_184x69.jpg?t=1575018122"
+                                 alt="producto">
+                              </a>
+                           </div>
+                           <div class="d-flex flex-column pr-3">
+                              <a href="detalle-producto.html">
+                                 <img src="https://steamcdn-a.akamaihd.net/steam/apps/1144110/capsule_184x69.jpg?t=1575677298"
                                  alt="producto">
                               </a>
                            </div>
@@ -447,49 +490,7 @@ include 'php/checkCookies.php';
                                  <img src="img/producto1.jpg"
                                  alt="producto">
                               </a>
-                           </div>
-                           <div class="d-flex flex-column pr-3">
-                              <a href="detalle-producto.html">
-                                 <img src="img/producto1.jpg"
-                                 alt="producto">
-                              </a>
-                           </div>
-                           <div class="d-flex flex-column pr-3">
-                              <a href="detalle-producto.html">
-                                 <img src="img/producto1.jpg"
-                                 alt="producto">
-                              </a>
-                           </div>
-                           <div class="d-flex flex-column pr-3">
-                              <a href="detalle-producto.html">
-                                 <img src="img/producto1.jpg"
-                                 alt="producto">
-                              </a>
-                           </div>
-                           <div class="d-flex flex-column pr-3">
-                              <a href="detalle-producto.html">
-                                 <img src="img/producto1.jpg"
-                                 alt="producto">
-                              </a>
-                           </div>
-                           <div class="d-flex flex-column pr-3">
-                              <a href="detalle-producto.html">
-                                 <img src="img/producto1.jpg"
-                                 alt="producto">
-                              </a>
-                           </div>
-                           <div class="d-flex flex-column pr-3">
-                              <a href="detalle-producto.html">
-                                 <img src="img/producto1.jpg"
-                                 alt="producto">
-                              </a>
-                           </div>
-                           <div class="d-flex flex-column pr-3">
-                              <a href="detalle-producto.html">
-                                 <img src="img/producto1.jpg"
-                                 alt="producto">
-                              </a>
-                           </div>
+                           </div>-->
                         </div>
                      </div>
                   </div>
@@ -616,7 +617,7 @@ include 'php/checkCookies.php';
                      data-parent="#accordion">
                      <div class="productodiv d-flex flex-column">
                         <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                           <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                           <a href="detalle-producto.html"><img src="https://steamcdn-a.akamaihd.net/steam/apps/1085660/capsule_184x69.jpg?t=1575996168"
                               alt="producto"></a>
                               <div class="datosproducto d-flex flex-column w-100 h-100 ml-3">
                                  <span class="nombreproducto mt-auto">Nombre del producto</span>
@@ -635,7 +636,7 @@ include 'php/checkCookies.php';
                         </div>
                         <div class="productodiv d-flex flex-column bg-success">
                            <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                              <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                              <a href="detalle-producto.html"><img src="https://steamcdn-a.akamaihd.net/steam/apps/1085660/capsule_184x69.jpg?t=1575996168"
                                  alt="producto"></a>
                                  <div
                                  class="datosproducto d-flex flex-column w-100 h-100 ml-3 text-white">
@@ -655,7 +656,7 @@ include 'php/checkCookies.php';
                         </div>
                         <div class="productodiv d-flex flex-column bg-warning">
                            <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                              <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                              <a href="detalle-producto.html"><img src="https://steamcdn-a.akamaihd.net/steam/apps/1085660/capsule_184x69.jpg?t=1575996168"
                                  alt="producto"></a>
                                  <div
                                  class="datosproducto d-flex flex-column w-100 h-100 ml-3 text-white">
@@ -675,7 +676,7 @@ include 'php/checkCookies.php';
                         </div>
                         <div class="productodiv d-flex flex-column bg-danger">
                            <div class="d-flex justify-content-start w-100 mt-2 ml-2">
-                              <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                              <a href="detalle-producto.html"><img src="https://steamcdn-a.akamaihd.net/steam/apps/1085660/capsule_184x69.jpg?t=1575996168"
                                  alt="producto"></a>
                                  <div
                                  class="datosproducto d-flex flex-column w-100 h-100 ml-3 text-white">
@@ -713,7 +714,7 @@ include 'php/checkCookies.php';
                   data-parent="#accordion">
                   <div class="favoritodiv d-flex flex-column">
                      <div class="d-flex justify-content-start mt-2 ml-2">
-                        <a href="detalle-producto.html"><img src="img/producto1.jpg"
+                        <a href="detalle-producto.html"><img src="https://steamcdn-a.akamaihd.net/steam/apps/1085660/capsule_184x69.jpg?t=1575996168"
                            alt="producto"></a>
                            <span class="nombreproducto my-auto ml-2">Cámara digital 48mp</span>
                            <div

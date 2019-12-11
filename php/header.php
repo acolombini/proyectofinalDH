@@ -4,7 +4,7 @@ if (isset($_SESSION["usuario"])) : ?>
     <!-- contenedor del header -->
     <div class="container-fluid m-0 p-0">
         <!-- contenedor navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light d-flex shadow">
+        <nav class="navbar navbar-expand-lg navbar-light d-flex shadow bg-transparent-light">
             <div class="container">
                 <!-- ecabezado de la navbar incluye logo o slogan y boton hamburguesa -->
 
