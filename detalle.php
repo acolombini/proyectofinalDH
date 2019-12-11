@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include 'php/checkCookies.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

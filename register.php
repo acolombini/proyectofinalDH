@@ -415,7 +415,7 @@ if ($_POST) {
                 "email" => $usuario["cuenta"]["email"],
                 "password" => $password
             ];
-            setcookie("usuario", json_encode($cookiedata), time() + 604800); # Seteando cookie por 1 semana
+            setcookie("usuario", json_encode($cookiedata), time() + 604800, '/'); # Seteando cookie por 1 semana
         }
         array_push($db, $usuario); # Añadiendo usuario al array de usuarios
         $_SESSION["usuario"] = $usuario; # Añadiendo usuario a session
@@ -434,7 +434,7 @@ if ($_POST) {
             if (in_array($cookieemail, emailsRegistrados($db))) {
                 $usuario = $db[array_search($cookieemail, emailsRegistrados($db))]; # Obteniendo array de usuario
                 if (password_verify($cookiepass, $usuario["cuenta"]["password"])) {
-                    setcookie("usuario", json_encode($cookiedata), time() + 604800); # Renovando cookie por 1 semana más
+                    setcookie('usuario', json_encode($cookiedata), time() + 604800, '/'); # Renovando cookie por 1 semana más
                     $_SESSION["usuario"] = $usuario; # Escribiendo la sesión
                     header('Location: index.php'); # Redirección a index.php
                     exit();

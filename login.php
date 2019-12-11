@@ -71,7 +71,7 @@ if ($_POST) {
                 "email" => $usuario["cuenta"]["email"],
                 "password" => $password
             ];
-            setcookie("usuario", json_encode($cookiedata), time() + 604800); # Seteando cookie por 1 semana
+            setcookie('usuario', json_encode($cookiedata), time() + 604800, '/'); # Seteando cookie por 1 semana
         }
         #/// Fin de Cookies ///
 

@@ -1,4 +1,6 @@
 <?php 
+session_start();
+include 'php/checkCookies.php';
 
 // Tomo datos de contact.json
 $contactos = file_get_contents ("db/contact.json");
