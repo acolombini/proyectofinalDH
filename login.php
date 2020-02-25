@@ -1,21 +1,34 @@
 <?php
 session_start();
 
-if (isset($_SESSION["usuario"])) { # Redirección de usuario logueado
+// Conexion a BBDD
+include("pdo.php");
+
+conexionADB("users_db");
+// Fin conexion a BBDD
+
+// REDIRECCION SI EL USUARIO ESTÁ LOGUEADO
+if (isset($_SESSION["usuario"])) { 
     header('Location: index.php');
     exit();
 }
+// FIN REDIRECCION
+
 
 # Persistencia
 $email = empty($_POST["email"]) ? "" : $_POST["email"];
 $recordar = empty($_POST["recordar"]) ? "" : "checked";
 
+
+
+/*
 # Funciones
 function usuariosdb() # Obtener base de datos de usuario
 {
     $dbget = file_get_contents("db/usuarios.json");
     return json_decode($dbget, true);
 }
+    
 
 function emailsRegistrados($db) # Obtener listado de mails
 {
@@ -26,33 +39,28 @@ function emailsRegistrados($db) # Obtener listado de mails
 if ($_POST) {
 
     # Iniciando arrays y declarando variables
-    $errores = 0;
+    $errores = "";
     $password = empty($_POST["password"]) ? "" : $_POST["password"];
-    $db = usuariosdb();
+    
 
     ############################## VALIDACIÓN ##############################
     if (empty($email)) { # Error de email vacío
-        $errores++;
-        $emailerror = "Por favor ingresa tu email!";
+        $errores["Email"] = "No completaste tu email.";
     } elseif (!empty($email)) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { # Error de email incorrecto (formato)
-            $errores++;
-            $emailerror = "El email no es válido!";
+            $errores["Email"] = "El email ingresado no es válido";
         } elseif (empty($password)) { # Error de contraseña vacía (corto acá si no hay contraseña)
-            $errores++;
-            $passerror = "Por favor ingresa una contraseña!";
-        } elseif (in_array($email, emailsRegistrados($db))) { # Comprobando si email existe en la base de datos
-
+            $errores["pass"] = "No ingresaste tu contraseña";
+        }
+      elseif (in_array($email, emailsRegistrados($db))) { # Comprobando si email existe en la base de datos
             $usuario = $db[array_search($email, emailsRegistrados($db))]; # Obteniendo array de usuario actual
             $dbpassword = $usuario["cuenta"]["password"]; # Obteniendo contraseña del usuario en la base de datos
 
             if (!($password == password_verify($password, $dbpassword))) { # Comparando contraseña ingresada con contraseña en la base de datos
-                $errores++;
-                $passerror = "La contraseña es incorrecta!"; # Error cuando la contraseña no es correcta
+                $errores["pass"]= "La contraseña ingresada es incorrecta."; # Error cuando la contraseña no es correcta
             }
-        } else {
-            $errores++;
-            $emailerror = "Ese email no existe!"; # Error de email no existente
+         else {
+            $errores["Email"]= "Ese email no existe!"; # Error de email no existente
         }
     }
     if (empty($password)) {
@@ -61,7 +69,7 @@ if ($_POST) {
     }
 
     ############### COMPROBACIÓN DE LOGIN ###############
-    if ($errores == 0) {
+    if (!$errores) {
 
         ### Cookies ###
         if (!empty($_POST["recordar"])) { # Seteando cookie por 1 semana
@@ -102,7 +110,10 @@ if ($_POST) {
     }
 }
 
-#///////////////////////// FIN PHP /////////////////////////
+#///////////////////////// FIN PHP ///////////////////////// */
+
+
+
 ?>
 
 <!DOCTYPE html>

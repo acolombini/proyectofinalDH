@@ -1,81 +1,44 @@
 <?php
 session_start();
-date_default_timezone_set('America/Argentina/Buenos_Aires');
-
 if (isset($_SESSION["usuario"])) { # Redirección de usuario logueado
     header('Location: index.php');
 }
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 
+require("pdo.php");
+
+$db = conexionADB("users_db");
+
+$baseDeDatosDeUsuarios = traerUsuariosDeBBDD($db);
+
+$baseDeDatosDeCiudades = traerCiudadesDeBBDD($db);
+
+$baseDeDatosDeProvincias = traerProvinciasDeBBDD($db);
+
+$baseDeDatosDeTiposDeDocumento = traerTiposDeDocumentoDeBBDD($db);
 ############################## PERSISTENCIA ##############################
 $nombre = empty($_POST["nombre"]) ? "" : $_POST["nombre"];
 $apellido = empty($_POST["apellido"]) ? "" : $_POST["apellido"];
 $email = empty($_POST["email"]) ? "" : $_POST["email"];
-$diaNacimiento = empty($_POST["diaNacimiento"]) ? "" : $_POST["diaNacimiento"];
-$mesNacimiento = empty($_POST["mesNacimiento"]) ? "" : $_POST["mesNacimiento"];
-$anioNacimiento = empty($_POST["anioNacimiento"]) ? "" : $_POST["anioNacimiento"];
-$nroTelefono = empty($_POST["nroTelefono"]) ? "" : $_POST["nroTelefono"];
-$tipoCelular = isset($_POST["tipoTelefono"]) && $_POST["tipoTelefono"] == "cel" ? "checked" : "";
+$dia_de_nacimiento = empty($_POST["dia_de_nacimiento"]) ? "" : $_POST["dia_de_nacimiento"];
+$mes_de_nacimiento = empty($_POST["mes_de_nacimiento"]) ? "" : $_POST["mes_de_nacimiento"];
+$anio_de_nacimiento = empty($_POST["anio_de_nacimiento"]) ? "" : $_POST["anio_de_nacimiento"];
+$numero_de_telefono = empty($_POST["numero_de_telefono"]) ? "" : $_POST["numero_de_telefono"];
+$tipo_de_celular = isset($_POST["tipoTelefono"]) && $_POST["tipoTelefono"] == "cel" ? "checked" : "";
 $tipoFijo = isset($_POST["tipoTelefono"]) && $_POST["tipoTelefono"] == "fijo" ? "checked" : "";
-$nroDocumento = empty($_POST["nroDocumento"]) ? "" : $_POST["nroDocumento"];
-$tipoDocumento = isset($_POST["tipoDocumento"]) ? $_POST["tipoDocumento"] : "";
+$numero_de_documento = empty($_POST["numero_de_documento"]) ? "" : $_POST["numero_de_documento"];
+$tipos_de_documento = isset($_POST["tipos_de_documento"]) ? $_POST["tipos_de_documento"] : "";
 $ciudad = empty($_POST["ciudad"]) ? "" : $_POST["ciudad"];
 $provincia = isset($_POST["provincia"]) ? $_POST["provincia"] : "";
-$codigoPostal = empty($_POST["codigoPostal"]) ? "" : $_POST["codigoPostal"];
+$codigo_postal = empty($_POST["codigo_postal"]) ? "" : $_POST["codigo_postal"];
 $calle = empty($_POST["calle"]) ? "" : $_POST["calle"];
-$nroCalle = isset($_POST["nroCalle"]) && $_POST["nroCalle"] != "" ? $_POST["nroCalle"] : "";
-$nroPiso = isset($_POST["nroPiso"]) && $_POST["nroPiso"] != "" ? $_POST["nroPiso"] : "";
+$altura = isset($_POST["altura"]) && $_POST["altura"] != "" ? $_POST["altura"] : "";
+$piso = isset($_POST["piso"]) && $_POST["piso"] != "" ? $_POST["piso"] : "";
 $departamento = isset($_POST["departamento"]) && $_POST["departamento"] != "" ? $_POST["departamento"] : "";
 $tos = isset($_POST['tos']) ? "checked" : "";
 $recordar = isset($_POST["recordar"]) ? "checked" : "";
 
-############################## DROPDOWNS ##############################
-$dropdowns = [
-    "provincias" => [
-        "PBA" => "Buenos Aires",
-        "CA" => "Catamarca",
-        "CH" => "Chaco",
-        "CT" => "Chubut",
-        "CB" => "Córdoba",
-        "CR" => "Corrientes",
-        "ER" => "Entre Ríos",
-        "FO" => "Formosa",
-        "JY" => "Jujuy",
-        "LP" => "La Pampa",
-        "LR" => "La Rioja",
-        "MZ" => "Mendoza",
-        "MI" => "Misiones",
-        "NQ" => "Neuquén",
-        "RN" => "Río Negro",
-        "SA" => "Salta",
-        "SJ" => "San Juan",
-        "SL" => "San Luis",
-        "SC" => "Santa Cruz",
-        "SF" => "Santa Fe",
-        "SE" => "Santiago del Estero",
-        "TF" => "Tierra del Fuego",
-        "TU" => "Tucumán"
-    ],
-    "documentos" => [
-        "DNI" => "Documento Nacional de Identidad",
-        "CI" => "Cédula de Identidad",
-        "LC" => "Libreta Cívica",
-        "LE" => "Libreta de Enrolamiento",
-        "OTRO" => "Otro..."
-    ]
-];
-
 ############################## Funciones ##############################
-
-function usuariosdb() # Obtener base de datos de usuario
-{
-    $dbget = file_get_contents("db/usuarios.json");
-    return json_decode($dbget, true);
-}
-
-function emailsRegistrados($db) # Obtener listado de mails
-{
-    return array_column(array_column($db, 'cuenta'), 'email');
-}
 
 function calcularEdad($dia, $mes, $anio) #Calcular edad
 {
@@ -84,171 +47,122 @@ function calcularEdad($dia, $mes, $anio) #Calcular edad
     $diferencia = date_diff($nacimiento, $hoy);
     return $diferencia->format('%r%y');
 }
+ 
 ############################## VALIDACIÓN ##############################
 
 if ($_POST) {
-
-    /* Estructura del array de usuario
-        $usuario = [
-            "id" => "",
-            "cuenta" => [
-                "nombre" => "", REQUERIDO
-                "apellido" => "", REQUERIDO
-                "email" => "", REQUERIDO
-                "nacimiento" => "dd/mm/aaaa", REQUERIDO
-                "password" => "" REQUERIDO
-            ],
-            "avatar" = "db/avatars/avatar_ID.png-jpg-jpeg", [ OPCIONAL - SE LLENA CON LA UBICACIÓN DE LA IMAGEN
-            "datos" => [ SE GENERA SI RELLENAN DATOS EN LA SECCIÓN OPCIONAL
-            "tel" => [
-                "nroTelefono" => "", OPCIONAL
-                "tipoTelefono" => "" REQUERIDO si se rellena "nroTelefono"
-            ],
-            "doc" => [
-                "nroDocumento" => "", OPCIONAL
-                "tipoDocumento" => "" REQUERIDO si se rellena "nroDocumento" (EL VALOR POR DEFECTO SIEMPRE SERÁ "DNI" CUANDO SE RELLENA "nroDocumento")
-                ]
-            ],
-            "direcciones" => [ SE GENERA SI RELLENAN DATOS EN LA SECCIÓN DE DIRECCIONES
-            0 => [
-                "ciudad" => "", OPCIONAL - REQUERIDO si se rellenan "codigoPostal", "calle", "nroCalle", "nroPiso" y "departamento"
-                "provincia" => "", OPCIONAL - REQUERIDO si se rellenan "ciudad", "codigoPostal", "calle", "nroCalle", "nroPiso" y "departamento"
-                "codigoPostal" => "", OPCIONAL - REQUERIDO si se rellena "calle", "codigoPostal", "nroCalle", "nroPiso" y "departamento"
-                "calle" => "", OPCIONAL - REQUERIDO si se rellenan "nroCalle", "nroPiso" y "departamento"
-                "nroCalle" => "", OPCIONAL - REQUERIDO si se rellena "calle", "nroPiso" y "departamento"
-                "nroPiso" => "", OPCIONAL - REQUERIDO si se rellena "departamento"
-                "departamento" => "" OPCIONAL - REQUERIDO si se rellena "nroPiso"
-                ]
-                ]
-            ];
-            */
+    $usuario = [
+        "nombre" => "",
+        "apellido" => "",
+        "email" => "", 
+        "fecha_de_nacimiento" => "",
+        "pass" => "",
+        "numero_de_telefono" => "",
+        "numero_de_documento" => "",
+        "tipos_de_documento" => "",
+        "provincia" => "",
+        "ciudad" => "",
+        "codigo_postal" => "",
+        "calle" => "",
+        "altura" => "",
+        "piso" => "",
+        "departamento" => "",
+    ];
 
     # Iniciando arrays y variables
-    $errores = 0;
-    $usuario = ["id" => 0];
-    $password = empty($_POST["password"]) ? "" : $_POST["password"];
-    $db = usuariosdb();
-    $usuario["id"] = end($db)["id"] + 1; # Creando ID
+    $errores = [];
+    $pass = empty($_POST["pass"]) ? "" : $_POST["pass"];
 
     ############### OBLIGATORIO ###############
     # Checkeando el campo de nombre
     if (empty($nombre)) { # Error de nombre vacío
-        $errores++;
-        $errornombre = "Por favor ingresa tu nombre!";
+        $errores["nombre"] = "Por favor, ingresa tu nombre.";
     } elseif (!preg_match("/^.{1,50}$/u", $nombre)) { # Error de caracteres mínimos/máximos
-        $errores++;
-        $errornombre = "No debe contener más 50 caracteres!";
+        $errores["nombre"] = "El nombre no debe contener más 50 caracteres!";
     } elseif (!preg_match("/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸ' ]*$/", $nombre)) { # Error de caracteres no permitidos
-        $errores++;
-        $errornombre = "Contiene caracteres no permitidos!";
+        $errores["nombre"] = "El nombre contiene caracteres no permitidos!";
     } else { # Success!!
-        $usuario["cuenta"]["nombre"] = trim(preg_replace("/ {2,}/", " ", strtolower($nombre))); # Paso todo a minúsculas, reemplazo múltiples espacios por uno solo y trimeo los extremos
+        $usuario["nombre"] = trim(preg_replace("/ {2,}/", " ", strtolower($nombre))); # Paso todo a minúsculas, reemplazo múltiples espacios por uno solo y trimeo los extremos
     }
 
     # chequeando el campo de apellido
     if (empty($apellido)) { # Error de apellido vacío
-        $errores++;
-        $errorapellido = "Por favor ingresa tu apellido!";
+        $errores["apellido"] = "Por favor, ingresa tu apellido";
     } elseif (!preg_match("/^.{1,50}$/u", $apellido)) { # Error de caracteres mínimos/máximos
-        $errores++;
-        $errorapellido = "No debe contener más de 50 caracteres!";
+        $errores["apellido"] = "Este campo no debe contener más de 50 caracteres";
     } elseif (!preg_match("/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸ' ]*$/", $apellido)) { # Error de caracteres no permitidos
-        $errores++;
-        $errorapellido = "Contiene caracteres no permitidos!";
+        $errores["apellido"] = "Este campo contiene caracteres no permitidos.";
     } else { # Success!!
-        $usuario["cuenta"]["apellido"] = trim(preg_replace("/ {2,}/", " ", strtolower($apellido))); # Paso todo a minúsculas, reemplazo múltiples espacios por uno solo y trimeo los extremos
+        $usuario["apellido"] = trim(preg_replace("/ {2,}/", " ", strtolower($apellido))); # Paso todo a minúsculas, reemplazo múltiples espacios por uno solo y trimeo los extremos
     }
 
     # Checkeando el campo de email
     if (empty($email)) { # Error de email vacío
-        $errores++;
-        $erroremail = "Por favor ingresa tu email!";
+        $errores["email"] = "Por favor, ingresa tu email";
     } elseif (!empty($email)) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { # Error de email incorrecto
-            $errores++;
-            $erroremail = "El email es incorrecto!";
-        } elseif (in_array($email, emailsRegistrados($db))) { # Error de email ya registrado
-            $errores++;
-            $erroremail = "Ese email ya ha sido registrado!";
-        } else { # Success!!
-            $usuario["cuenta"]["email"] = trim(strtolower($email)); #Paso email a minúsculas y trimeo
+            $errores["email"] = "El email es incorrecto!";
+        } /*elseif (in_array($email, emailsRegistrados($db))) { # Error de email ya registrado
+            $errores["email"] = "Ese email ya ha sido registrado. <a href=login.php> Loguearme </a>.";
+        } */else { # Success!!
+            $usuario["email"] = trim(strtolower($email)); #Paso email a minúsculas y trimeo
         }
     }
 
     # Checkeando el campo de fecha de nacimiento + calculando edad
-    if (empty($diaNacimiento)) {
-        $errornacd = "error";
-        $errornac = "Por favor ingresa tu fecha de nacimiento!";
-    } elseif (!preg_match("/^(0[1-9]|[12][0-9]|3[01])$/", $diaNacimiento)) { # Error de formato incorrecto = días 
-        $errores++;
-        $errornacd = "error";
-        $errornac = "El formato o la fecha no son válidos!";
+    if (empty($dia_de_nacimiento)) {
+        $errores["fecha_de_nacimiento"] = "Por favor ingresa tu fecha de nacimiento.";
+    } elseif (!preg_match("/^(0[1-9]|[12][0-9]|3[01])$/", $dia_de_nacimiento)) { # Error de formato incorrecto = días 
+        $errores["fecha_de_nacimiento"] = "El formato o la fecha no son válidos!";
     }
-    if (empty($mesNacimiento)) {
-        $errornacm = "error";
-        $errornac = "Por favor ingresa tu fecha de nacimiento!";
-    } elseif (!preg_match("/^(0[1-9]|1[0-2])$/", $mesNacimiento)) { # Error de formato incorrecto = meses
-        $errores++;
-        $errornacm = "error";
-        $errornac = "El formato o la fecha no son válidos!";
+    if (empty($mes_de_nacimiento)) {
+        $errores["fecha_de_nacimiento"] = "Por favor ingresa tu fecha de nacimiento!";
+    } elseif (!preg_match("/^(0[1-9]|1[0-2])$/", $mes_de_nacimiento)) { # Error de formato incorrecto = meses
+        $errores["fecha_de_nacimiento"] = "El formato o la fecha no son válidos!";
     }
-    if (empty($anioNacimiento)) {
-        $errornaca = "error";
-        $errornac = "Por favor ingresa tu fecha de nacimiento!";
-    } elseif (!preg_match("/^(19[3-9]\d|20[0-4]\d|2050)$/", $anioNacimiento)) { # Error de formato incorrecto = años
-        $errores++;
-        $errornaca = "error";
-        $errornac = "El formato o la fecha no son válidos!";
+    if (empty($anio_de_nacimiento)) {
+        $errores["fecha_de_nacimiento"] = "Por favor ingresa tu fecha de nacimiento!";
+    } elseif (!preg_match("/^(19[3-9]\d|20[0-4]\d|2050)$/", $anio_de_nacimiento)) { # Error de formato incorrecto = años
+        $errores["fecha_de_nacimiento"] = "El formato o la fecha no son válidos!";
     }
 
-    if (empty($errornacd) && empty($errornacm) && empty($errornaca)) {
-        if (!checkdate($mesNacimiento, $diaNacimiento, $anioNacimiento)) { # Error si la fecha existe en el calendario
-            $errores++;
-            $errornac = "La fecha de nacimiento no existe!";
-        } elseif (intval(calcularEdad($anioNacimiento, $mesNacimiento, $diaNacimiento)) < 0) { # Error si el usuario viene del futuro
-            $errores++;
-            $errornac = "Tenemos a un viajero del tiempo!";
-        } elseif (intval(calcularEdad($anioNacimiento, $mesNacimiento, $diaNacimiento)) < 18) { # Error si el usuario no es mayor de edad
-            $errores++;
-            $errornac = "No sos mayor de edad!";
+    if (empty($errores["fecha_de_nacimiento"])) {
+        if (!checkdate($mes_de_nacimiento, $dia_de_nacimiento, $anio_de_nacimiento)) { # Error si la fecha existe en el calendario
+            $errores["fecha_de_nacimiento"] = "La fecha de nacimiento no existe!";
+        } elseif (intval(calcularEdad($anio_de_nacimiento, $mes_de_nacimiento, $dia_de_nacimiento)) < 0) { # Error si el usuario tiene una fecha de nacimiento posterior
+            $errores["fecha_de_nacimiento"] = "La fecha de nacimiento no puede ser posterior al día de hoy.";
+        } elseif (intval(calcularEdad($anio_de_nacimiento, $mes_de_nacimiento, $dia_de_nacimiento)) < 18) { # Error si el usuario no es mayor de edad
+            $errores["fecha_de_nacimiento"] = "Para registrarte debes tener al menos 18 años.";
         } else { # Success!
-            $usuario["cuenta"]["nacimiento"] = $diaNacimiento . "-" . $mesNacimiento . "-" . $anioNacimiento;
+            $usuario["fecha_de_nacimiento"] = $anio_de_nacimiento . "-" . $mes_de_nacimiento . "-" . $dia_de_nacimiento;
         }
     }
 
 
     # Checkeando el campo de contraseña
-    if (empty($_POST["password"])) { # Error de contraseña vacía
-        $errores++;
-        $errorpass = "Por favor ingresa una contraseña!";
-    } elseif (!empty($_POST["password"])) {
-        if (strlen($_POST["password"]) <= 8) { # Error de caracteres mínimos
-            $errores++;
-            $errorpass = "Debe contener 8 o más caracteres!";
-        } elseif ($_POST["password"] >= 64) { # Error de caracteres máximos
-            $errores++;
-            $errorpass = "No debe contener más de 64 caracteres!";
-        } elseif (!preg_match("#[0-9]+#", $_POST["password"])) { # Error cuando no hay números
-            $errores++;
-            $errorpass = "Debe contener 1 o más números!";
-        } elseif (!preg_match("#[A-Z]+#", $_POST["password"])) { # Error cuando no hay mayúsculas
-            $errores++;
-            $errorpass = "Debe contener una o más letras mayúsculas!";
-        } elseif (!preg_match("#[a-z]+#", $_POST["password"])) { # Error cuando no hay minúsculas
-            $errores++;
-            $errorpass = "Debe contener una o más letras minúsculas!";
-        } elseif ($_POST["password"] != $_POST["cpassword"]) { # Error cuando las contraseñas no coinciden
-            $errores++;
-            $errorcpass = "Las contraseñas no coinciden";
+    if (empty($_POST["pass"])) { # Error de contraseña vacía
+        $errores["pass"] = "Por favor, ingresa una contraseña.";
+    } elseif (!empty($_POST["pass"])) {
+        if (strlen($_POST["pass"]) <= 8) { # Error de caracteres mínimos
+            $errores["pass"] = "La contraseña debe contener 8 caracteres como mínimo.";
+        } elseif ($_POST["pass"] >= 64) { # Error de caracteres máximos
+            $errores["pass"] = "La contraseña no debe contener más de 64 caracteres.";
+        } elseif (!preg_match("#[0-9]+#", $_POST["pass"])) { # Error cuando no hay números
+            $errores["pass"] = "La contraseña debe contener por lo menos un número.";
+        } elseif (!preg_match("#[A-Z]+#", $_POST["pass"])) { # Error cuando no hay mayúsculas
+            $errores["pass"] = "La contraseña debe contener por lo menos una mayúscula.";
+        } elseif (!preg_match("#[a-z]+#", $_POST["pass"])) { # Error cuando no hay minúsculas
+            $errores["pass"] = "La contraseña debe contener por lo menos una letra minúscula.";
+        } elseif ($_POST["pass"] != $_POST["confirmar_pass"]) { # Error cuando las contraseñas no coinciden
+            $errores["pass"] = "Las contraseñas ingresadas no coinciden.";
         } else { # Success!!
-            $usuario["cuenta"]["password"] = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            $usuario["pass"] = password_hash($_POST["pass"], PASSWORD_DEFAULT);
         }
     }
 
     # Términos y condiciones
     if (empty($_POST["tos"])) {
-        $errores++;
-        $errortos = "Debes aceptar los términos y condiciones!";
+        $errores["terminos_y_condiciones"] = "Debes aceptar los términos y condiciones!";
     }
 
     ############### OPCIONAL ###############
@@ -256,184 +170,149 @@ if ($_POST) {
     if ($_FILES['avatar']['size'] != 0) { # Comprobando si se subió el archivo
         $type = exif_imagetype($_FILES['avatar']['tmp_name']); # Tipo de imagen
         if ($_FILES["avatar"]["error"] != 0) { # Error de subida
-            $errores++;
-            $erroravatar = "Hubo un de carga!";
+            $errores["avatar"] = "Hubo un error de carga. Intentalo nuevamente.";
         } elseif ($_FILES['avatar']['size'] >= 5242881) { # Error de tamaño máximo (5mb)
-            $errores++;
-            $erroravatar = "Debe ser menor a 5mb!";
+            $errores["avatar"] = "El archivo debe ser menor a 5mb.";
         } elseif ($type == false) { # Comprobando si es una imagen
-            $errores++;
-            $erroravatar = "No es una imagen!";
+            $errores["avatar"] = "No es una imagen!";
         } elseif (in_array(image_type_to_extension($type), ['.jpeg', '.jpg', '.png'])) { # Se convierte el tipo de imagen a extensión y se comprueba si es correcta
             $ext = image_type_to_extension($type);
             $imagename = "avatar_" . $usuario["id"] . $ext; # Nombre de la imagen
             $usuario["avatar"] = "$imagename"; # Guardando nombre de la imagen en array
             move_uploaded_file($_FILES["avatar"]["tmp_name"], "db/avatars/$imagename"); # Guardando imagen
         } else { # Error si la imagen no es el formato correcto
-            $errores++;
-            $erroravatar = "Debe ser jpg, jpeg o png!";
+            $errores["avatar"] = "El formato de imágen debe ser jpg, jpeg o png.";
         }
     }
 
     ######### Datos #########
     # Número de teléfono
-    if (!empty($nroTelefono)) { # Se comprueba sólo si se ingresa un número
-        if (empty($_POST["tipoTelefono"])) { # Error si el checkbox de "tipoTelefono" está vacío
-            $errores++;
-            $errortipotel = "Ingresa el tipo de teléfono!";
-            $errortel = "Ingresa el tipo de teléfono!";
-        } elseif (!preg_match('/^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/D', $nroTelefono)) { # Fuente de este regex: https://es.stackoverflow.com/a/136406
-            $errores++;
-            $errortel = "El número no es válido!"; # Error si el regex no da match
+    
+    if (!empty($numero_de_telefono)) { 
+        if (empty($_POST["numero_de_telefono"])) { # Error si el checkbox de "tipoTelefono" está vacío
+            $errores["numero_de_telefono"] = "Por favor, ingresa tu número de teléfono.";
+        } elseif (!preg_match('/^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/D', $numero_de_telefono)) { # Fuente de este regex: https://es.stackoverflow.com/a/136406
+            $errores["numero_de_telefono"] = "El número ingresado no es válido."; # Error si el regex no da match
         } else { # Success!
-            $usuario["datos"]["nroTelefono"] = $nroTelefono;
-            $usuario["datos"]["tipoTelefono"] = $_POST["tipoTelefono"];
+            $usuario["numero_de_telefono"] = $_POST["numero_de_telefono"];
         }
     }
-
+    
     # Documento
-    if (!empty($nroDocumento)) { # Se comprueba sólo si se ingresa un documento
-        if (empty($tipoDocumento)) { # Error si el checkbox de "tipoDocumento" está vacío
-            $errores++;
-            $errortipodoc = "Ingresa el tipo de documento!";
-            $errordoc = "Ingresa el tipo de documento!";
-        } elseif (in_array($nroDocumento, array_column(array_column($db, 'datos'), 'nroDocumento'))) { # Error documento ya registrado
-            $errores++;
-            $errordoc = "Ya ha sido registrado!";
-        } elseif (!preg_match('/^[0-9]{7,8}$/', $nroDocumento)) { # Error si el regex no da match
-            $errores++;
-            $errordoc = "El documento no es válido!";
-        } else { # Success!
-            $usuario["datos"]["nroDocumento"] = $nroDocumento;
-            $usuario["datos"]["tipoDocumento"] = $tipoDocumento;
-        }
+    
+    if (empty($numero_de_documento)) { 
+        $errores["numero_de_dni"] = "Por favor, ingresa tu documento.";
+    } elseif (!preg_match('/^[0-9]{7,8}$/', $numero_de_documento)) { # Error si el regex no da match
+        $errores["numero_de_dni"] = "El documento ingresado no es válido.";
+    } else {
+        $usuario["numero_de_dni"] = $numero_de_documento;
     }
+    if (empty($tipos_de_documento)) { # Error si el checkbox de "tipos_de_documento" está vacío
+        $errores["tipos_de_documento"] = "Por favor, ingresa el tipo de documento.";
+    } else { # Success!
+        $usuario["tipos_de_documento"] = $tipos_de_documento;
+        }
+        
+    
 
     ######### Direcciones #########
     # Ciudad
-    if (!empty($ciudad)) { # Se comprueba sólo si se ingresa una ciudad
-        if (empty($provincia)) { # Error si el checkbox "provincia" está vacío
-            $errores++;
-            $errorprovincia = "Requerido!";
-        } elseif (strlen($ciudad) > 90) { # Error de caracteres mínimos/máximos
-            $errores++;
-            $errorciudad = "No debe contener más de 90 caracteres!";
-        } elseif (!preg_match("/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸ' ]*$/", $ciudad)) { # Error de caracteres no permitidos
-            $errores++;
-            $errorciudad = "Contiene caracteres no permitidos!";
-        } else { # Success!
-            $usuario["direcciones"]["ciudad"] = strtolower($ciudad);
-        }
-    }
 
-    # Provincia
-    if (!empty($provincia)) {
-        $usuario["direcciones"]["provincia"] = $provincia; # Success!
+    if(empty($ciudad)) {
+        $errores["ciudad"] = "Por favor, seleccione su ciudad.";        
+    } else {
+        $usuario["ciudad"] = $ciudad;
+    }
+    
+    if (empty($provincia)){
+        $errores["provincia"] = "Por favor, seleccione su provincia.";
+    } else {
+        $usuario["provincia"] = $provincia; # Success!
     }
 
     # Código postal
-    if (!empty($codigoPostal)) { # Se comprueba sólo si se ingresa un código postal
-        if (empty($provincia)) { # Error si el checkbox "provincia" está vacío
-            $errores++;
-            $errorprovincia = "Requerido!";
-        } elseif (!preg_match('/^[0-9]{4}$/', $codigoPostal)) { # Error si el regex no da match
-            $errores++;
-            $errorcodigoPostal = "No es válido!";
+    /*
+    if (!empty($codigo_postal)) {
+        $errores["codigo_postal"] = "Por favor, ingrese su código postal.";
+        } elseif (!preg_match('/^[0-9]{4}$/', $codigo_postal)) { # Error si el regex no da match
+            $errores["codigo_postal"] = "El código postal ingresado no es válido.";
         } else { # Success!
-            $usuario["direcciones"]["codigoPostal"] = $codigoPostal;
+            $usuario["codigo_postal"] = $codigo_postal;
         }
-    }
+    */
 
     # Calle
-    if (!empty($calle)) { # Se comprueba sólo si se ingresa una calle
-        if (empty($ciudad)) { # Error si no se rellena ciudad
-            $errores++;
-            $errorciudad = "Debes ingresar la ciudad!";
-        } elseif (empty($nroCalle)) { # Error si no se rellena el número de calle
-            $errores++;
-            $errornrocalle = "Debes ingresar el número!";
-        } elseif (strlen($calle) > 90) { # Error de caracteres mínimos/máximos
-            $errores++;
-            $errorcalle = "No debe contener más de 90 caracteres!";
+    if (empty($calle)) { # Se comprueba si se ingresa una calle
+        $errores["calle"] = "Por favor, ingresá una dirección.";
+    } elseif (strlen($calle) > 90) { # Error de caracteres mínimos/máximos
+            $errores["calle"] = "La dirección no debe contener más de 90 caracteres";
         } elseif (!preg_match("/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸ' ]*$/", $calle)) { # Error de caracteres no permitidos
-            $errores++;
-            $errorcalle = "La calle contiene caracteres no permitidos!";
+            $errores["calle"] = "La dirección contiene caracteres no permitidos.";
         } else { # Success!
-            $usuario["direcciones"]["calle"] = strtolower($calle);
+            $usuario["calle"] = strtolower($calle);
         }
-    }
-
-    # Número de calle
-    if (!empty($nroCalle)) { # Se comprueba sólo si se ingresa un número de calle
-        if (empty($calle)) { # Error si no se rellena calle
-            $errores++;
-            $errorcalle = "Debes ingresar la calle!";
-        } elseif (!preg_match('/^[0-9]{1,6}[Bb]?$/', $nroCalle)) { # Error si el regex no da match
-            $errores++;
-            $errornrocalle = "El número no es válido!";
-        } else { # Success!
-            $usuario["direcciones"]["nroCalle"] = strtolower($nroCalle);
-        }
-    }
 
     # Piso
-    if (!empty($nroPiso)) { # Se comprueba sólo si se ingresa el número de piso
-        if (empty($calle)) { # Error si no se rellena calle
-            $errores++;
-            $errorcalle = "Debes ingresar la calle!";
-        } elseif (empty($departamento)) { # Error si no se rellena el departamento
-            $errores++;
-            $errordepto = "Debes ingresar el departamento!";
-        } elseif (!preg_match('/^[0-9]{1,3}$/', $nroPiso)) { # Error si el regex no da match
-            $errores++;
-            $errorpiso = "El número del piso no es válido!";
+    if (!empty($piso)) { # Se comprueba sólo si se ingresa el número de piso
+        if (!preg_match('/^[0-9]{1,3}$/', $piso)) { # Error si el regex no da match
+            $errores["piso"] = "El piso ingresado no es válido.";
         } else { # Success!
-            $usuario["direcciones"]["nroPiso"] = $nroPiso;
+            $usuario["piso"] = $piso;
         }
     }
 
     # Departamento
     if (!empty($departamento)) { # Se comprueba sólo si se ingresa un departamento
-        if (empty($nroPiso)) { # Error si no se rellena el número de piso
-            $errores++;
-            $errorpiso = "Debes ingresar el piso!";
-        } elseif (!preg_match('/^[a-zA-Z0-9]{1,16}$/', $departamento)) { # Error si el regex no da match
-            $errores++;
-            $errordepto = "El departamento no es válido!";
+        if (!preg_match('/^[a-zA-Z0-9]{1,16}$/', $departamento)) { # Error si el regex no da match
+            $errores["departamento"] = "El departamento ingresado no es válido.";
         } else { # Success!
-            $usuario["direcciones"]["departamento"] = strtolower($departamento);
+            $usuario["departamento"] = strtolower($departamento);
         }
     }
 
-
     ############### ESCRITURA DE ARCHIVOS ###############
-    if ($errores == 0) {
+    if (!$errores) {
         if (!empty($_POST["recordar"])) { # Seteando cookie por 1 semana
 
             # Array de cookie
             $cookiedata = [
-                "email" => $usuario["cuenta"]["email"],
-                "password" => $password
+                "email" => $usuario["email"],
+                "pass" => $usuario["pass"]
             ];
-            setcookie("usuario", json_encode($cookiedata), time() + 604800, '/'); # Seteando cookie por 1 semana
+            setcookie("usuario", $cookiedata["email"], time() + 604800, '/');
+            setcookie("usuario", $cookiedata["pass"], time() + 604800, '/'); # Seteando cookie por 1 semana
         }
+        $query=$db->prepare("INSERT INTO users VALUES (DEFAULT, :nombre, :apellido, :telefono, :documento, :email, :fecha_de_nacimiento, :domicilio, :ciudad_id, :pass, DEFAULT, :tipos_de_dni_id)");
+        $query->bindValue("nombre", $usuario["nombre"]);
+        $query->bindValue("apellido",$usuario["apellido"]);
+        $query->bindValue("telefono", $usuario["numero_de_telefono"]);
+        $query->bindValue("documento", $usuario["numero_de_dni"]); 
+        $query->bindValue("email", $usuario["email"]);
+        $query->bindValue("fecha_de_nacimiento", $usuario["fecha_de_nacimiento"]);
+        $query->bindValue("domicilio", $usuario["calle"]); 
+        $query->bindValue("ciudad_id",$usuario["ciudad"]); //codigo postal
+        $query->bindValue("pass", $usuario["pass"]);
+        $query->bindValue("tipos_de_dni_id", $usuario["tipos_de_documento"]);
+        $query->execute();
+        /*
         array_push($db, $usuario); # Añadiendo usuario al array de usuarios
         $_SESSION["usuario"] = $usuario; # Añadiendo usuario a session
         $dbencoded = json_encode($db); # Transformando array de usuarios en json
         file_put_contents("db/usuarios.json", $dbencoded); # Escribiendo archivo json
         header('Location: index.php'); # Redirección a index.php
         exit();
+        */
     }
 } else {
     if (isset($_COOKIE["usuario"])) {
         $cookiedata = json_decode($_COOKIE["usuario"], true); # Obteniendo array de cookie
-        if (!empty($cookiedata["email"]) && !empty($cookiedata["password"])) { # Comprobando que la cookie tenga datos
+        if (!empty($cookiedata["email"]) && !empty($cookiedata["pass"])) { # Comprobando que la cookie tenga datos
             $cookieemail = $cookiedata["email"]; # Email en cookie
-            $cookiepass = $cookiedata["password"]; # Contraseña en cookie
+            $cookiepass = $cookiedata["pass"]; # Contraseña en cookie
             $db = usuariosdb(); # Obteniendo array de la base de datos de usuarios
             if (in_array($cookieemail, emailsRegistrados($db))) {
                 $usuario = $db[array_search($cookieemail, emailsRegistrados($db))]; # Obteniendo array de usuario
-                if (password_verify($cookiepass, $usuario["cuenta"]["password"])) {
+                if (password_verify($cookiepass, $usuario["pass"])) {
                     setcookie('usuario', json_encode($cookiedata), time() + 604800, '/'); # Renovando cookie por 1 semana más
                     $_SESSION["usuario"] = $usuario; # Escribiendo la sesión
                     header('Location: index.php'); # Redirección a index.php
@@ -479,55 +358,55 @@ if ($_POST) {
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap mb-2">
                                             <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
                                                 <label for="nombreid" class="mb-2">Nombre</label>
-                                                <input type="text" name="nombre" id="nombreid" value="<?= $nombre ?>" class="py-1 px-3 form-control shadow <?= empty($errornombre) ? '' : 'is-invalid' ?>" placeholder="Nombre..." autofocus>
+                                                <input type="text" name="nombre" id="nombreid" value="<?= $nombre ?>" class="py-1 px-3 form-control shadow <?= empty($errores["nombre"]) ? '' : 'is-invalid' ?>" placeholder="Nombre..." autofocus>
                                                 <div class="invalid-feedback position-absolute">
-                                                    <?= empty($errornombre) ? "" : $errornombre; ?>
+                                                    <?= empty($errores["nombre"]) ? "" : $errores["nombre"]; ?>
                                                 </div>
                                             </div>
                                             <div class="w-100 ml-md-3 form-group mb-4 mb-md-3">
                                                 <label for="apellido" class="mb-2">Apellido</label>
-                                                <input type="text" name="apellido" id="apellido" value="<?= $apellido ?>" class=" py-1 px-3 form-control shadow <?= empty($errorapellido) ? '' : 'is-invalid' ?>" placeholder="Apellido..">
+                                                <input type="text" name="apellido" id="apellido" value="<?= $apellido ?>" class=" py-1 px-3 form-control shadow <?= empty($errores["apellido"]) ? '' : 'is-invalid' ?>" placeholder="Apellido..">
                                                 <div class="invalid-feedback position-absolute">
-                                                    <?= empty($errorapellido) ? "" : $errorapellido; ?>
+                                                    <?= empty($errores["apellido"]) ? "" : $errores["apellido"]; ?>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap mb-2">
                                             <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
                                                 <label for="email" class="mb-2">E-mail</label>
-                                                <input type="text" name="email" id="email" value="<?= $email ?>" class=" py-1 px-3 form-control shadow <?= empty($erroremail) ? '' : 'is-invalid' ?>" placeholder="email@example.com">
+                                                <input type="text" name="email" id="email" value="<?= $email ?>" class=" py-1 px-3 form-control shadow <?= empty($errores["email"]) ? '' : 'is-invalid' ?>" placeholder="email@example.com">
                                                 <div class="invalid-feedback position-absolute">
-                                                    <?= empty($erroremail) ? "" : $erroremail; ?>
+                                                    <?= empty($errores["email"]) ? "" : $errores["email"]; ?>
                                                 </div>
                                             </div>
                                             <div class="w-100 ml-md-3 form-group mb-4 mb-md-3" id="errornac">
-                                                <label for="diaNacimiento" class="mb-2">Fecha de nacimiento</label>
+                                                <label for="dia_de_nacimiento" class="mb-2">Fecha de nacimiento</label>
                                                 <div class="w-100 d-flex">
-                                                    <input type="text" name="diaNacimiento" id="diaNacimiento" value="<?= $diaNacimiento ?>" class="py-1 px-3 form-control shadow text-center <?= empty($errornacd) ? '' : 'is-invalid' ?>" placeholder="dd">
-                                                    <input type="text" name="mesNacimiento" id="mesNacimiento" value="<?= $mesNacimiento ?>" class="py-1 px-3 mx-3 form-control shadow text-center <?= empty($errornacm) ? '' : 'is-invalid' ?>" placeholder="mm">
-                                                    <input type="text" name="anioNacimiento" id="anioNacimiento" value="<?= $anioNacimiento ?>" class=" py-1 px-3 form-control shadow text-center <?= empty($errornaca) ? '' : 'is-invalid' ?>" placeholder="aaaa">
+                                                    <input type="text" name="dia_de_nacimiento" id="dia_de_nacimiento" value="<?= $dia_de_nacimiento ?>" class="py-1 px-3 form-control shadow text-center <?= empty($errornacd) ? '' : 'is-invalid' ?>" placeholder="dd">
+                                                    <input type="text" name="mes_de_nacimiento" id="mes_de_nacimiento" value="<?= $mes_de_nacimiento ?>" class="py-1 px-3 mx-3 form-control shadow text-center <?= empty($errornacm) ? '' : 'is-invalid' ?>" placeholder="mm">
+                                                    <input type="text" name="anio_de_nacimiento" id="anio_de_nacimiento" value="<?= $anio_de_nacimiento ?>" class=" py-1 px-3 form-control shadow text-center <?= empty($errornaca) ? '' : 'is-invalid' ?>" placeholder="aaaa">
                                                     <div class="d-block invalid-feedback position-absolute mt-4 pt-3">
-                                                        <?= empty($errornac) ? "" : $errornac ?>
+                                                        <?= empty($errores["fecha_de_nacimiento"]) ? "" : $errores["fecha_de_nacimiento"] ?>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap mb-2">
                                             <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
-                                                <label for="password" class="mb-2">Contraseña</label>
-                                                <input type="password" name="password" id="password" class="w-100 py-1 px-3 form-control shadow <?= empty($errorpass) ? '' : 'is-invalid' ?> <?= empty($errorcpass) ? '' : 'is-invalid' ?>" placeholder="Contraseña...">
+                                                <label for="pass" class="mb-2">Contraseña</label>
+                                                <input type="password" name="pass" id="pass" class="w-100 py-1 px-3 form-control shadow <?= empty($errores["pass"]) ? '' : 'is-invalid' ?> <?= empty($errorconfirmar_pass) ? '' : 'is-invalid' ?>" placeholder="Contraseña...">
                                                 <div class="invalid-feedback position-absolute">
-                                                    <?= empty($errorpass) ? "" : $errorpass; ?>
+                                                    <?= empty($errores["pass"]) ? "" : $errores["pass"]; ?>
                                                 </div>
                                                 <div class="invalid-feedback position-absolute">
-                                                    <?= empty($errorcpass) ? "" : $errorcpass; ?>
+                                                    <?= empty($errores["confirmar_pass"]) ? "" : $errores["confirmar_pass"]; ?>
                                                 </div>
                                             </div>
                                             <div class="w-100 ml-md-3 form-group mb-4 mb-md-3">
-                                                <label for="cpassword" class="mb-2 d-flex flex-nowrap">Confirmar contraseña</label>
-                                                <input type="password" name="cpassword" id="cpassword" class="w-100 py-1 px-3 form-control shadow <?= empty($errorpass) ? '' : 'is-invalid' ?> <?= empty($errorcpass) ? '' : 'is-invalid' ?>" placeholder="Contraseña...">
+                                                <label for="confirmar_pass" class="mb-2 d-flex flex-nowrap">Confirmar contraseña</label>
+                                                <input type="password" name="confirmar_pass" id="confirmar_pass" class="w-100 py-1 px-3 form-control shadow <?= empty($errores["pass"]) ? '' : 'is-invalid' ?> <?= empty($errorconfirmar_pass) ? '' : 'is-invalid' ?>" placeholder="Contraseña...">
                                                 <div class="invalid-feedback position-absolute">
-                                                    <?= empty($errorcpass) ? "" : $errorcpass; ?>
+                                                    <?= empty($errores["confirmar_pass"]) ? "" : $errores["confirmar_pass"]; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -542,10 +421,10 @@ if ($_POST) {
                                 <div class="d-flex flex-column text-center">
                                     <h2>Opcional</h2>
                                     <div class="d-flex flex-column mt-4 pb-3 mx-auto text-center">
-                                        <label class="fas fa-caret-square-up fa-2x mb-0 <?= empty($erroravatar) ? 'text-white' : 'text-danger' ?>" for="avatar" id="avatarijq" style="cursor:pointer;"></label>
+                                        <label class="fas fa-caret-square-up fa-2x mb-0 <?= empty($errores["avatar"]) ? 'text-white' : 'text-danger' ?>" for="avatar" id="avatarijq" style="cursor:pointer;"></label>
                                         <label class="flex-nowrap mb-0 text-white" for="avatar" id="avatarjq" style="cursor:pointer;"><span>subir avatar</span></label>
                                         <input style="opacity:0; position:absolute; z-index:-1;" name="avatar" id="avatar" class="invisible d-flex" type="file">
-                                        <label class="text-center text-danger"><?= empty($erroravatar) ? "" : $erroravatar; ?></label>
+                                        <label class="text-center text-danger"><?= empty($errores["avatar"]) ? "" : $errores["avatar"]; ?></label>
                                     </div>
                                     <h5>Contacto</h5>
                                 </div>
@@ -553,22 +432,23 @@ if ($_POST) {
                                     <div class="bg-transparent d-flex flex-column">
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap mb-2" id="errortel">
                                             <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
-                                                <label class="mb-2 mr-md-3" for="nroTelefono">Teléfono</label>
-                                                <input type="text" name="nroTelefono" id="nroTelefono" value="<?= $nroTelefono ?>" class="py-1 px-3 form-control shadow <?= empty($errortel) ? '' : 'is-invalid' ?>" placeholder="Número...">
+                                                <label class="mb-2 mr-md-3" for="numero_de_telefono">Teléfono</label>
+                                                <input type="text" name="numero_de_telefono" id="numero_de_telefono" value="<?= $numero_de_telefono ?>" class="py-1 px-3 form-control shadow <?= empty($errores["telefono"]) ? '' : 'is-invalid' ?>" placeholder="Número...">
                                                 <div class="invalid-feedback position-absolute">
-                                                    <?= empty($errortel) ? "" : $errortel; ?>
+                                                    <?= empty($errores["telefono"]) ? "" : $errores["telefono"]; ?>
                                                 </div>
                                             </div>
+                                            <!--
                                             <div class="d-flex flex-wrap justify-content-around d-md-block text-md-left ml-md-3 w-100 align-self-end">
                                                 <div class="custom-control custom-radio mt-1 mt-md-0 mb-md-1 form-group">
-                                                    <input type="radio" name="tipoTelefono" id="tipo-cel" value="cel" class="custom-control-input <?= empty($errortipotel) ? '' : 'is-invalid' ?>" <?= $tipoCelular ?>>
+                                                    <input type="radio" name="tipoTelefono" id="tipo-cel" value="cel" class="custom-control-input <?= empty($errortipotel) ? '' : 'is-invalid' ?>" <?= $tipo_de_celular ?>>
                                                     <label class="custom-control-label" id="radio1jq" for="tipo-cel">Celular</label>
                                                 </div>
                                                 <div class="custom-control custom-radio mt-1 mt-md-0 form-group mb-md-2">
                                                     <input type="radio" name="tipoTelefono" id="tipo-fijo" value="fijo" class="custom-control-input <?= empty($errortipotel) ? '' : 'is-invalid' ?>" <?= $tipoFijo ?>>
                                                     <label class="custom-control-label" id="radio2jq" for="tipo-fijo">Fijo</label>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                 </div>
@@ -578,29 +458,23 @@ if ($_POST) {
                                     <div class="bg-transparent d-flex flex-column">
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap mb-2" id="errordoc">
                                             <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
-                                                <label for="nroDocumento" class="mb-2">Documento</label>
-                                                <input type="text" name="nroDocumento" id="nroDocumento" value="<?= $nroDocumento ?>" class="py-1 px-3 form-control shadow <?= empty($errordoc) ? '' : 'is-invalid' ?>" placeholder="Número...">
+                                                <label for="numero_de_documento" class="mb-2">Documento</label>
+                                                <input type="text" name="numero_de_documento" id="numero_de_documento" value="<?= $numero_de_documento ?>" class="py-1 px-3 form-control shadow <?= empty($errores["numero_de_documento"]) ? '' : 'is-invalid' ?>" placeholder="Número...">
                                                 <div class="invalid-feedback position-absolute">
-                                                    <?= empty($errordoc) ? "" : $errordoc; ?>
+                                                    <?= empty($errores["numero_de_documento"]) ? "" : $errores["numero_de_documento"]; ?>
                                                 </div>
                                             </div>
                                             <div class="w-100 ml-md-3 form-group mb-4 mb-md-3">
-                                                <label class="mb-2" for="tipoDocumento">Tipo de documento</label>
-                                                <select name="tipoDocumento" id="tipoDocumento" class="py-1 px-3 form-control shadow <?= empty($errortipodoc) ? '' : 'is-invalid' ?>">
-                                                    <option disabled selected class="d-none"> Documento </option>
+                                                <label class="mb-2" for="tipos_de_documento">Tipo de documento</label>
+                                                <select name="tipos_de_documento" id="tipos_de_documento" class="py-1 px-3 form-control shadow <?= empty($errores["tipos_de_documento"]) ? '' : 'is-invalid' ?>">
                                                     <!-- Dropdown de documentos -->
-                                                    <?php foreach ($dropdowns["documentos"] as $documentoAbreviado => $documentoEntero) :
-                                                        if (!empty($tipoDocumento) && $tipoDocumento == $documentoAbreviado) : ?>
-                                                            <option value="<?= $documentoAbreviado ?>" selected>
-                                                                <?= $documentoEntero ?>
-                                                            </option>
-                                                        <?php else : ?>
-                                                            <option value="<?= $documentoAbreviado ?>">
-                                                                <?= $documentoEntero ?>
-                                                            </option>
-                                                    <?php endif;
-                                                    endforeach; ?>
+                                                    <?php foreach($baseDeDatosDeTiposDeDocumento as $tipoDeDocumento) :?>
+                                                        <option value="<?= $tipoDeDocumento["id"] ?>" id="tipos_de_documento"><?= $tipoDeDocumento["tipo"] ?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
+                                                <div class="invalid-feedback position-absolute">
+                                                    <?= empty($errores["tipos_de_documento"]) ? "" : $errores["tipos_de_documento"]; ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -610,80 +484,78 @@ if ($_POST) {
                                     <h5 class="text-center mx-auto mb-3">Dirección</h5>
                                     <div class="bg-transparent d-flex flex-column">
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap mb-2">
-                                            <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
-                                                <label class="mb-2">Ciudad</label>
-                                                <input type="text" name="ciudad" id="ciudad" value="<?= $ciudad ?>" class="py-1 px-3 form-control shadow <?= empty($errortipodoc) ? '' : 'is-invalid' ?>" placeholder="Ciudad...">
-                                                <div class="invalid-feedback position-absolute">
-                                                    <?= empty($errorciudad) ? "" : $errorciudad; ?>
-                                                </div>
-                                            </div>
                                             <div class="w-100 ml-md-3 d-md-flex">
                                                 <div class="w-100 mr-md-2 form-group mb-4 mb-md-3">
-                                                    <label class="mb-2" id="provincia" for="tipoDocumento">Provincia</label>
-                                                    <select name="provincia" id="provincia" class="w-100 py-1 px-3 form-control shadow <?= empty($errorprovincia) ? '' : 'is-invalid' ?>">
-                                                        <option selected> Provincia </option>
-                                                        <!-- Dropdown de provincias -->
-                                                        <?php foreach ($dropdowns["provincias"] as $codigo => $nombreprov) :
-                                                            if (!empty($provincia) && $provincia == $codigo) : ?>
-                                                                <option value="<?= $codigo ?>" selected>
-                                                                    <?= $nombreprov ?>
-                                                                </option>
-                                                            <?php else : ?>
-                                                                <option value="<?= $codigo ?>">
-                                                                    <?= $nombreprov ?>
-                                                                </option>
-                                                        <?php endif;
-                                                        endforeach; ?>
+                                                    <label class="mb-2" for="provincia">Provincia</label>
+                                                    <select name="provincia" id="provincia" class="w-100 py-1 px-3 form-control shadow <?= empty($errores["provincia"]) ? '' : 'is-invalid' ?>">
+                                                    <option selected disabled> Seleccione una provincia... </option>    
+                                                    <?php foreach ($baseDeDatosDeProvincias as $datosDeProvincia => $provincia) : ?>
+                                                            <option value="<?=$provincia["id"]?>"><?=$provincia["nombre"]?></option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                     <div class="invalid-feedback position-absolute">
-                                                        <?= empty($errorprovincia) ? "" : $errorprovincia; ?>
+                                                        <?= empty($errores["provincia"]) ? "" : $errores["provincia"]; ?>
                                                     </div>
                                                 </div>
+                                                <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
+                                                <label class="mb-2" for="ciudad">Ciudad</label>
+                                                <select name="ciudad" id="ciudad" class="py-1 px-3 form-control shadow">
+                                                    <option value="default" disabled selected> Seleccione una ciudad...</option>
+                                                <?php foreach($baseDeDatosDeCiudades as $ciudad):?>
+                                                    <option value="<?=$ciudad["id"]?>"><?=$ciudad["nombre"]?></option>
+                                                <?php endforeach;?>
+                                                </select>                                                
+                                                <div class="invalid-feedback position-absolute">
+                                                    <?= empty($errores["ciudad"]) ? "" : $errores["ciudad"]; ?>
+                                                </div>
+                                                </div>
+                                                <!--
                                                 <div class="w-100 ml-md-2 form-group mb-4 mb-md-3">
-                                                    <label class="mb-2" id="Código postal" for="codigoPostal">Código postal</label>
-                                                    <input type="text" name="codigoPostal" id="codigoPostal" value="<?= $codigoPostal ?>" class="w-100 py-1 px-3 form-control shadow <?= empty($errorcodigoPostal) ? '' : 'is-invalid' ?>" placeholder="Código...">
+                                                    <label class="mb-2" id="codigo_postal" for="codigo_postal">Código postal</label>
+                                                    <input type="text" name="codigo_postal" id="codigo_postal" value="<?= $codigo_postal ?>" class="w-100 py-1 px-3 form-control shadow <?= empty($errores["codigo_postal"]) ? '' : 'is-invalid' ?>" placeholder="Código...">
                                                     <div class="invalid-feedback position-absolute">
-                                                        <?= empty($errorcodigoPostal) ? "" : $errorcodigoPostal; ?>
+                                                        <?= empty($errores["codigo_postal"]) ? "" : $errores["codigo_postal"]; ?>
                                                     </div>
                                                 </div>
+                                                -->
                                             </div>
                                         </div>
                                         <div class="w-100 d-flex flex-wrap flex-md-nowrap form-group mb-2">
                                             <div id="errorcalle" class="w-100 mr-md-3 d-md-flex">
                                                 <div class="w-100 mr-md-2 form-group mb-4 mb-md-3">
-                                                    <label class="mb-2" id="calle" for="calle">Calle</label>
-                                                    <input type="text" name="calle" id="calle" value="<?= $calle ?>" class="w-100 py-1 px-3 form-control shadow <?= empty($errorcalle) ? '' : 'is-invalid ' ?>" placeholder="Calle...">
+                                                    <label class="mb-2" for="calle">Calle</label>
+                                                    <input type="text" name="calle" id="calle" value="<?= $calle ?>" class="w-100 py-1 px-3 form-control shadow <?= empty($errores["calle"]) ? '' : 'is-invalid ' ?>" placeholder="Calle...">
                                                     <div class="invalid-feedback position-absolute">
-                                                        <?= empty($errorcalle) ? "" : $errorcalle; ?>
+                                                        <?= empty($errores["calle"]) ? "" : $errores["calle"]; ?>
                                                     </div>
-                                                    <div class="d-none d-md-block invalid-feedback position-absolute <?= empty($errorcalle) ? '' : 'mt-4' ?>">
-                                                        <?= empty($errornrocalle) ? "" : $errornrocalle; ?>
+                                                    <div class="d-none d-md-block invalid-feedback position-absolute <?= empty($errores["altura"]) ? '' : 'mt-4' ?>">
+                                                        <?= empty($errores["altura"]) ? "" : $errores["altura"]; ?>
                                                     </div>
                                                 </div>
                                                 <div class="w-100 ml-md-2 form-group mb-4 mb-md-3">
-                                                    <label class="mb-2" for="nroCalle">Número de calle</label>
-                                                    <input type="text" name="nroCalle" id="nroCalle" value="<?= $nroCalle ?>" class="w-100 py-1 px-3 form-control shadow <?= empty($errornrocalle) ? '' : 'is-invalid' ?>" placeholder="Número..">
+                                                    <label class="mb-2" for="altura">Altura</label>
+                                                    <input type="text" name="altura" id="altura" value="<?= $altura ?>" class="w-100 py-1 px-3 form-control shadow <?= empty($errores["altura"]) ? '' : 'is-invalid' ?>" placeholder="Número..">
                                                     <div class="invalid-feedback d-md-none position-absolute">
-                                                        <?= empty($errornrocalle) ? "" : $errornrocalle; ?>
+                                                        <?= empty($errores["altura"]) ? "" : $errores["altura"]; ?>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="w-100 ml-md-3 d-md-flex">
                                                 <div class="w-100 mr-md-2 form-group mb-4 mb-md-3">
-                                                    <label class="mb-2" for="nroPiso">Piso</label>
-                                                    <input type="text" name="nroPiso" id="nroPiso" value="<?= $nroPiso ?>" class="py-1 px-3 form-control shadow <?= empty($errorpiso) ? '' : 'is-invalid' ?>" placeholder="Número...">
+                                                    <label class="mb-2" for="piso">Piso</label>
+                                                    <input type="text" name="piso" id="piso" value="<?= $piso ?>" class="py-1 px-3 form-control shadow <?= empty($errores["piso"]) ? '' : 'is-invalid' ?>" placeholder="Número...">
                                                     <div class="invalid-feedback position-absolute">
-                                                        <?= empty($errorpiso) ? "" : $errorpiso; ?>
+                                                        <?= empty($errores["piso"]) ? "" : $errores["piso"]; ?>
                                                     </div>
-                                                    <div class="d-none d-md-block invalid-feedback position-absolute <?= empty($errorpiso) ? '' : 'mt-4' ?>">
-                                                        <?= empty($errordepto) ? "" : $errordepto; ?>
+                                                    <div class="d-none d-md-block invalid-feedback position-absolute <?= empty($errores["piso"]) ? '' : 'mt-4' ?>">
+                                                        <?= empty($errores["departamento"]) ? "" : $errores["departamento"]; ?>
                                                     </div>
                                                 </div>
                                                 <div class="w-100 ml-md-2 form-group">
                                                     <label class="mb-2" for="departamento">Departamento</label>
-                                                    <input type="text" name="departamento" id="departamento" value="<?= $departamento ?>" class="w-100 py-1 px-3 form-control shadow <?= empty($errordepto) ? '' : 'is-invalid' ?>" placeholder="Departamento...">
+                                                    <input type="text" name="departamento" id="departamento" value="<?= $departamento ?>" class="w-100 py-1 px-3 form-control shadow <?= empty($errores["departamento"]) ? '' : 'is-invalid' ?>" placeholder="Departamento...">
                                                     <div class="invalid-feedback d-md-none position-absolute">
-                                                        <?= empty($errordepto) ? "" : $errordepto; ?>
+                                                        <?= empty($errores["departamento"]) ? "" : $errores["departamento"]; ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -744,7 +616,7 @@ if ($_POST) {
                                             <li>using this Website to engage in any advertising or marketing.</li>
                                         </ul>
 
-                                        <p>Certain areas of this Website are restricted from being access by you and 4 osos may further restrict access by you to any areas of this Website, at any time, in absolute discretion. Any user ID and password you may have for this Website are confidential and you must maintain confidentiality as well.</p>
+                                        <p>Certain areas of this Website are restricted from being access by you and 4 osos may further restrict access by you to any areas of this Website, at any time, in absolute discretion. Any user ID and pass you may have for this Website are confidential and you must maintain confidentiality as well.</p>
 
                                         <h2>Your Content</h2>
 
