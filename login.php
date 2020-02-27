@@ -4,7 +4,7 @@ session_start();
 // Conexion a BBDD
 include("pdo.php");
 
-conexionADB("users_db");
+$db = conexionADB("users_db");
 // Fin conexion a BBDD
 
 // REDIRECCION SI EL USUARIO ESTÁ LOGUEADO
@@ -18,55 +18,49 @@ if (isset($_SESSION["usuario"])) {
 # Persistencia
 $email = empty($_POST["email"]) ? "" : $_POST["email"];
 $recordar = empty($_POST["recordar"]) ? "" : "checked";
+$password = empty($_POST["password"]) ? "" : $_POST["password"];
+
+// Comienzo array de errores
+$errores = [];
 
 
-
-/*
 # Funciones
-function usuariosdb() # Obtener base de datos de usuario
-{
-    $dbget = file_get_contents("db/usuarios.json");
-    return json_decode($dbget, true);
-}
-    
+$baseDeDatosDeUsuarios = traerUsuariosDeBBDD($db);
 
-function emailsRegistrados($db) # Obtener listado de mails
-{
-    return array_column(array_column($db, 'cuenta'), 'email');
+//GENERO ARRAY DE EMAILS REGISTRADOS EN BBDD
+$arrayDeEmails = [];
+foreach($baseDeDatosDeUsuarios as $usuario){
+    $arrayDeEmails[] =  $usuario["email"];
 }
-
+//FIN ARRAY DE EMAILS REGISTRADOS EN BBDD
 
 if ($_POST) {
 
-    # Iniciando arrays y declarando variables
-    $errores = "";
-    $password = empty($_POST["password"]) ? "" : $_POST["password"];
-    
-
     ############################## VALIDACIÓN ##############################
     if (empty($email)) { # Error de email vacío
-        $errores["Email"] = "No completaste tu email.";
+        $errores["email"] = "No completaste tu email.";
     } elseif (!empty($email)) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { # Error de email incorrecto (formato)
-            $errores["Email"] = "El email ingresado no es válido";
+            $errores["email"] = "El email ingresado no es válido. Por favor, ingresalo nuevamente.";
         } elseif (empty($password)) { # Error de contraseña vacía (corto acá si no hay contraseña)
-            $errores["pass"] = "No ingresaste tu contraseña";
+            $errores["pass"] = "No ingresaste tu contraseña.";
         }
-      elseif (in_array($email, emailsRegistrados($db))) { # Comprobando si email existe en la base de datos
-            $usuario = $db[array_search($email, emailsRegistrados($db))]; # Obteniendo array de usuario actual
-            $dbpassword = $usuario["cuenta"]["password"]; # Obteniendo contraseña del usuario en la base de datos
+        //prueba
+        if (!in_array($email, $arrayDeEmails)){
+            $errores["email"]= "El email ingresado no existe. <a href=register.php> Registrate aquí. </a>"; # Error de email no existente
+        } else { # Comprobando si email existe en la base de datos
+            $usuario = $baseDeDatosDeUsuarios[array_search($email, $usuario)]; # Obteniendo array de usuario actual
+            $dbpassword = $usuario["password"]; # Obteniendo contraseña del usuario en la base de datos
 
             if (!($password == password_verify($password, $dbpassword))) { # Comparando contraseña ingresada con contraseña en la base de datos
                 $errores["pass"]= "La contraseña ingresada es incorrecta."; # Error cuando la contraseña no es correcta
             }
-         else {
-            $errores["Email"]= "Ese email no existe!"; # Error de email no existente
-        }
     }
     if (empty($password)) {
-        $errores++;
-        $passerror = "Por favor ingresa una contraseña!"; # Error de contraseña vacía
-    }
+        $errores["pass"] = "Por favor, ingresa una contraseña."; # Error de contraseña vacía
+    }   
+    } //cierre elseif
+    } //cierre if ($_POST)
 
     ############### COMPROBACIÓN DE LOGIN ###############
     if (!$errores) {
@@ -76,10 +70,11 @@ if ($_POST) {
 
             # Array de cookie
             $cookiedata = [
-                "email" => $usuario["cuenta"]["email"],
+                "email" => $usuario["email"],
                 "password" => $password
             ];
-            setcookie('usuario', json_encode($cookiedata), time() + 604800, '/'); # Seteando cookie por 1 semana
+            setcookie('email', $cookiedata["email"], time() + 604800, '/'); # Seteando cookie por 1 semana
+            setcookie('pass', $cookiedata["pass"], time() + 604800, '/');
         }
         #/// Fin de Cookies ///
 
@@ -90,17 +85,18 @@ if ($_POST) {
     #////////////// Fin de COMPROBACIÓN DE LOGIN //////////////
 
     ############################## LOGIN POR COOKIES ##############################
-} else {
+else {
     if (isset($_COOKIE["usuario"])) {
-        $cookiedata = json_decode($_COOKIE["usuario"], true); # Obteniendo array de cookie
+        $cookiedata["email"] = $_COOKIE["email"]; # Obteniendo array de cookie
+        $cookiedata["pass"] = $_COOKIE["pass"];
         if (!empty($cookiedata["email"]) && !empty($cookiedata["password"])) { # Comprobando que la cookie tenga datos
             $cookieemail = $cookiedata["email"]; # Email en cookie
             $cookiepass = $cookiedata["password"]; # Contraseña en cookie
-            $db = usuariosdb(); # Obteniendo array de la base de datos de usuarios
-            if (in_array($cookieemail, emailsRegistrados($db))) {
-                $usuario = $db[array_search($cookieemail, emailsRegistrados($db))]; # Obteniendo array de usuario
-                if (password_verify($cookiepass, $usuario["cuenta"]["password"])) {
-                    setcookie("usuario", json_encode($cookiedata), time() + 604800); # Renovando cookie por 1 semana más
+            if (in_array($cookieemail, $arrayDeEmails)) {
+                $usuario = $baseDeDatosDeUsuarios[array_search($cookieemail, $usuario)]; # Obteniendo array de usuario actual
+                if (password_verify($cookiepass, $usuario["password"])) {
+                    setcookie('email', $cookiedata["email"], time() + 604800, '/'); # Seteando cookie por 1 semana
+                    setcookie('pass', $cookiedata["pass"], time() + 604800, '/');
                     $_SESSION["usuario"] = $usuario; # Escribiendo la sesión
                     header('Location: index.php'); # Redirección a index.php
                     exit();
@@ -110,7 +106,7 @@ if ($_POST) {
     }
 }
 
-#///////////////////////// FIN PHP ///////////////////////// */
+#///////////////////////// FIN PHP ///////////////////////// 
 
 
 

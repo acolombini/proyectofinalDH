@@ -279,8 +279,8 @@ if ($_POST) {
                 "email" => $usuario["email"],
                 "pass" => $usuario["pass"]
             ];
-            setcookie("usuario", $cookiedata["email"], time() + 604800, '/');
-            setcookie("usuario", $cookiedata["pass"], time() + 604800, '/'); # Seteando cookie por 1 semana
+            setcookie("email", $cookiedata["email"], time() + 604800, '/');
+            setcookie("pass", $cookiedata["pass"], time() + 604800, '/'); # Seteando cookie por 1 semana
         }
         $query=$db->prepare("INSERT INTO users VALUES (DEFAULT, :nombre, :apellido, :telefono, :documento, :email, :fecha_de_nacimiento, :domicilio, :ciudad_id, :pass, DEFAULT, :tipos_de_dni_id)");
         $query->bindValue("nombre", $usuario["nombre"]);
