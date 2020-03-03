@@ -1,46 +1,11 @@
 <?php
 session_start();
+include("php/checkCookies.php");
 
-function usuariosdb() # Obtener base de datos de usuario
-{
-    $dbget = file_get_contents("db/usuarios.json");
-    return json_decode($dbget, true);
-}
+if(!(isset($_SESSION["usuario"]))){
+    header('Location: login.php');
+};
 
-function emailsRegistrados($db) # Obtener listado de mails
-{
-    return array_column(array_column($db, 'cuenta'), 'email');
-}
-
-if (isset($_SESSION["usuario"])) {
-    ;
-} else if (isset($_COOKIE["usuario"])) {
-    $cookiedata = json_decode($_COOKIE["usuario"], true); # Obteniendo array de cookie
-    if (!empty($cookiedata["email"]) && !empty($cookiedata["password"])) { # Comprobando que la cookie tenga datos
-        $cookieemail = $cookiedata["email"]; # Email en cookie
-        $cookiepass = $cookiedata["password"]; # Contraseña en cookie
-        $db = usuariosdb(); # Obteniendo array de la base de datos de usuarios
-        if (in_array($cookieemail, emailsRegistrados($db))) {
-            $usuario = $db[array_search($cookieemail, emailsRegistrados($db))]; # Obteniendo array de usuario
-            if (password_verify($cookiepass, $usuario["cuenta"]["password"])) {
-                setcookie("usuario", json_encode($cookiedata), time() + 604800); # Renovando cookie por 1 semana más
-                $_SESSION["usuario"] = $usuario; # Escribiendo la sesión
-            } else {
-                header('Location: index.php');
-                exit();
-            }
-        } else {
-            header('Location: index.php');
-            exit();
-        }
-    } else {
-        header('Location: index.php');
-        exit();
-    }
-} else {
-    header('Location: index.php');
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +19,6 @@ if (isset($_SESSION["usuario"])) {
 </head>
 
 <body>
-<<<<<<< HEAD
    <div class="container-fluid m-0 p-0 bg-sky">
       <header>
       <?php require 'php/header.php'; ?>
@@ -134,8 +98,7 @@ if (isset($_SESSION["usuario"])) {
                   
                   <div
                   class="d-flex flex-column order-lg-2 flex-lg-row align-self-lg-end mb-lg-5 mx-lg-auto">
-                  <span class="nya mr-lg-2 mb-2 mb-lg-0">Nombre</span>
-                  <span class="nya">Apellido</span>
+                  <span class="nya mr-lg-2 mb-2 mb-lg-0"><?= $_SESSION['usuario']['nombre'] ." " . $_SESSION['usuario']['apellido']?></span>
                </div>
             </div>
          </div>
@@ -794,61 +757,6 @@ if (isset($_SESSION["usuario"])) {
                      <div class="d-flex flex-column pr-3">
                         <a href="detalle-producto.html"><img src="img/producto1.jpg"
                            alt="producto"></a>
-=======
-    <div class="container-fluid m-0 p-0 bg-sky">
-        <header>
-            <?php require 'php/header.php'; ?>
-        </header>
-
-        <main>
-            <div class="container my-2 mx-auto py-2">
-                <!-- a partir de aca va el contenido de la pagina -->
-
-                <div class="row no-gutters">
-
-                    <!-- Left panel desktop -->
-                    <div class="d-none d-lg-flex col-3">
-                        <div id="profilelp" class="mr-4 w-100 d-flex flex-column">
-                            <div class="list-group list-group-flush mb-4 bg-light">
-                                <button type="button" class="list-group-item list-group-item-dark text-center font-weight-bold disabled bg-light">
-                                    Mi cuenta
-                                    <span class="d-block mt-2"></span>
-                                </button>
-                                <a href="#" class="list-group-item list-group-item-action bg-light">
-                                    Mi perfil
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action bg-light">
-                                    Mis datos
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action bg-light">
-                                    Facturación
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action bg-light">
-                                    Direcciones
-                                </a>
-                            </div>
-                            <div class="list-group list-group-flush bg-light flex-grow-1">
-                                <button type="button" class="list-group-item list-group-item-dark text-center font-weight-bold disabled bg-light">
-                                    Más
-                                    <span class="d-block mt-2"></span>
-                                </button>
-                                <a href="#" class="list-group-item list-group-item-action bg-light">
-                                    Reputación
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action bg-light">
-                                    Estadísticas
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action bg-light">
-                                    Reviews
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action bg-light">
-                                    Seguridad
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action text-danger bg-light">
-                                    Reportar un problema
-                                </a>
-                            </div>
->>>>>>> 876b2426e5e69269c84cf657d50698dda268fa2f
                         </div>
                     </div>
                     <!-- Fin Left panel desktop -->

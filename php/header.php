@@ -113,7 +113,7 @@ if (isset($_SESSION["usuario"])) : ?>
                                 </li>
                                 <li class="dropdown-divider"></li>
                                 <li>
-                                    <a href="logout" class="dropdown-item">
+                                    <a href="php/logout.php" class="dropdown-item">
                                         Salir
                                     </a>
                                 </li>

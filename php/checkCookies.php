@@ -1,25 +1,24 @@
 <?php 
-function usuariosdb() # Obtener base de datos de usuario
-{
-    $dbget = file_get_contents("db/usuarios.json");
-    return json_decode($dbget, true);
+include("pdo.php");
+$db = conexionADB("users_db");
+$baseDeDatosDeUsuarios = traerUsuariosDeBBDD($db);
+
+$arrayDeEmails = [];
+foreach($baseDeDatosDeUsuarios as $usuario){
+    $arrayDeEmails[] =  $usuario["email"];
 }
 
-function emailsRegistrados($db) # Obtener listado de mails
-{
-    return array_column(array_column($db, 'cuenta'), 'email');
-}
-
-if (isset($_COOKIE["usuario"])) {
-    $cookiedata = json_decode($_COOKIE["usuario"], true); # Obteniendo array de cookie
+if (isset($_COOKIE["email"])) {
+    $cookiedata["email"] = $_COOKIE["email"]; # Obteniendo array de cookie
+    $cookiedata["password"] = $_COOKIE["password"];
     if (!empty($cookiedata["email"]) && !empty($cookiedata["password"])) { # Comprobando que la cookie tenga datos
         $cookieemail = $cookiedata["email"]; # Email en cookie
         $cookiepass = $cookiedata["password"]; # Contraseña en cookie
-        $db = usuariosdb(); # Obteniendo array de la base de datos de usuarios
-        if (in_array($cookieemail, emailsRegistrados($db))) {
-            $usuario = $db[array_search($cookieemail, emailsRegistrados($db))]; # Obteniendo array de usuario
-            if (password_verify($cookiepass, $usuario["cuenta"]["password"])) {
-                setcookie("usuario", json_encode($cookiedata), time() + 604800); # Renovando cookie por 1 semana más
+        if (in_array($cookieemail, $arrayDeEmails)) {
+            $usuario = $baseDeDatosDeUsuarios[array_search($cookieemail, $usuario)]; # Obteniendo array de usuario actual
+            if (password_verify($cookiepass, $usuario["password"])) {
+                setcookie('email', $cookiedata["email"], time() + 604800, '/'); # Seteando cookie por 1 semana
+                setcookie('password', $cookiedata["password"], time() + 604800, '/');
                 $_SESSION["usuario"] = $usuario; # Escribiendo la sesión
             }
         }
