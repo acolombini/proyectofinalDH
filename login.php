@@ -32,8 +32,9 @@ $arrayDeEmails = [];
 foreach($baseDeDatosDeUsuarios as $usuario){
     $arrayDeEmails[] =  $usuario["email"];
 }
-//FIN ARRAY DE EMAILS REGISTRADOS EN BBDD
 
+
+//FIN ARRAY DE EMAILS REGISTRADOS EN BBDD
 if ($_POST) {
 
     ############################## VALIDACIÓN ##############################
@@ -49,9 +50,9 @@ if ($_POST) {
         if (!in_array($email, $arrayDeEmails)){
             $errores["email"]= "El email ingresado no existe. <a href=register.php> Registrate aquí. </a>"; # Error de email no existente
         } else { # Comprobando si email existe en la base de datos
-            $usuario = $baseDeDatosDeUsuarios[array_search($email, $usuario)]; # Obteniendo array de usuario actual
+            $usuario = $baseDeDatosDeUsuarios[array_search($email, $arrayDeEmails)]; # Obteniendo array de usuario actual
             $dbpassword = $usuario["password"]; # Obteniendo contraseña del usuario en la base de datos
-
+            
             if (!($password == password_verify($password, $dbpassword))) { # Comparando contraseña ingresada con contraseña en la base de datos
                 $errores["pass"]= "La contraseña ingresada es incorrecta."; # Error cuando la contraseña no es correcta
             }

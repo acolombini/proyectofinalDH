@@ -3,6 +3,18 @@ session_start();
 include ('php/checkCookies.php');
 include_once ("pdo.php");
 
+if(!(isset($_SESSION["usuario"]))){
+   header('Location: login.php');
+};
+if($_SESSION['usuario']['tipo_de_usuario_id'] != 2){
+   header('Location: login.php');exit;
+}
+
+$db = conexionADB("users_db");
+
+$categoriasDeProductos = traerCategoriasDeProductosDeBBDD($db);
+
+$BBDDdeProductos= traerProductosDeBBDD($db);
 
 ?>
 

@@ -282,7 +282,7 @@ if ($_POST) {
             setcookie("email", $cookiedata["email"], time() + 604800, '/');
             setcookie("pass", $cookiedata["pass"], time() + 604800, '/'); # Seteando cookie por 1 semana
         }
-        $query=$db->prepare("INSERT INTO users VALUES (DEFAULT, :nombre, :apellido, :telefono, :documento, :email, :fecha_de_nacimiento, :domicilio, :ciudad_id, :pass, DEFAULT, :tipos_de_dni_id)");
+        $query=$db->prepare("INSERT INTO users VALUES (DEFAULT, :nombre, :apellido, :telefono, :documento, :email, :fecha_de_nacimiento, :domicilio, :ciudad_id, :pass, DEFAULT, :tipos_de_dni_id, DEFAULT)");
         $query->bindValue("nombre", $usuario["nombre"]);
         $query->bindValue("apellido",$usuario["apellido"]);
         $query->bindValue("telefono", $usuario["numero_de_telefono"]);
@@ -294,26 +294,20 @@ if ($_POST) {
         $query->bindValue("pass", $usuario["pass"]);
         $query->bindValue("tipos_de_dni_id", $usuario["tipos_de_documento"]);
         $query->execute();
-        /*
-        array_push($db, $usuario); # Añadiendo usuario al array de usuarios
-        $_SESSION["usuario"] = $usuario; # Añadiendo usuario a session
-        $dbencoded = json_encode($db); # Transformando array de usuarios en json
-        file_put_contents("db/usuarios.json", $dbencoded); # Escribiendo archivo json
-        header('Location: index.php'); # Redirección a index.php
-        exit();
-        */
+
     }
 } else {
-    if (isset($_COOKIE["usuario"])) {
-        $cookiedata = json_decode($_COOKIE["usuario"], true); # Obteniendo array de cookie
-        if (!empty($cookiedata["email"]) && !empty($cookiedata["pass"])) { # Comprobando que la cookie tenga datos
+    if (isset($_COOKIE["email"])) {
+        $cookiedata["email"] = $_COOKIE["email"]; # Obteniendo array de cookie
+        $cookiedata["password"] = $_COOKIE["password"];
+        if (!empty($cookiedata["email"]) && !empty($cookiedata["password"])) { # Comprobando que la cookie tenga datos
             $cookieemail = $cookiedata["email"]; # Email en cookie
-            $cookiepass = $cookiedata["pass"]; # Contraseña en cookie
-            $db = usuariosdb(); # Obteniendo array de la base de datos de usuarios
-            if (in_array($cookieemail, emailsRegistrados($db))) {
-                $usuario = $db[array_search($cookieemail, emailsRegistrados($db))]; # Obteniendo array de usuario
-                if (password_verify($cookiepass, $usuario["pass"])) {
-                    setcookie('usuario', json_encode($cookiedata), time() + 604800, '/'); # Renovando cookie por 1 semana más
+            $cookiepass = $cookiedata["password"]; # Contraseña en cookie
+            if (in_array($cookieemail, $arrayDeEmails)) {
+                $usuario = $baseDeDatosDeUsuarios[array_search($cookieemail, $usuario)]; # Obteniendo array de usuario actual
+                if (password_verify($cookiepass, $usuario["password"])) {
+                    setcookie('email', $cookiedata["email"], time() + 604800, '/'); # Seteando cookie por 1 semana
+                    setcookie('password', $cookiedata["password"], time() + 604800, '/');
                     $_SESSION["usuario"] = $usuario; # Escribiendo la sesión
                     header('Location: index.php'); # Redirección a index.php
                     exit();

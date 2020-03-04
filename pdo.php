@@ -35,4 +35,16 @@ function traerTiposDeDocumentoDeBBDD($db){
     $query->execute();
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function traerCategoriasDeProductosDeBBDD($db){
+    $query=$db->prepare("SELECT * FROM categorias");
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function traerProductosDeBBDD($db){
+    $query=$db->prepare("SELECT * FROM productos");
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>

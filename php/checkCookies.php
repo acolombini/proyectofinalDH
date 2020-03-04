@@ -1,5 +1,5 @@
 <?php 
-include("pdo.php");
+include_once("pdo.php");
 $db = conexionADB("users_db");
 $baseDeDatosDeUsuarios = traerUsuariosDeBBDD($db);
 
