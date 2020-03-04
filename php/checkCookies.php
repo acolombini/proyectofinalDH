@@ -15,7 +15,7 @@ if (isset($_COOKIE["email"])) {
         $cookieemail = $cookiedata["email"]; # Email en cookie
         $cookiepass = $cookiedata["password"]; # Contraseña en cookie
         if (in_array($cookieemail, $arrayDeEmails)) {
-            $usuario = $baseDeDatosDeUsuarios[array_search($cookieemail, $usuario)]; # Obteniendo array de usuario actual
+                $usuario = $baseDeDatosDeUsuarios[array_search($cookieemail, $arrayDeEmails)]; # Obteniendo array de usuario actual
             if (password_verify($cookiepass, $usuario["password"])) {
                 setcookie('email', $cookiedata["email"], time() + 604800, '/'); # Seteando cookie por 1 semana
                 setcookie('password', $cookiedata["password"], time() + 604800, '/');
