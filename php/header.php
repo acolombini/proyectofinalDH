@@ -40,7 +40,7 @@ if (isset($_SESSION["usuario"])) : ?>
 
                         <li class="nav-item p-0 ml-2 col dropdown ">
                             <a id="dropdownMenu1" href="lista.php" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
-                                Categoria
+                                Categorias
                             </a>
                             <ul aria-labelledby="dropdownMenu1" class="dropdown-menu border-0 shadow">
                                 <li>
@@ -88,7 +88,7 @@ if (isset($_SESSION["usuario"])) : ?>
                         <li class="nav-item p-0 ml-3">
                             <form class="navbar-form form-inline justify-content-end">
                                 <div class=" autofocus-group search-box searchbar row">
-                                    <input class="form-control shadow col-9 " type="search" value="Buscar Productos" id="example-search-input">
+                                    <input class="form-control shadow col-9 " type="search" placeholder="Buscar Productos" id="example-search-input">
                                     <span class="input-group-append col-3 p-0">
                                         <button class="btn shadow " type="button">
                                             <i class="fa fa-search">
@@ -113,7 +113,7 @@ if (isset($_SESSION["usuario"])) : ?>
                                 </li>
                                 <li class="dropdown-divider"></li>
                                 <li>
-                                    <a href="logout" class="dropdown-item">
+                                    <a href="php/logout.php" class="dropdown-item">
                                         Salir
                                     </a>
                                 </li>

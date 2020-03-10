@@ -78,37 +78,37 @@ include 'php/checkCookies.php';
             <section>
                <h2 class="font-weight-bold text-center my-4 fsize-5"> Tendencias </h2>
                <div class="row d-flex justify-content-around mx-2">
-                  <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 p-1"> <a href="lista-productos.html">
+                  <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 p-1"> <a href="lista.php">
                      <img src="https://steamcdn-a.akamaihd.net/steam/apps/105600/header.jpg?t=1568058714" class="card-img-top w-100" alt="foto de la categoria">
                      
                   </a>
                </div>
                
-               <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 p-1 shadow-lg"> <a href="lista-productos.html">
+               <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 p-1 shadow-lg"> <a href="lista.php">
                   <img src="https://steamcdn-a.akamaihd.net/steam/apps/47890/header.jpg?t=1573488449" class="card-img-top w-100" alt="foto de la categoria">
                   
                </a>
             </div>
             
-            <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 p-1"> <a href="lista-productos.html">
+            <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 p-1"> <a href="lista.php">
                <img src="https://steamcdn-a.akamaihd.net/steam/apps/24870/header.jpg?t=1573321343" class="card-img-top w-100" alt="foto de la categoria">
                
             </a>
          </div>
          
-         <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 p-1"> <a href="lista-productos.html">
+         <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 p-1"> <a href="lista.php">
             <img src="https://steamcdn-a.akamaihd.net/steam/apps/706220/header.jpg?t=1571868744" class="card-img-top w-100" alt="foto de la categoria">
             
          </a>
       </div>
       
-      <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 d-1one d-lg-block p-1"> <a href="">
+      <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 d-1one d-lg-block p-1"> <a href="lista.php">
          <img src="https://steamcdn-a.akamaihd.net/steam/apps/107410/header.jpg?t=1561619799" class="card-img-top w-100" alt="foto de la categoria">
          
       </a>
    </div>
    
-   <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 d-1one d-lg-block p-1"> <a href="lista-productos.html">
+   <div class="shadow-lg col-5 col-lg-3 mr-1 mb-5 d-1one d-lg-block p-1"> <a href="lista.php">
       <img src="https://steamcdn-a.akamaihd.net/steam/apps/1097840/header_alt_assets_2.jpg?t=1574378095" class="card-img-top w-100" alt="foto de la categoria">
       
    </a>

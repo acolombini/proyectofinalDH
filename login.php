@@ -32,8 +32,9 @@ $arrayDeEmails = [];
 foreach($baseDeDatosDeUsuarios as $usuario){
     $arrayDeEmails[] =  $usuario["email"];
 }
-//FIN ARRAY DE EMAILS REGISTRADOS EN BBDD
 
+
+//FIN ARRAY DE EMAILS REGISTRADOS EN BBDD
 if ($_POST) {
 
     ############################## VALIDACIÓN ##############################
@@ -49,9 +50,9 @@ if ($_POST) {
         if (!in_array($email, $arrayDeEmails)){
             $errores["email"]= "El email ingresado no existe. <a href=register.php> Registrate aquí. </a>"; # Error de email no existente
         } else { # Comprobando si email existe en la base de datos
-            $usuario = $baseDeDatosDeUsuarios[array_search($email, $usuario)]; # Obteniendo array de usuario actual
+            $usuario = $baseDeDatosDeUsuarios[array_search($email, $arrayDeEmails)]; # Obteniendo array de usuario actual
             $dbpassword = $usuario["password"]; # Obteniendo contraseña del usuario en la base de datos
-
+            
             if (!($password == password_verify($password, $dbpassword))) { # Comparando contraseña ingresada con contraseña en la base de datos
                 $errores["pass"]= "La contraseña ingresada es incorrecta."; # Error cuando la contraseña no es correcta
             }
@@ -60,7 +61,6 @@ if ($_POST) {
         $errores["pass"] = "Por favor, ingresa una contraseña."; # Error de contraseña vacía
     }   
     } //cierre elseif
-    } //cierre if ($_POST)
 
     ############### COMPROBACIÓN DE LOGIN ###############
     if (!$errores) {
@@ -74,7 +74,7 @@ if ($_POST) {
                 "password" => $password
             ];
             setcookie('email', $cookiedata["email"], time() + 604800, '/'); # Seteando cookie por 1 semana
-            setcookie('pass', $cookiedata["pass"], time() + 604800, '/');
+            setcookie('password', $cookiedata["password"], time() + 604800, '/');
         }
         #/// Fin de Cookies ///
 
@@ -83,12 +83,13 @@ if ($_POST) {
         exit();
     }
     #////////////// Fin de COMPROBACIÓN DE LOGIN //////////////
+    } //cierre if ($_POST)
 
     ############################## LOGIN POR COOKIES ##############################
 else {
-    if (isset($_COOKIE["usuario"])) {
+    if (isset($_COOKIE["email"])) {
         $cookiedata["email"] = $_COOKIE["email"]; # Obteniendo array de cookie
-        $cookiedata["pass"] = $_COOKIE["pass"];
+        $cookiedata["password"] = $_COOKIE["password"];
         if (!empty($cookiedata["email"]) && !empty($cookiedata["password"])) { # Comprobando que la cookie tenga datos
             $cookieemail = $cookiedata["email"]; # Email en cookie
             $cookiepass = $cookiedata["password"]; # Contraseña en cookie
@@ -96,7 +97,7 @@ else {
                 $usuario = $baseDeDatosDeUsuarios[array_search($cookieemail, $usuario)]; # Obteniendo array de usuario actual
                 if (password_verify($cookiepass, $usuario["password"])) {
                     setcookie('email', $cookiedata["email"], time() + 604800, '/'); # Seteando cookie por 1 semana
-                    setcookie('pass', $cookiedata["pass"], time() + 604800, '/');
+                    setcookie('password', $cookiedata["password"], time() + 604800, '/');
                     $_SESSION["usuario"] = $usuario; # Escribiendo la sesión
                     header('Location: index.php'); # Redirección a index.php
                     exit();
@@ -105,7 +106,6 @@ else {
         }
     }
 }
-
 #///////////////////////// FIN PHP ///////////////////////// 
 
 
@@ -153,11 +153,11 @@ else {
                                     <div class="d-flex flex-column">
                                         <div class="form-group mb-3">
                                             <input id="inputEmail" type="text" name="email" value="<?= $email ?>" placeholder="Dirección de correo" autofocus="" class="form-control border-0 shadow px-4">
-                                            <label class="position-absolute text-danger" for="inputEmail"><?= empty($emailerror) ? "" : $emailerror; ?></label>
+                                            <label class="position-absolute text-danger" for="inputEmail"><?= empty($errores['email']) ? "" : $errores['email']; ?></label>
                                         </div>
                                         <div class="form-group mb-3 mt-3">
                                             <input id="inputPassword" type="password" name="password" placeholder="Contraseña" class="form-control border-0 shadow px-4 text-primary">
-                                            <label class="position-absolute text-danger" for="inputPassword"><?= empty($passerror) ? "" : $passerror; ?></label>
+                                            <label class="position-absolute text-danger" for="inputPassword"><?= empty($errores['pass']) ? "" : $errores['pass']; ?></label>
                                         </div>
                                         <div class="custom-control custom-checkbox mb-2 mt-3">
                                             <input name="recordar" id="customCheck1" type="checkbox" value="si" <?= $recordar ?> class="custom-control-input">

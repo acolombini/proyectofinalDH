@@ -1,11 +1,97 @@
 <?php
 session_start();
-include("php/checkCookies.php");
+include_once("php/checkCookies.php");
+include_once("pdo.php");
 
 if(!(isset($_SESSION["usuario"]))){
     header('Location: login.php');
 };
+if($_SESSION['usuario']['tipo_de_usuario_id'] != 2){
+    header('Location: login.php');exit;
+}
 
+$db = conexionADB("users_db");
+
+$categoriasDeProductos = traerCategoriasDeProductosDeBBDD($db);
+
+$BBDDdeProductos= traerProductosDeBBDD($db);
+
+$titulo = '';
+$precio = '';
+$descripcion = '';
+$caracteristicas = '';
+$categoria = '';
+
+$errores = [];
+
+$producto = [];
+
+if ($_POST){
+
+$titulo = empty($_POST["titulo"]) ? "" : $_POST["titulo"];
+$precio = empty($_POST["precio"]) ? "" : $_POST["precio"];
+$descripcion = empty($_POST["descripcion"]) ? "" : $_POST["descripcion"];
+$caracteristicas = empty($_POST["caracteristicas"]) ? "" : $_POST["caracteristicas"];
+//$categoria = empty($_POST["categoria"] ? "" : $_POST["categoria"]);
+// $stock = empty($_POST["stock"]? "" : $_POST["stock"]);
+
+    if(empty($titulo)){
+        $errores["titulo"] = "El título no puede estar vacío.";
+    } elseif (!preg_match("/^.{1,100}$/u", $titulo)) { # Error de caracteres mínimos/máximos
+        $errores["titulo"] = "El titulo no debe contener más 100 caracteres!";
+    } else { # Success!!
+        $producto["titulo"] = trim(preg_replace("/ {2,}/", " ", strtoupper($titulo))); # reemplazo múltiples espacios por uno solo y trimeo los extremos
+    }
+
+    if(empty($descripcion)){
+        $errores["descripcion"] = "La descripción no puede estar vacía.";
+    } elseif (!preg_match("/^.{1,250}$/u", $descripcion)) { # Error de caracteres mínimos/máximos
+        $errores["descripcion"] = "La descripcion no debe contener más 250 caracteres!";
+    } else { # Success!!
+        $producto["descripcion"] = $descripcion; 
+    }
+
+    if(empty($caracteristicas)){
+        $errores["caracteristicas"] = "Las caracteristicas no pueden estar vacías.";
+    } elseif (!preg_match("/^.{1,250}$/u", $caracteristicas)) { # Error de caracteres mínimos/máximos
+        $errores["caracteristicas"] = "Las caracteristicas no deben contener más 250 caracteres!";
+    } else { # Success!!
+        $producto["caracteristicas"] = $caracteristicas; 
+    }
+
+    if(empty($precio)){
+        $errores["precio"] = "El precio no puede estar vacío.";
+    } elseif (!is_numeric($precio)){
+        $errores["precio"] = "El precio debe ser un número.";
+    } else {
+        $producto["precio"] = $precio;
+    }
+
+    if(empty($_POST["categoria"])){
+        $errores["categoria"] = "Por favor, selecciona una categoría.";
+    } else {
+        $producto["categoria"] = $_POST["categoria"];
+    }
+
+    if(empty($_POST["stock"])){
+        $errores["stock"] = "El campo stock no puede estar vacío.";
+    } elseif (!is_numeric($_POST["stock"])){
+        $errores["stock"] = "El stock debe ser un número.";
+    } else {
+        $producto["stock"] = $_POST["stock"];
+    }
+
+    if(!$errores){
+        $query=$db->prepare("INSERT INTO productos VALUES (DEFAULT, :titulo, :descripcion, :caracteristicas, :precio, :categoria_id, :stock, null)");
+        $query->bindValue("titulo", $producto["titulo"]);
+        $query->bindValue("descripcion",$producto["descripcion"]);
+        $query->bindValue("caracteristicas", $producto["caracteristicas"]);
+        $query->bindValue("precio", $producto["precio"]); 
+        $query->bindValue("categoria_id", $producto["categoria"]);
+        $query->bindValue("stock", $producto["stock"]);
+        $query->execute();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -112,28 +198,28 @@ if(!(isset($_SESSION["usuario"]))){
                   <a href="" data-target="#comprastab" data-toggle="tab"
                   class="nav-link small text-uppercase active pb-3">
                   <i class="fas fa-shopping-bag"></i>
-                  Mis compras
+                  Ingresar Producto
                </a>
             </li>
             <li class="nav-item w-25 text-center">
                <a href="" data-target="#ventastab" data-toggle="tab"
                class="nav-link small text-uppercase pb-3">
                <i class="fas fa-money-bill-wave"></i>
-               Mis ventas
+               Eliminar Producto
             </a>
          </li>
          <li class="nav-item w-25 text-center">
             <a href="" data-target="#favtab" data-toggle="tab"
             class="nav-link small text-uppercase pb-3">
             <i class="fas fa-heart"></i>
-            Favoritos
+            Modificar Producto
          </a>
       </li>
       <li class="nav-item w-25 text-center">
          <a href="" data-target="#historytab" data-toggle="tab"
          class="nav-link small text-uppercase pb-3">
          <i class="fas fa-history"></i>
-         Historial
+         Buscar Producto
       </a>
    </li>
 </ul>
@@ -145,103 +231,46 @@ if(!(isset($_SESSION["usuario"]))){
    <!-- Contenido tabs desktop -->
    <div class="tab-content d-none d-lg-block">
       
-      <!-- Mis compras tab -->
-      <div id="comprastab" class="tab-pane fade active show shadow-lg">
-         
-         <div class="productodiv d-flex align-items-center bg-white">
-            <div
-            class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
-            <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-               src="https://steamcdn-a.akamaihd.net/steam/apps/1069710/capsule_184x69.jpg?t=1573863702" alt="producto"></a></a>
-               <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
-                  <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
-                     consectetur adipisicing elit. Inventore, ad?</span>
-                  <span class="precioycantidad">$25.000 x 1 unidad</span>
-                  <span class="estadoenvio mt-auto">Estado del envío</span>
-               </div>
-            </div>
-            <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
-               <a href="#detalles" class="detallesproducto">
-                  Ver detalles
-                  <i class="fas fa-info-circle text-info"></i>
-               </a>
-               <a href="#reportarproblema" class="reportarprob mt-auto">
-                  Reportar un problema
-                  <i class="fas fa-exclamation-triangle text-danger"></i>
-               </a>
-            </div>
-         </div>
-         <div class="productodiv d-flex align-items-center bg-lightblue">
-            <div
-            class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
-            <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-               src="https://steamcdn-a.akamaihd.net/steam/apps/1191580/capsule_184x69.jpg?t=1575020834" alt="producto"></a></a>
-               <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
-                  <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
-                     consectetur adipisicing elit. Inventore, ad?</span>
-                     <span class="precioycantidad">$25.000 x 1 unidad</span>
-                     <span class="estadoenvio mt-auto">Recibido</span>
-                  </div>
-               </div>
-               <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
-                  <a href="#detalles" class="detallesproducto">
-                     Ver detalles
-                     <i class="fas fa-info-circle text-info"></i>
-                  </a>
-                  <a href="#reportarproblema" class="reportarprob mt-auto">
-                     Reportar un problema
-                     <i class="fas fa-exclamation-triangle text-danger"></i>
-                  </a>
-               </div>
-            </div>
-            <div class="productodiv d-flex align-items-center bg-white">
-               <div
-               class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
-               <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-                  src="https://steamcdn-a.akamaihd.net/steam/apps/1072710/capsule_184x69.jpg?t=1575496629" alt="producto"></a></a>
-                  <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
-                     <span class="nombreproducto mt-auto">Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. In maiores assumenda veniam!
-                        Neque, minima veniam.</span>
-                        <span class="precioycantidad">$25.000 x 1 unidad</span>
-                        <span class="estadoenvio mt-auto">Demorado</span>
-                     </div>
-                  </div>
-                  <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
-                     <a href="#detalles" class="detallesproducto">
-                        Ver detalles
-                        <i class="fas fa-info-circle text-info"></i>
-                     </a>
-                     <a href="#reportarproblema" class="reportarprob mt-auto">
-                        Reportar un problema
-                        <i class="fas fa-exclamation-triangle text-danger"></i>
-                     </a>
-                  </div>
-               </div>
-               <div class="productodiv d-flex align-items-center bg-lightblue ">
-                  <div
-                  class="d-flex justify-content-start align-items-center h-100 w-100 pl-2 pt-2">
-                  <a href="detalle-producto.html"><a href="detalle-producto.html"><img
-                     src="https://steamcdn-a.akamaihd.net/steam/apps/493520/capsule_184x69.jpg?t=1575933005" alt="producto"></a></a>
-                     <div class="datosproducto d-flex flex-column w-100 pl-2 pt-2 text-left">
-                        <span class="nombreproducto mt-auto">GTFO is a hardcore 4 player cooperative first-person shooter, with a focus on team play and atmosphere. </span>
-                        <span class="precioycantidad">$25.000 x 1 unidad</span>
-                        <span class="estadoenvio mt-auto">Cancelado</span>
-                     </div>
-                  </div>
-                  <div class="botones d-flex flex-column ml-auto h-100 text-right mr-2">
-                     <a href="#detalles" class="detallesproducto">
-                        Ver detalles
-                        <i class="fas fa-info-circle text-info"></i>
-                     </a>
-                     <a href="#reportarproblema" class="reportarprob mt-auto">
-                        Reportar un problema
-                        <i class="fas fa-exclamation-triangle text-danger"></i>
-                     </a>
-                  </div>
-               </div>
-            </div>
-            <!-- Mis ventas tab -->
+       <!-- Ingresar Producto tab -->
+    <form action="admin.php" method="post">
+    <div class="d-flex flex-column">
+      <div class="form-group my-3">
+          <input id="titulo" type="text" name="titulo" value="<?= $titulo ?>" placeholder="Titulo del producto" autofocus="" class="form-control border-0 shadow px-4"><?= isset($errores["titulo"])? "$errores[titulo]" : '' ?>
+          <label class="position-absolute text-danger" for="titulo"></label>
+        </div>
+        <div class="form-group mb-3 mt-3">
+            <input id="precio" type="text" name="precio" placeholder="Precio" value="<?=$precio ?>" class="form-control border-0 shadow px-4 text-primary"> <?= isset($errores["precio"])? "$errores[precio]" : '' ?>
+            <label class="position-absolute text-danger" for="precio"></label>
+        </div>
+        <div class="form-group my-3">
+          <input id="descripcion" type="text" name="descripcion" value="<?= $descripcion ?>" placeholder="Descripcion del producto" autofocus="" class="form-control border-0 shadow px-4"><?= isset($errores["descripcion"])? " $errores[descripcion]" : '' ?>
+          <label class="position-absolute text-danger" for="descripcion"></label>
+        </div>
+        <div class="form-group my-3">
+          <input id="caracteristicas" type="text" name="caracteristicas" value="<?= $caracteristicas ?>" placeholder="Caracteristicas del producto (usado, nuevo, medidas, etc.)" autofocus="" class="form-control border-0 shadow px-4"> <?= isset($errores["caracteristicas"])? "$errores[caracteristicas]" : '' ?>
+          <label class="position-absolute text-danger" for="caracteristicas"></label>
+        </div>
+        <div class="form-group my-3">
+          <select id="categoria" name="categoria" autofocus="" class="form-control border-0 shadow px-4">
+              <option value="" selected disabled> Selecciona una categoria...</option>
+              <?php foreach ($categoriasDeProductos as $categorias => $dato) :?>
+                <option value="<?= $dato["id"] ?>"> <?= $dato["titulo"] ?></option>
+              <?php endforeach;?>
+            </select><?= isset($errores["categoria"])? "<br> $errores[categoria]" : '' ?>
+        </div>
+        <div class="form-group mb-3 mt-3">
+            <input id="stock" type="text" name="stock" placeholder="Stock" value="<?= isset($_POST["stock"]) ? "$_POST[stock]" : ''?>" class="form-control border-0 shadow px-4 text-primary"> <?= isset($errores["stock"])? " $errores[stock]" : '' ?>
+            <label class="position-absolute text-danger" for="stock"></label>
+        </div>
+        <div class="form-group my-3">
+          <input id="foto" type="file" name="foto" value=""  autofocus="" class="form-control border-0 shadow px-4"> <?= isset($errores["foto"])? " $errores[foto]" : '' ?>
+          <label class="position-absolute text-danger" for="foto"></label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mb-2 shadow">Enviar producto</button>
+        <button type="reset" class="btn btn-danger btn-block mb-2 shadow">Limpiar</button>
+    </div>
+    </form>
+    <!-- Mis ventas tab -->
             <div id="ventastab" class="tab-pane fade">
                <div class="productodiv d-flex align-items-center bg-white shadow-lg">
                   <div

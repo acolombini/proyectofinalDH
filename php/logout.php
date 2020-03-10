@@ -1,9 +1,11 @@
 <?php 
 session_start();
-
+if(isset($_COOKIE['email'])){
+setcookie('email', '', time()-1, '/');
+setcookie('pass', '', time()-1, '/');
+}
 if (isset($_SESSION["usuario"])) {
     session_destroy();
-    setcookie('usuario', '', time()-3600, '/');
     header('Location: ../index.php');
     exit();
 } else {
