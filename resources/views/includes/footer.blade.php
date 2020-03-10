@@ -8,7 +8,6 @@
         <ul class="d-flex justify-content-around p-0 mb-3" type="none">
             <li> <a href="mailto:info@mail.com"><i class="fa fa-at mr-1 "></i><span>info@mail.com</span></a></li>
             <li> <a href="tel:3414112233"><i class="fa fa-at mr-1"></i><span>0341 - 4112233</span></a></li>
-
         </ul>
 
         <p class="mb-3 text-center">Copyright &copy; Your Website 2019</p>
