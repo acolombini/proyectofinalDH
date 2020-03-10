@@ -30,17 +30,17 @@ include 'php/checkCookies.php';
                
                <!-- DIV INDICE-->
                <div id="indicefaq" class="col-sm-12 col-md-4 col-lg-4">
-                  <h3> Índice </h3>
+                  <h3 class="p-4 border-bottom bg-transparent-light"> Índice </h3>
                   <ul class="list-group">
-                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                     <li class="list-group-item d-flex justify-content-between align-items-center bg-pink">
                         <a href="#login"> Login </a>
                         <span class="badge badge-primary badge-pill">3</span>
                      </li>
-                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                     <li class="list-group-item d-flex justify-content-between align-items-center bg-green">
                         <a href="#envios"> Envíos </a>
                         <span class="badge badge-primary badge-pill">1</span>
                      </li>
-                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                     <li class="list-group-item d-flex justify-content-between align-items-center bg-teal">
                         <a href="#pagos"> Pagos </a>
                         <span class="badge badge-primary badge-pill">2</span>
                      </li>
@@ -49,14 +49,14 @@ include 'php/checkCookies.php';
                <!-- FIN DIV INDICE-->
                
                <!-- INICIO COLAPSABLES -->
-               <div class="accordion col-sm-12 col-md-8 col-lg-8" id="accordionExample">
+               <div class="accordion col-sm-12 col-md-8 col-lg-8 bg-transparent-light" id="accordionExample">
                   <!-- CONTENEDOR COLAPSABLES-->
-                  <h2> F.A.Q. </h2>
-                  <div class="card">
+                  <h2 class="p-4 border-bottom"> F.A.Q. </h2>
+                  <div class="card bg-transparent-light">
                      <!-- PRIMER COLAPSABLE LOGIN-->
-                     <h3 id="login"> Login </h3>
-                     <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
+                     <h3 class="p-4 border-bottom" id="login"> Login </h3>
+                     <div class="card-header bg-transparent" id="headingOne">
+                        <h2 class="mb-0 p-4 border-bottom">
                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                               ¿Cómo me logueo? <i class="fas fa-chevron-down"></i>
                            </button>
@@ -82,10 +82,10 @@ include 'php/checkCookies.php';
                      </div>
                   </div> <!-- FIN PRIMER COLAPSABLE LOGIN-->
                   
-                  <div class="card">
+                  <div class="card bg-transparent-light">
                      <!-- SEGUNDO COLAPSABLE LOGIN-->
-                     <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
+                     <div class="card-header bg-transparent" id="headingTwo">
+                        <h2 class="mb-0 p-4 border-bottom">
                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                               ¿Cómo me deslogueo? <i class="fas fa-chevron-down"></i>
                            </button>
@@ -111,10 +111,10 @@ include 'php/checkCookies.php';
                      </div>
                   </div> <!-- FIN SEGUNDO COLAPSABLE LOGIN-->
                   
-                  <div class="card">
+                  <div class="card bg-transparent-light">
                      <!-- TERCER COLAPSABLE LOGIN-->
-                     <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
+                     <div class="card-header bg-transparent" id="headingThree">
+                        <h2 class="mb-0 p-4 border-bottom">
                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                               Olvidé mi contraseña <i class="fas fa-chevron-down"></i>
                            </button>
@@ -142,11 +142,11 @@ include 'php/checkCookies.php';
                   
                   
                   
-                  <div class="card">
+                  <div class="card bg-transparent-light">
                      <!-- CUARTO COLAPSABLE-->
-                     <h3 id="envios"> Envíos </h3>
-                     <div class="card-header" id="headingFour">
-                        <h2 class="mb-0">
+                     <h3 class="p-4 border-bottom" id="envios"> Envíos </h3>
+                     <div class="card-header bg-transparent" id="headingFour">
+                        <h2 class="mb-0 p-4 border-bottom">
                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                               ¿Cómo hago un envío? <i class="fas fa-chevron-down"></i>
                            </button>
@@ -171,11 +171,11 @@ include 'php/checkCookies.php';
                      </div>
                   </div> <!-- FIN CUARTO COLAPSABLE-->
                   
-                  <div class="card">
+                  <div class="card bg-transparent-light">
                      <!-- QUINTO COLAPSABLE-->
-                     <h3 id="pagos"> Pagos </h3>
-                     <div class="card-header" id="headingFive">
-                        <h2 class="mb-0">
+                     <h3 class="p-4 border-bottom" id="pagos"> Pagos </h3>
+                     <div class="card-header bg-transparent" id="headingFive">
+                        <h2 class="mb-0 p-4 border-bottom">
                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                               ¿Cómo hago un pago? <i class="fas fa-chevron-down"></i>
                            </button>
@@ -198,10 +198,10 @@ include 'php/checkCookies.php';
                         </div>
                      </div> <!-- FIN QUINTO COLAPSABLE-->
                      
-                     <div class="card">
+                     <div class="card bg-transparent-light">
                         <!-- SEXTO COLAPSABLE-->
-                        <div class="card-header" id="headingSix">
-                           <h2 class="mb-0">
+                        <div class="card-header bg-transparent" id="headingSix">
+                           <h2 class="mb-0 p-4 border-bottom">
                               <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                  ¿Cómo recibo un pago? <i class="fas fa-chevron-down"></i>
                               </button>

@@ -111,21 +111,21 @@ if($_POST){
             <!-- a partir de aca va el contenido de la pagina -->          
             
             <form class="col-12 col-md-12 col-lg-6" method="POST" enctype="multipart/form-data">
-               <h1>Contacto</h1>
+               <h1 class="p-4">Contacto</h1>
                <div class="form-group">
                   <label for="nombre"> Nombre </label> <br> 
-                  <input type="text" name="name" class="form-control" id="nombre" required value="<?= isset($errores["name"]) ? "" : $nombre ?>">
+                  <input type="text" name="name" class="form-control bg-transparent-green" id="nombre" required value="<?= isset($errores["name"]) ? "" : $nombre ?>">
                   <?= isset($errores["nombre"])? "<span style='color: red;'>" . $errores["nombre"] . "</span>" . "<br>" : "" ?> <br>
                   <label for="apellido"> Apellido</label> <br>
-                  <input type="text" name="apellido" class="form-control" id="apellido" required value="<?= isset($errores["apellido"]) ? "" : $apellido ?>"> 
+                  <input type="text" name="apellido" class="form-control bg-transparent-green" id="apellido" required value="<?= isset($errores["apellido"]) ? "" : $apellido ?>"> 
                   <?= isset($errores["apellido"])? "<span style='color: red;'>" .  $errores["apellido"] . "</span>" . "<br>" : "" ?> <br>
                   <label for="email">Email</label>
-                  <input type="email" name="email" class="form-control" id="email" required placeholder="ejemplo@ejemplo.com" value="<?= isset($errores["email"]) ? "" : $email ?>">
+                  <input type="email" name="email" class="form-control bg-transparent-green" id="email" required placeholder="ejemplo@ejemplo.com" value="<?= isset($errores["email"]) ? "" : $email ?>">
                   <?= isset($errores["email"])? "<span style='color: red;'>" .  $errores["email"] . "</span>" . "<br>" : "" ?> <br>
                </div>
                <div class="form-group">
                   <label for="motivoconsulta">Motivo de la consulta</label>
-                  <select class="form-control" name="motivoconsulta" required id="motivoconsulta">
+                  <select class="form-control bg-transparent-green" name="motivoconsulta" required id="motivoconsulta">
                      <?php 
                      foreach ($motivoConsulta as $dato => $valor) :?>
                         <?php if($_POST["motivoconsulta"]== $dato) : ?>
@@ -142,12 +142,12 @@ if($_POST){
                </div>
                <div class="form-group">
                   <label for="mensajeDeConsulta">Mensaje</label>
-                  <textarea class="form-control" required name="mensajeDeConsulta" id="mensajeDeConsulta" rows="3" placeholder="Describa el problema de la forma más detallada posible..."><?= isset($errores["mensajeDeConsulta"])? "" : $mensajeDeConsulta ?></textarea>
+                  <textarea class="form-control bg-transparent-green" required name="mensajeDeConsulta" id="mensajeDeConsulta" rows="3" placeholder="Describa el problema de la forma más detallada posible..."><?= isset($errores["mensajeDeConsulta"])? "" : $mensajeDeConsulta ?></textarea>
                <?= isset($errores["mensajeDeConsulta"])? "<span style='color: red;'>" .  $errores["mensajeDeConsulta"] . "</span>" . "<br>" : "" ?>
                </div>
                <div class="form-group">
                   <label for="archivodecontacto">Archivo Adjunto</label>
-                  <input type="file" class="form-control-file" name="archivodecontacto" id="archivodecontacto">
+                  <input type="file" class="form-control-file bg-transparent-green" name="archivodecontacto" id="archivodecontacto">
                   <span>Formatos soportados: .jpg, .jpeg, .pdf, .png</span>
                   <?= isset($errores["archivodecontacto"])? "<span style='color: red;'>" . "<br>" . $errores["archivodecontacto"] . "</span>" . "<br>" : ""  ?>
                </div>

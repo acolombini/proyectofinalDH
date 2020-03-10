@@ -119,13 +119,13 @@ include 'php/checkCookies.php';
 
 <!-- INICIO NOSOTROS -->
 <section>
-   <div class="mb-5 shadow p-4">
+   <div class="mb-5 shadow-lg p-4">
       <h2 class="font-weight-bold text-center "> Pro Tip</h2>
       <div class="row text-center">
          <p class="col-12"> Un Gamer No Muere. <b>RESPAWNEA</b> </p>
       </div>
       <div class="d-flex justify-content-end">
-         <a href=""><button type="button" class="btn btn-primary">Ver Más</button></a>
+         <a href=""><button type="button" class="btn shadow btn-primary">Ver Más</button></a>
       </div>
    </section>
    <!-- FIN NOSOTROS -->

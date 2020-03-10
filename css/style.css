@@ -55,12 +55,40 @@
 .bg-lightblue{
 	background-color: lightblue;
 }
-.bg-pinky{
+.bg-pink{
 	background-color: pink;
+}
+.bg-green{
+	background-color: lightgreen;
+}
+.bg-teal{
+	background-color: lightblue;
 }
 .bg-transparent-light{
 	background-color: rgba(255,255,255,20%);
+	!important;
+}
+.bg-transparent-light:focus{
+	background-color: rgba(255,255,255,20%);
+	!important;
+}
+.bg-transparent-green{
+	background-color: rgba(220,255,220,50%);
+	!important;
+}
+.bg-transparent-green:focus{
+	background-color: rgba(220,255,220,50%);
+	!important;
+}
+.bg-transparent-pink{
+	background-color: rgba(255,220,220,50%);
+	!important;
+}
+.bg-transparent-pink:focus{
+	background-color: rgba(255,220,220,50%);
+	!important;
 }
 .border-pink{
 	border: pink, 2px, solid;
+	!important;
 }
