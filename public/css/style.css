@@ -4,8 +4,8 @@
 .raleway{
     font-family: 'Raleway';
 }
-.bg-sky {
-    background: url(../img/bg.jpg);
+.bg{
+    background-color: rgb(240,240,240);
 }
 .text-blue{
 	color:blue;
@@ -44,9 +44,9 @@
 	color:#FFF;
 	border-radius:50px;
 	text-align:center;
-  font-size:30px;
+    font-size:30px;
 	box-shadow: 2px 2px 3px #999;
-  z-index:100;
+    z-index:100;
 }
 
 .my-float{
@@ -55,11 +55,11 @@
 .bg-lightblue{
 	background-color: lightblue;
 }
-.bg-pinky{
-	background-color: pink;
-}
 .bg-transparent-light{
 	background-color: rgba(255,255,255,20%);
+}
+.bg-transparent-dark{
+    background-color: rgba(190,190,190,50%);
 }
 .border-pink{
 	border: pink, 2px, solid;

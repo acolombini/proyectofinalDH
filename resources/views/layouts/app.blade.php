@@ -5,7 +5,7 @@
     @include('includes.head')
 </head>
 
-<body>
+<body class="bg">
     <div id="app">
         @include('includes.header')
 

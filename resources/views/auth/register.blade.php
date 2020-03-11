@@ -16,7 +16,7 @@
                 @csrf
 
                 <!-- OBLIGATORIO -->
-                <div class="shadow m-1 mb-3 p-4 bg-transblack">
+                <div class="shadow m-1 mb-3 p-4 bg-transparent-dark">
                     <h2 class="text-center mb-5">Obligatorio</h2>
                     <div class="bg-transparent container">
                         <div class="bg-transparent d-flex flex-column">
@@ -118,7 +118,7 @@
 
 
                 <!-- OPCIONAL -->
-                <div class="shadow m-1 p-4 bg-transblack">
+                <div class="shadow m-1 p-4 bg-transparent-dark">
                     <div class="d-flex flex-column text-center">
                         <h2>Opcional</h2>
                         <h5>Contacto</h5>
