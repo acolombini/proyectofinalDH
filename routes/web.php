@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/perfil/{id}', 'UserController@show')->name('user.show');
+
+Route::get('/faq', 'FaqController@index')->name('faq');

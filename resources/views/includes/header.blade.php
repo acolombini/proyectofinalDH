@@ -26,7 +26,7 @@
                         </a>
                     </li>
                     <li class="nav-item p-0 ml-2 col ">
-                        <a href="faq.php" class="nav-link">FAQ</a>
+                        <a href="{{ route('faq') }}" class="nav-link">FAQ</a>
                     </li>
 
 
