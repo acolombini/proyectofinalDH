@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+
 <div class="container my-2 mx-auto py-2 ">
     <section class="ml-3 mr-3">
         <div class="container bg-transparent">
@@ -27,7 +28,7 @@
                                 <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
                                     <label for="nombre_id" class="mb-2">Nombre</label>
 
-                                    <input name="nombre" type="text" id="nombre_id" class="py-1 px-3 form-control shadow @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" required placeholder="Nombre..." autocomplete="given-name" autofocus>
+                                    <input name="nombre" type="text" id="nombre_id" class="py-1 px-3 form-control shadow @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" {{--required--}} placeholder="Nombre..." autocomplete="given-name" autofocus>
 
                                     @error('nombre')
                                     <span class="invalid-feedback position-absolute" role="alert">
@@ -40,7 +41,7 @@
                                 <div class="w-100 ml-md-3 form-group mb-4 mb-md-3">
                                     <label for="apellido_id" class="mb-2">Apellido</label>
 
-                                    <input name="apellido" type="text" id="apellido_id" class="py-1 px-3 form-control shadow @error('apellido') is-invalid @enderror" value="{{ old('apellido') }}" required placeholder="Apellido..." autocomplete="family-name">
+                                    <input name="apellido" type="text" id="apellido_id" class="py-1 px-3 form-control shadow @error('apellido') is-invalid @enderror" value="{{ old('apellido') }}" {{--required--}} placeholder="Apellido..." autocomplete="family-name">
 
                                     @error('apellido')
                                     <span class="invalid-feedback position-absolute" role="alert">
@@ -59,7 +60,7 @@
                                 <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
                                     <label for="email_id" class="mb-2">E-mail</label>
 
-                                    <input name="email" type="text" id="email_id" class="py-1 px-3 form-control shadow @error('email') is-invalid @enderror" value="{{ old('email') }}" required placeholder="email@example.com" autocomplete="email">
+                                    <input name="email" type="text" id="email_id" class="py-1 px-3 form-control shadow @error('email') is-invalid @enderror" value="{{ old('email') }}" {{--required--}} placeholder="email@example.com" autocomplete="email">
 
                                     @error('email')
                                     <span class="invalid-feedback position-absolute" role="alert">
@@ -72,7 +73,7 @@
                                 <div class="w-100 ml-md-3 form-group mb-4 mb-md-3">
                                     <label for="fecha_de_nacimiento_id" class="mb-2">Fecha de nacimiento</label>
 
-                                    <input name="fecha_de_nacimiento" type="text" id="fecha_de_nacimiento_id" class="date py-1 px-3 form-control shadow @error('fecha_de_nacimiento') is-invalid @enderror" value="{{ old('fecha_de_nacimiento') }}" required placeholder="dd-mm-aaaa">
+                                    <input name="fecha_de_nacimiento" type="text" id="fecha_de_nacimiento_id" class="date py-1 px-3 form-control shadow @error('fecha_de_nacimiento') is-invalid @enderror" value="{{ old('fecha_de_nacimiento') }}" {{--required--}} placeholder="dd-mm-aaaa">
 
                                     @error('fecha_de_nacimiento')
                                     <span class="invalid-feedback position-absolute" role="alert">
@@ -91,7 +92,7 @@
                                 <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
                                     <label for="password_id" class="mb-2">Contraseña</label>
 
-                                    <input name="password" type="password" id="password_id" class="w-100 py-1 px-3 form-control shadow @error('password') is-invalid @enderror" required placeholder="Contraseña...">
+                                    <input name="password" type="password" id="password_id" class="w-100 py-1 px-3 form-control shadow @error('password') is-invalid @enderror" {{--required--}} placeholder="Contraseña...">
 
                                     @error('password')
                                     <span class="invalid-feedback position-absolute" role="alert">
@@ -102,9 +103,9 @@
 
                                 <!-- Input de Confirmar Contraseña -->
                                 <div class="w-100 ml-md-3 form-group mb-4 mb-md-3">
-                                    <label for="confirmar_password_id" class="mb-2 d-flex flex-nowrap">Confirmar contraseña</label>
+                                    <label for="password_confirmation_id" class="mb-2 d-flex flex-nowrap">Confirmar contraseña</label>
 
-                                    <input name="confirmar_password" type="confirmar_password" id="confirmar_password_id" class="w-100 py-1 px-3 form-control shadow @error('confirmar_password') is-invalid @enderror" required placeholder="Confirmar contraseña...">
+                                    <input name="password_confirmation" type="password" id="password_confirmation_id" class="w-100 py-1 px-3 form-control shadow" {{--required--}} placeholder="Confirmar contraseña...">
                                 </div>
 
                             </div>
@@ -131,7 +132,7 @@
                             <div class="w-100 mr-md-3 form-group mb-4 mb-md-3">
                                 <label for="numero_de_telefono_id" class="mb-2 mr-md-3">Teléfono</label>
 
-                                <input name="numero_de_telefono" type="number" id="numero_de_telefono_id" class="py-1 px-3 form-control shadow @error('numero_de_telefono') is-invalid @enderror" value="{{ old('numero_de_telefono') }}" required placeholder="Número..." autocomplete="tel">
+                                <input name="numero_de_telefono" type="number" id="numero_de_telefono_id" class="py-1 px-3 form-control shadow @error('numero_de_telefono') is-invalid @enderror" value="{{ old('numero_de_telefono') }}" {{--required--}} placeholder="Número..." autocomplete="tel">
 
                                 @error('numero_de_telefono')
                                 <span class="invalid-feedback position-absolute" role="alert">
@@ -241,7 +242,7 @@
                                     <div class="w-100 ml-md-2 form-group mb-4 mb-md-3">
                                         <label for="altura_id" class="mb-2">Altura</label>
 
-                                        <input type="text" name="altura" id="altura_id" class="w-100 py-1 px-3 form-control shadow @error('altura') is-invalid @enderror" value="{{ old('altura') }}" placeholder="Altura..">
+                                        <input name="altura" type="text" id="altura_id" class="w-100 py-1 px-3 form-control shadow @error('altura') is-invalid @enderror" value="{{ old('altura') }}" placeholder="Altura..">
 
                                         @error('altura')
                                         <span class="invalid-feedback position-absolute" role="alert">
@@ -295,14 +296,14 @@
 
                         <!-- Checkbox de Recordarme -->
                         <div class="custom-control custom-checkbox mt-2 ml-2">
-                            <input name="recordar" type="checkbox" id="recordar" class="custom-control-input" value="si">
+                            <input name="recordar" type="checkbox" id="recordar" class="custom-control-input" value="yes">
 
-                            <label for="recordar" class="custom-control-label">Recordarme</label>
+                            <label for="recordar" class="custom-control-label">Recuérdame</label>
                         </div>
 
                         <!-- Checkbox de ToS -->
                         <div class="custom-control custom-checkbox ml-2 form-group mb-4 mb-md-3">
-                            <input name="tos" type="checkbox" id="tos_id" class="custom-control-input form-control @error('tos') is-invalid @enderror" value="aceptado" required>
+                            <input name="tos" type="checkbox" id="tos_id" class="custom-control-input form-control @error('tos') is-invalid @enderror" value="yes" {{--required--}}>
 
                             <label for="tos_id" class="custom-control-label tos mt-2 @error('tos') text-danger @enderror">Acepto los Términos y Condiciones del sitio.</label>
                         </div>
