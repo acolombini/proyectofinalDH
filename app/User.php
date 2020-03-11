@@ -71,4 +71,8 @@ public function hasRole($role)
     return false;
 }
 
+public function setNameAttribute($value) {
+    $this->attributes['name'] = trim(preg_replace("/ {2,}/", " ", strtolower($value))); # Paso todo a minúsculas, reemplazo múltiples espacios por uno solo y trimeo los extremos
+}
+
 }
