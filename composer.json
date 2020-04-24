@@ -13,7 +13,11 @@
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0",
+        "laraveles/spanish": "^1.4",
+        "doctrine/dbal": "v2.4.2"
+        
     },
     "require-dev": {
         "facade/ignition": "^2.0",
@@ -60,4 +64,5 @@
             "@php artisan key:generate --ansi"
         ]
     }
+    
 }
