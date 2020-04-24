@@ -21,9 +21,22 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+//Vista de un producto
+Route::get('/producto/{id}', 'productosController@show');
+
+//Listado de productos
 Route::get('/productos', 'productosController@listaDeProductos');
 
+// Rutas para ingresar un producto
 Route::get('/ingresarProducto', function(){
     return view('ingresarProducto');
 });
 Route::post('/ingresarProducto', 'productosController@guardar');
+
+// Ruta para eliminar un producto
+Route::delete('/producto/{id}', 'productosController@delete');
+
+//Ruta para modificar un producto
+Route::get('/producto/{id}/edit', 'productosController@edit');
+Route::put('/producto/{id}', 'productosController@update');

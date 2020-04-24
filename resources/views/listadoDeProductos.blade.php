@@ -11,7 +11,7 @@
                     <ul>
 
                         @forelse ($productos as $producto)
-                            <li>{{$producto['titulo']}}</li>
+                            <a href="producto/{{$producto->id}}"><li>{{$producto->titulo}}</li></a>
                         @empty
                             No hay productos
                         @endforelse
@@ -23,4 +23,5 @@
         </div>
     </div>
 </div>
+
 @endsection
