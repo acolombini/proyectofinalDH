@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/productos', 'productosController@listaDeProductos');
+
+Route::get('/ingresarProducto', function(){
+    return view('ingresarProducto');
+});
+Route::post('/ingresarProducto', 'productosController@guardar');
