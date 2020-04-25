@@ -13,30 +13,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::GET('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::GET('/home', 'HomeController@index')->name('home');
 
 
 //Vista de un producto
-Route::get('/producto/{id}', 'productosController@show');
+Route::GET('/producto/{id}', 'productosController@show');
 
 //Listado de productos
-Route::get('/productos', 'productosController@listaDeProductos');
+Route::GET('/productos', 'productosController@listaDeProductos');
 
 // Rutas para ingresar un producto
-Route::get('/ingresarProducto', function(){
+Route::GET('/ingresarProducto', function(){
     return view('ingresarProducto');
 });
-Route::post('/ingresarProducto', 'productosController@guardar');
+Route::POST('/ingresarProducto', 'productosController@guardar');
 
 // Ruta para eliminar un producto
 Route::delete('/producto/{id}', 'productosController@delete');
 
 //Ruta para modificar un producto
-Route::get('/producto/{id}/edit', 'productosController@edit');
-Route::put('/producto/{id}', 'productosController@update');
+Route::GET('/producto/{id}/edit', 'productosController@edit');
+Route::PUT('/producto/{id}', 'productosController@update');
+
+// Ruta para modificar campos opcionales de usuario
+Route::GET("usuario/edit", 'userController@edit');
+Route::PUT("usuario/edit", 'userController@update');

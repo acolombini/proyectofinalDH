@@ -9,7 +9,7 @@ class productosController extends Controller
 {
     public function listaDeProductos(){
         $productos = Product::all();
-        return view('listadoDeProductos', compact('productos'));
+        return view('productos/listadoDeProductos', compact('productos'));
     }
 
     public function guardar(Request $req){
@@ -41,7 +41,7 @@ class productosController extends Controller
     public function show($id){
         $producto = Product::find($id);
         $vac = compact('id', 'producto');
-        return view("producto", $vac);
+        return view("productos/producto", $vac);
     }
 
     public function delete(Request $req){
@@ -56,7 +56,7 @@ class productosController extends Controller
     public function edit(Request $req){
         $productoAModificar = Product::find($req['id']);
         $vac = compact('idDelProductoAModificar', 'productoAModificar');
-        return view('editarProducto', $vac);
+        return view('productos/editarProducto', $vac);
     }
 
     public function update(Request $req){
@@ -67,6 +67,7 @@ class productosController extends Controller
             'precio_unitario' => ['required', 'numeric', 'min:0'],
             'descuento' => ["nullable", "numeric","min:0","max:100"],
             'stock' => ['required', 'numeric', 'min:0'],
+            'poster' => ['nullable', 'mimes:jpeg,bmp,png,jpg']
         ]);
         $productoAModificar = Product::find($req['id']);
         if($req['poster']){
