@@ -19,28 +19,28 @@ Route::GET('/', function () {
 
 Auth::routes();
 
-Route::GET('/home', 'HomeController@index')->name('home');
+Route::GET('/home', 'HomeController@index')->name('home')->middleware('usuarioLogueado');
 
 
 //Vista de un producto
-Route::GET('/producto/{id}', 'productosController@show');
+Route::GET('/producto/{id}', 'productosController@show')->middleware('usuarioLogueado');
 
 //Listado de productos
-Route::GET('/productos', 'productosController@listaDeProductos');
+Route::GET('/productos', 'productosController@listaDeProductos')->middleware('usuarioLogueado');
 
 // Rutas para ingresar un producto
 Route::GET('/ingresarProducto', function(){
-    return view('ingresarProducto');
+    return view('ingresarProducto')->middleware('administrador');
 });
-Route::POST('/ingresarProducto', 'productosController@guardar');
+Route::POST('/ingresarProducto', 'productosController@guardar')->middleware('administrador');
 
 // Ruta para eliminar un producto
-Route::delete('/producto/{id}', 'productosController@delete');
+Route::delete('/producto/{id}', 'productosController@delete')->middleware('administrador');
 
 //Ruta para modificar un producto
-Route::GET('/producto/{id}/edit', 'productosController@edit');
-Route::PUT('/producto/{id}', 'productosController@update');
+Route::GET('/producto/{id}/edit', 'productosController@edit')->middleware('administrador');
+Route::PUT('/producto/{id}', 'productosController@update')->middleware('administrador');
 
 // Ruta para modificar campos opcionales de usuario
-Route::GET("usuario/edit", 'userController@edit');
-Route::PUT("usuario/edit", 'userController@update');
+Route::GET("usuario/edit", 'userController@edit')->middleware('usuarioLogueado');
+Route::PUT("usuario/edit", 'userController@update')->middleware('usuarioLogueado');

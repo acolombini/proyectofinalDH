@@ -3,8 +3,7 @@
 - Validacion campos de los select
 - Compras
 - Relaciones entre modelos
-- Baja de usuario
+- Baja de usuario?
 - Validacion de formularios con JavaScript
-- Middlewares
 - Factories y Seeders
 - Seguridad
