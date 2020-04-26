@@ -181,7 +181,7 @@
                                     
 
                                 @if ($usuarioLogueado->provincia)
-                                    <option value="" disabledd>Seleccioná tu provincia...</option>
+                                    <option value="" disabled>Seleccioná tu provincia...</option>
                                     @php
                                         $provincia_seleccionada = $usuarioLogueado->provincia
                                     @endphp
@@ -228,108 +228,99 @@
 </div>
 <script type="text/javascript">
     window.onload = function(){ 
-    
+
     //Traigo la provincia cargada en la base de datos anteriormente para persistirla
     let provinciaSeleccionada = "<?php echo $provincia_seleccionada ?? '' ?>";
 
-    fetch('https://apis.datos.gob.ar/georef/api/provincias')
-        .then( function(response){
-        return response.json();
-        })
-        .then( function(data){
-        let provincias = data.provincias;
-
-        // Select
-        let selectProvincias = document.getElementById("provincia");
-
-        // Options
-        for (const key in provincias) {
-            let optionProvincia = document.createElement("option");
-            let textoDelOptionProvincia = "";
-
-            textoDelOptionProvincia = document.createTextNode(provincias[key].nombre);
-            
-            optionProvincia.append(textoDelOptionProvincia);
-            optionProvincia.setAttribute("value", provincias[key].nombre)
-
-            // Si hay dato en la base de datos, persisto
-            if (provinciaSeleccionada === provincias[key].nombre) {
-                optionProvincia.setAttribute("selected", "selected");
-            }
-            optionProvincia.classList.add(provincias[key].id)
-            selectProvincias.append(optionProvincia);
-        }
-
-        selectProvincias.addEventListener("change", function(){
-            let provinciaSeleccionada = selectProvincias.className
-            console.log(provinciaSeleccionada)
-            mostrarCiudades(selectProvincias.value.className);
-        });
-
-        })
-        .catch(function(error){
-        console.log("Hubo un error. " + error);
-        });
-
-
     function mostrarCiudades(valorProvincia){
-        fetch('https://apis.datos.gob.ar/georef/api/municipios?provincia=' + valorProvincia + "&max=5000")
-        //https://apis.datos.gob.ar/georef/api/municipios?provincia=22&max=5000
-            .then( function(response){
-                return response.json();
-            })
-            .then( function(data){
-                let ciudades = data.ciudades;
-                
-                // Select
-                let selectCiudades = document.getElementById("ciudad");
+    fetch("https://apis.datos.gob.ar/georef/api/localidades?provincia=" + valorProvincia + "&max=5000")
+    //https://apis.datos.gob.ar/georef/api/municipios?provincia=22&max=5000
+      .then( function(response){
+          return response.json();
+      })
+      .then( function(data){
+        let ciudades = data.localidades;
+        console.log(ciudades);
+        // Ordeno alfabeticamente las ciudades
+        let ciudadesOrdenadas = [];
+            for (const key in ciudades) {
+                ciudadesOrdenadas.push(ciudades[key].nombre);
+                ciudadesOrdenadas.sort();
+            }
 
-                // Options
-                for (const key in ciudades) {  
-                    let optionCiudad = document.createElement("option");
-                    let textoDelOptionCiudad = "";
+          // Select
+          let selectCiudades = document.getElementById("ciudad");
 
-                    textoDelOptionCiudad = document.createTextNode(ciudades[key].nombre);
-                    
-                    optionCiudad.append(textoDelOptionCiudad);
-                    optionCiudad.setAttribute("value", ciudades[key].nombre)
-                    selectCiudades.append(optionCiudad);
-                }
-            })
-            .catch(function(error){
-                console.log("El error fue " + error);
-            });
+          // Options
+          for (const key in ciudadesOrdenadas) {  
+              let optionCiudad = document.createElement("option");
+              let textoDelOptionCiudad = "";
+
+              textoDelOptionCiudad = document.createTextNode(ciudadesOrdenadas[key]);
+              
+              optionCiudad.append(textoDelOptionCiudad);
+              optionCiudad.setAttribute("value", ciudadesOrdenadas[key])
+              selectCiudades.append(optionCiudad);
+          }
+      })
+      .catch(function(error){
+          console.log("El error fue " + error);
+      });
+}
+function actualizarProvincias(){
+  fetch('https://apis.datos.gob.ar/georef/api/provincias')
+    .then( function(response){
+    return response.json();
+    })
+    .then( function(data){
+    let provincias = data.provincias;
+    console.log(provincias);
+
+    // Ordeno provincias alfabeticamente
+    let provinciasOrdenadas = [];
+    for (const key in provincias) {
+        provinciasOrdenadas.push(provincias[key].nombre);
+        provinciasOrdenadas.sort();
     }
-/*
-    selectProvincias.addEventListener("change", function(){
-        let valueProvincia = selectProvincias.value;
-        fetch('https://apis.datos.gob.ar/georef/api/municipios?provincia=' + valueProvincia + "&max=5000")
-        //https://apis.datos.gob.ar/georef/api/municipios?provincia=22&max=5000
-            .then( function(response){
-                return response.json();
-            })
-            .then( function(data){
-                let ciudades = data.ciudades;
-                
-                // Select
-                let selectCiudades = document.getElementById("ciudad");
 
-                // Options
-                for (const key in ciudades) {  
-                    let optionCiudad = document.createElement("option");
-                    let textoDelOptionCiudad = "";
+    // Select
+    let selectProvincias = document.getElementById("provincia");
 
-                    textoDelOptionCiudad = document.createTextNode(ciudades[key].nombre);
-                    
-                    optionCiudad.append(textoDelOptionCiudad);
-                    optionCiudad.setAttribute("value", ciudades[key].nombre)
-                    selectCiudads.append(optionCiudad);
-                }
-            })
-            .catch(function(error){
-                console.log("El error fue " + error);
-        });
-    });*/
+    // Options
+    for (const key in provinciasOrdenadas) {
+        let optionProvincia = document.createElement("option");
+        let textoDelOptionProvincia = "";
+
+        textoDelOptionProvincia = document.createTextNode(provinciasOrdenadas[key]);
+        
+        optionProvincia.append(textoDelOptionProvincia);
+        optionProvincia.setAttribute("value", provinciasOrdenadas[key])
+
+        // Si hay dato en la base de datos, persisto
+        if (provinciaSeleccionada === provinciasOrdenadas[key]) {
+            optionProvincia.setAttribute("selected", "selected");
+        }
+        selectProvincias.append(optionProvincia);
+    }
+
+      selectProvincias.addEventListener("change", function(){
+        let provinciaSeleccionada = selectProvincias.value;//Te da el nombre de la provincia seleccionada
+        
+        for (const key in provincias) {
+          if (provincias[key].nombre == provinciaSeleccionada){
+            let indiceProvinciaSeleccionada = provincias[key].id;
+            mostrarCiudades(indiceProvinciaSeleccionada);
+          }
+        }
+      });
+    })
+    .catch(function(error){
+    console.log("Hubo un error. " + error);
+    });
+}
+actualizarProvincias();
+
+
     }
 </script>
 @endsection

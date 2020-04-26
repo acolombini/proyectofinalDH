@@ -45,6 +45,7 @@ class userController extends Controller
         $usuarioAModificar->fecha_de_nacimiento = $req['fecha_de_nacimiento'];
         $usuarioAModificar->domicilio = $req['domicilio'];
         $usuarioAModificar->provincia = $req['provincia'];
+        $usuarioAModificar->ciudad = $req['ciudad'];
         
         $usuarioAModificar->save();
 

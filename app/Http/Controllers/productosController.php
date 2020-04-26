@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class productosController extends Controller
 {
     public function listaDeProductos(){
-        $productos = Product::all();
+        $productos = Product::paginate(10);
         return view('productos/listadoDeProductos', compact('productos'));
     }
 
@@ -23,7 +23,7 @@ class productosController extends Controller
         ]);
         $nombre_del_archivo = '';
         if(isset($req['poster'])){
-        $ruta = $req->file("poster")->store("public");
+        $ruta = $req->file("poster")->store("public/product_poster");
         $nombre_del_archivo=basename($ruta);
         }
         Product::create([
@@ -44,11 +44,17 @@ class productosController extends Controller
         return view("productos/producto", $vac);
     }
 
+    public function showAdmin($id){
+        $producto = Product::find($id);
+        $vac = compact('id', 'producto');
+        return view("productos/productoAdmin", $vac);
+    }
+
     public function delete(Request $req){
         $productoAEliminar = Product::find($req['id']);
         $productoAEliminar->delete();
         if($productoAEliminar->poster){
-            Storage::delete('public/'.$productoAEliminar->poster);
+            Storage::delete('public/product_poster/'.$productoAEliminar->poster);
         }
         return redirect('/productos')->with("status", "El producto ha sido eliminado.");
     }
@@ -72,9 +78,9 @@ class productosController extends Controller
         $productoAModificar = Product::find($req['id']);
         if($req['poster']){
             if($productoAModificar->poster){
-                Storage::delete('public/' . $productoAModificar->poster);
+                Storage::delete('public/product_poster/' . $productoAModificar->poster);
             }
-            $ruta = $req->file("poster")->store("public");
+            $ruta = $req->file("poster")->store("public/product_poster");
             $nombre_del_archivo=basename($ruta);
             $productoAModificar->poster = $nombre_del_archivo;
         }

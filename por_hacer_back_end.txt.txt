@@ -1,9 +1,7 @@
-- Campos opcionales para users (consumir apis de ciudades y tipos de documento)
 - Select de ciudades y persistencia
 - Validacion campos de los select
 - Compras
 - Relaciones entre modelos
 - Baja de usuario?
 - Validacion de formularios con JavaScript
-- Factories y Seeders
 - Seguridad

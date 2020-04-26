@@ -15,11 +15,13 @@
                         @empty
                             No hay productos
                         @endforelse
-
+                        {{$productos->links()}}
                     </ul>
                 </div>
             </div>
-            <a href="ingresarProducto"><button class="btn btn-primary mt-3">Ingresar un Producto Nuevo</button></a>              
+            @if (Auth::user()->tipo_de_usuario_id == 2)
+                <a href="/ingresarProducto"><button class="btn btn-primary mt-3">Ingresar un Producto Nuevo</button></a>              
+            @endif
         </div>
     </div>
 </div>

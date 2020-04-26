@@ -32,14 +32,13 @@
                         
                         <p><strong>Stock: </strong>{{$producto->stock}}</p>
 
-                        <form action="" method="POST">
+                        <form id="eliminarProducto" action="" method="POST">
                             @csrf
+                            @method('delete')
                             <input type="hidden" name="id" value="{{$producto->id}}">
-                            <button class="btn btn-danger" type="submit" id="buttonEliminar" disabled>Agregar al carrito</button>
+                            <button class="btn btn-danger" type="submit" id="buttonEliminar">Eliminar Producto</button>
                         </form>
-                        @if (Auth::user()->tipo_de_usuario_id == 2)
-                            <a href="/producto/admin/{{$producto->id}}">Ver como administrador</a>
-                        @endif
+                        <a href="/producto/{{$producto->id}}/edit"><button class="btn btn-warning"> Modificar Producto</button></a>
                     @else
                     <p>No se encontró el producto número {{$id}}. Por favor, elija un producto del <a href="/productos">listado de productos</a>.</p>
                     @endif
@@ -48,5 +47,16 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    window.onload = function(){ 
+        let formDelete = document.getElementById('eliminarProducto');
 
+        formDelete.addEventListener('submit', function(event){
+            let confirmar = confirm("Desea eliminar el producto? Esta accion no podra deshacerse.")
+            if (!confirmar) {
+                event.preventDefault();
+            }
+        });
+    };
+</script>
 @endsection

@@ -24,14 +24,15 @@ Route::GET('/home', 'HomeController@index')->name('home')->middleware('usuarioLo
 
 //Vista de un producto
 Route::GET('/producto/{id}', 'productosController@show')->middleware('usuarioLogueado');
+Route::GET('/producto/admin/{id}', 'productosController@showAdmin')->middleware('administrador');
 
 //Listado de productos
 Route::GET('/productos', 'productosController@listaDeProductos')->middleware('usuarioLogueado');
 
 // Rutas para ingresar un producto
 Route::GET('/ingresarProducto', function(){
-    return view('ingresarProducto')->middleware('administrador');
-});
+    return view('productos/ingresarProducto');
+})->middleware('administrador');
 Route::POST('/ingresarProducto', 'productosController@guardar')->middleware('administrador');
 
 // Ruta para eliminar un producto

@@ -79,7 +79,7 @@
 
                         @if(isset($productoAModificar->poster))
                         <p>Imágen Actual:</p>
-                        <img src="/storage/{{$productoAModificar->poster}}" width="100%" alt="Imágen actual del producto a modificar">
+                        <img src="/storage/product_poster/{{$productoAModificar->poster}}" width="100%" alt="Imágen actual del producto a modificar">
                         @endif
                         <div class="form-group row">
                         <label for="poster" class="col-md-4 col-form-label text-md-right">{{__('Ingrese una foto nueva')}}</label>
