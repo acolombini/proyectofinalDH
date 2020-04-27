@@ -29,6 +29,9 @@ Route::GET('/producto/admin/{id}', 'productosController@showAdmin')->middleware(
 //Listado de productos
 Route::GET('/productos', 'productosController@listaDeProductos')->middleware('usuarioLogueado');
 
+//Busqueda de un producto
+Route::GET('productos/buscar', 'productosController@search')->middleware('usuarioLogueado');
+
 // Rutas para ingresar un producto
 Route::GET('/ingresarProducto', function(){
     return view('productos/ingresarProducto');

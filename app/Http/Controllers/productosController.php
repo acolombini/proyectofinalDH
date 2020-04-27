@@ -50,6 +50,13 @@ class productosController extends Controller
         return view("productos/productoAdmin", $vac);
     }
 
+    public function search(){
+        $buscador = $_GET["buscador"];
+        $productos = Product::where("titulo", "LIKE", "%" . $buscador . "%")->ORDERBY("titulo")->paginate(5);
+        $vac = compact('productos');
+        return view('productos/listadoDeProductos', $vac);
+    }
+
     public function delete(Request $req){
         $productoAEliminar = Product::find($req['id']);
         $productoAEliminar->delete();

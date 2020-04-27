@@ -274,7 +274,6 @@ function actualizarProvincias(){
     })
     .then( function(data){
     let provincias = data.provincias;
-    console.log(provincias);
 
     // Ordeno provincias alfabeticamente
     let provinciasOrdenadas = [];
