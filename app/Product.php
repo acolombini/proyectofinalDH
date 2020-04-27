@@ -11,4 +11,12 @@ class Product extends Model
     protected $fillable = [
         'titulo', 'descripcion', 'precio_unitario', 'descuento', 'stock', 'poster'
     ];
+
+    public function getTitulo(){
+        return $this->titulo;
+    }
+
+    public function getID(){
+        return $this->id;
+    }
 }

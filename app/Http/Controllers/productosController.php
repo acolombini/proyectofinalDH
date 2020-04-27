@@ -9,17 +9,28 @@ class productosController extends Controller
 {
     public function listaDeProductos(){
         $productos = Product::paginate(10);
-        return view('productos/listadoDeProductos', compact('productos'));
+
+        // Creo variables para filtrar por medio de JS mientras se escribe
+        $nombreProductos = [];
+        $todosLosProductos = Product::all();
+        foreach ($todosLosProductos as $producto) {
+            $nombreProductos[] = [
+                "titulo" => $producto->getTitulo(),
+                "id" => $producto->getID()
+            ];
+        }
+
+        return view('productos/listadoDeProductos', compact('productos', 'nombreProductos'));
     }
 
     public function guardar(Request $req){
-
         $this->validate($req, [
             'titulo' => ['required', 'string', 'max:50', 'unique:products,titulo'],
             'descripcion' => ['required', 'string', 'max:255'],
             'precio_unitario' => ['required', 'numeric', 'min:0'],
             'descuento' => ["nullable", "numeric","min:0","max:100"],
             'stock' => ['required', 'numeric', 'min:0'],
+            'poster' => ['nullable', 'mimes:jpeg,bmp,png,jpg']
         ]);
         $nombre_del_archivo = '';
         if(isset($req['poster'])){
@@ -53,7 +64,18 @@ class productosController extends Controller
     public function search(){
         $buscador = $_GET["buscador"];
         $productos = Product::where("titulo", "LIKE", "%" . $buscador . "%")->ORDERBY("titulo")->paginate(5);
-        $vac = compact('productos');
+        
+        // Creo variables para filtrar por medio de JS mientras se escribe
+        $nombreProductos = [];
+        $todosLosProductos = Product::all();
+        foreach ($todosLosProductos as $producto) {
+            $nombreProductos[] = [
+                "titulo" => $producto->getTitulo(),
+                "id" => $producto->getID()
+            ];
+        }
+        
+        $vac = compact('productos', 'nombreProductos');
         return view('productos/listadoDeProductos', $vac);
     }
 

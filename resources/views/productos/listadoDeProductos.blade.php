@@ -12,8 +12,7 @@
                         <input id="buscador" type="search" name="buscador" placeholder="Ingrese un nombre para buscar...">
                         <input type="submit" value="Buscar">
                     </form>
-                    <ul>
-
+                    <ul id="listado_productos">
                         @forelse ($productos as $producto)
                             <a href="/producto/{{$producto->id}}"><li>{{$producto->titulo}}</li></a>
                         @empty
@@ -29,18 +28,48 @@
         </div>
     </div>
 </div>
+
 <script>
     window.onload = function(){ 
-        let buscador = document.getElementById('buscador');
+        // Script para filtrar resultados mientras se escribe
+        let nombreProductos = ("<?php for($i = 0; $i < count($nombreProductos); $i++) { echo $nombreProductos[$i]['titulo'] . "; ";} ?>");
+        let idProductos = ("<?php for($i = 0; $i < count($nombreProductos); $i++) { echo $nombreProductos[$i]['id'] . "; ";} ?>");
+        let nombreProducto = nombreProductos.split("; ");
+        nombreProducto.pop();
+        let idProducto = idProductos.split("; ");
+        idProducto.pop();
 
-        buscador.addEventListener("change", function(){
+        let buscador = document.getElementById('buscador');
+        buscador.onchange = function(){
+            let buscador = document.getElementById('buscador');
             let valorBuscador = buscador.value;
 
+            let productosFiltrados = [];
+                for (let i = 0; i < nombreProducto.length; i++) {
+                    if (nombreProducto[i].includes(valorBuscador) || nombreProducto[i].includes(valorBuscador.toLowerCase()) || nombreProducto[i].includes(valorBuscador.toUpperCase())) {
+                        productosFiltrados.push(nombreProducto[i])
+                    }
+                }
+            ul = document.getElementById("listado_productos");
+            ul.innerHTML = "";
 
+            
+            let contador = 0;
+            let indiceProducto = 0;
+            productosFiltrados.forEach(function(){
+                indiceProducto = nombreProducto.indexOf(productosFiltrados[contador]);
+                a = document.createElement("a");
+                a.setAttribute("href", "/producto/" + idProducto[indiceProducto]);
 
-        });
+                li = document.createElement("li");
+                textoDelLi = document.createTextNode(productosFiltrados[contador]);
+                li.append(textoDelLi);
+                a.append(li);
+                ul.append(a);
 
-
+                contador++;
+            });
+        }
     }
 </script>
 @endsection
