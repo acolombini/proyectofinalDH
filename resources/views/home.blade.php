@@ -33,7 +33,7 @@
             </a>
           </div>
           @endforeach
-      <!--
+
             <div class="card">
               <img class="card-img-top" src="img/bearLogo.png" alt="Card image cap">
               <div class="card-body">
@@ -86,7 +86,7 @@
                 <small class="text-muted">Last updated 3 mins ago</small>
               </div>
             </div>
-          -->
+
           </div>
         </div>
       </div>

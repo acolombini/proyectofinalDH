@@ -29,7 +29,20 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+
+    public function redirectTo(){
+        // if (Auth::user()->hasRole('admin')) {
+
+        //     $this->redirectTo = route('admin.users.index');
+        //     return $this->redirectTo;
+
+        // }
+
+        $this->redirectTo = route('home');
+        return $this->redirectTo;
+
+    }
 
     /**
      * Create a new controller instance.
@@ -56,8 +69,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-    
-    
+
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -66,7 +79,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
         return User::create([
             'nombre' => $data['nombre'],
             'apellido' => $data['apellido'],

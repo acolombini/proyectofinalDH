@@ -11,6 +11,22 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 25)->create();
+        User::create(
+            [   'nombre' => 'Admin',
+                'apellido' => 'admin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('123456'),
+                'estado_de_usuario'=> 'activo',
+                'tipo_de_usuario_id' => 2
+            ]);
+            User::create(
+                [   'nombre' => 'user',
+                    'apellido' => 'user',
+                    'email' => 'user@user.com',
+                    'password' => Hash::make('123456'),
+                    'estado_de_usuario'=> 'activo',
+                    'tipo_de_usuario_id' => 1
+                ]);
+
     }
 }

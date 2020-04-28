@@ -13,6 +13,10 @@ class categoriaSeeder extends Seeder
     {
         DB::table("categorias")->insert([
             [
+                "id" => 1,
+                "nombre_categoria" => "Otras Categorias"
+            ],
+            [
                 "id" => 2,
                 "nombre_categoria" => "Acción"
             ],
