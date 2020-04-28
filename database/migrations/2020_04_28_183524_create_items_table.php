@@ -18,6 +18,7 @@ class CreateItemsTable extends Migration
             $table->timestamps();
             $table->bigInteger("product_id")->unsigned();
             $table->foreign("product_id")->references("id")->on("products");
+            $table->foreignId('user_id')->references("id")->on("users");
             $table->integer('cantidad_de_productos');
         });
     }

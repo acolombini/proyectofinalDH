@@ -19,4 +19,8 @@ class Product extends Model
     public function getID(){
         return $this->id;
     }
+
+    public function categoria(){
+        return $this->belongsTo("App\Categoria", "categoria_id");
+    }
 }

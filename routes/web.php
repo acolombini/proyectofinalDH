@@ -44,6 +44,10 @@ Route::GET('/producto/admin/{id}', 'productosController@showAdmin')->middleware(
 //Listado de productos
 Route::GET('/productos', 'productosController@listaDeProductos')->middleware('usuarioLogueado');
 
+//Productos por Categorías
+Route::GET('/categorias', 'categoriasController@show')->middleware('usuarioLogueado');
+Route::GET('/categoria/{id}', "categoriasController@products")->middleware('usuarioLogueado');
+
 //Busqueda de un producto
 Route::GET('productos/buscar', 'productosController@search')->middleware('usuarioLogueado');
 

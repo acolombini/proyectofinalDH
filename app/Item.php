@@ -19,4 +19,16 @@ class Item extends Model
     public function getCantidadDeProductos(){
         return $this->cantidad_de_productos;
     }
+
+    public function usuario(){
+        return $this->belongsTo("App\User", "user_id");
+    }
+
+    public function productos(){
+        return $this->hasMany("App\Product", "producto_id")
+    }
+
+    public function compra(){
+        return $this->belongsToMany("App\User", "compra", "item_id", "user_id");
+    }
 }

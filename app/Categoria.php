@@ -13,7 +13,11 @@ class Categoria extends Model
         'nombre_categoria'
     ];
 
-    public function getCategoria(){
+    public function getNombreCategoria(){
         return $this->nombre_categoria;
+    }
+
+    public function productos(){
+        return $this->hasMany("App\Product", "categoria_id");
     }
 }

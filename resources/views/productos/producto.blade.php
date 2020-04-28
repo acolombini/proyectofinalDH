@@ -24,6 +24,8 @@
                             No se ha encontrado una imágen para este producto
                         @endif
 
+                        <p><strong>Categoría: </strong>{{$producto->categoria->getNombreCategoria()}}</p>
+
                         <p><strong>Descripción: </strong>{{$producto->descripcion}}</p>
 
                         <p><strong>Precio Unitario: </strong>${{$producto->precio_unitario}}</p>
