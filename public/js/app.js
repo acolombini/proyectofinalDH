@@ -3446,7 +3446,7 @@ __webpack_require__.r(__webpack_exports__);
 
         var _config = _objectSpread2({}, Default$1, {}, $this.data(), {}, typeof config === 'object' && config ? config : {});
 
-        if (!data && _config.toggle && /show|hide/.test(config)) {
+        if (!data && _config.toggle && /show|hide/.test(_config)) {
           _config.toggle = false;
         }
 
@@ -49935,8 +49935,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\proyectofinalDH\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\proyectofinalDH\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\sitios\proyectofinalDH\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\sitios\proyectofinalDH\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

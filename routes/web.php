@@ -13,13 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::GET('/', function () {
-    return view('welcome');
-});
+// Route::GET('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::GET('/home', 'HomeController@index')->name('home')->middleware('usuarioLogueado');
+Route::GET('/', 'HomeController@index')->name('home');
+
+
+/* faqs
+-------------------------------------------------- */
+Route::resource('faq', 'FaqController');
+
+/* End of faqs
+-------------------------------------------------- */
+
+/* contacto
+-------------------------------------------------- */
+Route::resource('contacto', 'ContactoController');
+
+/* End of contacto
+-------------------------------------------------- */
 
 
 //Vista de un producto
@@ -46,5 +61,8 @@ Route::GET('/producto/{id}/edit', 'productosController@edit')->middleware('admin
 Route::PUT('/producto/{id}', 'productosController@update')->middleware('administrador');
 
 // Ruta para modificar campos opcionales de usuario
-Route::GET("usuario/edit", 'userController@edit')->middleware('usuarioLogueado');
-Route::PUT("usuario/edit", 'userController@update')->middleware('usuarioLogueado');
+Route::GET("usuario/edit", 'userController@edit')->middleware('usuarioLogueado')->name('user.edit');
+Route::PUT("usuario/edit", 'userController@update')->middleware('usuarioLogueado')->name('user.update');
+
+
+

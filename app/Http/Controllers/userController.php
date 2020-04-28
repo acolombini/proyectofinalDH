@@ -10,7 +10,7 @@ class userController extends Controller
 {
     public function edit(){
         $usuarioLogueado = Auth::user();
-        return view('users/editarUsuario', compact('usuarioLogueado'));
+        return view('front.user.editarUsuario')->with('usuarioLogueado', $usuarioLogueado);
     }
 
     public function update(Request $req){
@@ -46,7 +46,7 @@ class userController extends Controller
         $usuarioAModificar->domicilio = $req['domicilio'];
         $usuarioAModificar->provincia = $req['provincia'];
         $usuarioAModificar->ciudad = $req['ciudad'];
-        
+
         $usuarioAModificar->save();
 
         return redirect("/")->with('status', 'Los datos de usuario se han modificado correctamente');

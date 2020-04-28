@@ -1,0 +1,370 @@
+/* Estilos Generales */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* background-color: #343a40; */
+}
+
+
+
+/* Estilos Header */
+
+.top-container {
+ height: 250px;
+}
+
+/* Estilos imagen fondo header*/
+.parallax {
+  background-image: url("/img/img_parallax3.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+}
+
+/* Estilos logo Grafico */
+.contenedorLogo{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenedorLogo img{
+  width: 200px;
+  height: 150px;
+}
+
+/* Estilos particulas */
+canvas{
+  display: block;
+}
+#particles-js{
+  position:absolute;
+  width: 100%;
+  height: 250px;
+}
+
+/* Estilo de la barra de progreso del scroll */
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background: #ccc;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #cac16b;
+  width: 0%;
+}
+
+/*navbar*/
+.nav-item{
+  text-align: center;
+}
+
+.nav-item:hover{
+  
+  border: 1px solid green;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+/* clase para fijar el menu cuando se hace scrool*/
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.sticky+.content {
+  padding-top: 102px;
+}
+
+/*anima boton hamburguesa*/
+.toggle-menu-btn {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+
+.change .bar1 {
+  transform: rotate(-45deg) translate(-8px, 8px);
+  -webkit-transform: rotate(-45deg) translate(-8px, 8px);
+  -moz-transform: rotate(-45deg) translate(-8px, 8px);
+  -ms-transform: rotate(-45deg) translate(-8px, 8px);
+  -o-transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+
+.change .bar2 {
+  width: 0;
+  opacity: 0;
+}
+
+.change .bar3 {
+  transform: rotate(45deg) translate(-8px, -8px);
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  -moz-transform: rotate(45deg) translate(-8px, -8px);
+  -ms-transform: rotate(45deg) translate(-8px, -8px);
+  -o-transform: rotate(45deg) translate(-8px, -8px);
+}
+
+
+/* Estilos boton ir arriba */
+#myBtn {
+  color: white;
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+#cajaBusqueda{
+  width: 100%;
+  padding: 1rem;
+  background-color: #222;
+
+}
+#cajaBusqueda form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*Hero section*/
+.banner-home-img{
+  height: auto;
+  background-image: url('/img/bannerhomebg.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-home-texto{
+  background-color: rgba(0,0,0, 0.4);
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+}
+
+/*quienes somos section*/
+.quienessomos-img{
+  
+  background-image: url('/img/gamer-gamers-love-simple-background-wallpaper-preview.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.quienesomos-texto{
+  background-color: rgba(0,0,0, 0.4);
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+}
+
+
+.categoria{
+  overflow: hidden;
+}
+.categoria img{
+  transition: transform .5s ease;
+}
+.categoria:hover img{
+  transform: scale(1.5);
+}
+.categoria .card-img-overlay{
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.categoria .card-img-overlay .card-title{
+  text-align: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.425);
+
+}
+
+
+/*Estilos Footer*/
+.contenedor-footer{
+  background-color: #343a40;
+}
+.footerLogo{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footerLogo img{
+  width: 200px;
+  height: 150px;
+}
+
+.linkSociales{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.linkSociales a, .linkSociales a:hover{
+  color: white;
+  text-decoration: none;
+}
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+.fa:hover {
+  opacity: 0.7;
+}
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+
+/*=============================================
+=                   Pagina FAQ                =
+=============================================*/
+
+.faq-nav {
+  flex-direction: column;
+  margin: 0 0 32px;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
+}
+.faq-nav .nav-link {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 13px 16px;
+  background-color: #fff;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+  color: #616161;
+  transition: background-color 0.2s ease;
+}
+.faq-nav .nav-link:hover {
+  background-color: #f6f6f6;
+}
+.faq-nav .nav-link.active {
+  background-color: #f6f6f6;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.87);
+}
+.faq-nav .nav-link:last-of-type {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom: 0;
+}
+.faq-nav .nav-link i.mdi {
+  margin-right: 5px;
+  font-size: 18px;
+  position: relative;
+}
+.tab-content {
+  box-shadow: 0 1px 5px rgba(85, 85, 85, 0.15);
+}
+.tab-content .card {
+  border-radius: 0;
+}
+.tab-content .card-header {
+  padding: 15px 16px;
+  border-radius: 0;
+  background-color: #f6f6f6;
+}
+.tab-content .card-header h5 {
+  margin: 0;
+}
+.tab-content .card-header h5 button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.87);
+  text-align: left;
+  white-space: normal;
+}
+.tab-content .card-header h5 button:hover, .tab-content .card-header h5 button:focus, .tab-content .card-header h5 button:active, .tab-content .card-header h5 button:hover:active {
+  text-decoration: none;
+}
+.tab-content .card-body p {
+  color: #616161;
+}
+.tab-content .card-body p:last-of-type {
+  margin: 0;
+}
+.accordion > .card:not(:first-child) {
+  border-top: 0;
+}
+.collapse.show .card-body {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+/*============  End of Pagina FAQ  =============*/

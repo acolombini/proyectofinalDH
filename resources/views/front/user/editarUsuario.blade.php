@@ -20,7 +20,7 @@
                         @csrf
                         @method('PUT')
 
-                        
+
                         <div class="form-group row">
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{__('Foto de perfil')}}</label>
                                 <div class="col-md-6">
@@ -36,7 +36,7 @@
                                     @enderror
                                 </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
@@ -98,7 +98,7 @@
 
                             <div class="col-md-6">
                                 <select id="tipo_de_documento" type="date" class="form-control @error('tipo_de_documento') is-invalid @enderror" name="tipo_de_documento" value="{{$usuarioLogueado->tipo_de_documento}}" autofocus>
-                                    
+
                                     @php
                                         $options = [
                                             "DNI" => "DNI",
@@ -114,7 +114,7 @@
                                     @else
                                         <option value="" selected disabled>Seleccioná tu tipo de documento...</option>
                                     @endif
-                                    
+
                                     @foreach ($options as $codigo => $option)
                                         @if ($usuarioLogueado->tipo_de_documento == $codigo)
                                             <option value="{{$codigo}}" selected>{{$option}}</option>
@@ -172,13 +172,13 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="provincia" class="col-md-4 col-form-label text-md-right">{{ __('Provincia') }}</label>
 
                             <div class="col-md-6">
                                 <select id="provincia" type="date" class="form-control @error('provincia') is-invalid @enderror" name="provincia" value="{{$usuarioLogueado->provincia}}" autofocus>
-                                    
+
 
                                 @if ($usuarioLogueado->provincia)
                                     <option value="" disabled>Seleccioná tu provincia...</option>
@@ -203,7 +203,7 @@
                             <div class="col-md-6">
                                 <select id="ciudad" type="date" class="form-control @error('ciudad') is-invalid @enderror" name="ciudad" value="{{$usuarioLogueado->ciudad}}" autofocus>
                                     <option value="" disabled selected>Seleccioná tu ciudad...</option>
-                                    
+
                                 </select>
                                 @error('ciudad')
                                     <span class="invalid-feedback" role="alert">
@@ -222,104 +222,9 @@
                         </div>
                     </form>
                 </div>
-            </div>              
+            </div>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    window.onload = function(){ 
 
-    //Traigo la provincia cargada en la base de datos anteriormente para persistirla
-    let provinciaSeleccionada = "<?php echo $provincia_seleccionada ?? '' ?>";
-
-    function mostrarCiudades(valorProvincia){
-    fetch("https://apis.datos.gob.ar/georef/api/localidades?provincia=" + valorProvincia + "&max=5000")
-    //https://apis.datos.gob.ar/georef/api/municipios?provincia=22&max=5000
-      .then( function(response){
-          return response.json();
-      })
-      .then( function(data){
-        let ciudades = data.localidades;
-        console.log(ciudades);
-        // Ordeno alfabeticamente las ciudades
-        let ciudadesOrdenadas = [];
-            for (const key in ciudades) {
-                ciudadesOrdenadas.push(ciudades[key].nombre);
-                ciudadesOrdenadas.sort();
-            }
-
-          // Select
-          let selectCiudades = document.getElementById("ciudad");
-
-          // Options
-          for (const key in ciudadesOrdenadas) {  
-              let optionCiudad = document.createElement("option");
-              let textoDelOptionCiudad = "";
-
-              textoDelOptionCiudad = document.createTextNode(ciudadesOrdenadas[key]);
-              
-              optionCiudad.append(textoDelOptionCiudad);
-              optionCiudad.setAttribute("value", ciudadesOrdenadas[key])
-              selectCiudades.append(optionCiudad);
-          }
-      })
-      .catch(function(error){
-          console.log("El error fue " + error);
-      });
-}
-function actualizarProvincias(){
-  fetch('https://apis.datos.gob.ar/georef/api/provincias')
-    .then( function(response){
-    return response.json();
-    })
-    .then( function(data){
-    let provincias = data.provincias;
-
-    // Ordeno provincias alfabeticamente
-    let provinciasOrdenadas = [];
-    for (const key in provincias) {
-        provinciasOrdenadas.push(provincias[key].nombre);
-        provinciasOrdenadas.sort();
-    }
-
-    // Select
-    let selectProvincias = document.getElementById("provincia");
-
-    // Options
-    for (const key in provinciasOrdenadas) {
-        let optionProvincia = document.createElement("option");
-        let textoDelOptionProvincia = "";
-
-        textoDelOptionProvincia = document.createTextNode(provinciasOrdenadas[key]);
-        
-        optionProvincia.append(textoDelOptionProvincia);
-        optionProvincia.setAttribute("value", provinciasOrdenadas[key])
-
-        // Si hay dato en la base de datos, persisto
-        if (provinciaSeleccionada === provinciasOrdenadas[key]) {
-            optionProvincia.setAttribute("selected", "selected");
-        }
-        selectProvincias.append(optionProvincia);
-    }
-
-      selectProvincias.addEventListener("change", function(){
-        let provinciaSeleccionada = selectProvincias.value;//Te da el nombre de la provincia seleccionada
-        
-        for (const key in provincias) {
-          if (provincias[key].nombre == provinciaSeleccionada){
-            let indiceProvinciaSeleccionada = provincias[key].id;
-            mostrarCiudades(indiceProvinciaSeleccionada);
-          }
-        }
-      });
-    })
-    .catch(function(error){
-    console.log("Hubo un error. " + error);
-    });
-}
-actualizarProvincias();
-
-
-    }
-</script>
 @endsection
