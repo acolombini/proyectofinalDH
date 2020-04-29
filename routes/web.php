@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Categoria;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +49,7 @@ Route::resource('productos', 'productosController');
 // Route::GET('/producto/{id}', 'productosController@show')->middleware('usuarioLogueado');
 // Route::GET('/producto/admin/{id}', 'productosController@showAdmin')->middleware('administrador');
 
+<<<<<<< HEAD
 // //Listado de productos
 // Route::GET('/productos', 'productosController@listaDeProductos')->middleware('usuarioLogueado');
 
@@ -58,6 +59,21 @@ Route::resource('productos', 'productosController');
 
 // //Busqueda de un producto
 // Route::GET('productos/buscar', 'productosController@search')->middleware('usuarioLogueado');
+=======
+// Rutas para ingresar un producto
+Route::GET('/ingresarProducto', function(){
+    $categorias = Categoria::all();
+    return view('productos/ingresarProducto', compact('categorias'));
+})->middleware('administrador');
+Route::POST('/ingresarProducto', 'productosController@guardar')->middleware('administrador');
+
+// Ruta para eliminar un producto
+Route::delete('/producto/admin/{id}', 'productosController@delete')->middleware('administrador');
+
+//Ruta para modificar un producto
+Route::GET('/producto/admin/{id}/edit', 'productosController@edit')->middleware('administrador');
+Route::PUT('/producto/admin/{id}', 'productosController@update')->middleware('administrador');
+>>>>>>> 91f787c2f00ca548119d6153c2131bb9ebcf1fdb
 
 // // Rutas para ingresar un producto
 // Route::GET('/ingresarProducto', function(){

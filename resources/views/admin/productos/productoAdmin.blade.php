@@ -26,6 +26,8 @@
 
                         <p><strong>Descripción: </strong>{{$producto->descripcion}}</p>
 
+                        <p><strong>Categoría: </strong>{{$producto->categoria->getNombreCategoria()}}</p>
+
                         <p><strong>Precio Unitario: </strong>${{$producto->precio_unitario}}</p>
 
                         <p><strong>Descuento: </strong> @if (isset($producto->descuento)) {{$producto->descuento}} @else "Este producto no está en promoción" @endif</p>
@@ -38,7 +40,7 @@
                             <input type="hidden" name="id" value="{{$producto->id}}">
                             <button class="btn btn-danger" type="submit" id="buttonEliminar">Eliminar Producto</button>
                         </form>
-                        <a href="/producto/{{$producto->id}}/edit"><button class="btn btn-warning"> Modificar Producto</button></a>
+                        <a href="/producto/admin/{{$producto->id}}/edit"><button class="btn btn-warning"> Modificar Producto</button></a>
                     @else
                     <p>No se encontró el producto número {{$id}}. Por favor, elija un producto del <a href="/productos">listado de productos</a>.</p>
                     @endif
