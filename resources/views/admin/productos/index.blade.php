@@ -24,7 +24,7 @@
                 <td>{{$producto->categoria->nombre_categoria}}</td>
                 <td>
                     <a class="btn btn-primary float-left" href="{{route('productos.show', $producto->id)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                    <a class="btn btn-success float-left" href="{{route('productos.edit', $producto->id)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a class="btn btn-success float-left" href="{{route('productos.edit', $producto)}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
                     <form action="{{route('productos.destroy', $producto)}}" method="post" class="float-left">
                         @csrf
