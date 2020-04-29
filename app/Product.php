@@ -9,7 +9,7 @@ class Product extends Model
     public $guarded = [];
 
     protected $fillable = [
-        'titulo', 'descripcion', 'precio_unitario', 'descuento', 'stock', 'poster'
+        'titulo', 'descripcion', 'categoria_id', 'precio_unitario', 'descuento', 'stock', 'poster'
     ];
 
     public function getTitulo(){

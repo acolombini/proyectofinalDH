@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Listado de Productos') }}</div>
 
                 <div class="card-body">
-                    <form action="/producto/{{$productoAModificar->id}}" method="POST" enctype="multipart/form-data">
+                    <form action="/producto/admin/{{$productoAModificar->id}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">
@@ -31,6 +31,30 @@
                             <div class="col-md-6">
                                 <textarea id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" required autocomplete="descripcion" autofocus>{{$productoAModificar->descripcion}}</textarea>
                                 @error('descripcion')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="categoria_id" class="col-md-4 col-form-label text-md-right">{{ __('Categoria') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="categoria_id" type="date" class="form-control @error('categoria_id') is-invalid @enderror" name="categoria_id" autofocus>
+
+                                    <option value="" disabled>Seleccione una Categoría...</option>
+
+                                    @foreach ($categorias as $categoria)
+                                        @if ($productoAModificar->categoria_id == $categoria->id)
+                                            <option value="{{$categoria->id}}" selected>{{$categoria->getNombreCategoria()}}</option>
+                                        @else
+                                        <option value="{{$categoria->id}}">{{$categoria->getNombreCategoria()}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                                @error('categoria_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

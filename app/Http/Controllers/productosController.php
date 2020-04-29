@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Categoria;
 use Illuminate\Http\Request;
 use App\Product;
 use Illuminate\Support\Facades\Storage;
@@ -27,25 +27,30 @@ class productosController extends Controller
         $this->validate($req, [
             'titulo' => ['required', 'string', 'max:50', 'unique:products,titulo'],
             'descripcion' => ['required', 'string', 'max:255'],
+            'categoria_id' => ['required', 'numeric', 'min:1', 'max:10'],
             'precio_unitario' => ['required', 'numeric', 'min:0'],
             'descuento' => ["nullable", "numeric","min:0","max:100"],
             'stock' => ['required', 'numeric', 'min:0'],
             'poster' => ['nullable', 'mimes:jpeg,bmp,png,jpg']
         ]);
+
+        $productoACrear = [
+            'titulo' => trim($req['titulo']),
+            'descripcion' => trim($req['descripcion']),
+            'categoria_id' => $req['categoria_id'],
+            'precio_unitario' => trim($req['precio_unitario']),
+            'descuento' => $req['descuento'],
+            'stock' => $req['stock']
+        ];
+
         $nombre_del_archivo = '';
         if(isset($req['poster'])){
         $ruta = $req->file("poster")->store("public/product_poster");
         $nombre_del_archivo=basename($ruta);
+        $productoACrear["poster"] = $nombre_del_archivo;
         }
-        Product::create([
-            'titulo' => $req['titulo'],
-            'descripcion' => $req['descripcion'],
-            'precio_unitario' => $req['precio_unitario'],
-            'descuento' => $req['descuento'],
-            'stock' => $req['stock'],
-            'poster' => $nombre_del_archivo
-        ]);
 
+        Product::create($productoACrear);
         return redirect('/productos');
     }
 
@@ -83,14 +88,15 @@ class productosController extends Controller
         $productoAEliminar = Product::find($req['id']);
         $productoAEliminar->delete();
         if($productoAEliminar->poster){
-            Storage::delete('public/product_poster/'.$productoAEliminar->poster);
+            Storage::delete('/storage/product_poster/'. $productoAEliminar->poster);
         }
         return redirect('/productos')->with("status", "El producto ha sido eliminado.");
     }
 
     public function edit(Request $req){
         $productoAModificar = Product::find($req['id']);
-        $vac = compact('idDelProductoAModificar', 'productoAModificar');
+        $categorias = Categoria::all();
+        $vac = compact('idDelProductoAModificar', 'productoAModificar', 'categorias');
         return view('productos/editarProducto', $vac);
     }
 
@@ -99,6 +105,7 @@ class productosController extends Controller
         $this->validate($req, [
             'titulo' => ['required', 'string', 'max:50'],
             'descripcion' => ['required', 'string', 'max:255'],
+            'categoria_id' => ['required', 'numeric', 'min:1', 'max:10'],
             'precio_unitario' => ['required', 'numeric', 'min:0'],
             'descuento' => ["nullable", "numeric","min:0","max:100"],
             'stock' => ['required', 'numeric', 'min:0'],
@@ -107,7 +114,7 @@ class productosController extends Controller
         $productoAModificar = Product::find($req['id']);
         if($req['poster']){
             if($productoAModificar->poster){
-                Storage::delete('public/product_poster/' . $productoAModificar->poster);
+                Storage::delete('/storage/product_poster/' . $productoAModificar->poster);
             }
             $ruta = $req->file("poster")->store("public/product_poster");
             $nombre_del_archivo=basename($ruta);
@@ -115,6 +122,7 @@ class productosController extends Controller
         }
         $productoAModificar->titulo = $req['titulo'];
         $productoAModificar->descripcion = $req['descripcion'];
+        $productoAModificar->categoria_id = $req['categoria_id'];
         $productoAModificar->precio_unitario = $req['precio_unitario'];
         $productoAModificar->descuento = $req['descuento'];
         $productoAModificar->stock = $req['stock'];

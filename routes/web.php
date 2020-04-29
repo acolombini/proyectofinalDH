@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Categoria;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,16 +53,17 @@ Route::GET('productos/buscar', 'productosController@search')->middleware('usuari
 
 // Rutas para ingresar un producto
 Route::GET('/ingresarProducto', function(){
-    return view('productos/ingresarProducto');
+    $categorias = Categoria::all();
+    return view('productos/ingresarProducto', compact('categorias'));
 })->middleware('administrador');
 Route::POST('/ingresarProducto', 'productosController@guardar')->middleware('administrador');
 
 // Ruta para eliminar un producto
-Route::delete('/producto/{id}', 'productosController@delete')->middleware('administrador');
+Route::delete('/producto/admin/{id}', 'productosController@delete')->middleware('administrador');
 
 //Ruta para modificar un producto
-Route::GET('/producto/{id}/edit', 'productosController@edit')->middleware('administrador');
-Route::PUT('/producto/{id}', 'productosController@update')->middleware('administrador');
+Route::GET('/producto/admin/{id}/edit', 'productosController@edit')->middleware('administrador');
+Route::PUT('/producto/admin/{id}', 'productosController@update')->middleware('administrador');
 
 // Ruta para modificar campos opcionales de usuario
 Route::GET("usuario/edit", 'userController@edit')->middleware('usuarioLogueado')->name('user.edit');

@@ -38,6 +38,24 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="categoria_id" class="col-md-4 col-form-label text-md-right">{{ __('Categoria') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="categoria_id" type="date" class="form-control @error('categoria_id') is-invalid @enderror" name="categoria_id" autofocus>
+                                    <option value="" selected disabled>Seleccione una Categoría...</option>
+                                    @foreach ($categorias as $categoria)
+                                        <option value="{{$categoria->id}}">{{$categoria->getNombreCategoria()}}</option>
+                                    @endforeach
+                                </select>
+                                @error('categoria_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="precio_unitario" class="col-md-4 col-form-label text-md-right">{{ __('Precio Unitario') }}</label>
 
                             <div class="col-md-6">
