@@ -36,8 +36,6 @@ Route::resource('contacto', 'ContactoController');
 /* End of contacto
 -------------------------------------------------- */
 
-
-
 /*=============================================
 =                   Productos                   =
 =============================================*/
@@ -72,9 +70,9 @@ Route::resource('productos', 'productosController');
 // Route::GET('/producto/{id}/edit', 'productosController@edit')->middleware('administrador');
 // Route::PUT('/producto/{id}', 'productosController@update')->middleware('administrador');
 
-// // Ruta para modificar campos opcionales de usuario
-// Route::GET("usuario/edit", 'userController@edit')->middleware('usuarioLogueado')->name('user.edit');
-// Route::PUT("usuario/edit", 'userController@update')->middleware('usuarioLogueado')->name('user.update');
+// Ruta para modificar campos opcionales de usuario
+Route::GET("usuario/edit", 'userController@edit')->middleware('usuarioLogueado')->name('user.edit');
+Route::PUT("usuario/edit", 'userController@update')->middleware('usuarioLogueado')->name('user.update');
 
 
 /*=============================================

@@ -8,22 +8,28 @@ use Illuminate\Support\Facades\Storage;
 class productosController extends Controller
 {
     public function index(){
-        $productos = Product::paginate(10);
-
-        // Creo variables para filtrar por medio de JS mientras se escribe
-        $nombreProductos = [];
-        $todosLosProductos = Product::all();
-        foreach ($todosLosProductos as $producto) {
-            $nombreProductos[] = [
-                "titulo" => $producto->getTitulo(),
-                "id" => $producto->getID()
-            ];
-        }
-
-        return view('admin.productos.index', compact('productos', 'nombreProductos'));
+        $productos = Product::all();
+        // // Creo variables para filtrar por medio de JS mientras se escribe
+        // $nombreProductos = [];
+        // $todosLosProductos = Product::all();
+        // foreach ($todosLosProductos as $producto) {
+        //     $nombreProductos[] = [
+        //         "titulo" => $producto->getTitulo(),
+        //         "id" => $producto->getID()
+        //     ];
+        // }
+        // return view('admin.productos.index', compact('productos', 'nombreProductos'));
+        return view('admin.productos.index')->with('productos', $productos);
     }
 
-    public function guardar(Request $req){
+    public function create(){
+        $categorias = Categoria::all();
+        return view('admin.productos.create')->with('categorias', $categorias);
+    }
+
+
+
+    public function store(Request $req){
         $this->validate($req, [
             'titulo' => ['required', 'string', 'max:50', 'unique:products,titulo'],
             'descripcion' => ['required', 'string', 'max:255'],
@@ -51,7 +57,7 @@ class productosController extends Controller
         }
 
         Product::create($productoACrear);
-        return redirect('/productos');
+        return redirect()->route('productos.index')->with("status", "El producto ha sido eliminado.");
     }
 
     public function show($id){
@@ -60,11 +66,11 @@ class productosController extends Controller
         return view("admin.productos.show", $vac);
     }
 
-    public function showAdmin($id){
-        $producto = Product::find($id);
-        $vac = compact('id', 'producto');
-        return view("productos/productoAdmin", $vac);
-    }
+    // public function showAdmin($id){
+    //     $producto = Product::find($id);
+    //     $vac = compact('id', 'producto');
+    //     return view("productos/productoAdmin", $vac);
+    // }
 
     public function search(){
         $buscador = $_GET["buscador"];
@@ -94,15 +100,17 @@ class productosController extends Controller
         return redirect()->route('productos.index')->with("status", "El producto ha sido eliminado.");
     }
 
-    public function edit($id){
-        $productoAModificar = Product::find($id);
-        $vac = compact('idDelProductoAModificar', 'productoAModificar');
-        return view('admin.productos.edit', $vac);
+    public function edit(Product $producto){
+        $categorias = Categoria::all();
+        return view('admin.productos.edit')->with([
+            'producto' => $producto,
+            'categorias' => $categorias
+        ]);
     }
 
-    public function update(Request $req){
+    public function update(Request $request, Product $producto){
 
-        $this->validate($req, [
+        $this->validate($request, [
             'titulo' => ['required', 'string', 'max:50'],
             'descripcion' => ['required', 'string', 'max:255'],
             'categoria_id' => ['required', 'numeric', 'min:1', 'max:10'],
@@ -111,25 +119,26 @@ class productosController extends Controller
             'stock' => ['required', 'numeric', 'min:0'],
             'poster' => ['nullable', 'mimes:jpeg,bmp,png,jpg']
         ]);
-        $productoAModificar = Product::find($req['id']);
-        if($req['poster']){
-            if($productoAModificar->poster){
-                Storage::delete('/storage/product_poster/' . $productoAModificar->poster);
+
+        if($request->poster){
+            if($producto->poster){
+                Storage::delete('/storage/product_poster/' . $producto->poster);
             }
-            $ruta = $req->file("poster")->store("public/product_poster");
+            $ruta = $request->file("poster")->store("public/product_poster");
             $nombre_del_archivo=basename($ruta);
-            $productoAModificar->poster = $nombre_del_archivo;
+            $producto->poster = $nombre_del_archivo;
         }
-        $productoAModificar->titulo = $req['titulo'];
-        $productoAModificar->descripcion = $req['descripcion'];
-        $productoAModificar->categoria_id = $req['categoria_id'];
-        $productoAModificar->precio_unitario = $req['precio_unitario'];
-        $productoAModificar->descuento = $req['descuento'];
-        $productoAModificar->stock = $req['stock'];
+        $producto->titulo = $request->titulo;
+        $producto->descripcion = $request->descripcion;
+        $producto->categoria_id = $request->categoria_id;
+        $producto->precio_unitario = $request->precio_unitario;
+        $producto->descuento = $request->descuento;
+        $producto->stock = $request->stock;
 
 
-        $productoAModificar->save();
+        $producto->save();
 
-        return redirect("producto/" . $productoAModificar['id'])->with('status', 'El Producto se ha modificado correctamente');
+        return redirect()->route('productos.index')->with('status', 'El Producto se ha modificado correctamente');
+        // return redirect("producto/" . $productoAModificar['id'])->with('status', 'El Producto se ha modificado correctamente');
     }
 }

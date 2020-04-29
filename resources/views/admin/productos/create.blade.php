@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.layout')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Listado de Productos') }}</div>
 
                 <div class="card-body">
-                    <form action="/ingresarProducto" method="post" enctype="multipart/form-data">
+                    <form action="{{route('productos.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="titulo" class="col-md-4 col-form-label text-md-right">{{ __('Titulo') }}</label>
@@ -115,7 +115,7 @@
                         </div>
                     </form>
                 </div>
-            </div>              
+            </div>
         </div>
     </div>
 </div>
