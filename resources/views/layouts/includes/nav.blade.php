@@ -58,6 +58,9 @@
                             <a class="dropdown-item" href="{{ route('user.edit') }}">
                                 {{ __('Perfil') }}
                             </a>
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                {{ __('Panel Admin') }}
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

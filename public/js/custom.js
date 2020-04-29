@@ -210,7 +210,7 @@ function barraProgreso() {
 
     //search box
     function cajaBusqueda() {
-        
+
         var x = document.getElementById("cajaBusqueda");
         if (x.style.display === "none") {
           x.style.display = "block";
@@ -218,6 +218,17 @@ function barraProgreso() {
           x.style.display = "none";
         }
       }
+
+
+      $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+
 
 
 

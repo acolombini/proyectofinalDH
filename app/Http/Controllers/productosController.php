@@ -7,7 +7,7 @@ use App\Product;
 use Illuminate\Support\Facades\Storage;
 class productosController extends Controller
 {
-    public function listaDeProductos(){
+    public function index(){
         $productos = Product::paginate(10);
 
         // Creo variables para filtrar por medio de JS mientras se escribe
@@ -20,7 +20,7 @@ class productosController extends Controller
             ];
         }
 
-        return view('productos/listadoDeProductos', compact('productos', 'nombreProductos'));
+        return view('admin.productos.index', compact('productos', 'nombreProductos'));
     }
 
     public function guardar(Request $req){
@@ -52,7 +52,7 @@ class productosController extends Controller
     public function show($id){
         $producto = Product::find($id);
         $vac = compact('id', 'producto');
-        return view("productos/producto", $vac);
+        return view("admin.productos.show", $vac);
     }
 
     public function showAdmin($id){
@@ -64,7 +64,7 @@ class productosController extends Controller
     public function search(){
         $buscador = $_GET["buscador"];
         $productos = Product::where("titulo", "LIKE", "%" . $buscador . "%")->ORDERBY("titulo")->paginate(5);
-        
+
         // Creo variables para filtrar por medio de JS mientras se escribe
         $nombreProductos = [];
         $todosLosProductos = Product::all();
@@ -74,24 +74,25 @@ class productosController extends Controller
                 "id" => $producto->getID()
             ];
         }
-        
+
         $vac = compact('productos', 'nombreProductos');
         return view('productos/listadoDeProductos', $vac);
     }
 
-    public function delete(Request $req){
-        $productoAEliminar = Product::find($req['id']);
-        $productoAEliminar->delete();
-        if($productoAEliminar->poster){
-            Storage::delete('public/product_poster/'.$productoAEliminar->poster);
+    public function destroy(Product $producto){
+
+        if($producto->poster){
+            Storage::delete('public/product_poster/'.$producto->poster);
         }
-        return redirect('/productos')->with("status", "El producto ha sido eliminado.");
+        $producto->delete();
+        // return redirect('admin.productos.index')->with("status", "El producto ha sido eliminado.");
+        return redirect()->route('productos.index')->with("status", "El producto ha sido eliminado.");
     }
 
-    public function edit(Request $req){
-        $productoAModificar = Product::find($req['id']);
+    public function edit($id){
+        $productoAModificar = Product::find($id);
         $vac = compact('idDelProductoAModificar', 'productoAModificar');
-        return view('productos/editarProducto', $vac);
+        return view('admin.productos.edit', $vac);
     }
 
     public function update(Request $req){
@@ -118,8 +119,8 @@ class productosController extends Controller
         $productoAModificar->precio_unitario = $req['precio_unitario'];
         $productoAModificar->descuento = $req['descuento'];
         $productoAModificar->stock = $req['stock'];
-        
-        
+
+
         $productoAModificar->save();
 
         return redirect("producto/" . $productoAModificar['id'])->with('status', 'El Producto se ha modificado correctamente');
