@@ -84,36 +84,20 @@ class productosController extends Controller
         return view('productos/listadoDeProductos', $vac);
     }
 
-<<<<<<< HEAD
     public function destroy(Product $producto){
 
         if($producto->poster){
             Storage::delete('public/product_poster/'.$producto->poster);
-=======
-    public function delete(Request $req){
-        $productoAEliminar = Product::find($req['id']);
-        $productoAEliminar->delete();
-        if($productoAEliminar->poster){
-            Storage::delete('/storage/product_poster/'. $productoAEliminar->poster);
->>>>>>> 91f787c2f00ca548119d6153c2131bb9ebcf1fdb
         }
         $producto->delete();
         // return redirect('admin.productos.index')->with("status", "El producto ha sido eliminado.");
         return redirect()->route('productos.index')->with("status", "El producto ha sido eliminado.");
     }
 
-<<<<<<< HEAD
     public function edit($id){
         $productoAModificar = Product::find($id);
         $vac = compact('idDelProductoAModificar', 'productoAModificar');
         return view('admin.productos.edit', $vac);
-=======
-    public function edit(Request $req){
-        $productoAModificar = Product::find($req['id']);
-        $categorias = Categoria::all();
-        $vac = compact('idDelProductoAModificar', 'productoAModificar', 'categorias');
-        return view('productos/editarProducto', $vac);
->>>>>>> 91f787c2f00ca548119d6153c2131bb9ebcf1fdb
     }
 
     public function update(Request $req){
