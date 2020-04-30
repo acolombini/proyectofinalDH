@@ -7,35 +7,46 @@
         <div class="container text-center banner-home-texto">
 
           <h1 class="display-3">4 Osos <br> Games Store</h1>
-
-
         </div>
       </div>
     </section>
 
   <section id="destacados">
+
     <div class="container my-3">
       <h2 class="text-center my-3 font-weight-bolder">Nuestros destacados</h2>
-        <div class="card-deck">
-        <div class="owl-carousel owl-theme" id="sliderProductos">
+       <div class="owl-carousel owl-theme" id="sliderProductos">
+            @forelse ($productos as $producto)
 
-          @foreach ($productos as $producto)
-          <div class="card">
-            <a href="/producto/{{$producto->id}}">
-            <img class="card-img-top" src="/storage/product_poster/{{$producto->poster}}" width="100%" alt="Imágen del producto">
-            <div class="card-body">
-              <h5 class="card-title">{{$producto->getTitulo()}}</h5>
-              <p class="card-text">{{$producto->descripcion}}</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-            </a>
-          </div>
-          @endforeach
-          </div>
+            <div class="product-card">
+                <div class="product-header">
+                    <img src="{{$producto->poster ? '/storage/product_poster/'.$producto->poster : asset('img/defaultgamecardimage.png') }}" alt="">
+                </div><!--product-header-->
+                <div class="product-content">
+                    <div class="product-content-header">
+                        <a href="/pelicula/1">
+                            <h3 class="product-title">{{$producto->getTitulo()}}</h3>
+                        </a>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="info-section">
+                            <label>Precio</label>
+                            <span>{{$producto->precio_unitario}}</span>
+                        </div><!--date,time-->
+                        <div class="info-section">
+                            <label>Cagoria</label>
+                            <span>{{$producto->categoria->nombre_categoria}}</span>
+                        </div><!--screen-->
+
+                    </div>
+                </div><!--product-content-->
+            </div><!--product-card-->
+            @empty
+                no hay productos disponibles
+            @endforelse
         </div>
-      </div>
+    </div>
   </section>
 
   <section id="quienesomos">
@@ -56,45 +67,22 @@
   <section id="categorias">
     <div class="container my-3">
       <h2 class="text-center my-3 font-weight-bolder">Categorias</h2>
-  <div class="container">
-      <div class="row">
-
-      <div class="p-1 col-6 col-md-4 col-lg-3">
-        <div class="card bg-dark text-white categoria">
-          <img class="card-img" src="/img/bearLogo.png" alt="">
-          <div class="card-img-overlay">
-            <h4 class="card-title">Title</h4>
+        <div class="container">
+          <div class="row">
+              @forelse ($categorias as $categoria)
+              <div class="p-1 col-6 col-md-4 col-lg-3">
+                <div class="card bg-dark text-white categoria">
+                  <img class="card-img" src="{{asset('img/defaultcategoryavatar.png')}}" alt="">
+                  <div class="card-img-overlay">
+                    <h4 class="card-title">{{$categoria->nombre_categoria}}</h4>
+                  </div>
+                </div>
+              </div>
+              @empty
+                  no hay categorias bro
+              @endforelse
           </div>
         </div>
-      </div>
-
-      <div class="p-1 col-6 col-md-4 col-lg-3">
-        <div class="card bg-dark text-white categoria">
-          <img class="card-img" src="/img/bearLogo.png" alt="">
-          <div class="card-img-overlay">
-            <h4 class="card-title">Title</h4>
-          </div>
-        </div>
-      </div>
-      <div class="p-1 col-6 col-md-4 col-lg-3">
-        <div class="card bg-dark text-white categoria">
-          <img class="card-img" src="/img/bearLogo.png" alt="">
-          <div class="card-img-overlay">
-            <h4 class="card-title">Title</h4>
-          </div>
-        </div>
-      </div>
-      <div class="p-1 col-6 col-md-4 col-lg-3">
-        <div class="card bg-dark text-white categoria">
-          <img class="card-img" src="/img/bearLogo.png" alt="">
-          <div class="card-img-overlay">
-            <h4 class="card-title">Title</h4>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
     </div>
   </section>
 

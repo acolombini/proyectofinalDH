@@ -28,8 +28,13 @@
          <li class="nav-item dropdown">
            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
            <div class="dropdown-menu" aria-labelledby="dropdownId">
-             <a class="dropdown-item" href="productos.php">Pagina Categoria</a>
-             <a class="dropdown-item" href="producto.php">Pagina Producto</a>
+             <a class="dropdown-item" href="{{route('todos-los-productos')}}">Ver Todos</a>
+             
+             @forelse ($categorias as $categoria)
+             <a class="dropdown-item" href="producto.php">{{$categoria->nombre_categoria}}</a>
+             @empty
+
+             @endforelse
            </div>
          </li>
          <li class="nav-item">

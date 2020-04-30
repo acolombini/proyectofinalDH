@@ -37,9 +37,15 @@ Route::resource('contacto', 'ContactoController');
 -------------------------------------------------- */
 
 /*=============================================
-=                   Productos                   =
+=                   Productos back            = 
 =============================================*/
 Route::resource('productos', 'productosController');
+/*============  End of Productos  =============*/
+
+/*=============================================
+=                   Productos front            = 
+=============================================*/
+route::get('todos-los-productos', 'HomeController@getAll')->name('todos-los-productos');
 /*============  End of Productos  =============*/
 
 
