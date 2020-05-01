@@ -30,9 +30,9 @@
            <div class="dropdown-menu" aria-labelledby="dropdownId">
              <a class="dropdown-item" href="{{route('todos-los-productos')}}">Ver Todos</a>
              
-             @forelse ($categorias as $categoria)
-             <a class="dropdown-item" href="producto.php">{{$categoria->nombre_categoria}}</a>
-             @empty
+             @forelse (App\Categoria::all() as $categoria)
+                <a class="dropdown-item" href="/categoria/{{$categoria->id}}">{{$categoria->nombre_categoria}}</a>
+             @empty 
 
              @endforelse
            </div>

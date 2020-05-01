@@ -50,8 +50,8 @@ route::get('todos-los-productos', 'HomeController@getAll')->name('todos-los-prod
 
 
 //Vista de un producto
-Route::GET('/producto/{id}', 'productosController@show')->middleware('usuarioLogueado');
-Route::GET('/producto/admin/{id}', 'productosController@showAdmin')->middleware('administrador');
+//Route::GET('/producto/{id}', 'productosController@show')->middleware('usuarioLogueado');
+Route::GET('/producto/admin/{id}', 'productosController@show')->middleware('administrador');
 
 //Listado de productos
 Route::GET('/productos', 'productosController@listaDeProductos')->middleware('usuarioLogueado');
@@ -64,9 +64,7 @@ Route::GET('/categoria/{id}', "categoriasController@products")->middleware('usua
 Route::GET('productos/buscar', 'productosController@search')->middleware('usuarioLogueado');
 
 // Rutas para ingresar un producto
-Route::GET('/ingresarProducto', function(){
-    return view('productos/ingresarProducto');
-})->middleware('administrador');
+Route::GET('/ingresarProducto', 'productosController@create')->middleware("administrador");
 Route::POST('/ingresarProducto', 'productosController@guardar')->middleware('administrador');
 
 // Ruta para eliminar un producto

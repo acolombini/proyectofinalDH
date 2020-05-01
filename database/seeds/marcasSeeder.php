@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Marca;
 class marcasSeeder extends Seeder
 {
     /**
@@ -29,5 +29,6 @@ class marcasSeeder extends Seeder
                 "nombre_marca" => "Bullfrog Productions"
             ]
         ]);
+        factory(Marca::class, 40)->create();
     }
 }

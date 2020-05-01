@@ -19,33 +19,33 @@
                         <div class="movie-content">
                             <div class="movie-content-header">
                                 <a href="/producto/{{$producto->id}}">
-                                    <h3 class="movie-title">{{$producto->title}}</h3>
+                                    <h3 class="movie-title">{{$producto->getTitulo()}}</h3>
                                 </a>
 
                             </div>
                             <div class="movie-info">
                                 <div class="info-section">
-                                    <label>Publicada</label>
-                                    <span>{{$producto->release_date}}</span>
-                                </div><!--date,time-->
+                                    <label>Categoria</label>
+                                    <span>{{$producto->categoria->nombre_categoria}}</span>
+                                </div>
                                 <div class="info-section">
-                                    <label>Rating</label>
-                                    <span>{{$producto->rating}}</span>
-                                </div><!--screen-->
+                                    <label>Precio</label>
+                                    <span>$ {{$producto->precio_unitario}}</span>
+                                </div>
                                 <div class="info-section">
-                                    <label>Premios</label>
-                                    <span>{{$producto->awards}}</span>
-                                </div><!--row-->
+                                    <label>Descuento:</label>
+                                    <span>{{$producto->descuento}}</span>
+                                </div>
                                 <div class="info-section">
-                                    <label>Genero</label>
-                                    <span>{{$producto->genre_id}}</span>
-                                </div><!--seat-->
+                                    <label>Valoración:</label>
+                                    <span>{{4.9}}</span>
+                                </div>
                             </div>
                         </div><!--movie-content-->
                     </div><!--movie-card-->
                 </div>
             @empty
-                <h2>No Hay productos Registradas</h2>
+                <h2>No Hay productos registrados</h2>
             @endforelse
         </div>
     </div>

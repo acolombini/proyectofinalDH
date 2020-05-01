@@ -24,7 +24,7 @@
                 </div><!--product-header-->
                 <div class="product-content">
                     <div class="product-content-header">
-                        <a href="/pelicula/1">
+                        <a href="/producto/{{$producto->id}}">
                             <h3 class="product-title">{{$producto->getTitulo()}}</h3>
                         </a>
                     </div>
@@ -70,16 +70,17 @@
         <div class="container">
           <div class="row">
               @forelse ($categorias as $categoria)
+              
               <div class="p-1 col-6 col-md-4 col-lg-3">
                 <div class="card bg-dark text-white categoria">
-                  <img class="card-img" src="{{asset('img/defaultcategoryavatar.png')}}" alt="">
+                  <img class="card-img" src="/storage/product_poster/{{$categoria->productos->get(1)->poster}}" alt="imagen categoria">
                   <div class="card-img-overlay">
                     <h4 class="card-title">{{$categoria->nombre_categoria}}</h4>
                   </div>
                 </div>
               </div>
               @empty
-                  no hay categorias bro
+                  no hay categorias :(
               @endforelse
           </div>
         </div>

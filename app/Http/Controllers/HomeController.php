@@ -27,10 +27,13 @@ class HomeController extends Controller
     {
         $productos = Product::take(10)->get();
         $categorias = Categoria::all();
-        return view('home')->with([
-            'productos' => $productos,
-            'categorias' => $categorias
-        ]);
+        
+        //    $primerProductoDeLaCategoria[] = $categoria->productos->get(1)->poster;
+        
+         return view('home', compact('productos', 'categorias', 'primerProductoDeLaCategoria'));//->with([
+        //     'productos' => $productos,
+        //     'categorias' => $categorias
+        // ]);
     }
 
     public function getAll()
