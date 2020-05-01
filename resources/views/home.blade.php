@@ -35,10 +35,18 @@
                             <span>{{$producto->precio_unitario}}</span>
                         </div><!--date,time-->
                         <div class="info-section">
-                            <label>Cagoria</label>
+                            <label>Categoria</label>
                             <span>{{$producto->categoria->nombre_categoria}}</span>
                         </div><!--screen-->
-
+                        <div class="info-section">
+                          <form action="carrito" method="post">
+                            @csrf
+                            <input type="hidden" name="producto_id" value="{{$producto->id}}">
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                            <label>Add to Cart</label>
+                            <button type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                          </form>
+                        </div><!--screen-->
                     </div>
                 </div><!--product-content-->
             </div><!--product-card-->

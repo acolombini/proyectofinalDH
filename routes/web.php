@@ -78,7 +78,9 @@ Route::PUT('/producto/{id}', 'productosController@update')->middleware('administ
 Route::GET("usuario/edit", 'userController@edit')->middleware('usuarioLogueado')->name('user.edit');
 Route::PUT("usuario/edit", 'userController@update')->middleware('usuarioLogueado')->name('user.update');
 
-
+// Ruta para agregar un producto al carrito
+Route::POST("carrito", 'itemsController@insert')->middleware('usuarioLogueado')->name('carrito.insert');
+Route::DELETE("carrito", 'itemsController@delete')->middleware('usuarioLogueado')->name('carrito.delete');
 /*=============================================
 =                   Vistas Admin              =
 =============================================*/
