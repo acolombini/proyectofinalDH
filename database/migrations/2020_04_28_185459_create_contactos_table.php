@@ -16,6 +16,10 @@ class CreateContactosTable extends Migration
         Schema::create('contactos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string("nombre");
+            $table->string("email");
+            $table->string("mensaje");
+            $table->unsignedBigInteger('usuario_id')->nullable(); //Nullable para que se pueda enviar un formulario de contacto sin estar logueado
         });
     }
 

@@ -35,10 +35,18 @@
                             <span>{{$producto->precio_unitario}}</span>
                         </div><!--date,time-->
                         <div class="info-section">
-                            <label>Cagoria</label>
+                            <label>Categoria</label>
                             <span>{{$producto->categoria->nombre_categoria}}</span>
                         </div><!--screen-->
-
+                        <div class="info-section">
+                          <form action="carrito" method="post">
+                            @csrf
+                            <input type="hidden" name="producto_id" value="{{$producto->id}}">
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                            <label>Add to Cart</label>
+                            <button type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                          </form>
+                        </div><!--screen-->
                     </div>
                 </div><!--product-content-->
             </div><!--product-card-->
@@ -73,7 +81,7 @@
               
               <div class="p-1 col-6 col-md-4 col-lg-3">
                 <div class="card bg-dark text-white categoria">
-                  <img class="card-img" src="/storage/product_poster/{{$categoria->productos->get(1)->poster}}" alt="imagen categoria">
+                  <img class="card-img" src="{{$categoria->productos->get(1)->poster ? "/storage/product_poster/" . $categoria->productos->get(1)->poster : asset('img/defaultgamecardimage.png')}}" alt="imagen categoria">
                   <div class="card-img-overlay">
                     <h4 class="card-title">{{$categoria->nombre_categoria}}</h4>
                   </div>

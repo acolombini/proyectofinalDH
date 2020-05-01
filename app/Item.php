@@ -9,7 +9,7 @@ class Item extends Model
     public $guarded = [];
 
     protected $fillable = [
-        'product_id', "cantidad_de_productos"
+        'product_id', "cantidad_de_productos", "user_id"
     ];
 
     public function getProductos(){
