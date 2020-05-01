@@ -24,6 +24,6 @@ class itemsController extends Controller
 
     public function delete(Request $producto){
         $producto->delete();
-        return redirect()->route('home')->with("status", "El producto ha sido eliminado del carrito.")
+        return redirect()->route('home')->with("status", "El producto ha sido eliminado del carrito.");
     }
 }

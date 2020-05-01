@@ -81,6 +81,9 @@ Route::PUT("usuario/edit", 'userController@update')->middleware('usuarioLogueado
 // Ruta para agregar un producto al carrito
 Route::POST("carrito", 'itemsController@insert')->middleware('usuarioLogueado')->name('carrito.insert');
 Route::DELETE("carrito", 'itemsController@delete')->middleware('usuarioLogueado')->name('carrito.delete');
+
+// Ruta para enviar un formulario de contacto
+Route::POST('contacto', 'contactoController@insert')->name("contacto.insert");
 /*=============================================
 =                   Vistas Admin              =
 =============================================*/

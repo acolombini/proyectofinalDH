@@ -42,7 +42,7 @@
                           <form action="carrito" method="post">
                             @csrf
                             <input type="hidden" name="producto_id" value="{{$producto->id}}">
-                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                            <input type="hidden" name="user_id" value="{{Auth::user() ? Auth::user()->id : ''}}">
                             <label>Add to Cart</label>
                             <button type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
                           </form>
