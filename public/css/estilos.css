@@ -321,7 +321,14 @@ canvas{
 
 
 .categoria{
-  overflow: hidden;
+
+    overflow: hidden;
+    border-radius: 140px;
+    border: none;
+    -webkit-border-radius: 140px;
+    -moz-border-radius: 140px;
+    -ms-border-radius: 140px;
+    -o-border-radius: 140px;
 }
 .categoria img{
   transition: transform .5s ease;
