@@ -70,10 +70,11 @@
         <div class="container">
           <div class="row">
               @forelse ($categorias as $categoria)
-              
+
               <div class="p-1 col-6 col-md-4 col-lg-3">
                 <div class="card bg-dark text-white categoria">
-                  <img class="card-img" src="/storage/product_poster/{{$categoria->productos->get(1)->poster}}" alt="imagen categoria">
+                  {{-- <img class="card-img" src={{$productos->poster ? '/storage/product_poster/'.$categorias->productos->get(1)->poster : asset('img/defaultcategoriaavatar2.png') }}" alt="imagen categoria"> --}}
+                  <img class="card-img" src="{{asset('img/defaultcategoryavatar2.png')}}" alt="imagen categoria">
                   <div class="card-img-overlay">
                     <h4 class="card-title">{{$categoria->nombre_categoria}}</h4>
                   </div>
