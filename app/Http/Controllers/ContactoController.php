@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Contacto;
 use Illuminate\Http\Request;
 
-class ContactoController extends Controller
+class contactoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +22,25 @@ class ContactoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function insert(Request $req)
     {
-        //
+        $this->validate($req, [
+            'nombre' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'email:rfc,dns', 'max:255'],
+            'mensaje' => ['required', 'string'],
+            'usuario_id' => ['nullable', 'numeric'],
+        ]);
+
+        $contactoACrear = [
+            'nombre' => $req["nombre"],
+            "email" => $req["email"],
+            "mensaje" => $req["mensaje"]
+        ];
+        if (isset($req["usuario_id"])) {
+            $contactoACrear["usuario_id"] = $req["usuario_id"];
+        }
+        Contacto::create($contactoACrear);
+        return redirect()->route("home");
     }
 
     /**

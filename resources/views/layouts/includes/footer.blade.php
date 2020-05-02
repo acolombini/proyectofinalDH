@@ -26,17 +26,21 @@
 
           <div class="col-md-4 p-2">
             <h3>Ponete en contacto</h3>
-            <form action="">
+            <form action="contacto" method="POST">
+              @csrf
+              @if (Auth::user())
+                  <input type="hidden" name="usuario_id" value="{{Auth::user()->id}}">
+              @endif
               <div class="form-group">
-                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" aria-describedby="helpId">
+                <input type="text" name="nombre" id="nombre" required class="form-control" placeholder="Nombre" aria-describedby="helpId">
               </div>
 
               <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId" placeholder="Email">
+                <input type="email" class="form-control" required name="email" id="email" aria-describedby="emailHelpId" placeholder="Email">
               </div>
 
               <div class="form-group">
-                <textarea class="form-control" name="mensaje" id="mensaje" rows="3" placeholder="Dejanos tu mensaje"></textarea>
+                <textarea class="form-control" name="mensaje" required id="mensaje" rows="3" placeholder="Dejanos tu mensaje"></textarea>
               </div>
               <button class="btn btn-primary w-100" type="submit"> Enviar </button>
             </form>
