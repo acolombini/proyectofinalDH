@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>adminlte 3 | Starter</title>
+  <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
@@ -39,8 +35,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
     </ul>
 
-
-
   </nav>
   <!-- /.navbar -->
 
@@ -67,75 +61,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <p>Productos<i class="right fas fa-angle-left"></i></p>
-            </a>
-                <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{route('productos.create')}}" class="nav-link">
-                    <p>Agregar Producto</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('productos.index')}}" class="nav-link">
-                    <p>Ver todos</p>
-                    </a>
-                </li>
-                </ul>
-          </li>
-        </ul>
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <p>Categorias<i class="right fas fa-angle-left"></i></p>
-            </a>
-                <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <p>Agregar</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <p>Ver todos</p>
-                    </a>
-                </li>
-                </ul>
-          </li>
-        </ul>
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <p>Marcas<i class="right fas fa-angle-left"></i></p>
-            </a>
-                <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <p>Agregar</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <p>Ver todos</p>
-                    </a>
-                </li>
-                </ul>
-          </li>
-        </ul>
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <p>Usuarios<i class="right fas fa-angle-left"></i></p>
-            </a>
-                <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <p>Ver todos</p>
-                    </a>
-                </li>
-                </ul>
-          </li>
+
+            <li class="nav-item">
+                <a href="{{route('productos.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>Productos</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{route('categorias.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>Categorias</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{route('productos.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>Marcas</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{route('productos.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>Contactos</p>
+                </a>
+              </li>
+
+
         </ul>
     </nav>
       <!-- /.sidebar-menu -->
@@ -147,14 +102,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Panel de Administracion</h1>
-          </div><!-- /.col -->
-
+      <div class="container">
+        <div class="row mb-2 justify-content-center">
+          <h1 class="m-0 text-dark">Panel de Administracion</h1>
         </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div><!-- /.container -->
     </div>
     <!-- /.content-header -->
 
@@ -183,12 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">adminlte.io</a>.</strong> All rights reserved.
+
   </footer>
 </div>
 <!-- ./wrapper -->
@@ -210,14 +157,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- mi scripts -->
 <script>
     $(function () {
-      $('#listadoProductos').DataTable({
+      $('#listado').DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": true,
         "ordering": true,
         "info": true,
-        "autoWidth": false,
+        "autoWidth": false
       });
+
+
     });
   </script>
 
