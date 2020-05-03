@@ -37,7 +37,7 @@ class categoriasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categorias.create');
     }
 
     /**
@@ -48,7 +48,15 @@ class categoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre_categoria' => ['required', 'string', 'max:50', 'unique:categorias,nombre_categoria']
+        ]);
+
+        Categoria::create([
+            'nombre_categoria' => $request['nombre_categoria']
+        ]);
+
+        return redirect()->route('categorias.index')->with("status", "La categoría ha sido agregada correctamente");
     }
 
     /**
@@ -68,9 +76,10 @@ class categoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Categoria $categoria)
     {
-        //
+        $categoria = Categoria::find($categoria->id);
+        return view('admin.categorias.edit', compact('categoria'));
     }
 
     /**
@@ -82,7 +91,13 @@ class categoriasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nombre_categoria' => ['required', 'string', 'max:50', 'unique:categorias,nombre_categoria']
+        ]);
+        $categoria = Categoria::find($id);
+        $categoria->nombre_categoria = $request['nombre_categoria'];
+        $categoria->save();
+        return redirect()->route('categorias.index')->with("status", "La categoría ha sido agregada correctamente");
     }
 
     /**
@@ -93,7 +108,8 @@ class categoriasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Categoria::find($id)->delete();
+        return redirect()->route('categorias.index')->with('status', "La categoría ha sido eliminada correctamente");
     }
 
 

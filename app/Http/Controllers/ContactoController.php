@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Contacto;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
-
 class contactoController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class contactoController extends Controller
      */
     public function index()
     {
-        return view('front.contacto.index');
+        $contactos = Contacto::all();
+        return view('admin.contactos.index')->with('contactos', $contactos);
     }
 
     /**
@@ -85,7 +86,15 @@ class contactoController extends Controller
      */
     public function update(Request $request, Contacto $contacto)
     {
-        //
+        if ($request['action'] === "success") {
+            $contacto->estado_de_contacto = "Finalizado";
+            $contacto->save();
+            return redirect()->route('contacto.index')->with("status", "La marca ha sido agregada correctamente");        
+        } else if ($request['action'] === "warning") {
+            $contacto->estado_de_contacto = "En seguimiento";
+            $contacto->save();
+            return redirect()->route('contacto.index')->with("status", "La marca ha sido agregada correctamente");        
+        }
     }
 
     /**
@@ -96,6 +105,7 @@ class contactoController extends Controller
      */
     public function destroy(Contacto $contacto)
     {
-        //
+        $contacto->delete();
+        return redirect()->route('contacto.index')->with('status', 'El formulario de contacto se eliminó correctamente');
     }
 }

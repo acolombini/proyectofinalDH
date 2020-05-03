@@ -77,14 +77,14 @@
               </li>
 
               <li class="nav-item">
-                <a href="{{route('productos.index')}}" class="nav-link">
+                <a href="{{route('marcas.index')}}" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>Marcas</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="{{route('productos.index')}}" class="nav-link">
+                <a href="{{route('contacto.index')}}" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>Contactos</p>
                 </a>

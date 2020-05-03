@@ -29,8 +29,9 @@ Route::GET('/', 'HomeController@index')->name('home');
 Route::resource('faq', 'FaqController');
 Route::resource('contacto', 'ContactoController');
 Route::resource('productos', 'productosController');
-
 Route::resource('categorias', 'categoriasController');
+Route::resource('marcas', 'marcasController');
+
 
 
 

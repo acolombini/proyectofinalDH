@@ -139,6 +139,5 @@ class productosController extends Controller
         $producto->save();
 
         return redirect()->route('productos.index')->with('status', 'El Producto se ha modificado correctamente');
-        // return redirect("producto/" . $productoAModificar['id'])->with('status', 'El Producto se ha modificado correctamente');
     }
 }

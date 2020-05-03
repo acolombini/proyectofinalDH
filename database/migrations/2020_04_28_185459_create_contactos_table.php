@@ -20,6 +20,7 @@ class CreateContactosTable extends Migration
             $table->string("email");
             $table->string("mensaje");
             $table->unsignedBigInteger('usuario_id')->nullable(); //Nullable para que se pueda enviar un formulario de contacto sin estar logueado
+            $table->string("estado_de_contacto")->default("activo");
         });
     }
 
