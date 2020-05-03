@@ -26,7 +26,7 @@
 
                 @forelse ($productos as $producto)
                 <tr>
-                    <td><a href="/producto/{{$producto->id}}">{{$producto->titulo}}</a></td>
+                    <td><a href="/productos/{{$producto->id}}">{{$producto->titulo}}</a></td>
                     <td>{{$producto->descripcion}}</td>
                     <td>{{$producto->categoria->nombre_categoria}}</td>
                     <td>

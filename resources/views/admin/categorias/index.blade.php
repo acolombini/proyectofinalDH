@@ -40,7 +40,7 @@
                     </td>
                 </tr>
                 @empty
-                    <tr><td><h2>No hay categorias Cargados</h2></td></tr>
+                    <tr><td><h2>No hay categorias cargadas</h2></td></tr>
                 @endforelse
 
 
