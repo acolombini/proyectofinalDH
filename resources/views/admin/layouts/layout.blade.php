@@ -54,7 +54,7 @@
           <img src="{{ asset('img/adminAvatar.jpg') }}" class="brand-image img-circle elevation-3" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->getNombreCompleto() }}</a>
+          <a href="/usuario/edit" class="d-block">{{ Auth::user()->getNombreCompleto() }}</a>
         </div>
       </div>
 
@@ -109,6 +109,16 @@
       </div><!-- /.container -->
     </div>
     <!-- /.content-header -->
+
+    <!-- Show status if exists -->
+    @if (session('status'))
+      <div class="alert alert-success" role="alert">
+          <strong> {{ session('status') }}</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </div>
+    @endif
+    <!-- /.Show status -->
 
     <!-- Main content -->
     <div class="content">
