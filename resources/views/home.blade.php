@@ -20,7 +20,7 @@
 
             <div class="product-card">
                 <div class="product-header">
-                    <img src="{{$producto->poster ? '/storage/product_poster/'.$producto->poster : asset('img/defaultgamecardimage.png') }}" alt="">
+                    <img src="{{$producto->poster ? '/storage/product_poster/'.$producto->poster : asset('img/defaultgamecardimage.png') }}" alt="imagen del producto">
                 </div><!--product-header-->
                 <div class="product-content">
                     <div class="product-content-header">
@@ -51,7 +51,7 @@
                 </div><!--product-content-->
             </div><!--product-card-->
             @empty
-                no hay productos disponibles
+                No hay productos disponibles
             @endforelse
         </div>
     </div>
