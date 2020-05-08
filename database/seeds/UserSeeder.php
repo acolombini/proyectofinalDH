@@ -19,14 +19,14 @@ class UserSeeder extends Seeder
                 'estado_de_usuario'=> 'activo',
                 'tipo_de_usuario_id' => 2
             ]);
-            User::create(
-                [   'nombre' => 'user',
-                    'apellido' => 'user',
-                    'email' => 'user@user.com',
-                    'password' => Hash::make('123456'),
-                    'estado_de_usuario'=> 'activo',
-                    'tipo_de_usuario_id' => 1
-                ]);
+        User::create(
+            [   'nombre' => 'user',
+                'apellido' => 'user',
+                'email' => 'user@user.com',
+                'password' => Hash::make('123456'),
+                'estado_de_usuario'=> 'activo',
+                'tipo_de_usuario_id' => 1
+            ]);
 
     }
 }
