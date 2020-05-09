@@ -32,42 +32,34 @@ Route::resource('productos', 'productosController');
 Route::resource('categorias', 'categoriasController');
 Route::resource('marcas', 'marcasController');
 
-
-
-
-
-
-
-
-
 /*============  End of Rutas Backend  =============*/
 
 route::get('todos-los-productos', 'HomeController@getAll')->name('todos-los-productos');
 /*============  End of Productos  =============*/
 
 
-//Vista de un producto
-//Route::GET('/producto/{id}', 'productosController@show')->middleware('usuarioLogueado');
+// Vista de un producto
+Route::GET('/producto/{id}', 'productosController@show')->middleware('usuarioLogueado');
 // Route::GET('/producto/admin/{id}', 'productosController@show')->middleware('administrador');
 
-// //Listado de productos
+//Listado de productos
 // Route::GET('/productos', 'productosController@listaDeProductos')->middleware('usuarioLogueado');
 
-// //Productos por Categorías
+//Productos por Categorías
 // Route::GET('/categorias', 'categoriasController@show')->middleware('usuarioLogueado');
-// Route::GET('/categoria/{id}', "categoriasController@products")->middleware('usuarioLogueado');
+Route::GET('/categoria/{id}', "categoriasController@show")->middleware('usuarioLogueado');
 
-// //Busqueda de un producto
-// Route::GET('productos/buscar', 'productosController@search')->middleware('usuarioLogueado');
+//Busqueda de un producto
+Route::GET('productos/buscar', 'productosController@search')->middleware('usuarioLogueado');
 
-// // Rutas para ingresar un producto
+// Rutas para ingresar un producto
 // Route::GET('/ingresarProducto', 'productosController@create')->middleware("administrador");
 // Route::POST('/ingresarProducto', 'productosController@guardar')->middleware('administrador');
 
-// // Ruta para eliminar un producto
+// Ruta para eliminar un producto
 // Route::delete('/producto/{id}', 'productosController@delete')->middleware('administrador');
 
-// //Ruta para modificar un producto
+//Ruta para modificar un producto
 // Route::GET('/producto/{id}/edit', 'productosController@edit')->middleware('administrador');
 // Route::PUT('/producto/{id}', 'productosController@update')->middleware('administrador');
 

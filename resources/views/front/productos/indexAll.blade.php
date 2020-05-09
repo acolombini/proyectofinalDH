@@ -9,7 +9,7 @@
                 <div class="col col-sm-6 col-md-4">
                     <div class="movie-card">
                         <div class="movie-header">
-                            <img class="card-img-top" src="{{  $producto->poster ? '/storage/product_poster/'.$producto->poster : asset('img/defaultgamecardimage.png') }}"alt="Imágen del producto">
+                            <img class="card-img-top" style="height: 60vh;" src="{{  $producto->poster ? '/storage/product_poster/'.$producto->poster : asset('img/defaultgamecardimage.png') }}"alt="Imágen del producto">
                             <div class="header-icon-container">
                                 <a href="/producto/{{$producto->id}}">
                                     <i class="fa fa-search header-icon"></i>
@@ -55,35 +55,6 @@
         </div>
 
     </div>
-
-    <div class="container my-3">
-      <h2 class="text-center my-3 font-weight-bolder">Todos los Juegos</h2>
-        <div class="row">
-            @forelse ($productos as $producto)
-                <div class="card col-6 col-sm-3 col-md-4 m-2">
-                    <a href="/producto/{{$producto->id}}">
-                    <div class="card-header">
-                        <img class="card-img-top" src="{{  $producto->poster ? '/storage/product_poster/'.$producto->poster : asset('img/defaultgamecardimage.png') }}" width="100%" alt="Imágen del producto">
-                    </div>
-                    <div class="card-body">
-                    <h5 class="card-title">{{$producto->getTitulo()}}</h5>
-                    <p class="card-text">{{$producto->descripcion}}</p>
-                    </div>
-                    </a>
-                    <div class="card-footer">
-                      <div class="row d-flex justify-content-around">
-                        <a href=""><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                        <a href=""><i class="fa fa-heart-o" aria-hidden="true"></i></i></a>
-                      </div>
-                      <div class="row d-flex justify-content-center">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                      </div>
-                    </div>
-                </div>
-            @empty
-                no hay productos disponibles
-            @endforelse
-        </div>
 
 </main>
 @endsection

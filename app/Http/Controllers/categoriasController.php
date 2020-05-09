@@ -67,7 +67,9 @@ class categoriasController extends Controller
      */
     public function show($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $otras_categorias = Categoria::all();
+        return view('front.categorias.index', compact("categoria", "otras_categorias"));
     }
 
     /**
@@ -111,7 +113,4 @@ class categoriasController extends Controller
         Categoria::find($id)->delete();
         return redirect()->route('categorias.index')->with('status', "La categoría ha sido eliminada correctamente");
     }
-
-
-
 }

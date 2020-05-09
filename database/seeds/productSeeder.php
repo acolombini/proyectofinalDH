@@ -330,7 +330,7 @@ class productSeeder extends Seeder
                 'stock'=> 20,
                 'categoria_id' => 5,
                 'marca_id' => 2,
-                'poster' => "JSVr3ko2lghGpkXhMUmlAsumKvNdjl5nqUmMr1zn.jpeg"
+                'poster' => "Dz074DKmFCkTGGx2PKwLINY3VLdUo0lkCcmkRqgN.jpeg"
             ]);
         Product::create(
             [   'titulo' => 'Need For Speed PayBacks',
@@ -360,7 +360,7 @@ class productSeeder extends Seeder
                 'stock'=> 20,
                 'categoria_id' => 5,
                 'marca_id' => 2,
-                'poster' => "ARVAOzrVeqjX8kcXcBtJNcOPDPKW1HSNSgUoguZg.jpeg"
+                'poster' => "sKyFA7EhsRmfbfxM04M6UJylj8ogz2yIFTGRnUez.jpeg"
             ]);
         Product::create(
             [   'titulo' => 'Need For Speed Underground 1',

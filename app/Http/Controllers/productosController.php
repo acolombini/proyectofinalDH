@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Categoria;
 use Illuminate\Http\Request;
 use App\Product;
+use Auth;
 use Illuminate\Support\Facades\Storage;
 class productosController extends Controller
 {
@@ -26,8 +27,6 @@ class productosController extends Controller
         $categorias = Categoria::all();
         return view('admin.productos.create')->with('categorias', $categorias);
     }
-
-
 
     public function store(Request $req){
         $this->validate($req, [
@@ -62,8 +61,13 @@ class productosController extends Controller
 
     public function show($id){
         $producto = Product::find($id);
-        $vac = compact('id', 'producto');
-        return view("admin.productos.show", $vac);
+        $categorias = Categoria::all();
+        $vac = compact('id', 'producto', 'categorias');
+        if (Auth::user()->tipo_de_usuario_id === 2) {
+            return view("admin.productos.show", $vac);
+        } else {
+            return view("front.productos.producto", $vac);
+        }
     }
 
     // public function showAdmin($id){
