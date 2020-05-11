@@ -13,10 +13,6 @@ use App\Categoria;
 |
 */
 
-// Route::GET('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
 
 Route::GET('/', 'HomeController@index')->name('home');

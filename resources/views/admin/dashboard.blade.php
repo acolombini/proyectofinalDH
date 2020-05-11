@@ -2,5 +2,5 @@
 
 
 @section('content')
-    la la la la, la la la la, hey hey, good bye
+    Por favor, seleccione una opción del panel lateral para comenzar.
 @endsection

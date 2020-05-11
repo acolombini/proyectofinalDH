@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contacto;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
+use Auth;
 class contactoController extends Controller
 {
     /**
@@ -15,7 +16,11 @@ class contactoController extends Controller
     public function index()
     {
         $contactos = Contacto::all();
-        return view('admin.contactos.index')->with('contactos', $contactos);
+        if (Auth::user() && Auth::user()->tipo_de_usuario_id === 2) {
+            return view('admin.contactos.index')->with('contactos', $contactos);
+        } else {
+            return view('front.contacto.index');
+        }
     }
 
     /**
