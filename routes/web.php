@@ -35,18 +35,18 @@ route::get('todos-los-productos', 'HomeController@getAll')->name('todos-los-prod
 
 
 // Vista de un producto
-Route::GET('/producto/{id}', 'productosController@show')->middleware('usuarioLogueado');
+Route::GET('/producto/{id}', 'productosController@show')->middleware('auth');
 // Route::GET('/producto/admin/{id}', 'productosController@show')->middleware('administrador');
 
 //Listado de productos
-// Route::GET('/productos', 'productosController@listaDeProductos')->middleware('usuarioLogueado');
+// Route::GET('/productos', 'productosController@listaDeProductos')->middleware('auth');
 
 //Productos por Categorías
-// Route::GET('/categorias', 'categoriasController@show')->middleware('usuarioLogueado');
-Route::GET('/categoria/{id}', "categoriasController@show")->middleware('usuarioLogueado');
+// Route::GET('/categorias', 'categoriasController@show')->middleware('auth');
+Route::GET('/categoria/{id}', "categoriasController@show")->middleware('auth');
 
 //Busqueda de un producto
-Route::GET('productos/buscar', 'productosController@search')->middleware('usuarioLogueado');
+Route::GET('productos/buscar', 'productosController@search')->middleware('auth');
 
 // Rutas para ingresar un producto
 // Route::GET('/ingresarProducto', 'productosController@create')->middleware("administrador");
@@ -60,12 +60,12 @@ Route::GET('productos/buscar', 'productosController@search')->middleware('usuari
 // Route::PUT('/producto/{id}', 'productosController@update')->middleware('administrador');
 
 // Ruta para modificar campos opcionales de usuario
-Route::GET("usuario/edit", 'userController@edit')->middleware('usuarioLogueado')->name('user.edit');
-Route::PUT("usuario/edit", 'userController@update')->middleware('usuarioLogueado')->name('user.update');
+Route::GET("usuario/edit", 'userController@edit')->middleware('auth')->name('user.edit');
+Route::PUT("usuario/edit", 'userController@update')->middleware('auth')->name('user.update');
 
 // Ruta para agregar un producto al carrito
-Route::POST("carrito", 'itemsController@insert')->middleware('usuarioLogueado')->name('carrito.insert');
-Route::DELETE("carrito", 'itemsController@delete')->middleware('usuarioLogueado')->name('carrito.delete');
+Route::POST("carrito", 'itemsController@insert')->middleware('auth')->name('carrito.insert');
+Route::DELETE("carrito", 'itemsController@delete')->middleware('auth')->name('carrito.delete');
 
 // Ruta para enviar un formulario de contacto
 Route::POST('contacto', 'contactoController@insert')->name("contacto.insert");
