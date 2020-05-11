@@ -4,48 +4,43 @@
 <main>
     <div class="container">
     <div class="card-container">
-        <div class="row">
+        <div class="row justify-content-around">
             @forelse ($productos as $producto)
-                <div class="col col-sm-6 col-md-4">
-                    <div class="movie-card">
-                        <div class="movie-header">
-                            <img class="card-img-top" style="height: 60vh;" src="{{  $producto->poster ? '/storage/product_poster/'.$producto->poster : asset('img/defaultgamecardimage.png') }}"alt="Imágen del producto">
-                            <div class="header-icon-container">
-                                <a href="/producto/{{$producto->id}}">
-                                    <i class="fa fa-search header-icon"></i>
-                                </a>
-                            </div>
-                        </div><!--movie-header-->
-                        <div class="movie-content">
-                            <div class="movie-content-header">
-                                <a href="/producto/{{$producto->id}}">
-                                    <h3 class="movie-title">{{$producto->getTitulo()}}</h3>
-                                </a>
 
-                            </div>
-                            <div class="movie-info">
-                                <div class="info-section">
-                                    <label>Categoria</label>
-                                    <span>{{$producto->categoria->nombre_categoria}}</span>
-                                </div>
-                                <div class="info-section">
-                                    <label>Precio</label>
-                                    <span>$ {{$producto->precio_unitario}}</span>
-                                </div>
-                                <div class="info-section">
-                                    <label>Descuento:</label>
-                                    <span>{{$producto->descuento}}</span>
-                                </div>
-                                <div class="info-section">
-                                    <label>Valoración:</label>
-                                    <span>{{4.9}}</span>
-                                </div>
-                            </div>
-                        </div><!--movie-content-->
-                    </div><!--movie-card-->
-                </div>
+            <div class="product-card my-2 col-6 col-md-4 col-lg-3 ">
+                <div class="product-header">
+                    <img src="{{$producto->poster ? '/storage/product_poster/'.$producto->poster : asset('img/defaultgamecardimage.png') }}" alt="imagen del producto">
+                </div><!--product-header-->
+                <div class="product-content">
+                    <div class="product-content-header">
+                        <a href="/producto/{{$producto->id}}">
+                            <h3 class="product-title">{{$producto->getTitulo()}}</h3>
+                        </a>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="info-section">
+                            <label>Precio</label>
+                            <span>{{$producto->precio_unitario}}</span>
+                        </div><!--date,time-->
+                        <div class="info-section">
+                            <label>Categoria</label>
+                            <span>{{$producto->categoria->nombre_categoria}}</span>
+                        </div><!--screen-->
+                        <div class="info-section">
+                          <form action="carrito" method="post">
+                            @csrf
+                            <input type="hidden" name="producto_id" value="{{$producto->id}}">
+                            <input type="hidden" name="user_id" value="{{Auth::user() ? Auth::user()->id : ''}}">
+                            <label>Add to Cart</label>
+                            <button type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                          </form>
+                        </div><!--screen-->
+                    </div>
+                </div><!--product-content-->
+            </div><!--product-card-->
             @empty
-                <h2>No Hay productos registrados</h2>
+                No hay productos disponibles
             @endforelse
         </div>
     </div>

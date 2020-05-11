@@ -57,6 +57,7 @@ body {
       height: 100%;
       object-fit: cover;
       overflow: hidden;
+      margin: 0 auto;
   }
 
   .product-content {
