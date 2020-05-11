@@ -177,7 +177,7 @@
                             <label for="provincia" class="col-md-4 col-form-label text-md-right">{{ __('Provincia') }}</label>
 
                             <div class="col-md-6">
-                                <select id="provincia" type="date" class="form-control @error('provincia') is-invalid @enderror" name="provincia" value="{{$usuarioLogueado->provincia}}" autofocus>
+                                <select id="provincia" type="date" class="form-control @error('provincia') is-invalid @enderror" name="provincia" autofocus>
 
 
                                 @if ($usuarioLogueado->provincia)
@@ -202,8 +202,14 @@
 
                             <div class="col-md-6">
                                 <select id="ciudad" type="date" class="form-control @error('ciudad') is-invalid @enderror" name="ciudad" value="{{$usuarioLogueado->ciudad}}" autofocus>
-                                    <option value="" disabled selected>Seleccioná tu ciudad...</option>
-
+                                    @if ($usuarioLogueado->ciudad)
+                                    <option value="" disabled>Seleccioná tu ciudad...</option>
+                                    @php
+                                        $ciudad_seleccionada = $usuarioLogueado->ciudad
+                                    @endphp
+                                @else
+                                    <option value="" selected disabled>Seleccioná tu ciudad...</option>
+                                @endif
                                 </select>
                                 @error('ciudad')
                                     <span class="invalid-feedback" role="alert">
@@ -232,21 +238,22 @@
 
     //Traigo la provincia cargada en la base de datos anteriormente para persistirla
     let provinciaSeleccionada = "<?php echo $provincia_seleccionada ?? '' ?>";
-
+    let ciudadSeleccionada = "<?php echo $ciudad_seleccionada ?? '' ?>";
+    
     function mostrarCiudades(valorProvincia){
     fetch("https://apis.datos.gob.ar/georef/api/localidades?provincia=" + valorProvincia + "&max=5000")
-    //https://apis.datos.gob.ar/georef/api/municipios?provincia=22&max=5000
       .then( function(response){
           return response.json();
       })
       .then( function(data){
         let ciudades = data.localidades;
-        console.log(ciudades);
+        
         // Ordeno alfabeticamente las ciudades
         let ciudadesOrdenadas = [];
             for (const key in ciudades) {
                 ciudadesOrdenadas.push(ciudades[key].nombre);
                 ciudadesOrdenadas.sort();
+
             }
 
           // Select
@@ -258,9 +265,11 @@
               let textoDelOptionCiudad = "";
 
               textoDelOptionCiudad = document.createTextNode(ciudadesOrdenadas[key]);
-
               optionCiudad.append(textoDelOptionCiudad);
-              optionCiudad.setAttribute("value", ciudadesOrdenadas[key])
+              optionCiudad.setAttribute("value", ciudadesOrdenadas[key]);
+              if (ciudadSeleccionada === ciudadesOrdenadas[key]) {
+                    optionCiudad.setAttribute("selected", "selected");
+                }
               selectCiudades.append(optionCiudad);
           }
       })
@@ -296,9 +305,19 @@ function actualizarProvincias(){
         optionProvincia.append(textoDelOptionProvincia);
         optionProvincia.setAttribute("value", provinciasOrdenadas[key])
 
-        // Si hay dato en la base de datos, persisto
+        // Si hay dato en la base de datos, persisto y actualizo las ciudades de esa provincia
         if (provinciaSeleccionada === provinciasOrdenadas[key]) {
             optionProvincia.setAttribute("selected", "selected");
+
+            let provinciaSeleccionada = optionProvincia.value;
+            for (const key in provincias) {
+                if (provincias[key].nombre == provinciaSeleccionada){
+                    let indiceProvinciaSeleccionada = provincias[key].id;
+                    let selectCiudades = document.getElementById("ciudad");
+                    selectCiudades.innerHTML = '';
+                    mostrarCiudades(indiceProvinciaSeleccionada);
+                }
+                }
         }
         selectProvincias.append(optionProvincia);
     }
@@ -309,6 +328,8 @@ function actualizarProvincias(){
         for (const key in provincias) {
           if (provincias[key].nombre == provinciaSeleccionada){
             let indiceProvinciaSeleccionada = provincias[key].id;
+            let selectCiudades = document.getElementById("ciudad");
+            selectCiudades.innerHTML = '';
             mostrarCiudades(indiceProvinciaSeleccionada);
           }
         }

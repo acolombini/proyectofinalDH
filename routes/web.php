@@ -47,6 +47,7 @@ Route::GET('/categoria/{id}', "categoriasController@show")->middleware('auth');
 
 //Busqueda de un producto
 Route::GET('productos/buscar', 'productosController@search')->middleware('auth');
+// Route::POST('productos/buscar', 'productosController@search')->middleware('auth');
 
 // Rutas para ingresar un producto
 // Route::GET('/ingresarProducto', 'productosController@create')->middleware("administrador");

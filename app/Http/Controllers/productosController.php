@@ -56,7 +56,7 @@ class productosController extends Controller
         }
 
         Product::create($productoACrear);
-        return redirect()->route('productos.index')->with("status", "El producto ha sido eliminado.");
+        return redirect()->route('productos.index')->with("status", "El producto ha sido creado.");
     }
 
     public function show($id){
@@ -100,7 +100,6 @@ class productosController extends Controller
             Storage::delete('public/product_poster/'.$producto->poster);
         }
         $producto->delete();
-        // return redirect('admin.productos.index')->with("status", "El producto ha sido eliminado.");
         return redirect()->route('productos.index')->with("status", "El producto ha sido eliminado.");
     }
 
@@ -142,6 +141,6 @@ class productosController extends Controller
 
         $producto->save();
 
-        return redirect()->route('productos.index')->with('status', 'El Producto se ha modificado correctamente');
+        return redirect()->route('productos.index')->with('status', 'El producto se ha modificado correctamente');
     }
 }

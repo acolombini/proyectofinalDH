@@ -14,8 +14,8 @@
         @include('layouts.includes.nav')
 
         <div id="cajaBusqueda" style="display: none;">
-          <form class="my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+          <form action='productos/buscar' class="my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" name="buscador" placeholder="Buscar">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
           </form>
         </div>
