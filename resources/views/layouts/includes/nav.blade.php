@@ -82,10 +82,15 @@
         </li>
 
 
-       </ul>
-
-       <a class="nav-btn" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-       <a class="nav-btn" onclick="event.preventDefault();cajaBusqueda()"><i class="fa fa-search" aria-hidden="true"></i></a>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+        <a class="nav-btn nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-btn nav-link" onclick="event.preventDefault();cajaBusqueda()"><i class="fa fa-search" aria-hidden="true"></i></a>
+        </li>
+    </ul>
      </div>
 
    </div>
