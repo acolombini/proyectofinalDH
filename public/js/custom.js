@@ -24,13 +24,13 @@ function toggleMenuBtn(x) {
   }
 
   // agreba el boton para ir arriba cuando el scroll down es mayor a 100px
-var mybutton = document.getElementById("myBtn");
+var mibutton = document.getElementById("irArribaBtn");
 
 function scrollFunction() {
   if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    mybutton.style.display = "block";
+    mibutton.style.display = "block";
   } else {
-    mybutton.style.display = "none";
+    mibutton.style.display = "none";
   }
 }
 
