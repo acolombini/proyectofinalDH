@@ -88,7 +88,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-        <a class="nav-btn nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        <a class="nav-btn nav-link" href="/items"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
         </li>
         <li class="nav-item">
         <a class="nav-btn nav-link" onclick="event.preventDefault();cajaBusqueda()"><i class="fa fa-search" aria-hidden="true"></i></a>

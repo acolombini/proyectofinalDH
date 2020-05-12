@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main>
+<main class="mb-5">
     <div class="container mt-3">
         <div class="row panel-titulo">
             <h2>Carrito</h2>
@@ -17,28 +17,26 @@
                       <th>Titulo</th>
                       <th>Precio Unitario</th>
                       <th>Cantidad</th>
+                      <th>Descuento</th>
                       <th>Subtotal</th>
                       <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
     
-                    @forelse ($items->productos as $item)
+                    @forelse ($items as $item)
+                    
                     <tr>
-                        <td>{{$item->titulo}}</a></td>
-                        @php
-                            dd($item)
-                        @endphp
-                        <td>{{$item->precio_unitario}}</td>
-                        <td>Aca va la cantidad</td>
-                        <td>Aca va el subtotal</td>
-                        <td>
-                            <a class="btn btn-primary float-left" href="#"><i class="fa fa-eye" aria-hidden="true"></i></a>
-    
-                            <form action="#" method="post" class="float-left">
+                        <td>{{$item->productos->titulo}}</a></td>
+                        <td class="precio_unitario">{{$item->productos->precio_unitario}}</td>
+                        <td class="cantidad">{{$item->cantidad_de_productos}}</td>
+                        <td class="descuento">{{$item->productos->descuento}}%</td>
+                        <td class="subtotal">{{($item->cantidad_de_productos * $item->productos->precio_unitario) - ($item->cantidad_de_productos * $item->productos->precio_unitario * ($item->productos->descuento / 100))}}</td>
+                        <td>    
+                            <form action="{{route('items.destroy', $item)}}" method="post" class="float-left">
                                 @csrf
                                 @method('DELETE')
-                                {{--  <input type="hidden" name="id" value="{{{$item->productos->id}}">  --}}
+                                <input type="hidden" name="id" value="{{$item->id}}">
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quiere eliminar el producto del carrito?')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </form>
     
@@ -55,6 +53,31 @@
     
               </table>
         </div>
+        @php
+            $contador = 0;
+            foreach ($items as $item) {
+                $contador = $contador + ($item->cantidad_de_productos * $item->productos->precio_unitario) - ($item->cantidad_de_productos * $item->productos->precio_unitario * ($item->productos->descuento / 100));
+            }
+        @endphp
+        <div class="contenedor-totales d-flex justify-content-end align-items-center">
+            <span class="mr-5"> Total: ${{$contador}}</span>
+            <button type="button" class="btn btn-success">Comprar Todo</button>
+        </div>
       </div>
 </main>
+<script>
+    window.onload = function(){
+        let span = document.getElementById('total');
+        let subtotales = [];
+        subtotales.push(document.querySelectorAll('td.subtotal').textContent);
+
+        function getSubtotales() {
+        var subtotales = document.querySelectorAll('td.subtotal');
+        return Array.map.call(subtotales, function(text) { return text.textContent; });
+        }
+        console.log(subtotales);
+    } 
+        
+
+</script>
 @endsection
