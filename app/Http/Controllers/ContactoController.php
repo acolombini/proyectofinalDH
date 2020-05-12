@@ -94,11 +94,11 @@ class contactoController extends Controller
         if ($request['action'] === "success") {
             $contacto->estado_de_contacto = "Finalizado";
             $contacto->save();
-            return redirect()->route('contacto.index')->with("status", "La marca ha sido agregada correctamente");        
+            return redirect()->route('contacto.index')->with("status", "El formulario ha sido marcado como finalizado.");        
         } else if ($request['action'] === "warning") {
             $contacto->estado_de_contacto = "En seguimiento";
             $contacto->save();
-            return redirect()->route('contacto.index')->with("status", "La marca ha sido agregada correctamente");        
+            return redirect()->route('contacto.index')->with("status", "El formulario ha sido marcado como En Seguimiento");        
         }
     }
 
@@ -112,5 +112,11 @@ class contactoController extends Controller
     {
         $contacto->delete();
         return redirect()->route('contacto.index')->with('status', 'El formulario de contacto se eliminó correctamente');
+    }
+    
+    // Middleware
+    public function __construct()
+    {
+        $this->middleware('administrador')->only('destroy', 'update');
     }
 }

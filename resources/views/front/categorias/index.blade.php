@@ -20,7 +20,7 @@
 
         <div class="col-lg-3">
 
-        <h1 class="my-4">Shop Name</h1>
+        <h2 class="my-4">Otras categorías</h2>
         <div class="list-group">
             @forelse ($otras_categorias as $otra_categoria)
                 <a href="/categoria/{{$otra_categoria->id}}" class="list-group-item">{{$otra_categoria->nombre_categoria}}</a>

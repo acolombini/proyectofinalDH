@@ -27,6 +27,7 @@ Route::resource('contacto', 'ContactoController');
 Route::resource('productos', 'productosController');
 Route::resource('categorias', 'categoriasController');
 Route::resource('marcas', 'marcasController');
+Route::resource('items', 'itemsController');
 
 /*============  End of Rutas Backend  =============*/
 
@@ -35,30 +36,16 @@ route::get('todos-los-productos', 'HomeController@getAll')->name('todos-los-prod
 
 
 // Vista de un producto
-Route::GET('/producto/{id}', 'productosController@show')->middleware('auth');
+Route::GET('/producto/{id}', 'productosController@show');
 // Route::GET('/producto/admin/{id}', 'productosController@show')->middleware('administrador');
-
-//Listado de productos
-// Route::GET('/productos', 'productosController@listaDeProductos')->middleware('auth');
 
 //Productos por Categorías
 // Route::GET('/categorias', 'categoriasController@show')->middleware('auth');
-Route::GET('/categoria/{id}', "categoriasController@show")->middleware('auth');
+Route::GET('/categoria/{id}', "categoriasController@show");
 
 //Busqueda de un producto
-Route::GET('productos/buscar', 'productosController@search')->middleware('auth');
+Route::GET('productos/buscar', 'productosController@search');
 // Route::POST('productos/buscar', 'productosController@search')->middleware('auth');
-
-// Rutas para ingresar un producto
-// Route::GET('/ingresarProducto', 'productosController@create')->middleware("administrador");
-// Route::POST('/ingresarProducto', 'productosController@guardar')->middleware('administrador');
-
-// Ruta para eliminar un producto
-// Route::delete('/producto/{id}', 'productosController@delete')->middleware('administrador');
-
-//Ruta para modificar un producto
-// Route::GET('/producto/{id}/edit', 'productosController@edit')->middleware('administrador');
-// Route::PUT('/producto/{id}', 'productosController@update')->middleware('administrador');
 
 // Ruta para modificar campos opcionales de usuario
 Route::GET("usuario/edit", 'userController@edit')->middleware('auth')->name('user.edit');
@@ -76,7 +63,7 @@ Route::POST('contacto', 'contactoController@insert')->name("contacto.insert");
 
 route::get('administrador', function(){
 return view('admin.dashboard');
-})->name('admin.dashboard');
+})->middleware('administrador')->name('admin.dashboard');
 
 
 

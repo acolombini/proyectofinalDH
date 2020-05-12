@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Product;
 class Categoria extends Model
 {
     public $guarded = [];

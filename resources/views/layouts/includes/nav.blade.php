@@ -63,9 +63,12 @@
                             <a class="dropdown-item" href="{{ route('user.edit') }}">
                                 {{ __('Perfil') }}
                             </a>
-                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                                {{ __('Panel Admin') }}
-                            </a>
+                            @if (Auth::user()!=null && Auth::user()->tipo_de_usuario_id === 2)
+                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                    {{ __('Panel Admin') }}
+                                </a> 
+                            @endif
+
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -84,7 +87,7 @@
 
        </ul>
 
-       <a class="btn btn-outline-success mr-2" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+    <a class="btn btn-outline-success mr-2" href="{{route ('items.index')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 
        <button class="btn btn-outline-success" onclick="cajaBusqueda()"><i class="fa fa-search" aria-hidden="true"></i></button>
      </div>

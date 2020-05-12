@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Categoria;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -26,5 +26,9 @@ class Product extends Model
 
     public function marca(){
         return $this->belongsTo("App\Marca", "marca_id");
+    }
+
+    public function item(){
+        return $this->hasMany("App\Item", "producto_id");
     }
 }

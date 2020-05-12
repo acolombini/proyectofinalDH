@@ -1,25 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Categoria;
 use Illuminate\Http\Request;
-use App\Product;
-use Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Product;
+use App\Categoria;
+use Auth;
 class productosController extends Controller
 {
     public function index(){
         $productos = Product::all();
-        // // Creo variables para filtrar por medio de JS mientras se escribe
-        // $nombreProductos = [];
-        // $todosLosProductos = Product::all();
-        // foreach ($todosLosProductos as $producto) {
-        //     $nombreProductos[] = [
-        //         "titulo" => $producto->getTitulo(),
-        //         "id" => $producto->getID()
-        //     ];
-        // }
-        // return view('admin.productos.index', compact('productos', 'nombreProductos'));
         return view('admin.productos.index')->with('productos', $productos);
     }
 
@@ -69,12 +59,6 @@ class productosController extends Controller
             return view("front.productos.producto", $vac);
         }
     }
-
-    // public function showAdmin($id){
-    //     $producto = Product::find($id);
-    //     $vac = compact('id', 'producto');
-    //     return view("productos/productoAdmin", $vac);
-    // }
 
     public function search(){
         $buscador = $_GET["buscador"];
@@ -142,5 +126,11 @@ class productosController extends Controller
         $producto->save();
 
         return redirect()->route('productos.index')->with('status', 'El producto se ha modificado correctamente');
+    }
+
+    // Middleware
+    public function __construct()
+    {
+        $this->middleware('administrador')->only('index', 'create', 'store', 'destroy', 'edit', 'update');
     }
 }

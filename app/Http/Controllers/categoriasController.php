@@ -6,18 +6,6 @@ use Illuminate\Http\Request;
 
 class categoriasController extends Controller
 {
-    // public function show(){
-    //     $categorias = Categoria::all();
-    //     return view('categorias/categorias', compact('categorias'));
-    // }
-
-    // public function products($id){
-    //     $productosDeLaCategoria = Categoria::find($id)->productos;
-    //     $categorias = Categoria::all();
-    //     $categoriaElegida = Categoria::find($id);
-    //     return view('categorias/categoria', compact('productosDeLaCategoria', 'categorias', 'categoriaElegida'));
-    // }
-
         /**
      * Display a listing of the resource.
      *
@@ -112,5 +100,11 @@ class categoriasController extends Controller
     {
         Categoria::find($id)->delete();
         return redirect()->route('categorias.index')->with('status', "La categoría ha sido eliminada correctamente");
+    }
+    
+    // Middleware
+    public function __construct()
+    {
+        $this->middleware('administrador')->only('index', 'create', 'store', 'destroy', 'edit', 'update');
     }
 }

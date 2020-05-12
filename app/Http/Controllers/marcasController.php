@@ -98,4 +98,10 @@ class marcasController extends Controller
         Marca::find($id)->delete();
         return redirect()->route('marcas.index')->with('status', "La marca ha sido eliminada correctamente");
     }
+
+        // Middleware
+        public function __construct()
+        {
+            $this->middleware('administrador')->only('index', 'create', 'store', 'destroy', 'edit', 'update');
+        }
 }

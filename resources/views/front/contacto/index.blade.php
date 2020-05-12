@@ -3,7 +3,7 @@
 @section('content')
 <main>
 
-aca va la pagina de contactos
 
-  </main>
+
+</main>
 @endsection

@@ -25,7 +25,7 @@ class Item extends Model
     }
 
     public function productos(){
-        return $this->hasMany("App\Product", "producto_id");
+        return $this->belongsTo("App\Product", "producto_id");
     }
 
     public function compra(){

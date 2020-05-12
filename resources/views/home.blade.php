@@ -81,11 +81,13 @@
 
               <div class="p-1 col-6 col-md-4 col-lg-3">
                 <div class="card bg-dark text-white categoria">
+                  <a style="text-decoration: none; color: white;" href="/categoria/{{$categoria->id}}">
                   {{-- <img class="card-img" src={{$productos->poster ? '/storage/product_poster/'.$categorias->productos->get(1)->poster : asset('img/defaultcategoriaavatar2.png') }}" alt="imagen categoria"> --}}
                   <img class="card-img" src="{{asset('img/defaultcategoryavatar2.png')}}" alt="imagen categoria">
                   <div class="card-img-overlay">
                     <h4 class="card-title">{{$categoria->nombre_categoria}}</h4>
                   </div>
+                  </a>
                 </div>
               </div>
               @empty
@@ -100,7 +102,7 @@
   <section id="otraseccion">
     <div class="container-fluid quienessomos-img py-5">
       <div class="container quienesomos-texto ">
-      <h2>Quienes somos?</h2>
+      <h2>Qué hacemos?</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores animi iusto quasi adipisci dignissimos soluta nulla tenetur consequatur necessitatibus voluptates provident dolorem porro vel consectetur hic, et dicta? Voluptatibus, voluptatum?
         Dolor enim, provident rerum repudiandae eaque, praesentium aliquid, assumenda magni numquam quos itaque. Temporibus, porro, cum animi eligendi vel consequatur, harum officiis maxime quo ea blanditiis dolore aliquam ipsum repellendus!
         Laboriosam, officia. Quidem delectus rem assumenda quibusdam est, similique, corporis aliquam minus excepturi tenetur dignissimos, maiores ducimus blanditiis atque beatae tempore deserunt mollitia dolorem qui nisi. Nesciunt voluptas facere perferendis.

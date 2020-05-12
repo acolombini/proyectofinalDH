@@ -25,15 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $productos = Product::take(10)->get();
+        $productos = Product::take(12)->get();
         $categorias = Categoria::all();
-        
-        //    $primerProductoDeLaCategoria[] = $categoria->productos->get(1)->poster;
-        
-         return view('home', compact('productos', 'categorias', 'primerProductoDeLaCategoria'));//->with([
-        //     'productos' => $productos,
-        //     'categorias' => $categorias
-        // ]);
+
+        return view('home', compact('productos', 'categorias'));//->with([
+            //     'productos' => $productos,
+            //     'categorias' => $categorias
+            // ]);
     }
 
     public function getAll()
