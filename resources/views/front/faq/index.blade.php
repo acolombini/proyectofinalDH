@@ -8,6 +8,7 @@
            <h1 class="my-3 text-center">Preguntas Frecuentes</h1>
         </row>
            <div class="row my-3">
+
                <div class="col-lg-4">
                    <div class="nav nav-pills faq-nav" id="faq-tabs" role="tablist" aria-orientation="vertical">
                        <a href="#tab1" class="nav-link active" data-toggle="pill" role="tab" aria-controls="tab1" aria-selected="true">
@@ -340,6 +341,7 @@
                                    <div class="collapse" id="accordion-tab-6-content-4" aria-labelledby="accordion-tab-6-heading-4" data-parent="#accordion-tab-6">
                                        <div class="card-body">
                                        <p>Laborum consectetur eos modi a, aliquam error porro ex amet nemo delectus assumenda cum facere libero commodi alias consequuntur tempora qui sapiente</p>
+
                                        </div>
                                    </div>
                                </div>
@@ -347,8 +349,16 @@
                        </div>
                    </div>
                </div>
-           </div>
-       </div>
+          </div>
+    </div>
+
+
+
+
+
+
+
+
 
 
   </main>

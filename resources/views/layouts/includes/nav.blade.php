@@ -6,7 +6,7 @@
         </a>
      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
          aria-expanded="false" aria-label="Toggle navigation">
-       <!-- <span class="navbar-toggler-icon"></span> -->
+
        <div class="toggle-menu-btn" onclick="toggleMenuBtn(this)">
         <div class="bar1"></div>
         <div class="bar2"></div>
@@ -16,7 +16,7 @@
 
      <div class="collapse navbar-collapse" id="collapsibleNavId">
        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-         <li class="nav-item">
+         <li class="nav-item color-verde">
            <a class="nav-link " href="{{route('home')}}">Inicio</a>
          </li>
          <li class="nav-item">
@@ -29,10 +29,10 @@
            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
            <div class="dropdown-menu" aria-labelledby="dropdownId">
              <a class="dropdown-item" href="{{route('todos-los-productos')}}">Ver Todos</a>
-             
+
              @forelse (App\Categoria::all() as $categoria)
                 <a class="dropdown-item" href="/categoria/{{$categoria->id}}">{{$categoria->nombre_categoria}}</a>
-             @empty 
+             @empty
 
              @endforelse
            </div>
@@ -85,11 +85,15 @@
         </li>
 
 
-       </ul>
-
-    <a class="btn btn-outline-success mr-2" href="{{route ('items.index')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-
-       <button class="btn btn-outline-success" onclick="cajaBusqueda()"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+        <a class="nav-btn nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-btn nav-link" onclick="event.preventDefault();cajaBusqueda()"><i class="fa fa-search" aria-hidden="true"></i></a>
+        </li>
+    </ul>
      </div>
 
    </div>

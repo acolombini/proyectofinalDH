@@ -1,26 +1,26 @@
-/* Estilos Generales */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+/**
 
-html {
-  scroll-behavior: smooth;
-}
+    TODO:
+    - Agregar indice
 
-body {
-  background-color: #00000052;
-}
-
-
-
+*/
 
 /*=============================================
-=         tarjetas de Productos      =
+=                   Estilos Generales         =
 =============================================*/
+html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #00000052;
+  }
+
+/*============  End of Estilos Generales  =============*/
 
 
+/* Tarjeta de Productos
+-------------------------------------------------- */
 
 .product-card {
     background: #ffffff;
@@ -40,7 +40,6 @@ body {
   }
 
   .product-header {
-
     position: relative;
     padding: 0;
     margin: 0;
@@ -100,9 +99,8 @@ body {
     font-size: 11px;
   }
 
-
-  /*============  End of tarjetas de Productos =============*/
-
+/* End of Tarjeta de Productos
+-------------------------------------------------- */
 
 /*=============================================
 =                   Home                   =
@@ -147,6 +145,31 @@ canvas{
   height: 250px;
 }
 
+
+/*navbar*/
+
+.navbar-dark .nav-item .nav-link{
+    text-align: center;
+    color:#38c172;
+}
+.navbar-dark .nav-item .nav-link:hover{
+    color:#000000;
+    background-color: #38c172;
+}
+
+
+/* Botones  de la barra navegacion */
+
+.nav-btn:not([href]), .nav-btn {
+    color: #38c172;
+    text-decoration: none;
+}
+
+.nav-btn:not([href]):hover, .nav-btn:hover {
+    color:#000000;
+    background-color: #38c172;
+}
+
 /* Estilo de la barra de progreso del scroll */
 .progress-container {
   width: 100%;
@@ -156,24 +179,10 @@ canvas{
 
 .progress-bar {
   height: 8px;
-  background: #cac16b;
+  background: #38c172;
   width: 0%;
 }
 
-/*navbar*/
-.nav-item{
-  text-align: center;
-}
-
-.nav-item:hover{
-
-  border: 1px solid green;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-}
 
 /* clase para fijar el menu cuando se hace scrool*/
 .sticky {
@@ -198,12 +207,10 @@ canvas{
 .bar3 {
   width: 35px;
   height: 5px;
-  background-color: white;
+  background-color: #38c172;
   margin: 6px 0;
   transition: 0.4s;
 }
-
-
 .change .bar1 {
   transform: rotate(-45deg) translate(-8px, 8px);
   -webkit-transform: rotate(-45deg) translate(-8px, 8px);
@@ -211,13 +218,10 @@ canvas{
   -ms-transform: rotate(-45deg) translate(-8px, 8px);
   -o-transform: rotate(-45deg) translate(-8px, 8px);
 }
-
-
 .change .bar2 {
   width: 0;
   opacity: 0;
 }
-
 .change .bar3 {
   transform: rotate(45deg) translate(-8px, -8px);
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
@@ -228,7 +232,7 @@ canvas{
 
 
 /* Estilos boton ir arriba */
-#myBtn {
+#irArribaBtn {
   color: white;
   display: none;
   position: fixed;
@@ -238,15 +242,16 @@ canvas{
   font-size: 18px;
   border: none;
   outline: none;
-  background-color: red;
-  color: white;
+  background-color: #38c172;
   cursor: pointer;
-  padding: 15px;
+  padding: 5px;
   border-radius: 4px;
 }
 
-#myBtn:hover {
-  background-color: #555;
+#irArribaBtn:hover {
+    background-color: #ffffff;
+    color: #38c172;
+
 }
 
 #cajaBusqueda{
@@ -493,6 +498,5 @@ canvas{
 
 
 /*============  End of Pagina FAQ  =============*/
-
 
 

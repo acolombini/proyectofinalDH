@@ -36,10 +36,10 @@
     <div id="app">
 
         @include('layouts.includes.header')
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
-        
+
         @include('layouts.includes.status')
         @include('layouts.includes.footer')
 

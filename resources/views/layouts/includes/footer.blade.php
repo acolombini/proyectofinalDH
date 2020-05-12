@@ -52,6 +52,6 @@
         </div>
       </div>
     </div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+    <button onclick="topFunction()" id="irArribaBtn" title="Ir arriba"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
 
     </footer>
