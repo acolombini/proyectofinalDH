@@ -233,3 +233,57 @@ function barraProgreso() {
 
 
 
+ // Array de los campos del Formulario, sacamos el último pues es el botón de enviar
+ campoNombre = document.querySelector('[name=nombre]')
+ campoEmail = document.querySelector('[name=email]')
+ campoMensaje = document.querySelector('[name=mensaje]')
+
+ function validaNombre(valor){
+    const span = document.getElementById('nombre').querySelector('.errorForm')
+     if(valor.trim() <= 3){
+        span.innerText = "please, mas de tres letras"
+        span.style = 'display:block'
+        return false
+     }else{
+        span.innerText = ""
+        span.style = 'display:none'
+        return true
+     }
+ }
+
+ function validaEmail(valor){
+    const span = document.getElementById('email').querySelector('.errorForm')
+    if(valor.trim() <= 5){
+       span.innerText = "please, mas de 5 letras"
+       span.style = 'display:block'
+       return false
+    }else{
+       span.innerText = ""
+       span.style = 'display:none'
+       return true
+    }
+ }
+
+ function validaMensaje (valor){
+    const span = document.getElementById('mensaje').querySelector('.errorForm')
+    if(valor.trim() <= 5){
+       span.innerText = "please, mas de 5 letras"
+       span.style = 'display:block'
+       return false
+    }else{
+       span.innerText = ""
+       span.style = 'display:none'
+       return true
+    }
+ }
+
+ campoNombre.onblur = function(){ validaNombre(this.value) }
+ campoEmail.onblur = function(){ validaEmail(this.value) }
+ campoMensaje.onblur = function(){ validaMensaje(this.value) }
+
+ var formContacto = document.getElementById('frmContactoHome');
+
+
+
+
+

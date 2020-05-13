@@ -16,6 +16,11 @@ html {
     background-color: #00000052;
   }
 
+.errorForm{
+    color: white;
+    background-color: red;
+}
+
 /*============  End of Estilos Generales  =============*/
 
 
