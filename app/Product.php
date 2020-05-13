@@ -29,6 +29,6 @@ class Product extends Model
     }
 
     public function item(){
-        return $this->hasMany("App\Item", "producto_id");
+        return $this->hasMany("App\Item", "product_id");
     }
 }

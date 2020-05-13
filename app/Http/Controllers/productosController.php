@@ -83,6 +83,11 @@ class productosController extends Controller
         if($producto->poster){
             Storage::delete('public/product_poster/'.$producto->poster);
         }
+        if($producto->item){
+            foreach ($producto->item as $carrito) {
+                $carrito->delete();
+            }
+        }
         $producto->delete();
         return redirect()->route('productos.index')->with("status", "El producto ha sido eliminado.");
     }

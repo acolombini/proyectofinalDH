@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Categoria;
+use App\Product;
 use Illuminate\Http\Request;
 
 class categoriasController extends Controller
@@ -98,6 +99,14 @@ class categoriasController extends Controller
      */
     public function destroy($id)
     {
+        foreach (Categoria::find($id)->productos as $producto){
+            if (!$producto->item->isEmpty()) {
+                foreach($producto->item as $carrito)
+                $carrito->delete();
+            }
+            $producto->delete();
+        }
+
         Categoria::find($id)->delete();
         return redirect()->route('categorias.index')->with('status', "La categoría ha sido eliminada correctamente");
     }
@@ -106,5 +115,6 @@ class categoriasController extends Controller
     public function __construct()
     {
         $this->middleware('administrador')->only('index', 'create', 'store', 'destroy', 'edit', 'update');
+        $this->middleware(['administrador', 'password.confirm'])->only('destroy', 'edit');
     }
 }

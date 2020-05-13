@@ -33,10 +33,8 @@
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="id" value="{{$categoria->id}}">
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Está seguro que desea borrar esta categoría?')"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Está seguro que desea borrar esta categoría? Los productos que hay en ella serán eliminados.')"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </form>
-
-
                     </td>
                 </tr>
                 @empty

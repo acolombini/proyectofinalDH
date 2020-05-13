@@ -95,6 +95,14 @@ class marcasController extends Controller
      */
     public function destroy($id)
     {
+        foreach (Marca::find($id)->productos as $producto){
+            if (!$producto->item->isEmpty()) {
+                foreach($producto->item as $carrito)
+                $carrito->delete();
+            }
+            $producto->delete();
+        }
+
         Marca::find($id)->delete();
         return redirect()->route('marcas.index')->with('status', "La marca ha sido eliminada correctamente");
     }
@@ -103,5 +111,6 @@ class marcasController extends Controller
         public function __construct()
         {
             $this->middleware('administrador')->only('index', 'create', 'store', 'destroy', 'edit', 'update');
+            $this->middleware(['administrador', 'password.confirm'])->only('destroy', 'edit');
         }
 }
