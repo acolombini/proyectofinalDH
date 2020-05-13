@@ -44,7 +44,8 @@ Route::GET('/producto/{id}', 'productosController@show');
 Route::GET('/categoria/{id}', "categoriasController@show");
 
 //Busqueda de un producto
-Route::GET('productos/buscar', 'productosController@search');
+Route::POST('/buscador/producto', 'HomeController@search')->name('busqueda');
+
 // Route::POST('productos/buscar', 'productosController@search')->middleware('auth');
 
 // Ruta para modificar campos opcionales de usuario

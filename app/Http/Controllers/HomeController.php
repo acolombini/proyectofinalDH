@@ -44,6 +44,23 @@ class HomeController extends Controller
         ]);
     }
 
+    public function search(request $request){
 
 
+        $buscador = $request->buscar;
+        $productos = Product::where("titulo", "LIKE", "%" . $buscador . "%")->ORDERBY("titulo")->paginate(5);
+
+        // Creo variables para filtrar por medio de JS mientras se escribe
+        // $nombreProductos = [];
+        // $todosLosProductos = Product::all();
+        // foreach ($todosLosProductos as $producto) {
+        //     $nombreProductos[] = [
+        //         "titulo" => $producto->getTitulo(),
+        //         "id" => $producto->getID()
+        //     ];
+        // }
+
+        // $vac = compact('productos', 'nombreProductos');
+        return view("front.productos.search")->with('productos', $productos);
+    }
 }
