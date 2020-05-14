@@ -22,9 +22,6 @@
          <li class="nav-item">
            <a class="nav-link" href="{{route('faq.index')}}">FAQ</a>
          </li>
-         <li class="nav-item">
-          <a class="nav-link" href="{{route('contacto.index')}}">Contacto</a>
-        </li>
          <li class="nav-item dropdown">
            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
            <div class="dropdown-menu" aria-labelledby="dropdownId">

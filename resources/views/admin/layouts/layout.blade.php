@@ -54,7 +54,7 @@
           <img src="{{ asset('img/adminAvatar.jpg') }}" class="brand-image img-circle elevation-3" alt="User Image">
         </div>
         <div class="info">
-          <a href="/usuario/edit" class="d-block">{{ Auth::user()->getNombreCompleto() }}</a>
+          <a href="/usuario/edit" class="d-block">{{ Auth::user() ? Auth::user()->getNombreCompleto(): "" }}</a>
         </div>
       </div>
 

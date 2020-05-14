@@ -110,6 +110,7 @@ class marcasController extends Controller
         // Middleware
         public function __construct()
         {
+            $this->middleware('auth')->only('index', 'create', 'store', 'destroy', 'edit', 'update');
             $this->middleware('administrador')->only('index', 'create', 'store', 'destroy', 'edit', 'update');
             $this->middleware(['administrador', 'password.confirm'])->only('destroy', 'edit');
         }

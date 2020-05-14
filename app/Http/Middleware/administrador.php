@@ -15,8 +15,8 @@ class administrador
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->tipo_de_usuario_id != 2) {
-            return redirect("/");
+        if (Auth::user() != null && Auth::user()->tipo_de_usuario_id != 2) {
+            return redirect()->route('home');
         }
         return $next($request);
     }

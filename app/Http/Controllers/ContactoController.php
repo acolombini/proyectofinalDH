@@ -16,11 +16,7 @@ class contactoController extends Controller
     public function index()
     {
         $contactos = Contacto::all();
-        if (Auth::user() && Auth::user()->tipo_de_usuario_id === 2) {
-            return view('admin.contactos.index')->with('contactos', $contactos);
-        } else {
-            return view('front.contacto.index');
-        }
+        return view('admin.contactos.index')->with('contactos', $contactos);
     }
 
     /**
@@ -46,7 +42,7 @@ class contactoController extends Controller
             $contactoACrear["usuario_id"] = $req["usuario_id"];
         }
         Contacto::create($contactoACrear);
-        return redirect()->route("home");
+        return redirect()->route("home")->with('status', 'El formulario de contacto se ha enviado correctamente. En breve nos pondremos en contacto con usted :)');
     }
 
     /**
@@ -117,6 +113,7 @@ class contactoController extends Controller
     // Middleware
     public function __construct()
     {
-        $this->middleware('administrador')->only('destroy', 'update');
+        $this->middleware('auth')->only('destroy', 'update', 'index');
+        $this->middleware('administrador')->only('destroy', 'update', 'index');
     }
 }
