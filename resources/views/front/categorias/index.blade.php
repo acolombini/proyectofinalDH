@@ -12,7 +12,7 @@
         <li class="breadcrumb-item active" aria-current="page">{{$categoria->nombre_categoria}}</li>
         </ol>
     </nav>
-    
+
 
 
     <div class="row">
@@ -64,21 +64,38 @@
 
         <div class="row">
             @forelse ($categoria->productos as $producto)
-                <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <a href="/producto/{{$producto->id}}"><img class="card-img-top" style="width: 100%; height: 350px;" src="{{$producto->poster ? '/storage/product_poster/' . $producto->poster : 'http://placehold.it/700x400'}}" alt="imágen del producto"></a>
-                    <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="/producto/{{$producto->id}}">{{$producto->getTitulo()}}</a>
-                    </h4>
-                <h5>{{$producto->precio}}</h5>
-                    <p class="card-text">{{$producto->descripcion}}</p>
+            <div class="product-card col-6 col-md-4 col-lg-3 mx-2">
+                <div class="product-header">
+                    <img src="{{$producto->poster ? '/storage/product_poster/'.$producto->poster : asset('img/defaultgamecardimage.png') }}" alt="imagen del producto">
+                </div><!--product-header-->
+                <div class="product-content">
+                    <div class="product-content-header">
+                        <a href="/producto/{{$producto->id}}">
+                            <h3 class="product-title">{{$producto->getTitulo()}}</h3>
+                        </a>
                     </div>
-                    <div class="card-footer">
-                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+
+                    <div class="product-info">
+                        <div class="info-section">
+                            <label>Precio</label>
+                            <span>{{$producto->precio_unitario}}</span>
+                        </div><!--date,time-->
+                        <div class="info-section">
+                            <label>Categoria</label>
+                            <span>{{$producto->categoria->nombre_categoria}}</span>
+                        </div><!--screen-->
+                        <div class="info-section">
+                          <form action="carrito" method="post">
+                            @csrf
+                            <input type="hidden" name="producto_id" value="{{$producto->id}}">
+                            <input type="hidden" name="user_id" value="{{Auth::user() ? Auth::user()->id : ''}}">
+                            <label>Add to Cart</label>
+                            <button type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                          </form>
+                        </div><!--screen-->
                     </div>
-                </div>
-                </div>
+                </div><!--product-content-->
+            </div>
             @empty
                 No hay productos para esta categoría
             @endforelse
@@ -93,6 +110,6 @@
 
     </div>
     <!-- /.container -->
-    
+
 </main>
 @endsection
