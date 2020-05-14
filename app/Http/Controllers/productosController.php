@@ -65,7 +65,7 @@ class productosController extends Controller
     public function destroy(Product $producto){
 
         if($producto->poster){
-            Storage::delete('public/product_poster/'.$producto->poster);
+            Storage::delete('bpublic/product_poster/'.$producto->poster);
         }
         if($producto->item){
             foreach ($producto->item as $carrito) {
