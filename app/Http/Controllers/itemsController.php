@@ -105,5 +105,9 @@ class itemsController extends Controller
         $item->delete();
         return redirect()->route('items.index')->with("status", "El producto ha sido eliminado del carrito.");
     }
-    $this->middleware('auth')->only('destroy', 'insert', 'index');
+    
+    // Middleware
+    public function __construct(){
+        $this->middleware('auth')->only('destroy', 'insert', 'index');
+    }
 }

@@ -53,7 +53,7 @@ class productosController extends Controller
         $producto = Product::find($id);
         $categorias = Categoria::all();
         $vac = compact('id', 'producto', 'categorias');
-        if (Auth::user()->tipo_de_usuario_id === 2) {
+        if (Auth::user()!= null && Auth::user()->tipo_de_usuario_id === 2) {
             return view("admin.productos.show", $vac);
         } else {
             return view("front.productos.producto", $vac);
