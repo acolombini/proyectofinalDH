@@ -8,6 +8,11 @@ use Auth;
 use Illuminate\Support\Facades\Storage;
 class userController extends Controller
 {
+    public function index(){
+        $usuarios = User::all();
+        return view('admin.usuarios.index')->with('usuarios', $usuarios);
+    }
+
     public function edit(){
         $usuarioLogueado = Auth::user();
         return view('front.user.editarUsuario')->with('usuarioLogueado', $usuarioLogueado);
@@ -50,6 +55,29 @@ class userController extends Controller
         $usuarioAModificar->save();
 
         return redirect("/")->with('status', 'Los datos de usuario se han modificado correctamente');
+    }
+
+    public function destroy(User $usuario){
+        if($usuario->tipo_de_usuario_id === 2){
+            return redirect()->route('usuarios.index')->with('statuswrong', 'Eliminación incorrecta. Usted no puede eliminar un usuario que es administrador.');
+        }
+        if(!$usuario->carrito->isEmpty()){
+            foreach($usuario->carrito as $carrito){
+                $carrito->delete();
+            }
+        }
+        if(!$usuario->contacto->isEmpty()){
+            foreach($usuario->contacto as $contacto){
+                $contacto->delete();
+            }
+        }
+        $usuario->delete();
+        return redirect()->route('usuarios.index')->with('status', 'El usuario se ha eliminado correctamente.');
+    }
+
+    public function __construct(){
+        $this->middleware('auth')->only('destroy', 'index');
+        $this->middleware('administrador')->only('destroy', 'index');
     }
     }
 

@@ -47,10 +47,18 @@ class User extends Authenticatable
     }
 
     public function carrito(){
-        return $this->belongsTo("App\Item", "carrito_id");
+        return $this->hasMany("App\Item", "user_id");
     }
 
     public function compra(){
         return $this->belongsToMany("App\Item", "compra", "user_id", "item_id");
+    }
+
+    public function tipo_de_usuario(){
+        return $this->belongsTo('App\tipoDeUsuario', "tipo_de_usuario_id");
+    }
+
+    public function contacto(){
+        return $this->hasMany("App\Contacto", "usuario_id");
     }
 }

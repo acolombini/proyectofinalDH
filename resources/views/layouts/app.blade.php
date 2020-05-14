@@ -43,8 +43,6 @@
         @include('layouts.includes.status')
         @include('layouts.includes.footer')
 
-
-
     </div>
 </body>
 </html>

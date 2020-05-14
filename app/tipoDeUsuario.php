@@ -13,4 +13,8 @@ class tipoDeUsuario extends Model
     protected $fillable = [
         'tipo'
     ];
+
+    public function usuarios(){
+        return $this->hasMany("App\User", "tipo_de_usuario_id");
+    }
 }

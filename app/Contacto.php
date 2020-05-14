@@ -12,5 +12,7 @@ class Contacto extends Model
         'nombre', 'email', 'mensaje', 'usuario_id',
     ];
 
-    
+    public function usuario(){
+        return $this->belongsTo("App\User", "usuario_id");
+    }
 }

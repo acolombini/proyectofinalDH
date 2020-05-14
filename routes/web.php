@@ -28,6 +28,7 @@ Route::resource('productos', 'productosController');
 Route::resource('categorias', 'categoriasController');
 Route::resource('marcas', 'marcasController');
 Route::resource('items', 'itemsController');
+Route::resource('usuarios', 'userController');
 
 /*============  End of Rutas Backend  =============*/
 

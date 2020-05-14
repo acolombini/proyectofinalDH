@@ -62,10 +62,17 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-            <li class="nav-item">
+              <li class="nav-item">
                 <a href="{{route('productos.index')}}" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>Productos</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{route('usuarios.index')}}" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>Usuarios</p>
                 </a>
               </li>
 
@@ -119,6 +126,16 @@
       </div>
     @endif
     <!-- /.Show status -->
+
+    <!-- Show status if exists -->
+    @if (session('statuswrong'))
+      <div class="alert alert-danger" role="alert">
+            <strong> {{ session('statuswrong') }}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </div>
+      @endif
+      <!-- /.Show status -->
 
     <!-- Main content -->
     <div class="content">
