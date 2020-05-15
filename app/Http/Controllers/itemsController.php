@@ -49,14 +49,14 @@ class itemsController extends Controller
             $cantidadDeProductos = $cantidadAnterior + 1;
             $productoEnLaBBDD[0]->cantidad_de_productos = $cantidadDeProductos;
             $productoEnLaBBDD[0]->save();
-            return redirect()->route('home')->with("status", "Se ha actualizado la cantidad de productos en el carrito.");
+            return redirect()->back()->with("status", "Se ha actualizado la cantidad de productos en el carrito.");
        } else {
         Item::create([
             'product_id' => $req['producto_id'],
             'user_id' => $req['user_id'],
             'cantidad_de_productos' => 1
         ]);
-        return redirect()->route('home')->with("status", "El producto se ha agregado al carrito satisfactoriamente.");
+        return redirect()->back()->with("status", "El producto se ha agregado al carrito satisfactoriamente.");
         }
     }
 
