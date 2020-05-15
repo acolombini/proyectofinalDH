@@ -8,7 +8,7 @@
         <div class="row">
               @forelse ($productos as $producto)
 
-              <div class="product-card col-6 col-md-4 col-lg-3 mx-2">
+              <div class="product-card col-6 col-md-4 col-lg-3 m-2">
                   <div class="product-header">
                       <img src="{{$producto->poster ? '/storage/product_poster/'.$producto->poster : asset('img/defaultgamecardimage.png') }}" alt="imagen del producto">
                   </div><!--product-header-->
