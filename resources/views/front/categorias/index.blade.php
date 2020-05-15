@@ -87,7 +87,7 @@
                             <span>{{$producto->categoria->nombre_categoria}}</span>
                         </div><!--screen-->
                         <div class="info-section">
-                          <form action="carrito" method="post">
+                            <form action="/carrito" method="post">
                             @csrf
                             <input type="hidden" name="producto_id" value="{{$producto->id}}">
                             <input type="hidden" name="user_id" value="{{Auth::user() ? Auth::user()->id : ''}}">

@@ -60,8 +60,6 @@ class productosController extends Controller
         }
     }
 
-
-
     public function destroy(Product $producto){
 
         if($producto->poster){
