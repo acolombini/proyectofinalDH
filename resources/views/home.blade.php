@@ -101,7 +101,7 @@
 
   <section id="otraseccion">
     <div class="container-fluid quienessomos-img py-5">
-      <div class="container quienesomos-texto ">
+      <div class="container quienesomos-texto p-5">
       <h2>Qué hacemos?</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores animi iusto quasi adipisci dignissimos soluta nulla tenetur consequatur necessitatibus voluptates provident dolorem porro vel consectetur hic, et dicta? Voluptatibus, voluptatum?
         Dolor enim, provident rerum repudiandae eaque, praesentium aliquid, assumenda magni numquam quos itaque. Temporibus, porro, cum animi eligendi vel consequatur, harum officiis maxime quo ea blanditiis dolore aliquam ipsum repellendus!

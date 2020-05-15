@@ -537,3 +537,60 @@ canvas{
 /*============  End of Pagina FAQ  =============*/
 
 
+/*=============================================
+=                   Pagina Categorias        =
+=============================================*/
+.categoria-bread{
+    background-color: #343a40;
+}
+
+.categoria-bread .breadcrumb-item a{
+    color: #38c172;
+}
+
+.categoria-bread .breadcrumb-item.active{
+
+    color: #ffffff;
+}
+.categoria-titulo{
+    background: #343a40;
+    border-radius: 5px;
+    color: #38c172;
+}
+
+.lista-categorias .list-group-item{
+    background-color: #343a40;
+    color: #38c172;
+}
+
+
+/*============  End of Pagina Categorias====*/
+
+/*=============================================
+=                   Producto                   =
+=============================================*/
+.producto-bread{
+    background-color: #343a40;
+}
+
+.producto-bread .breadcrumb-item a{
+    color: #38c172;
+}
+
+.producto-bread .breadcrumb-item.active{
+
+    color: #ffffff;
+}
+.producto-titulo{
+    background: #343a40;
+    border-radius: 5px;
+    color: #38c172;
+}
+
+.lista-producto .list-group-item{
+    background-color: #343a40;
+    color: #38c172;
+}
+
+
+/*============  End of Producto  =============*/
