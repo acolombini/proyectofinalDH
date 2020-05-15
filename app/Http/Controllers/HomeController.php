@@ -36,7 +36,7 @@ class HomeController extends Controller
 
     public function getAll()
     {
-        $productos = Product::all();
+        $productos = Product::paginate(12);
         $categorias = Categoria::all();
         return view('front.productos.indexAll')->with([
             'productos' => $productos,
